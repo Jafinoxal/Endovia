@@ -97,7 +97,7 @@ def transparent():
     6: False,
     }
 
-def chests():
+def shelves():
     return
     {
     0: (category()[0], identity()[0], name()[0], kind()[0], symbol()[0], color()[0], clip()[0], transparent()[0]),
