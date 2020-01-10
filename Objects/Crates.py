@@ -134,4 +134,4 @@ def crates():
     9: (category()[9], identity()[9], name()[9], kind()[9], symbol()[9], color()[9], clip()[9], transparent()[9]),
     }
 
-# Jafinoxal
+# Jafinoxal.

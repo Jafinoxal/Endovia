@@ -110,4 +110,4 @@ def fences():
     6: (category()[6], identity()[6], name()[6], kind()[6], symbol()[6], color()[6], clip()[6], transparent()[6]),
     }
 
-# Jafinoxal
+# Jafinoxal.

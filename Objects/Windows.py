@@ -117,4 +117,4 @@ def windows():
     7: (category()[7], identity()[7], name()[7], kind()[7], symbol()[7], color()[7], clip()[7], transparent()[7]),
     }
 
-# Jafinoxal
+# Jafinoxal.

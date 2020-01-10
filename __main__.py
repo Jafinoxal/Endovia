@@ -13,6 +13,9 @@ background = pygame.Surface(screen.get_size())
 background.fill((0,0,0))
 background = background.convert()
 
+while True:
+    screen.blit(background, (0, 0))
+
 dungeons = {
 0: cha.ChartDungeon(80, 50, True),
 }

@@ -92,4 +92,4 @@ def fridges():
     4: (category()[4], identity()[4], name()[4], kind()[4], symbol()[4], color()[4], clip()[4], transparent()[4]),
     }
 
-# Jafinoxal
+# Jafinoxal.

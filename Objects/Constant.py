@@ -24,7 +24,7 @@ CHESTS      = 7 # Complete.
 SHELVES     = 8 # Complete.
 CRATES      = 9 # Complete.
 BOXES       = 10 # Complete.
-BARRELS     = 11
+BARRELS     = 11 # Complete.
 SACKS       = 12
 FOUNTAINS   = 13
 PILLARS     = 14
@@ -57,4 +57,4 @@ OBSTACLES   = 41
 LOOMS       = 42
 SPINNERS    = 43
 
-# Jafinoxal
+# Jafinoxal.

@@ -29,4 +29,4 @@ objects =
 10: Boxes,
 }
 
-# Jafinoxal
+# Jafinoxal.
