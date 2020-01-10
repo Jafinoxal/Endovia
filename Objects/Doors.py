@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Endovia (Doors)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 

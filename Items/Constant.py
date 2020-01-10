@@ -1,0 +1,45 @@
+# Endovia (Item Constant)
+# Copyright (C) 2010-2020 Jeremy Aaron Flexer.
+
+# Item Categories.
+TOOLS         = 1000
+ORES          = 1001
+INGOTS        = 1002
+CLUMPS        = 1003
+UNCUTGEMS     = 1004
+CUTGEMS       = 1005
+UNCOOKEDFISH  = 1006
+COOKEDFISH    = 1007
+UNCLEANHERBS  = 1008
+CLEANHERBS    = 1009
+INGREDIENTS   = 1010
+POTIONS       = 1011
+LOGS          = 1012
+NECKLACES     = 1013
+AMULETS       = 1014
+RINGS         = 1015
+BRACLETS      = 1016
+RUNES         = 1017
+ARROWS        = 1018
+BOLTS         = 1019
+MELEEARMOURS  = 1020
+MELEEWEAPONS  = 1021
+RANGEARMOURS  = 1022
+RANGEWEAPONS1 = 1023
+RANGEWEAPONS2 = 1024
+MAGICARMOURS  = 1024
+MAGICWEAPONS  = 1025
+PIES          = 1026
+CAKES         = 1027
+FRUITS        = 1028
+VEGETABLES    = 1029
+SEEDS         = 1030
+HIDES         = 1031
+BOOKS         = 1032
+SCROLLS       = 1033
+KEYS          = 1034
+TALISMANS     = 1035
+TELEPORTS     = 1036
+CURRENCIES    = 1037
+
+# Jafinoxal
