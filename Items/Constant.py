@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Endovia (Item Constant)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
@@ -42,4 +43,4 @@ TALISMANS     = 1035
 TELEPORTS     = 1036
 CURRENCIES    = 1037
 
-# Jafinoxal
+# Jafinoxal.

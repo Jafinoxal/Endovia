@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Endovia (Dungeon)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
@@ -46,4 +47,4 @@ class Chart(Basic.Chart):
             if self.grids[0][(current_x, y)] == None:
                 self.grids[0][(current_x, y)] = object_id
 
-# Jafinoxal
+# Jafinoxal.

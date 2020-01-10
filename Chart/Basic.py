@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Endovia (Basic)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
@@ -21,4 +22,4 @@ class Chart(object):
                 self.grids[self.grid_count][(x, y)] = object_id
         self.grid_count += 1
 
-# Jafinoxal
+# Jafinoxal.

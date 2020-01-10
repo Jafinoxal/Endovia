@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Endovia (InputHandler)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
@@ -46,4 +47,4 @@ def CharacterSelectionMenu(library):
         return Constant.MOVE_MENU_DOWN
     else:
         return Constant.NULL
-# Jafinoxal
+# Jafinoxal.

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Endovia (Handler Init)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
@@ -20,4 +21,4 @@ MOVE_PLAYER_NORTHEAST = 13
 MOVE_PLAYER_SOUTHWEST = 14
 MOVE_PLAYER_SOUTHEAST = 15
 
-# Jafinoxal
+# Jafinoxal.
