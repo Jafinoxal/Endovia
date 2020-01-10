@@ -62,6 +62,21 @@ def kind():
     9: "Crate",
     }
 
+def description():
+    return
+    {
+    0: "A crate.",
+    1: "An empty crate.",
+    2: "A crate of various fruit.",
+    3: "A crate of various vegetables.",
+    4: "A crate of various meats.",
+    5: "A crate of rations.",
+    6: "A crate of delicious wine.",
+    7: "A crate of ingredients.",
+    8: "A crate of high value.",
+    9: "A crate of spices.",
+    }
+
 def symbol():
     return
     {
@@ -122,16 +137,16 @@ def transparent():
 def crates():
     return
     {
-    0: (category()[0], identity()[0], name()[0], kind()[0], symbol()[0], color()[0], clip()[0], transparent()[0]),
-    1: (category()[1], identity()[1], name()[1], kind()[1], symbol()[1], color()[1], clip()[1], transparent()[1]),
-    2: (category()[2], identity()[2], name()[2], kind()[2], symbol()[2], color()[2], clip()[2], transparent()[2]),
-    3: (category()[3], identity()[3], name()[3], kind()[3], symbol()[3], color()[3], clip()[3], transparent()[3]),
-    4: (category()[4], identity()[4], name()[4], kind()[4], symbol()[4], color()[4], clip()[4], transparent()[4]),
-    5: (category()[5], identity()[5], name()[5], kind()[5], symbol()[5], color()[5], clip()[5], transparent()[5]),
-    6: (category()[6], identity()[6], name()[6], kind()[6], symbol()[6], color()[6], clip()[6], transparent()[6]),
-    7: (category()[7], identity()[7], name()[7], kind()[7], symbol()[7], color()[7], clip()[7], transparent()[7]),
-    8: (category()[8], identity()[8], name()[8], kind()[8], symbol()[8], color()[8], clip()[8], transparent()[8]),
-    9: (category()[9], identity()[9], name()[9], kind()[9], symbol()[9], color()[9], clip()[9], transparent()[9]),
+    0: (category()[0], identity()[0], name()[0], kind()[0], description()[0], symbol()[0], color()[0], clip()[0], transparent()[0]),
+    1: (category()[1], identity()[1], name()[1], kind()[1], description()[1], symbol()[1], color()[1], clip()[1], transparent()[1]),
+    2: (category()[2], identity()[2], name()[2], kind()[2], description()[2], symbol()[2], color()[2], clip()[2], transparent()[2]),
+    3: (category()[3], identity()[3], name()[3], kind()[3], description()[3], symbol()[3], color()[3], clip()[3], transparent()[3]),
+    4: (category()[4], identity()[4], name()[4], kind()[4], description()[4], symbol()[4], color()[4], clip()[4], transparent()[4]),
+    5: (category()[5], identity()[5], name()[5], kind()[5], description()[5], symbol()[5], color()[5], clip()[5], transparent()[5]),
+    6: (category()[6], identity()[6], name()[6], kind()[6], description()[6], symbol()[6], color()[6], clip()[6], transparent()[6]),
+    7: (category()[7], identity()[7], name()[7], kind()[7], description()[7], symbol()[7], color()[7], clip()[7], transparent()[7]),
+    8: (category()[8], identity()[8], name()[8], kind()[8], description()[8], symbol()[8], color()[8], clip()[8], transparent()[8]),
+    9: (category()[9], identity()[9], name()[9], kind()[9], description()[9], symbol()[9], color()[9], clip()[9], transparent()[9]),
     }
 
 # Jafinoxal.
