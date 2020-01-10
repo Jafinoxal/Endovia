@@ -110,7 +110,7 @@ def transparent():
     6: False,
     }
 
-def fountains():
+def pillars():
     return
     {
     0: (category()[0], identity()[0], name()[0], kind()[0], description()[0], symbol()[0], color()[0], clip()[0], transparent()[0]),
