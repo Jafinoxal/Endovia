@@ -9,6 +9,8 @@ def category():
     2: 7,
     3: 7,
     4: 7,
+    5: 7,
+    6: 7,
     }
 
 def identity():
@@ -19,6 +21,8 @@ def identity():
     2: 2,
     3: 3,
     4: 4,
+    5: 5,
+    6: 6,
     }
 
 def name():
@@ -29,6 +33,8 @@ def name():
     2: "Small Chest",
     3: "Large Chest",
     4: "Bank Chest",
+    5: "Plastic Chest",
+    6: "Metal Chest",
     }
 
 def kind():
@@ -39,6 +45,8 @@ def kind():
     2: "Chest",
     3: "Chest",
     4: "Chest",
+    5: "Chest",
+    6: "Chest",
     }
 
 def symbol():
@@ -49,6 +57,8 @@ def symbol():
     2: u"©",
     3: u"©",
     4: u"©",
+    4: u"©",
+    6: u"©",
     }
 
 def color():
@@ -59,6 +69,8 @@ def color():
     2: ((255,255,255), (0,0,0)),
     3: ((255,255,255), (0,0,0)),
     4: ((255,255,255), (0,0,0)),
+    5: ((95,95,95), (0,0,0)),
+    6: ((191,191,191), (0,0,0)),
     }
 
 def clip():
@@ -69,6 +81,8 @@ def clip():
     2: True,
     3: True,
     4: True,
+    5: True,
+    6: True,
     }
 
 def transparent():
@@ -79,6 +93,8 @@ def transparent():
     2: True,
     3: True,
     4: True,
+    5: True,
+    6: True,
     }
 
 def chests():
@@ -89,4 +105,6 @@ def chests():
     2: (category()[2], identity()[2], name()[2], kind()[2], symbol()[2], color()[2], clip()[2], transparent()[2]),
     3: (category()[3], identity()[3], name()[3], kind()[3], symbol()[3], color()[3], clip()[3], transparent()[3]),
     4: (category()[4], identity()[4], name()[4], kind()[4], symbol()[4], color()[4], clip()[4], transparent()[4]),
+    4: (category()[5], identity()[5], name()[5], kind()[5], symbol()[5], color()[5], clip()[5], transparent()[5]),
+    4: (category()[6], identity()[6], name()[6], kind()[6], symbol()[6], color()[6], clip()[6], transparent()[6]),
     }
