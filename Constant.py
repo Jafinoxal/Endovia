@@ -1,6 +1,16 @@
 # Endovia (Constant)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
+# Object Keys
+OBJECT_CATEGORY = 0
+OBJECT_IDENTITY = 1
+OBJECT_NAME = 2
+OBJECT_KIND = 3
+OBJECT_SYMBOL = 4
+OBJECT_COLOR = 5
+OBJECT_CLIP = 6
+OBJECT_TRANSPARENT = 7
+
 # Object Categories.
 WALLS       = 0 # Complete.
 FLOORS      = 1 # Complete.

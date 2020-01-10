@@ -11,6 +11,7 @@ def category():
     4: 10,
     5: 10,
     6: 10,
+    7: 10,
     }
 
 def identity():
@@ -23,18 +24,20 @@ def identity():
     4: 4,
     5: 5,
     6: 6,
+    7: 7,
     }
 
 def name():
     return
     {
     0: "Box",
-    1: "Arrows/Bolts Box",
-    2: "Runes Box",
-    3: "Food Box",
-    4: "Ingredient Box",
-    5: "Shiny Box",
-    6: "Bread Box",
+    1: "Empty Box",
+    2: "Arrows/Bolts Box",
+    3: "Runes Box",
+    4: "Food Box",
+    5: "Ingredient Box",
+    6: "Shiny Box",
+    7: "Bread Box",
     }
 
 def kind():
@@ -47,6 +50,7 @@ def kind():
     4: "Box",
     5: "Box",
     6: "Box",
+    7: "Box",
     }
 
 def symbol():
@@ -59,6 +63,7 @@ def symbol():
     4: u"¬",
     4: u"¬",
     6: u"¬",
+    7: u"¬",
     }
 
 def color():
@@ -71,6 +76,7 @@ def color():
     4: ((191,255,0), (0,0,0)),
     5: ((0,255,0), (0,0,0)),
     6: ((0,0,255), (0,0,0)),
+    7: ((164,43,255), (0,0,0)),
     }
 
 def clip():
@@ -83,6 +89,7 @@ def clip():
     4: True,
     5: True,
     6: True,
+    7: True,
     }
 
 def transparent():
@@ -95,6 +102,7 @@ def transparent():
     4: True,
     5: True,
     6: True,
+    7: True,
     }
 
 def boxes():
@@ -107,6 +115,7 @@ def boxes():
     4: (category()[4], identity()[4], name()[4], kind()[4], symbol()[4], color()[4], clip()[4], transparent()[4]),
     5: (category()[5], identity()[5], name()[5], kind()[5], symbol()[5], color()[5], clip()[5], transparent()[5]),
     6: (category()[6], identity()[6], name()[6], kind()[6], symbol()[6], color()[6], clip()[6], transparent()[6]),
+    7: (category()[7], identity()[7], name()[7], kind()[7], symbol()[7], color()[7], clip()[7], transparent()[7]),
     }
 
 # Jafinoxal
