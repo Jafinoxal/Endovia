@@ -60,12 +60,12 @@ def description():
 def symbol():
     return
     {
-    0: u"§",
-    1: u"§",
-    2: u"§",
-    3: u"§",
-    4: u"§",
-    5: u"§",
+    0: u"º",
+    1: u"º",
+    2: u"º",
+    3: u"º",
+    4: u"º",
+    5: u"º",
     }
 
 def color():
