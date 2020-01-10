@@ -171,3 +171,5 @@ def walls():
         12: (category()[12], identity()[12], name()[12], kind()[12], symbol()[12], color()[12], clip()[12], transparent()[12]),
         13: (category()[13], identity()[13], name()[13], kind()[13], symbol()[13], color()[13], clip()[13], transparent()[13]),
     }
+
+# Jafinoxal

@@ -350,3 +350,5 @@ def floors():
         32: (category()[32], identity()[32], name()[32], kind()[32], symbol()[32], color()[32], clip()[32], transparent()[32]),
         33: (category()[33], identity()[33], name()[33], kind()[33], symbol()[33], color()[33], clip()[33], transparent()[33]),
     }
+
+# Jafinoxal
