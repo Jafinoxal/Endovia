@@ -3,8 +3,7 @@
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
 def category():
-    return
-    {
+    return {
     0: 0,
     1: 0,
     2: 0,
@@ -22,8 +21,7 @@ def category():
     }
 
 def identity():
-    return
-    {
+    return {
     0: 0,
     1: 1,
     2: 2,
@@ -41,8 +39,7 @@ def identity():
     }
 
 def name():
-    return
-    {
+    return {
     0: "Wall",
     1: "Sand Stone Wall",
     2: "Stone Wall",
@@ -60,8 +57,7 @@ def name():
     }
 
 def kind():
-    return
-    {
+    return {
     0: "Wall",
     1: "Wall",
     2: "Wall",
@@ -79,8 +75,7 @@ def kind():
     }
 
 def description():
-    return
-    {
+    return {
     0: "A wall.",
     1: "A sand stone wall.",
     2: "A stone wall.",
@@ -98,8 +93,7 @@ def description():
     }
 
 def symbol():
-    return
-    {
+    return {
     0: "#",
     1: "#",
     2: "#",
@@ -117,8 +111,7 @@ def symbol():
     }
 
 def color():
-    return
-    {
+    return {
     0: ((255,255,255), (0,0,0)),
     1: ((255,255,191), (255,255,191)),
     2: ((127,127,127), (223,223,223)),
@@ -136,8 +129,7 @@ def color():
     }
 
 def clip():
-    return
-    {
+    return {
     0: True,
     1: True,
     2: True,
@@ -155,8 +147,7 @@ def clip():
     }
 
 def transparent():
-    return
-    {
+    return {
     0: False,
     1: False,
     3: False,
@@ -174,22 +165,21 @@ def transparent():
 
 
 def walls():
-    return
-    {
-        0: (category()[0], identity()[0], name()[0], kind()[0], description()[0], symbol()[0], color()[0], clip()[0], transparent()[0]),
-        1: (category()[1], identity()[1], name()[1], kind()[1], description()[1], symbol()[1], color()[1], clip()[1], transparent()[1]),
-        2: (category()[2], identity()[2], name()[2], kind()[2], description()[2], symbol()[2], color()[2], clip()[2], transparent()[2]),
-        3: (category()[3], identity()[3], name()[3], kind()[3], description()[3], symbol()[3], color()[3], clip()[3], transparent()[3]),
-        4: (category()[4], identity()[4], name()[4], kind()[4], description()[4], symbol()[4], color()[4], clip()[4], transparent()[4]),
-        5: (category()[5], identity()[5], name()[5], kind()[5], description()[5], symbol()[5], color()[5], clip()[5], transparent()[5]),
-        6: (category()[6], identity()[6], name()[6], kind()[6], description()[6], symbol()[6], color()[6], clip()[6], transparent()[6]),
-        7: (category()[7], identity()[7], name()[7], kind()[7], description()[7], symbol()[7], color()[7], clip()[7], transparent()[7]),
-        8: (category()[8], identity()[8], name()[8], kind()[8], description()[8], symbol()[8], color()[8], clip()[8], transparent()[8]),
-        9: (category()[9], identity()[9], name()[9], kind()[9], description()[9], symbol()[9], color()[9], clip()[9], transparent()[9]),
-        10: (category()[10], identity()[10], name()[10], kind()[10], description()[10], symbol()[10], color()[10], clip()[10], transparent()[10]),
-        11: (category()[11], identity()[11], name()[11], kind()[11], description()[11], symbol()[11], color()[11], clip()[11], transparent()[11]),
-        12: (category()[12], identity()[12], name()[12], kind()[12], description()[12], symbol()[12], color()[12], clip()[12], transparent()[12]),
-        13: (category()[13], identity()[13], name()[13], kind()[13], description()[13], symbol()[13], color()[13], clip()[13], transparent()[13]),
+    return {
+    0: (category()[0], identity()[0], name()[0], kind()[0], description()[0], symbol()[0], color()[0], clip()[0], transparent()[0]),
+    1: (category()[1], identity()[1], name()[1], kind()[1], description()[1], symbol()[1], color()[1], clip()[1], transparent()[1]),
+    2: (category()[2], identity()[2], name()[2], kind()[2], description()[2], symbol()[2], color()[2], clip()[2], transparent()[2]),
+    3: (category()[3], identity()[3], name()[3], kind()[3], description()[3], symbol()[3], color()[3], clip()[3], transparent()[3]),
+    4: (category()[4], identity()[4], name()[4], kind()[4], description()[4], symbol()[4], color()[4], clip()[4], transparent()[4]),
+    5: (category()[5], identity()[5], name()[5], kind()[5], description()[5], symbol()[5], color()[5], clip()[5], transparent()[5]),
+    6: (category()[6], identity()[6], name()[6], kind()[6], description()[6], symbol()[6], color()[6], clip()[6], transparent()[6]),
+    7: (category()[7], identity()[7], name()[7], kind()[7], description()[7], symbol()[7], color()[7], clip()[7], transparent()[7]),
+    8: (category()[8], identity()[8], name()[8], kind()[8], description()[8], symbol()[8], color()[8], clip()[8], transparent()[8]),
+    9: (category()[9], identity()[9], name()[9], kind()[9], description()[9], symbol()[9], color()[9], clip()[9], transparent()[9]),
+    10: (category()[10], identity()[10], name()[10], kind()[10], description()[10], symbol()[10], color()[10], clip()[10], transparent()[10]),
+    11: (category()[11], identity()[11], name()[11], kind()[11], description()[11], symbol()[11], color()[11], clip()[11], transparent()[11]),
+    12: (category()[12], identity()[12], name()[12], kind()[12], description()[12], symbol()[12], color()[12], clip()[12], transparent()[12]),
+    13: (category()[13], identity()[13], name()[13], kind()[13], description()[13], symbol()[13], color()[13], clip()[13], transparent()[13]),
     }
 
 # Jafinoxal.

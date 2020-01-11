@@ -2,11 +2,10 @@
 # Endovia (Graphic Init)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
-import Menus
+import DrawCharts
 
-handlers =
-{
-"Menus": Menus
+handlers = {
+"DrawCharts": DrawCharts
 }
 
 # Jafinoxal.

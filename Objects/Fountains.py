@@ -3,8 +3,7 @@
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
 def category():
-    return
-    {
+    return {
     0: 13,
     1: 13,
     2: 13,
@@ -14,8 +13,7 @@ def category():
     }
 
 def identity():
-    return
-    {
+    return {
     0: 0,
     1: 1,
     2: 2,
@@ -25,8 +23,7 @@ def identity():
     }
 
 def name():
-    return
-    {
+    return {
     0: "Fountain",
     1: "Broken Fountain",
     2: "Spouted Fountain",
@@ -36,8 +33,7 @@ def name():
     }
 
 def kind():
-    return
-    {
+    return {
     0: "Fountain",
     1: "Fountain",
     2: "Fountain",
@@ -47,8 +43,7 @@ def kind():
     }
 
 def description():
-    return
-    {
+    return {
     0: "A fountain.",
     1: "A broken fountain that doesn't function.",
     2: "A fountain with a water supply.",
@@ -58,8 +53,7 @@ def description():
     }
 
 def symbol():
-    return
-    {
+    return {
     0: u"º",
     1: u"º",
     2: u"º",
@@ -69,8 +63,7 @@ def symbol():
     }
 
 def color():
-    return
-    {
+    return {
     0: ((0,127,255), (0,0,0)),
     1: ((0,127,255), (0,0,0)),
     2: ((0,127,255), (0,0,0)),
@@ -80,8 +73,7 @@ def color():
     }
 
 def clip():
-    return
-    {
+    return {
     0: True,
     1: True,
     2: True,
@@ -91,8 +83,7 @@ def clip():
     }
 
 def transparent():
-    return
-    {
+    return {
     0: True,
     1: True,
     2: True,
@@ -102,8 +93,7 @@ def transparent():
     }
 
 def fountains():
-    return
-    {
+    return {
     0: (category()[0], identity()[0], name()[0], kind()[0], description()[0], symbol()[0], color()[0], clip()[0], transparent()[0]),
     1: (category()[1], identity()[1], name()[1], kind()[1], description()[1], symbol()[1], color()[1], clip()[1], transparent()[1]),
     2: (category()[2], identity()[2], name()[2], kind()[2], description()[2], symbol()[2], color()[2], clip()[2], transparent()[2]),

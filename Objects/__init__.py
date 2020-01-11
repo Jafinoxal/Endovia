@@ -14,8 +14,7 @@ import Shelves
 import Crates
 import Boxes
 
-objects =
-{
+objects = {
 0: Walls,
 1: Floors,
 2: Windows,

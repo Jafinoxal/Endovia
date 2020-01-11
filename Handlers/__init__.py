@@ -4,8 +4,7 @@
 
 import InputHandler
 
-handlers =
-{
+handlers = {
 "Input": InputHandler
 }
 

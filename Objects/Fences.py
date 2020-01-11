@@ -3,8 +3,7 @@
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
 def category():
-    return
-    {
+    return {
     0: 4,
     1: 4,
     2: 4,
@@ -15,8 +14,7 @@ def category():
     }
 
 def identity():
-    return
-    {
+    return {
     0: 0,
     1: 1,
     2: 2,
@@ -27,8 +25,7 @@ def identity():
     }
 
 def name():
-    return
-    {
+    return {
     0: "Fence",
     1: "Short Wood Fence",
     2: "Tall Wood Fence",
@@ -39,8 +36,7 @@ def name():
     }
 
 def kind():
-    return
-    {
+    return {
     0: "Fence",
     1: "Fence",
     2: "Fence",
@@ -51,8 +47,7 @@ def kind():
     }
 
 def description():
-    return
-    {
+    return {
     0: "A fence.",
     1: "A short wood fence.",
     2: "A tall wood fence.",
@@ -63,8 +58,7 @@ def description():
     }
 
 def symbol():
-    return
-    {
+    return {
     0: "-",
     1: "-",
     2: "-",
@@ -75,8 +69,7 @@ def symbol():
     }
 
 def color():
-    return
-    {
+    return {
     0: ((255,255,255), (0,0,0)),
     1: ((191,0,47), (63,47,0)),
     2: ((191,0,47), (63,47,0)),
@@ -87,8 +80,7 @@ def color():
     }
 
 def clip():
-    return
-    {
+    return {
     0: True,
     1: True,
     2: True,
@@ -99,8 +91,7 @@ def clip():
     }
 
 def transparent():
-    return
-    {
+    return {
     0: False,
     1: True,
     2: False,
@@ -111,8 +102,7 @@ def transparent():
     }
 
 def fences():
-    return
-    {
+    return {
     0: (category()[0], identity()[0], name()[0], kind()[0], description()[0], symbol()[0], color()[0], clip()[0], transparent()[0]),
     1: (category()[1], identity()[1], name()[1], kind()[1], description()[1], symbol()[1], color()[1], clip()[1], transparent()[1]),
     2: (category()[2], identity()[2], name()[2], kind()[2], description()[2], symbol()[2], color()[2], clip()[2], transparent()[2]),

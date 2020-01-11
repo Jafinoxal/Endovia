@@ -3,8 +3,7 @@
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
 def category():
-    return
-    {
+    return {
     0: 3,
     1: 3,
     2: 3,
@@ -15,8 +14,7 @@ def category():
     }
 
 def identity():
-    return
-    {
+    return {
     0: 0,
     1: 1,
     2: 2,
@@ -27,8 +25,7 @@ def identity():
     }
 
 def name():
-    return
-    {
+    return {
     0: "Door",
     1: "Wood Door",
     2: "Metal Door",
@@ -39,8 +36,7 @@ def name():
     }
 
 def kind():
-    return
-    {
+    return {
     0: "Door",
     1: "Door",
     2: "Door",
@@ -52,8 +48,7 @@ def kind():
     }
 
 def description():
-    return
-    {
+    return {
     0: "A door.",
     1: "A wood door",
     2: "A metal door.",
@@ -64,8 +59,7 @@ def description():
     }
 
 def symbol():
-    return
-    {
+    return {
     0: "+",
     1: "+",
     2: "+",
@@ -76,8 +70,7 @@ def symbol():
     }
 
 def color():
-    return
-    {
+    return {
     0: ((255,255,255), (0,0,0)),
     1: ((191,143,0), (63,47,0)),
     2: ((127,127,127), (203,203,203)),
@@ -88,8 +81,7 @@ def color():
     }
 
 def clip():
-    return
-    {
+    return {
     0: True,
     1: True,
     2: True,
@@ -100,8 +92,7 @@ def clip():
     }
 
 def transparent():
-    return
-    {
+    return {
     0: False,
     1: False,
     3: True,
@@ -111,8 +102,7 @@ def transparent():
     }
 
 def doors():
-    return
-    {
+    return {
     0: (category()[0], identity()[0], name()[0], kind()[0], description()[0], symbol()[0], color()[0], clip()[0], transparent()[0]),
     1: (category()[1], identity()[1], name()[1], kind()[1], description()[1], symbol()[1], color()[1], clip()[1], transparent()[1]),
     2: (category()[2], identity()[2], name()[2], kind()[2], description()[2], symbol()[2], color()[2], clip()[2], transparent()[2]),

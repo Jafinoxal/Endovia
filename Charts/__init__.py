@@ -5,8 +5,7 @@
 import Basic
 import Dungeon
 
-charts =
-{
+charts = {
 "Basic": Basic,
 "Dungeon": Dungeon,
 }

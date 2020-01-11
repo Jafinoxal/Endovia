@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Endovia (Test)
+# Endovia (Main)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
 import libtcod
@@ -30,9 +30,9 @@ def start_charts(load=False):
             y2 = random.randint(5, 10)
             charts[0].carve_rectangular_room(x, y, x2, y2, (0, 0))
 
-def start_entities(load=False):
+def start_characters(load=False):
     if load:
-        return pickle.load(open("Saves/Entities.save", "rb"))
+        return pickle.load(open("Saves/Characters.save", "rb"))
     else:
         pass
 

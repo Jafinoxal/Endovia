@@ -3,8 +3,7 @@
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
 def category():
-    return
-    {
+    return {
     0: 9,
     1: 9,
     2: 9,
@@ -18,8 +17,7 @@ def category():
     }
 
 def identity():
-    return
-    {
+    return {
     0: 0,
     1: 1,
     2: 2,
@@ -33,8 +31,7 @@ def identity():
     }
 
 def name():
-    return
-    {
+    return {
     0: "Crate",
     1: "Empty Crate",
     2: "Fruit Crate",
@@ -48,8 +45,7 @@ def name():
     }
 
 def kind():
-    return
-    {
+    return {
     0: "Crate",
     1: "Crate",
     2: "Crate",
@@ -63,8 +59,7 @@ def kind():
     }
 
 def description():
-    return
-    {
+    return {
     0: "A crate.",
     1: "An empty crate.",
     2: "A crate of various fruit.",
@@ -78,8 +73,7 @@ def description():
     }
 
 def symbol():
-    return
-    {
+    return {
     0: u"¤",
     1: u"¤",
     2: u"¤",
@@ -93,8 +87,7 @@ def symbol():
     }
 
 def color():
-    return
-    {
+    return {
     0: ((255,255,255), (0,0,0)),
     1: ((255,255,255), (0,0,0)),
     2: ((255,0,0), (0,0,0)),
@@ -108,8 +101,7 @@ def color():
     }
 
 def clip():
-    return
-    {
+    return {
     0: True,
     1: True,
     2: True,
@@ -120,8 +112,7 @@ def clip():
     }
 
 def transparent():
-    return
-    {
+    return {
     0: True,
     1: True,
     2: True,
@@ -135,8 +126,7 @@ def transparent():
     }
 
 def crates():
-    return
-    {
+    return {
     0: (category()[0], identity()[0], name()[0], kind()[0], description()[0], symbol()[0], color()[0], clip()[0], transparent()[0]),
     1: (category()[1], identity()[1], name()[1], kind()[1], description()[1], symbol()[1], color()[1], clip()[1], transparent()[1]),
     2: (category()[2], identity()[2], name()[2], kind()[2], description()[2], symbol()[2], color()[2], clip()[2], transparent()[2]),
