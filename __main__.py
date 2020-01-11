@@ -2,48 +2,49 @@
 # Endovia (Test)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
+import libtcod
+import pickle
+import random
 
+import Charts
+import Entities
+import Graphics
+import Handlers
+import Items
 import Objects
 
-import pygame
 
-pygame.init()
-screen = pygame.display.set_mode((800,640))
-background = pygame.Surface(screen.get_size())
-background.fill((0,0,0))
-background = background.convert()
+def start_charts(load=False):
+    if load:
+        return pickle.load(open("Saves/Charts.save", "rb"))
+    else:
+        charts = {
+        0: Charts["Dungeon"].Chart(),
+        }
+        charts[0].create_filled_grid(1, 80, 50)
+        import random
+        for i in range(0, 200):
+            x = random.randint(1, charts[0].chart_width - 11)
+            x2 = random.randint(5, 10)
+            y = random.randint(1, charts[0].chart_height - 11)
+            y2 = random.randint(5, 10)
+            charts[0].carve_rectangular_room(x, y, x2, y2, (0, 0))
 
-while True:
-    screen.blit(background, (0, 0))
+def start_entities(load=False):
+    if load:
+        return pickle.load(open("Saves/Entities.save", "rb"))
+    else:
+        pass
 
-dungeons = {
-0: cha.ChartDungeon(80, 50, True),
-}
+library.console_set_custom_font("consolas_unicode_12x12.png", libtcod.FONT_TYPE_GREYSCALE | libtcod.FONT_LAYOUT_TCOD)
+libtcod.console_init_root(80, 50, name, False)
+libtcod.sys_set_fps(60)
 
-# Dungeon generation.
-dungeons[0].create_filled_grid(80, 50, (0, 0))
-dungeons[0].create_filled_grid(80, 50, (1, 0))
-
-import random
-for i in range(0, 200):
-    x = random.randint(1, dungeons[0].chart_width - 11)
-    x2 = random.randint(5, 10)
-    y = random.randint(1, dungeons[0].chart_height - 11)
-    y2 = random.randint(5, 10)
-    dungeons[0].carve_rectangular_room(x, y, x2, y2, (0, 0))
-#dungeons[0].carve_rectangular_room(20, 15, 10, 10, (0, 0))
-#dungeons[0].carve_rectangular_room(50, 15, 10, 10, (0, 0))
-#dungeons[0].carve_horizontal_tunnel(25, 55, 20, (0, 0))
-
-charts = {
-0: dungeons,
-}
-
-while not libtcod.console_is_window_closed():
-    libtcod.console_set_default_foreground(0, libtcod.white)
-    graphics[0][0].draw_charts(objects, charts)
-    graphics[0][0].draw_players(objects, entities[0])
+def main():
+    charts = start_charts(False)
+    while not libtcod.console_is_window_closed():
+        draw_floor_and_walls(Objects, charts[0])
+        draw_entities(Objects, charts[0])
     libtcod.console_flush()
-    exit = handle_keys(objects, graphics, charts, entities[0][0])
     if exit:
         break
