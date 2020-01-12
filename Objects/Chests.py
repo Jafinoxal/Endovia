@@ -95,7 +95,7 @@ def clip():
     4: True,
     5: True,
     6: True,
-    7; True,
+    7: True,
     }
 
 def transparent():

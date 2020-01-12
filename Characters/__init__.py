@@ -4,8 +4,7 @@
 
 import Player
 
-characters =
-{
+characters = {
 "Player": Player,
 }
 

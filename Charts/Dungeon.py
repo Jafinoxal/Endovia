@@ -7,7 +7,7 @@ import Basic
 # NOTE: This will be Dungeon.Chart, or just Chart if used here.
 class Chart(Basic.Chart):
     def __init__(self, chart_width, chart_height, active):
-        super(ChartDungeon, self).__init__(chart_width, chart_height, active)
+        super(Chart, self).__init__(chart_width, chart_height, active)
         # rooms contains (start_x, start_y, end_x, end_y
         self.rooms = []
     def intersect(self, proposed_room):

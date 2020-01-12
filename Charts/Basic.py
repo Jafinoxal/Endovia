@@ -7,14 +7,15 @@ class Chart(object):
         self.chart_width = chart_width
         self.chart_height = chart_height
         self.active = active
-        self.grids = {}
+        self.grids = {1:{}, 0:{}}
     def create_empty_grid(self, grid_number, grid_width, grid_height):
         for y in range(0, grid_height):
             for x in range(0, grid_width):
-                self.grids[grid_number][(x, y)][0] = None
+                self.grids[grid_number][(x, y)] = None
     def create_filled_grid(self, grid_number, grid_width, grid_height, object_id):
         for y in range(0, grid_height):
             for x in range(0, grid_width):
+                self.grids[grid_number][(x, y)] = {}
                 self.grids[grid_number][(x, y)][0] = object_id
 
 # Jafinoxal.

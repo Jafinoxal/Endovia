@@ -2,7 +2,7 @@
 # Endovia (Main)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
-import libtcod
+import libtcodpy
 import pickle
 import random
 
@@ -20,9 +20,10 @@ def start_charts(load=False):
         return pickle.load(open("Saves/Charts.save", "rb"))
     else:
         charts = {
-        0: Charts["Dungeon"].Chart(),
+        0: Charts.charts["Dungeon"].Chart(80, 50, True),
         }
-        charts[0].create_filled_grid(1, 80, 50)
+        charts[0].create_empty_grid(0, 80, 50)
+        charts[0].create_filled_grid(1, 80, 50, 0)
         import random
         for i in range(0, 200):
             x = random.randint(1, charts[0].chart_width - 11)
@@ -30,24 +31,27 @@ def start_charts(load=False):
             y = random.randint(1, charts[0].chart_height - 11)
             y2 = random.randint(5, 10)
             charts[0].carve_rectangular_room(x, y, x2, y2, (0, 0))
+    return charts
 
 def start_characters(load=False):
     if load:
         return pickle.load(open("Saves/Characters.save", "rb"))
     else:
         characters = {
-        0: Characters["Player"].Character(),
+        0: Characters.characters["Player"].Character(0, 0, 0, 2000, 10, 10),
         }
+    return characters
 
-library.console_set_custom_font("consolas_unicode_12x12.png", libtcod.FONT_TYPE_GREYSCALE | libtcod.FONT_LAYOUT_TCOD)
-libtcod.console_init_root(80, 50, name, False)
-libtcod.sys_set_fps(60)
+libtcodpy.console_set_custom_font("consolas_unicode_12x12.png", libtcodpy.FONT_TYPE_GREYSCALE | libtcodpy.FONT_LAYOUT_TCOD)
+libtcodpy.console_init_root(85, 55, "Endovia 1.024", False)
+libtcodpy.sys_set_fps(60)
 
 def main():
     charts = start_charts(False)
-    while not libtcod.console_is_window_closed():
-        draw_floor_and_walls(Objects, charts[0])
-        draw_entities(Objects, charts[0])
-    libtcod.console_flush()
-    if exit:
-        break
+    characters = start_characters(False)
+    while not libtcodpy.console_is_window_closed():
+        Graphics.graphics["DrawCharts"].draw_floors_and_walls(libtcodpy, Objects, charts[0])
+        draw_entities(libtcodpy, Objects, charts[0])
+    libtcodpy.console_flush()
+
+main()

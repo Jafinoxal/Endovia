@@ -4,8 +4,7 @@
 
 import Players
 
-entities =
-{
+entities = {
 2000: Players
 }
 

@@ -2,7 +2,7 @@
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
 class Character(object):
-    def __init__(self, object_id, unique_id, chart_id, grid_id, x, y):
+    def __init__(self, entity_id, unique_id, chart_id, grid_id, x, y):
         self.entity_id = entity_id
         self.unique_id = unique_id
         self.chart_id = chart_id

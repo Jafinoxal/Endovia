@@ -4,7 +4,7 @@
 
 import DrawCharts
 
-handlers = {
+graphics = {
 "DrawCharts": DrawCharts
 }
 
