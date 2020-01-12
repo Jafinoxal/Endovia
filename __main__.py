@@ -6,6 +6,7 @@ import libtcod
 import pickle
 import random
 
+import Characters
 import Charts
 import Entities
 import Graphics
@@ -34,7 +35,9 @@ def start_characters(load=False):
     if load:
         return pickle.load(open("Saves/Characters.save", "rb"))
     else:
-        pass
+        characters = {
+        0: Characters["Player"].Character(),
+        }
 
 library.console_set_custom_font("consolas_unicode_12x12.png", libtcod.FONT_TYPE_GREYSCALE | libtcod.FONT_LAYOUT_TCOD)
 libtcod.console_init_root(80, 50, name, False)

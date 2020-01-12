@@ -6,7 +6,7 @@ import Players
 
 entities =
 {
-0: Players
+2000: Players
 }
 
 # Jafinoxal.

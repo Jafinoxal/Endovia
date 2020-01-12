@@ -6,7 +6,7 @@ import Player
 
 characters =
 {
-0: Player
+"Player": Player,
 }
 
 # Jafinoxal.

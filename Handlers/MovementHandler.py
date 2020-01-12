@@ -1,19 +1,19 @@
 # Endovia (MovementHandler)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
-def in_boundaries(self, x_from, y_from, x_to, y_to, chart):
-    if x_from + x_to < 0:
+def in_boundaries(self, x_from, y_from, x_add, y_add, chart):
+    if x_from + x_add < 0:
         return False
-    elif x_from + x_to >= chart.chart_width:
+    elif x_from + x_add >= chart.chart_width:
         return False
-    elif y_from + y_to < 0:
+    elif y_from + y_add < 0:
         return False
-    elif y_from + y_to >= chart.chart_height:
+    elif y_from + y_add >= chart.chart_height:
         return False
     else:
         return True
 
-def no_obstruction(self, x_from, y_from, x_to, y+to, chart, objects, entities):
+def no_obstruction(self, x_from, y_from, x_add, y_add, chart, objects, entities):
     for grid_number in chart.grids.keys():
         if grid_number < 1000: # Objects.
             if chart.grids[grid_number][0] == None:
@@ -22,7 +22,7 @@ def no_obstruction(self, x_from, y_from, x_to, y+to, chart, objects, entities):
                 continue
             else:
                 return False
-        if grid_number > 999 and grid_number < 2000: # Entities
+        if grid_number > 1999 and grid_number < 3000: # Entities.
             if chart.grids[grid_number][0] == None:
                 continue
             if not entities[grid_number][chart.grids[grid_number][0]][7]: # 7 is clip.
@@ -31,11 +31,11 @@ def no_obstruction(self, x_from, y_from, x_to, y+to, chart, objects, entities):
                 return False
     return True
 
-    def move(self, x, y, objects, charts):
-        # Move by the given amount. Check if it's within boundaries of the area
-        # and check if there is an obstruction.
-        if self.boundaries(x, y, charts) and self.obstruction(x, y, objects, charts):
-            self.x += x
-            self.y += y
+def move_character(x_from, y_from, x_add, y_add, character_to_move, chart, objects, entities):
+    if boundaries(x_from, y_from, x_add, y_add, chart) and self.obstruction(x, y, chart, objects, entities):
+        character_to_move.x = x_from + x_add
+        character_to_move.y = y_from + y_add
+        chart.grids[character_to_move.grid_id][(x_from + x_add, y_from + y_add)] = chart.grids[character_to_move.grid_id][(x_from, y_from)]
+        chart.grids[character_to_move.grid_id][(x_from, y_from)] = None
 
 # Jafinoxal.
