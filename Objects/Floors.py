@@ -310,6 +310,7 @@ def transparent():
     return {
     0: True,
     1: True,
+    2: True,
     3: True,
     4: True,
     5: True,

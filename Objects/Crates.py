@@ -79,7 +79,7 @@ def symbol():
     2: u"¤",
     3: u"¤",
     4: u"¤",
-    4: u"¤",
+    5: u"¤",
     6: u"¤",
     7: u"¤",
     8: u"¤",
@@ -109,6 +109,9 @@ def clip():
     4: True,
     5: True,
     6: True,
+    7: True,
+    8: True,
+    9: True,
     }
 
 def transparent():

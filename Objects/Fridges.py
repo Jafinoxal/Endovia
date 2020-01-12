@@ -38,7 +38,7 @@ def kind():
     4: "Fridge",
     }
 
-def name():
+def description():
     return {
     0: "A fridge.",
     1: "A rusty fridge.",

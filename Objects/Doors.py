@@ -95,6 +95,7 @@ def transparent():
     return {
     0: False,
     1: False,
+    2: False,
     3: True,
     4: False,
     5: False,

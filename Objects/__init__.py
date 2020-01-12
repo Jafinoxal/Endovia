@@ -15,17 +15,17 @@ import Crates
 import Boxes
 
 objects = {
-0: Walls,
-1: Floors,
-2: Windows,
-3: Doors,
-4: Fences,
-5: Gates,
-6: Fridges,
-7: Chests,
-8: Shelves,
-9: Crates,
-10: Boxes,
+0: Walls.walls(),
+1: Floors.floors(),
+2: Windows.windows(),
+3: Doors.doors(),
+4: Fences.fences(),
+5: Gates.gates(),
+6: Fridges.fridges(),
+7: Chests.chests(),
+8: Shelves.shelves(),
+9: Crates.crates(),
+10: Boxes.boxes(),
 }
 
 # Jafinoxal.
