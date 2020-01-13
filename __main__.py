@@ -44,7 +44,7 @@ def start_characters(load=False):
         }
     return characters
 
-libtcodpy.console_set_custom_font("consolas_unicode_12x12.png", libtcodpy.FONT_TYPE_GREYSCALE | libtcodpy.FONT_LAYOUT_TCOD)
+libtcodpy.console_set_custom_font("consolas_unicode_16x16.png", libtcodpy.FONT_TYPE_GREYSCALE | libtcodpy.FONT_LAYOUT_ASCII_INROW, 0, 0)
 libtcodpy.console_init_root(85, 55, "Endovia 1.025", False)
 libtcodpy.sys_set_fps(60)
 
@@ -55,6 +55,4 @@ def main():
         Graphics.graphics["DrawCharts"].draw_floors_and_walls(libtcodpy, Objects.objects, charts[0])
         Graphics.graphics["DrawCharts"].draw_entities(libtcodpy, Entities.entities, charts[0])
         libtcodpy.console_flush()
-        print "test"
-
 main()
