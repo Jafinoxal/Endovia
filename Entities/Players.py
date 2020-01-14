@@ -3,8 +3,7 @@
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
 def category():
-    return
-    {
+    return {
     0: 2000,
     1: 2000,
     2: 2000,
@@ -15,8 +14,7 @@ def category():
     }
 
 def identity():
-    return
-    {
+    return {
     0: 0,
     1: 1,
     2: 2,
@@ -27,8 +25,7 @@ def identity():
     }
 
 def name():
-    return
-    {
+    return {
     0: "Human",
     1: "Half Elf",
     2: "Snow Elf",
@@ -39,8 +36,7 @@ def name():
     }
 
 def kind():
-    return
-    {
+    return {
     0: "Player",
     1: "Player",
     2: "Player",
@@ -51,8 +47,7 @@ def kind():
     }
 
 def description():
-    return
-    {
+    return {
     0: "A human, hails from various lands, good at most things.",
     1: "A human elf hybrid, harder to produce, affinity for magic.",
     2: "A snow elf, from the north, secretive and can take the cold.",
@@ -63,20 +58,18 @@ def description():
     }
 
 def symbol():
-    return
-    {
+    return {
     0: u"@",
     1: u"@",
     2: u"@",
     3: u"@",
     4: u"@",
-    4: u"@",
+    5: u"@",
     6: u"@",
     }
 
 def color():
-    return
-    {
+    return {
     0: ((255,0,0), (0,0,0)),
     1: ((255,127,0), (0,0,0)),
     2: ((255,255,0), (0,0,0)),
@@ -87,8 +80,7 @@ def color():
     }
 
 def clip():
-    return
-    {
+    return {
     0: True,
     1: True,
     2: True,
@@ -99,8 +91,7 @@ def clip():
     }
 
 def transparent():
-    return
-    {
+    return {
     0: True,
     1: True,
     2: True,
@@ -111,8 +102,7 @@ def transparent():
     }
 
 def players():
-    return
-    {
+    return {
     0: (category()[0], identity()[0], name()[0], kind()[0], description()[0], symbol()[0], color()[0], clip()[0], transparent()[0]),
     1: (category()[1], identity()[1], name()[1], kind()[1], description()[1], symbol()[1], color()[1], clip()[1], transparent()[1]),
     2: (category()[2], identity()[2], name()[2], kind()[2], description()[2], symbol()[2], color()[2], clip()[2], transparent()[2]),
