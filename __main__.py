@@ -15,7 +15,6 @@ import Handlers
 import Items
 import Objects
 
-
 def start_charts(load=False):
     if load:
         return pickle.load(open("Saves/Charts.save", "rb"))
@@ -44,9 +43,9 @@ def start_characters(load=False):
         }
     return characters
 
-libtcodpy.console_set_custom_font("consolas_unicode_16x16.png", libtcodpy.FONT_TYPE_GREYSCALE | libtcodpy.FONT_LAYOUT_ASCII_INROW, 0, 0)
+libtcodpy.console_set_custom_font("terminal16x16_gs_ro.png", libtcodpy.FONT_TYPE_GREYSCALE | libtcodpy.FONT_LAYOUT_ASCII_INROW, 32, 32)
 libtcodpy.console_init_root(85, 55, "Endovia 1.025", False)
-libtcodpy.sys_set_fps(60)
+libtcodpy.sys_set_fps(20)
 
 def main():
     charts = start_charts(False)
