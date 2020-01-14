@@ -70,6 +70,7 @@ def main():
     while not libtcodpy.console_is_window_closed():
         Graphics.graphics["DrawChart"].DrawFloorsWalls(libtcodpy, Objects.objects, charts[0])
         Graphics.graphics["DrawChart"].DrawEntities(libtcodpy, Entities.entities, charts[0])
+        #Graphics.graphics["DrawChart"].DrawChartBorders(charts[0])
         libtcodpy.console_flush()
         event = Handlers.handlers["InputHandler"].MainGame(libtcodpy)
         if event == EXIT_GAME_WITHOUT_SAVE:
@@ -82,5 +83,5 @@ def main():
             Handlers.handlers["MovementHandler"].MoveCharacter(characters[0].x, characters[0].y, WEST[0], WEST[1], characters[0], charts[0], Objects.objects, Entities.entities)
         elif event == MOVE_PLAYER_EAST:
             Handlers.handlers["MovementHandler"].MoveCharacter(characters[0].x, characters[0].y, EAST[0], EAST[1], characters[0], charts[0], Objects.objects, Entities.entities)
-
-main()
+if __name__ == '__main__':
+    main()
