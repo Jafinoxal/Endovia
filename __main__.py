@@ -22,8 +22,8 @@ def start_charts(load=False):
         charts = {
         0: Charts.charts["Dungeon"].Chart(80, 50, True),
         }
-        charts[0].create_empty_grid(0, 80, 50)
-        charts[0].create_filled_grid(1, 80, 50, 0)
+        charts[0].create_filled_grid(0, 80, 50, 0)
+        charts[0].create_empty_grid(1, 80, 50)
         charts[0].create_empty_grid(2000, 80, 50)
         import random
         for i in range(0, 200):
@@ -31,7 +31,7 @@ def start_charts(load=False):
             x2 = random.randint(5, 10)
             y = random.randint(1, charts[0].chart_height - 11)
             y2 = random.randint(5, 10)
-            charts[0].carve_rectangular_room(x, y, x2, y2, (0, 0))
+            charts[0].carve_rectangular_room(x, y, x2, y2, 0)
     return charts
 
 def start_characters(load=False):
@@ -43,7 +43,7 @@ def start_characters(load=False):
         }
     return characters
 
-libtcodpy.console_set_custom_font("terminal16x16_gs_ro.png", libtcodpy.FONT_TYPE_GREYSCALE | libtcodpy.FONT_LAYOUT_ASCII_INROW, 32, 32)
+libtcodpy.console_set_custom_font("terminal8x8_gs_ro.png",libtcodpy.FONT_LAYOUT_ASCII_INROW, 0, 0)
 libtcodpy.console_init_root(85, 55, "Endovia 1.025", False)
 libtcodpy.sys_set_fps(20)
 

@@ -27,9 +27,10 @@ class Chart(Basic.Chart):
         if not self.intersect((start_x, start_y, end_x, end_y)):
             for x in range(start_x + 1, end_x):
                 for y in range(start_y + 1, end_y):
-                    self.grids[1][(x, y)] = None
-                    if self.grids[0][(x, y)] == None:
-                        self.grids[0][(x, y)] = object_id
+                    self.grids[0][(x, y)] = None
+                    if self.grids[1][(x, y)] == None:
+                        self.grids[1][(x, y)] = {}
+                        self.grids[1][(x, y)][0] = object_id
             self.rooms.append((start_x, start_y, end_x, end_y))
             return True
         else:
@@ -37,14 +38,16 @@ class Chart(Basic.Chart):
     def carve_horizontal_tunnel(self, start_x, end_x, current_y, object_id):
         # Erase the walls to make a tunnel between two things.
         for x in range(min(start_x, end_x), max(start_x, end_x) + 1):
-            self.grids[1][(x, current_y)] = None
-            if self.grids[0][(x, current_y)] == None:
-                self.grids[0][(x, current_y)] = object_id
+            self.grids[0][(x, current_y)] = None
+            if self.grids[1][(x, current_y)] == None:
+                self.grids[1][(x, y)] = {}
+                self.grids[1][(x, current_y)][0] = object_id
     def carve_vertical_tunnel(self, start_y, end_y, current_x, object_id):
         # Erase the walls to make a tunnel between two things.
         for y in range(min(start_y, end_y), max(start_y, end_y) + 1):
             self.grids[1][(current_x, y)] = None
             if self.grids[0][(current_x, y)] == None:
-                self.grids[0][(current_x, y)] = object_id
+                self.grids[1][(x, y)] = {}
+                self.grids[0][(current_x, y)][0] = object_id
 
 # Jafinoxal.
