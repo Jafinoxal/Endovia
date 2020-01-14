@@ -13,6 +13,11 @@ import Chests
 import Shelves
 import Crates
 import Boxes
+import Barrels
+import Sacks
+import Fountains
+import Pillars
+import Beds
 
 objects = {
 0: Walls.walls(),
@@ -26,6 +31,11 @@ objects = {
 8: Shelves.shelves(),
 9: Crates.crates(),
 10: Boxes.boxes(),
+11: Barrels.barrels(),
+12: Sacks.sacks(),
+13: Fountains.fountains(),
+14: Pillars.pillars(),
+15: Beds.beds(),
 }
 
 # Jafinoxal.

@@ -7,7 +7,8 @@ class Chart(object):
         self.chart_width = chart_width
         self.chart_height = chart_height
         self.active = active
-        self.grids = {0:{}, 1:{}, 2000:{}}
+        self.grids = {0:{}, 1:{}, 2:{}, 3:{}, 4:{}, 5:{}, 6:{}, 7:{}, 8:{},
+                      9:{}, 10:{}, 11:{}, 12:{}, 13:{}, 14:{}, 15:{}, 2000:{}}
     def create_empty_grid(self, grid_number, grid_width, grid_height):
         for y in range(0, grid_height):
             for x in range(0, grid_width):

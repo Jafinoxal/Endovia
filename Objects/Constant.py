@@ -2,7 +2,6 @@
 # Endovia (Constant)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
-# Keys
 CATEGORY = 0
 IDENTITY = 1
 NAME = 2
@@ -13,7 +12,6 @@ COLOR = 6
 CLIP = 7
 TRANSPARENT = 8
 
-# Categories.
 WALLS       = 0 # Complete.
 FLOORS      = 1 # Complete.
 WINDOWS     = 2 # Complete.
