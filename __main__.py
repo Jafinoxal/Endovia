@@ -25,6 +25,7 @@ def start_charts(load=False):
         charts[0].create_filled_grid(0, 80, 50, 0)
         charts[0].create_empty_grid(1, 80, 50)
         charts[0].create_empty_grid(2000, 80, 50)
+        charts[0].grids[2000][(10, 10)] = {0:0, 1:0}
         import random
         for i in range(0, 200):
             x = random.randint(1, charts[0].chart_width - 11)
@@ -51,7 +52,7 @@ def main():
     charts = start_charts(False)
     characters = start_characters(False)
     while not libtcodpy.console_is_window_closed():
-        Graphics.graphics["DrawCharts"].draw_floors_and_walls(libtcodpy, Objects.objects, charts[0])
-        Graphics.graphics["DrawCharts"].draw_entities(libtcodpy, Entities.entities, charts[0])
+        Graphics.graphics["DrawChart"].draw_floors_and_walls(libtcodpy, Objects.objects, charts[0])
+        Graphics.graphics["DrawChart"].draw_entities(libtcodpy, Entities.entities, charts[0])
         libtcodpy.console_flush()
 main()

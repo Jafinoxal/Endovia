@@ -3,9 +3,11 @@
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
 import InputHandler
+import MovementHandler
 
 handlers = {
-"Input": InputHandler
+"InputHandler": InputHandler,
+"MovementHandler": MovementHandler,
 }
 
 # Jafinoxal.
