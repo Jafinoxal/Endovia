@@ -9,7 +9,7 @@ def MainMenu(library):
     key = library.console_wait_for_keypress(True)
     # Switching fullscreen.
     if key.vk == library.KEY_ENTER and key.lalt:
-        libtcod.console_set_fullscreen(not library.console_is_fullscreen())
+        library.console_set_fullscreen(not library.console_is_fullscreen())
         return Constant.SWITCH_FULLSCREEN
     # Exiting the game without saving.
     elif key.vk == library.KEY_ESCAPE:
@@ -32,7 +32,7 @@ def CharacterSelectionMenu(library):
     key = library.console_wait_for_keypress(True)
     # Switching fullscreen.
     if key.vk == library.KEY_ENTER and key.lalt:
-        libtcod.console_set_fullscreen(not library.console_is_fullscreen())
+        library.console_set_fullscreen(not library.console_is_fullscreen())
         return Constant.SWITCH_FULLSCREEN
     # Exiting the game.
     elif key.vk == library.KEY_ESCAPE:
@@ -52,7 +52,7 @@ def MainGame(library):
     key = library.console_wait_for_keypress(True)
     # Switching fullscreen.
     if key.vk == library.KEY_ENTER and key.lalt:
-        libtcod.console_set_fullscreen(not library.console_is_fullscreen())
+        library.console_set_fullscreen(not library.console_is_fullscreen())
         return Constant.SWITCH_FULLSCREEN
     # Exiting the game without saving.
     elif key.vk == library.KEY_ESCAPE:

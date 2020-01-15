@@ -2,7 +2,7 @@
 # Endovia (Barrels)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
-def category():
+def _category():
     return {
     0: 11,
     1: 11,
@@ -13,7 +13,7 @@ def category():
     6: 11,
     }
 
-def identity():
+def _identity():
     return {
     0: 0,
     1: 1,
@@ -24,7 +24,7 @@ def identity():
     6: 6,
     }
 
-def name():
+def _name():
     return {
     0: "Barrel",
     1: "Empty Barrel",
@@ -35,7 +35,7 @@ def name():
     6: "Flour Barrel",
     }
 
-def kind():
+def _kind():
     return {
     0: "Barrel",
     1: "Barrel",
@@ -46,7 +46,7 @@ def kind():
     6: "Barrel",
     }
 
-def description():
+def _description():
     return {
     0: "A barrel.",
     1: "An empty barrel.",
@@ -57,18 +57,18 @@ def description():
     6: "A barrel full of flour.",
     }
 
-def symbol():
+def _symbol(): # 169.
     return {
-    0: u"¡",
-    1: u"¡",
-    2: u"¡",
-    3: u"¡",
-    4: u"¡",
-    5: u"¡",
-    6: u"¡",
+    0: "\xa9",
+    1: "\xa9",
+    2: "\xa9",
+    3: "\xa9",
+    4: "\xa9",
+    5: "\xa9",
+    6: "\xa9",
     }
 
-def color():
+def _color():
     return {
     0: ((255,255,255), (0,0,0)),
     1: ((255,255,255), (0,0,0)),
@@ -79,7 +79,7 @@ def color():
     6: ((255,255,255), (0,0,0)),
     }
 
-def clip():
+def _clip():
     return {
     0: True,
     1: True,
@@ -90,7 +90,7 @@ def clip():
     6: True,
     }
 
-def transparent():
+def _transparent():
     return {
     0: True,
     1: True,
@@ -103,13 +103,13 @@ def transparent():
 
 def barrels():
     return {
-    0: (category()[0], identity()[0], name()[0], kind()[0], description()[0], symbol()[0], color()[0], clip()[0], transparent()[0]),
-    1: (category()[1], identity()[1], name()[1], kind()[1], description()[1], symbol()[1], color()[1], clip()[1], transparent()[1]),
-    2: (category()[2], identity()[2], name()[2], kind()[2], description()[2], symbol()[2], color()[2], clip()[2], transparent()[2]),
-    3: (category()[3], identity()[3], name()[3], kind()[3], description()[3], symbol()[3], color()[3], clip()[3], transparent()[3]),
-    4: (category()[4], identity()[4], name()[4], kind()[4], description()[4], symbol()[4], color()[4], clip()[4], transparent()[4]),
-    5: (category()[5], identity()[5], name()[5], kind()[5], description()[5], symbol()[5], color()[5], clip()[5], transparent()[5]),
-    6: (category()[6], identity()[6], name()[6], kind()[6], description()[6], symbol()[6], color()[6], clip()[6], transparent()[6]),
+    0: (_category()[0], _identity()[0], _name()[0], _kind()[0], _description()[0], _symbol()[0], _color()[0], _clip()[0], _transparent()[0]),
+    1: (_category()[1], _identity()[1], _name()[1], _kind()[1], _description()[1], _symbol()[1], _color()[1], _clip()[1], _transparent()[1]),
+    2: (_category()[2], _identity()[2], _name()[2], _kind()[2], _description()[2], _symbol()[2], _color()[2], _clip()[2], _transparent()[2]),
+    3: (_category()[3], _identity()[3], _name()[3], _kind()[3], _description()[3], _symbol()[3], _color()[3], _clip()[3], _transparent()[3]),
+    4: (_category()[4], _identity()[4], _name()[4], _kind()[4], _description()[4], _symbol()[4], _color()[4], _clip()[4], _transparent()[4]),
+    5: (_category()[5], _identity()[5], _name()[5], _kind()[5], _description()[5], _symbol()[5], _color()[5], _clip()[5], _transparent()[5]),
+    6: (_category()[6], _identity()[6], _name()[6], _kind()[6], _description()[6], _symbol()[6], _color()[6], _clip()[6], _transparent()[6]),
     }
 
 # Jafinoxal.

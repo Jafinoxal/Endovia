@@ -2,7 +2,7 @@
 # Endovia (Crates)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
-def category():
+def _category():
     return {
     0: 9,
     1: 9,
@@ -16,7 +16,7 @@ def category():
     9: 9,
     }
 
-def identity():
+def _identity():
     return {
     0: 0,
     1: 1,
@@ -30,7 +30,7 @@ def identity():
     9: 9,
     }
 
-def name():
+def _name():
     return {
     0: "Crate",
     1: "Empty Crate",
@@ -44,7 +44,7 @@ def name():
     9: "Spice Crate",
     }
 
-def kind():
+def _kind():
     return {
     0: "Crate",
     1: "Crate",
@@ -58,7 +58,7 @@ def kind():
     9: "Crate",
     }
 
-def description():
+def _description():
     return {
     0: "A crate.",
     1: "An empty crate.",
@@ -72,21 +72,21 @@ def description():
     9: "A crate of spices.",
     }
 
-def symbol():
+def _symbol(): # 184.
     return {
-    0: u"¤",
-    1: u"¤",
-    2: u"¤",
-    3: u"¤",
-    4: u"¤",
-    5: u"¤",
-    6: u"¤",
-    7: u"¤",
-    8: u"¤",
-    9: u"¤",
+    0: u"\xb8",
+    1: u"\xb8",
+    2: u"\xb8",
+    3: u"\xb8",
+    4: u"\xb8",
+    5: u"\xb8",
+    6: u"\xb8",
+    7: u"\xb8",
+    8: u"\xb8",
+    9: u"\xb8",
     }
 
-def color():
+def _color():
     return {
     0: ((255,255,255), (0,0,0)),
     1: ((255,255,255), (0,0,0)),
@@ -100,7 +100,7 @@ def color():
     9: ((255,0,63), (0,0,0)),
     }
 
-def clip():
+def _clip():
     return {
     0: True,
     1: True,
@@ -114,7 +114,7 @@ def clip():
     9: True,
     }
 
-def transparent():
+def _transparent():
     return {
     0: True,
     1: True,
@@ -130,16 +130,16 @@ def transparent():
 
 def crates():
     return {
-    0: (category()[0], identity()[0], name()[0], kind()[0], description()[0], symbol()[0], color()[0], clip()[0], transparent()[0]),
-    1: (category()[1], identity()[1], name()[1], kind()[1], description()[1], symbol()[1], color()[1], clip()[1], transparent()[1]),
-    2: (category()[2], identity()[2], name()[2], kind()[2], description()[2], symbol()[2], color()[2], clip()[2], transparent()[2]),
-    3: (category()[3], identity()[3], name()[3], kind()[3], description()[3], symbol()[3], color()[3], clip()[3], transparent()[3]),
-    4: (category()[4], identity()[4], name()[4], kind()[4], description()[4], symbol()[4], color()[4], clip()[4], transparent()[4]),
-    5: (category()[5], identity()[5], name()[5], kind()[5], description()[5], symbol()[5], color()[5], clip()[5], transparent()[5]),
-    6: (category()[6], identity()[6], name()[6], kind()[6], description()[6], symbol()[6], color()[6], clip()[6], transparent()[6]),
-    7: (category()[7], identity()[7], name()[7], kind()[7], description()[7], symbol()[7], color()[7], clip()[7], transparent()[7]),
-    8: (category()[8], identity()[8], name()[8], kind()[8], description()[8], symbol()[8], color()[8], clip()[8], transparent()[8]),
-    9: (category()[9], identity()[9], name()[9], kind()[9], description()[9], symbol()[9], color()[9], clip()[9], transparent()[9]),
+    0: (_category()[0], _identity()[0], _name()[0], _kind()[0], _description()[0], _symbol()[0], _color()[0], _clip()[0], _transparent()[0]),
+    1: (_category()[1], _identity()[1], _name()[1], _kind()[1], _description()[1], _symbol()[1], _color()[1], _clip()[1], _transparent()[1]),
+    3: (_category()[3], _identity()[3], _name()[3], _kind()[3], _description()[3], _symbol()[3], _color()[3], _clip()[3], _transparent()[3]),
+    2: (_category()[2], _identity()[2], _name()[2], _kind()[2], _description()[2], _symbol()[2], _color()[2], _clip()[2], _transparent()[2]),
+    4: (_category()[4], _identity()[4], _name()[4], _kind()[4], _description()[4], _symbol()[4], _color()[4], _clip()[4], _transparent()[4]),
+    5: (_category()[5], _identity()[5], _name()[5], _kind()[5], _description()[5], _symbol()[5], _color()[5], _clip()[5], _transparent()[5]),
+    6: (_category()[6], _identity()[6], _name()[6], _kind()[6], _description()[6], _symbol()[6], _color()[6], _clip()[6], _transparent()[6]),
+    7: (_category()[7], _identity()[7], _name()[7], _kind()[7], _description()[7], _symbol()[7], _color()[7], _clip()[7], _transparent()[7]),
+    8: (_category()[8], _identity()[8], _name()[8], _kind()[8], _description()[8], _symbol()[8], _color()[8], _clip()[8], _transparent()[8]),
+    9: (_category()[9], _identity()[9], _name()[9], _kind()[9], _description()[9], _symbol()[9], _color()[9], _clip()[9], _transparent()[9]),
     }
 
 # Jafinoxal.

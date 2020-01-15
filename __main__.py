@@ -16,6 +16,7 @@ import Items
 import Objects
 
 from Handlers.Constant import *
+from Objects.Constant import *
 
 def start_charts(load=False):
     if load:
@@ -24,24 +25,14 @@ def start_charts(load=False):
         charts = {
         0: Charts.charts["Dungeon"].Chart(80, 50, True),
         }
+        # Objects.
         charts[0].create_filled_grid(0, 80, 50, 0)
-        charts[0].create_empty_grid(1, 80, 50)
-        charts[0].create_empty_grid(2, 80, 50)
-        charts[0].create_empty_grid(3, 80, 50)
-        charts[0].create_empty_grid(4, 80, 50)
-        charts[0].create_empty_grid(5, 80, 50)
-        charts[0].create_empty_grid(6, 80, 50)
-        charts[0].create_empty_grid(7, 80, 50)
-        charts[0].create_empty_grid(8, 80, 50)
-        charts[0].create_empty_grid(9, 80, 50)
-        charts[0].create_empty_grid(10, 80, 50)
-        charts[0].create_empty_grid(11, 80, 50)
-        charts[0].create_empty_grid(12, 80, 50)
-        charts[0].create_empty_grid(13, 80, 50)
-        charts[0].create_empty_grid(14, 80, 50)
-        charts[0].create_empty_grid(15, 80, 50)
+        for category in range(1, OBJECT_CATEGORIES):
+            charts[0].create_empty_grid(category, 80, 50)
+        # Entities
         charts[0].create_empty_grid(2000, 80, 50)
         charts[0].grids[2000][(10, 10)] = {0:0, 1:0}
+        # Dungeon generation.
         import random
         for i in range(0, 200):
             x = random.randint(1, charts[0].chart_width - 11)
