@@ -33,7 +33,7 @@ def start_charts(load=False):
         charts[0].create_empty_grid(2000, 80, 50)
         charts[0].grids[2000][(10, 10)] = {0:0, 1:0}
         # Dungeon.
-        charts[0] = Charts.charts["MainDungeonGenerator"](charts[0], charts[0].rooms, 0)
+        Charts.charts["MainDungeonGenerator"](charts[0], charts[0].rooms, 0)
     return charts
 
 def start_characters(load=False):

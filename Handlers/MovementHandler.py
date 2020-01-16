@@ -4,11 +4,11 @@
 def _in_boundaries(x_from, y_from, x_add, y_add, chart):
     if x_from + x_add < 0:
         return False
-    elif x_from + x_add >= chart.chart_width:
+    elif x_from + x_add >= chart.width:
         return False
     elif y_from + y_add < 0:
         return False
-    elif y_from + y_add >= chart.chart_height:
+    elif y_from + y_add >= chart.height:
         return False
     else:
         return True

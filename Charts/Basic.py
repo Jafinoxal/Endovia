@@ -4,8 +4,8 @@
 
 class Chart(object):
     def __init__(self, chart_width, chart_height, active):
-        self.chart_width = chart_width
-        self.chart_height = chart_height
+        self.width = chart_width
+        self.height = chart_height
         self.active = active
         self.grids = {0:{}, 1:{}, 2:{}, 3:{}, 4:{}, 5:{}, 6:{}, 7:{}, 8:{},
                       9:{}, 10:{}, 11:{}, 12:{}, 13:{}, 14:{}, 15:{}, 2000:{}}

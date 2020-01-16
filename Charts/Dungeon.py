@@ -12,6 +12,7 @@ class Chart(Basic.Chart):
         super(Chart, self).__init__(chart_width, chart_height, active)
         # rooms contains (start_x, start_y, end_x, end_y
         self.rooms = []
+
     def _intersect(self, proposed_room):
         # Keep something to mark if an non-intersection occurs.
         pass_count = 0
@@ -22,6 +23,7 @@ class Chart(Basic.Chart):
         if pass_count == len(self.rooms):
             return False
         return True
+
     def _carve_rectangular_room(self, start_x, start_y, width, height, object_id):
         end_x = start_x + width
         end_y = start_y + height
@@ -37,37 +39,25 @@ class Chart(Basic.Chart):
             return True
         else:
             return False
-    def _carve_horizontal_tunnel(self, start_x, end_x, current_y, object_id):
-        # Erase the walls to make a tunnel between two things.
-        for x in range(min(start_x, end_x), max(start_x, end_x) + 1):
-            self.grids[0][(x, current_y)] = None
-            if self.grids[1][(x, current_y)] == None:
-                self.grids[1][(x, current_y)] = {}
-                self.grids[1][(x, current_y)][0] = object_id
-    def _carve_vertical_tunnel(self, start_y, end_y, current_x, object_id):
-        # Erase the walls to make a tunnel between two things.
-        for y in range(min(start_y, end_y), max(start_y, end_y) + 1):
-            self.grids[0][(current_x, y)] = None
-            if self.grids[1][(current_x, y)] == None:
-                self.grids[1][(current_x, y)] = {}
-                self.grids[1][(current_x, y)][0] = object_id
 
-def MainDungeonGenerator(chart, rooms, object_id):
-    for i in range(0, 200):
-        x = random.randint(1, chart.chart_width - 11)
-        x2 = random.randint(5, 10)
-        y = random.randint(1, chart.chart_height - 11)
-        y2 = random.randint(5, 10)
-        chart._carve_rectangular_room(x, y, x2, y2, 0)
-    connected_rooms = []
-    rooms_to_connect = range(0, len(rooms))
-    while len(rooms_to_connect):
-        room_from = random.choice(rooms_to_connect)
-        rooms_to_connect.pop(room_from)
-        room_to = random.choice(rooms_to_connect)
-        if random.randint(0, 1):
-            chart._carve_horizontal_tunnel(random.randint(rooms[room_from][0], rooms[room_to][2]), rooms[room_to][2], random.randint(rooms[room_from][1], rooms[room_from][3]), 0)
-        else:
-            chart._carve_vertical_tunnel(random.randint(rooms[room_from][1], rooms[room_to][3]), rooms[room_to][3], random.randint(rooms[room_from][0], rooms[room_from][2]), 0)
-    return chart
+    def _carve_tunnels(self, start_x, start_y, width, height, object_id):
+        for y in range(start_y, height):
+            horizontal_tunnels_dug = 0
+            vertical_tunnels_dug = 0
+            for x in range(start_x, width):
+                if random.randint(0, 6500) == 0 and horizontal_tunnels_dug < 3:
+                    tunnel_length = random.randint(4, 12)
+                    for x in range(x, x + tunnel_length):
+                        self.grids[0][(x, y)] = None
+                        self.grids[1][(x, y)] = {}
+                        self.grids[1][(x, y)][0] = object_id
+                    horizontal_tunnels_dug += 1
+                if random.randint(0, 6500) == 0 and vertical_tunnels_dug < 3:
+                    tunnel_length = random.randint(4, 12)
+                    for y in range(y, y + tunnel_length):
+                        self.grids[0][(x, y)] = None
+                        self.grids[1][(x, y)] = {}
+                        self.grids[1][(x, y)][0] = object_id
+                    vertical_tunnels_dug += 1
+
 # Jafinoxal.
