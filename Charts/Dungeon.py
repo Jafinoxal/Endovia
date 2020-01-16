@@ -2,6 +2,8 @@
 # Endovia (Dungeon)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
+import random
+
 import Basic
 
 # NOTE: This will be Dungeon.Chart, or just Chart if used here.
@@ -10,7 +12,7 @@ class Chart(Basic.Chart):
         super(Chart, self).__init__(chart_width, chart_height, active)
         # rooms contains (start_x, start_y, end_x, end_y
         self.rooms = []
-    def intersect(self, proposed_room):
+    def _intersect(self, proposed_room):
         # Keep something to mark if an non-intersection occurs.
         pass_count = 0
         # See if the room intersects with any other rooms, if it doesn't, increase the pass count.
@@ -20,11 +22,11 @@ class Chart(Basic.Chart):
         if pass_count == len(self.rooms):
             return False
         return True
-    def carve_rectangular_room(self, start_x, start_y, width, height, object_id):
+    def _carve_rectangular_room(self, start_x, start_y, width, height, object_id):
         end_x = start_x + width
         end_y = start_y + height
         # Go through each coordinate in the room and erase the walls, add floor if needed.
-        if not self.intersect((start_x, start_y, end_x, end_y)):
+        if not self._intersect((start_x, start_y, end_x, end_y)):
             for x in range(start_x + 1, end_x):
                 for y in range(start_y + 1, end_y):
                     self.grids[0][(x, y)] = None
@@ -35,19 +37,37 @@ class Chart(Basic.Chart):
             return True
         else:
             return False
-    def carve_horizontal_tunnel(self, start_x, end_x, current_y, object_id):
+    def _carve_horizontal_tunnel(self, start_x, end_x, current_y, object_id):
         # Erase the walls to make a tunnel between two things.
         for x in range(min(start_x, end_x), max(start_x, end_x) + 1):
             self.grids[0][(x, current_y)] = None
             if self.grids[1][(x, current_y)] == None:
-                self.grids[1][(x, y)] = {}
+                self.grids[1][(x, current_y)] = {}
                 self.grids[1][(x, current_y)][0] = object_id
-    def carve_vertical_tunnel(self, start_y, end_y, current_x, object_id):
+    def _carve_vertical_tunnel(self, start_y, end_y, current_x, object_id):
         # Erase the walls to make a tunnel between two things.
         for y in range(min(start_y, end_y), max(start_y, end_y) + 1):
-            self.grids[1][(current_x, y)] = None
-            if self.grids[0][(current_x, y)] == None:
-                self.grids[1][(x, y)] = {}
-                self.grids[0][(current_x, y)][0] = object_id
+            self.grids[0][(current_x, y)] = None
+            if self.grids[1][(current_x, y)] == None:
+                self.grids[1][(current_x, y)] = {}
+                self.grids[1][(current_x, y)][0] = object_id
 
+def MainDungeonGenerator(chart, rooms, object_id):
+    for i in range(0, 200):
+        x = random.randint(1, chart.chart_width - 11)
+        x2 = random.randint(5, 10)
+        y = random.randint(1, chart.chart_height - 11)
+        y2 = random.randint(5, 10)
+        chart._carve_rectangular_room(x, y, x2, y2, 0)
+    connected_rooms = []
+    rooms_to_connect = range(0, len(rooms))
+    while len(rooms_to_connect):
+        room_from = random.choice(rooms_to_connect)
+        rooms_to_connect.pop(room_from)
+        room_to = random.choice(rooms_to_connect)
+        if random.randint(0, 1):
+            chart._carve_horizontal_tunnel(random.randint(rooms[room_from][0], rooms[room_to][2]), rooms[room_to][2], random.randint(rooms[room_from][1], rooms[room_from][3]), 0)
+        else:
+            chart._carve_vertical_tunnel(random.randint(rooms[room_from][1], rooms[room_to][3]), rooms[room_to][3], random.randint(rooms[room_from][0], rooms[room_from][2]), 0)
+    return chart
 # Jafinoxal.

@@ -29,17 +29,11 @@ def start_charts(load=False):
         charts[0].create_filled_grid(0, 80, 50, 0)
         for category in range(1, OBJECT_CATEGORIES):
             charts[0].create_empty_grid(category, 80, 50)
-        # Entities
+        # Entities.
         charts[0].create_empty_grid(2000, 80, 50)
         charts[0].grids[2000][(10, 10)] = {0:0, 1:0}
-        # Dungeon generation.
-        import random
-        for i in range(0, 200):
-            x = random.randint(1, charts[0].chart_width - 11)
-            x2 = random.randint(5, 10)
-            y = random.randint(1, charts[0].chart_height - 11)
-            y2 = random.randint(5, 10)
-            charts[0].carve_rectangular_room(x, y, x2, y2, 0)
+        # Dungeon.
+        charts[0] = Charts.charts["MainDungeonGenerator"](charts[0], charts[0].rooms, 0)
     return charts
 
 def start_characters(load=False):

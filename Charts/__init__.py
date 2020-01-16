@@ -8,6 +8,7 @@ import Dungeon
 charts = {
 "Basic": Basic,
 "Dungeon": Dungeon,
+"MainDungeonGenerator": Dungeon.MainDungeonGenerator,
 }
 
 # Jafinoxal.
