@@ -45,7 +45,7 @@ def start_characters(load=False):
         }
     return characters
 
-libtcodpy.console_set_custom_font("terminal8x8_gs_ro.png",libtcodpy.FONT_LAYOUT_ASCII_INROW, 0, 0)
+libtcodpy.console_set_custom_font("terminal8x8_gs_ro.png", libtcodpy.FONT_TYPE_GREYSCALE | libtcodpy.FONT_LAYOUT_ASCII_INROW, 0, 0)
 libtcodpy.console_init_root(85, 55, "Endovia 1.036", False)
 libtcodpy.sys_set_fps(20)
 

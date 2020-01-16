@@ -54,7 +54,7 @@ def _description():
     3: "A wood elf, from the forests, uses nature as a weapon and tool.",
     4: "A deep elf, from the mountains and caves, stealthy and cunning.",
     5: "A high elf, from the plains, great affinity for magic and dominant.",
-    6: "A dark elf, from the volcanic ash lands, pride and high culture.",
+    6: "A dark elf, from the volcanic ash lands, pride and high cultured.",
     }
 
 def _symbol():

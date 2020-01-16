@@ -19,7 +19,7 @@ def DrawFloorsWalls(library, objects, chart):
                     library.console_put_char(0, x+1, y+1, object_reference[5], library.BKGND_SET)
 
 def DrawEntities(library, entities, chart):
-    for category in (2000, 2000):
+    for category in (2000, 2001):
         for y in  range(0, chart.height):
             for x in range(0, chart.width):
                 if chart.grids[category][(x, y)] != None:
