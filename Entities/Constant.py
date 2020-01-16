@@ -1,0 +1,20 @@
+# -*- coding: utf-8 -*-
+# Endovia (Constant)
+# Copyright (C) 2010-2020 Jeremy Aaron Flexer.
+
+ENTITY_CATEGORIES = 2
+
+ENTITY_CATEGORY = 0
+ENTITY_IDENTITY = 1
+ENTITY_NAME = 2
+ENTITY_KIND = 3
+ENTITY_DESCRIPTION = 4
+ENTITY_SYMBOL = 5
+ENTITY_COLOR = 6
+ENTITY_CLIP = 7
+ENTITY_TRANSPARENT = 8
+
+PLAYERS = 2000 # Complete.
+RODENTS = 2001 # Complete.
+
+# Jafinoxal.

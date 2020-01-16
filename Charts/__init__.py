@@ -9,7 +9,7 @@ import Generators
 charts = {
 "Basic": Basic,
 "Dungeon": Dungeon,
-"MainDungeonGenerator": Generators.MainDungeonGenerator,
+"Generators": Generators,
 }
 
 # Jafinoxal.
