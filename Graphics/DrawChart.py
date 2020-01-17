@@ -25,11 +25,11 @@ def DrawEntities(library, entities, chart):
                 if chart.grids[category][(x, y)] != None:
                     entity_reference = entities[category][chart.grids[category][(x, y)][0]]
                     library.console_set_char_foreground(0, x+1, y+1, library.Color(entity_reference[6][0][0],
-                                                                               entity_reference[6][0][1],
-                                                                               entity_reference[6][0][2]))
+                                                                                   entity_reference[6][0][1],
+                                                                                   entity_reference[6][0][2]))
                     library.console_set_char_background(0, x+1, y+1, library.Color(entity_reference[6][1][0],
-                                                                               entity_reference[6][1][1],
-                                                                               entity_reference[6][1][2]))
-                    library.console_put_char(0, x+1, y+1, entity_reference[5], library.BKGND_SET)
+                                                                                   entity_reference[6][1][1],
+                                                                                   entity_reference[6][1][2]))
+                    library.console_set_char(0, x+1, y+1, entity_reference[5])
 
 # Jafinoxal.

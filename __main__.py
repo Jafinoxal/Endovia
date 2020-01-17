@@ -15,22 +15,38 @@ import Handlers
 import Items
 import Objects
 
+from Entities.Constant import *
 from Handlers.Constant import *
 from Objects.Constant import *
 
+SCREEN_WIDTH = 85
+SCREEN_HEIGHT = 85
+
+CHART_WIDTH = 80
+CHART_HEIGHT = 80
+
+FONT_NAME = "terminal8x8_gs_ro.png"
+FONT_TYPE = libtcodpy.FONT_TYPE_GREYSCALE | libtcodpy.FONT_LAYOUT_ASCII_INROW
+
+CHARTS_SAVE_FILE_NAME = "Saves/Charts.save"
+CHARACTERS_SAVE_FILE_NAME = "Saves/Characters.save"
+
+WINDOW_NAME = "Endovia 1.045"
+
 def start_charts(load=False):
     if load:
-        return pickle.load(open("Saves/Charts.save", "rb"))
+        return pickle.load(open(CHARTS_SAVE_FILE_NAME, "rb"))
     else:
         charts = {
-        0: Charts.charts["Dungeon"].Chart(80, 50, True),
+        0: Charts.charts["Dungeon"].Chart(CHART_WIDTH, CHART_HEIGHT, True),
         }
         # Objects.
-        charts[0].create_filled_grid(0, 80, 50, 0)
+        charts[0].create_filled_grid(0, CHART_WIDTH, CHART_HEIGHT, 0)
         for category in range(1, OBJECT_CATEGORIES):
-            charts[0].create_empty_grid(category, 80, 50)
+            charts[0].create_empty_grid(category, CHART_WIDTH, CHART_HEIGHT)
         # Entities.
-        charts[0].create_empty_grid(2000, 80, 50)
+        for category in range(2000, 2000 + ENTITY_CATEGORIES):
+            charts[0].create_empty_grid(category, CHART_WIDTH, CHART_HEIGHT)
         charts[0].grids[2000][(10, 10)] = {0:0, 1:0}
         # Dungeon.
         Charts.charts["Generators"].MainDungeonGenerator(charts[0], charts[0].rooms, 0)
@@ -38,15 +54,15 @@ def start_charts(load=False):
 
 def start_characters(load=False):
     if load:
-        return pickle.load(open("Saves/Characters.save", "rb"))
+        return pickle.load(open(CHARACTERS_SAVE_FILE_NAME, "rb"))
     else:
         characters = {
         0: Characters.characters["Player"].Character(0, 0, 0, 2000, 10, 10),
         }
     return characters
 
-libtcodpy.console_set_custom_font("terminal8x8_gs_ro.png", libtcodpy.FONT_TYPE_GREYSCALE | libtcodpy.FONT_LAYOUT_ASCII_INROW, 0, 0)
-libtcodpy.console_init_root(85, 55, "Endovia 1.044", False)
+libtcodpy.console_set_custom_font(FONT_NAME, FONT_TYPE, 0, 0)
+libtcodpy.console_init_root(SCREEN_WIDTH, SCREEN_HEIGHT, WINDOW_NAME, False)
 libtcodpy.sys_set_fps(20)
 
 def main():
