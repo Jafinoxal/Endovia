@@ -33,8 +33,7 @@ class Chart(Basic.Chart):
                 for y in range(start_y + 1, end_y):
                     self.grids[0][(x, y)] = None
                     if self.grids[1][(x, y)] == None:
-                        self.grids[1][(x, y)] = {}
-                        self.grids[1][(x, y)][0] = object_id
+                        self.grids[1][(x, y)] = {0: object_id}
             self.rooms.append((start_x, start_y, end_x, end_y))
             return True
         else:
@@ -45,19 +44,32 @@ class Chart(Basic.Chart):
             horizontal_tunnels_dug = 0
             vertical_tunnels_dug = 0
             for x in range(start_x, width):
-                if random.randint(0, 6500) == 0 and horizontal_tunnels_dug < 3:
+                if random.randint(0, 25) == 0 and horizontal_tunnels_dug < 3:
                     tunnel_length = random.randint(4, 12)
                     for x in range(x, x + tunnel_length):
                         self.grids[0][(x, y)] = None
-                        self.grids[1][(x, y)] = {}
-                        self.grids[1][(x, y)][0] = object_id
+                        self.grids[1][(x, y)] = {0: object_id}
                     horizontal_tunnels_dug += 1
-                if random.randint(0, 6500) == 0 and vertical_tunnels_dug < 3:
+                if random.randint(0, 25) == 0 and vertical_tunnels_dug < 3:
                     tunnel_length = random.randint(4, 12)
                     for y in range(y, y + tunnel_length):
                         self.grids[0][(x, y)] = None
-                        self.grids[1][(x, y)] = {}
-                        self.grids[1][(x, y)][0] = object_id
+                        self.grids[1][(x, y)] = {0: object_id}
                     vertical_tunnels_dug += 1
 
+    def _is_free(self, objects, x, y):
+        for category in objects:
+            if category == 1:
+                continue
+            if self.grids[category][(x, y)]:
+                return False
+        return True
+
+    def _place_character_start(self, objects, entity_category, entity_id):
+        for y in range(self.height):
+            for x in range(self.width):
+                if not self._is_free(objects, x, y):
+                    continue
+                self.grids[entity_category][(x, y)] = {0: entity_id}
+                return (x, y)
 # Jafinoxal.
