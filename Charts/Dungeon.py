@@ -57,19 +57,34 @@ class Chart(Basic.Chart):
                         self.grids[1][(x, y)] = {0: object_id}
                     vertical_tunnels_dug += 1
 
-    def _is_free(self, objects, x, y):
-        for category in objects:
+    def _is_free(self, objects, entities, x, y):
+        for category in objects.keys():
             if category == 1:
                 continue
             if self.grids[category][(x, y)]:
                 return False
+        for category in entities:
+            if self.grids[category][(x, y)]:
+                return False
         return True
 
-    def _place_character_start(self, objects, entity_category, entity_id):
+    def _place_player_start(self, objects, entities, entity_category, entity_id):
         for y in range(self.height):
             for x in range(self.width):
-                if not self._is_free(objects, x, y):
+                if not self._is_free(objects, entities, x, y):
                     continue
                 self.grids[entity_category][(x, y)] = {0: entity_id}
                 return (x, y)
+
+    def _place_enemies_start(self, objects, entities, entity_category, entity_id):
+        entity_positions = []
+        for i in range (0, 100):
+            x, y = random.randint(0, self.width - 1), random.randint(0, self.height - 1)
+            if not self._is_free(objects, entities, x, y):
+                continue
+            if random.randint(0, 1):
+                self.grids[entity_category][(x, y)] = {0: entity_id}
+                entity_positions.append((x,y))
+        return entity_positions
+
 # Jafinoxal.

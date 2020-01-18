@@ -1,4 +1,4 @@
-# Endovia (Basic)
+# Endovia (Player)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
 import Basic

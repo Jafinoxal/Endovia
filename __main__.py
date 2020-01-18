@@ -23,7 +23,7 @@ SCREEN_WIDTH = 85
 SCREEN_HEIGHT = 85
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
-WINDOW_NAME = "Endovia 1.047"
+WINDOW_NAME = "Endovia 1.048"
 FONT_NAME = "terminal8x8_gs_ro.png"
 FONT_TYPE = libtcodpy.FONT_TYPE_GREYSCALE | libtcodpy.FONT_LAYOUT_ASCII_INROW
 CHARTS_SAVE_FILE_NAME = "Saves/Charts.save"
@@ -44,8 +44,8 @@ def start_charts(load=False):
         for category in range(2000, 2000 + ENTITY_CATEGORIES):
             charts[0].create_empty_grid(category, CHART_WIDTH, CHART_HEIGHT)
         # Dungeon.
-        global positions
-        positions = Charts.charts["Generators"].MainDungeonGenerator(Objects.objects, charts[0], charts[0].rooms, 0)
+        global player_position, enemy_positions
+        player_position, enemy_positions = Charts.charts["Generators"].MainDungeonGenerator(Objects.objects, Entities.entities, charts[0], charts[0].rooms, 0, 0)
     return charts
 
 def start_characters(load=False):
@@ -53,8 +53,10 @@ def start_characters(load=False):
         return pickle.load(open(CHARACTERS_SAVE_FILE_NAME, "rb"))
     else:
         characters = {
-        0: Characters.characters["Player"].Character(0, 0, 0, 2000, positions[0], positions[1]),
+        0: Characters.characters["Player"].Character(0, 0, 0, 2000, player_position[0], player_position[1]),
         }
+        for character_id in range(0, len(enemy_positions)):
+            characters[character_id + 1] = Characters.characters["Player"].Character(0, character_id, 0, 2001, enemy_positions[character_id][0], enemy_positions[character_id][1]),
     return characters
 
 libtcodpy.console_set_custom_font(FONT_NAME, FONT_TYPE, 0, 0)
