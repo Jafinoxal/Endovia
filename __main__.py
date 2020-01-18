@@ -21,9 +21,9 @@ from Objects.Constant import *
 
 SCREEN_WIDTH = 85
 SCREEN_HEIGHT = 85
-CHART_WIDTH = 80
-CHART_HEIGHT = 80
-WINDOW_NAME = "Endovia 1.046"
+CHART_WIDTH = 70
+CHART_HEIGHT = 70
+WINDOW_NAME = "Endovia 1.047"
 FONT_NAME = "terminal8x8_gs_ro.png"
 FONT_TYPE = libtcodpy.FONT_TYPE_GREYSCALE | libtcodpy.FONT_LAYOUT_ASCII_INROW
 CHARTS_SAVE_FILE_NAME = "Saves/Charts.save"
@@ -67,6 +67,7 @@ def main():
     while not libtcodpy.console_is_window_closed():
         Graphics.graphics["DrawChart"].DrawFloorsWalls(libtcodpy, Objects.objects, charts[0])
         Graphics.graphics["DrawChart"].DrawEntities(libtcodpy, Entities.entities, charts[0])
+        Graphics.graphics["DrawChart"].DrawBorder(libtcodpy, charts[0].width, charts[0].height)
         #Graphics.graphics["DrawChart"].DrawChartBorders(charts[0])
         libtcodpy.console_flush()
         event = Handlers.handlers["InputHandler"].MainGame(libtcodpy)
@@ -82,3 +83,5 @@ def main():
             Handlers.handlers["MovementHandler"].MoveCharacter(characters[0].x, characters[0].y, EAST[0], EAST[1], characters[0], charts[0], Objects.objects, Entities.entities)
 if __name__ == '__main__':
     main()
+
+# Jafinoxal.
