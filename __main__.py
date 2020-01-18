@@ -19,11 +19,11 @@ from Entities.Constant import *
 from Handlers.Constant import *
 from Objects.Constant import *
 
-SCREEN_WIDTH = 85
+SCREEN_WIDTH = 125
 SCREEN_HEIGHT = 85
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
-WINDOW_NAME = "Endovia 1.048"
+WINDOW_NAME = "Endovia 1.049"
 FONT_NAME = "terminal8x8_gs_ro.png"
 FONT_TYPE = libtcodpy.FONT_TYPE_GREYSCALE | libtcodpy.FONT_LAYOUT_ASCII_INROW
 CHARTS_SAVE_FILE_NAME = "Saves/Charts.save"
@@ -44,19 +44,18 @@ def start_charts(load=False):
         for category in range(2000, 2000 + ENTITY_CATEGORIES):
             charts[0].create_empty_grid(category, CHART_WIDTH, CHART_HEIGHT)
         # Dungeon.
-        global player_position, enemy_positions
         player_position, enemy_positions = Charts.charts["Generators"].MainDungeonGenerator(Objects.objects, Entities.entities, charts[0], charts[0].rooms, 0, 0)
-    return charts
+    return charts, player_position, enemy_positions
 
-def start_characters(load=False):
+def start_characters(player_position, enemy_positions, load=False):
     if load:
         return pickle.load(open(CHARACTERS_SAVE_FILE_NAME, "rb"))
     else:
         characters = {
-        0: Characters.characters["Player"].Character(0, 0, 0, 2000, player_position[0], player_position[1]),
+        0: Characters.characters["Player"].Character(0, 0, 0, 2000, player_position[0], player_position[1], "Player", "Human"),
         }
         for character_id in range(0, len(enemy_positions)):
-            characters[character_id + 1] = Characters.characters["Player"].Character(0, character_id, 0, 2001, enemy_positions[character_id][0], enemy_positions[character_id][1]),
+            characters[character_id + 1] = Characters.characters["Enemy"].Character(0, character_id, 0, 2001, enemy_positions[character_id][0], enemy_positions[character_id][1], 10),
     return characters
 
 libtcodpy.console_set_custom_font(FONT_NAME, FONT_TYPE, 0, 0)
@@ -64,12 +63,15 @@ libtcodpy.console_init_root(SCREEN_WIDTH, SCREEN_HEIGHT, WINDOW_NAME, False)
 libtcodpy.sys_set_fps(20)
 
 def main():
-    charts = start_charts(False)
-    characters = start_characters(False)
+    charts, player_position, enemy_positions = start_charts(False)
+    characters = start_characters(player_position, enemy_positions, False)
     while not libtcodpy.console_is_window_closed():
         Graphics.graphics["DrawChart"].DrawFloorsWalls(libtcodpy, Objects.objects, charts[0])
         Graphics.graphics["DrawChart"].DrawEntities(libtcodpy, Entities.entities, charts[0])
         Graphics.graphics["DrawChart"].DrawBorder(libtcodpy, charts[0].width, charts[0].height)
+        Graphics.graphics["DrawInfo"].DrawStats(libtcodpy, charts[0], characters[0])
+        Graphics.graphics["DrawInfo"].DrawAttributes(libtcodpy, charts[0], characters[0])
+        Graphics.graphics["DrawInfo"].DrawSkills(libtcodpy, charts[0], characters[0])
         #Graphics.graphics["DrawChart"].DrawChartBorders(charts[0])
         libtcodpy.console_flush()
         event = Handlers.handlers["InputHandler"].MainGame(libtcodpy)

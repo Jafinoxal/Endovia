@@ -3,9 +3,11 @@
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
 import DrawChart
+import DrawInfo
 
 graphics = {
-"DrawChart": DrawChart
+"DrawChart": DrawChart,
+"DrawInfo": DrawInfo,
 }
 
 # Jafinoxal.

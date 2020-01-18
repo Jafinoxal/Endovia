@@ -2,8 +2,6 @@
 # Endovia (DrawChart)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
-import time
-
 def DrawFloorsWalls(library, objects, chart):
     for category in (1, 0):
         for y in  range(0, chart.height):

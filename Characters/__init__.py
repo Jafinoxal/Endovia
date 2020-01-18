@@ -2,12 +2,14 @@
 # Endovia (Character Init)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
+import Basic
 import Enemy
 import Player
 
 characters = {
-"Player": Player,
+"Basic": Basic,
 "Enemy": Enemy,
+"Player": Player,
 }
 
 # Jafinoxal.
