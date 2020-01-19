@@ -21,7 +21,7 @@ def DrawEntities(library, entities, chart):
         for y in  range(0, chart.height):
             for x in range(0, chart.width):
                 if chart.grids[category][(x, y)] != None:
-                    entity_reference = entities[category][chart.grids[category][(x, y)][0]]
+                    entity_reference = entities[category][chart.grids[category][(x, y)][1]]
                     library.console_set_char_foreground(0, x+1, y+1, library.Color(entity_reference[6][0][0],
                                                                                    entity_reference[6][0][1],
                                                                                    entity_reference[6][0][2]))

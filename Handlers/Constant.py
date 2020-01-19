@@ -29,4 +29,9 @@ SOUTH = (0, +1)
 WEST = (-1, 0)
 EAST = (+1, 0)
 
+ATTACKS = { # Name, plural, damages, specials.
+"scratch": ("scratches", (1, 2)),
+"bite": ("bites", (1, 3)),
+}
+
 # Jafinoxal.

@@ -77,14 +77,14 @@ class Chart(Basic.Chart):
                 return (x, y)
 
     def _place_enemies_start(self, objects, entities, entity_category, entity_id):
-        entity_positions = []
+        entity_positions = dict()
         for i in range (0, 100):
             x, y = random.randint(0, self.width - 1), random.randint(0, self.height - 1)
             if not self._is_free(objects, entities, x, y):
                 continue
             if random.randint(0, 1):
-                self.grids[entity_category][(x, y)] = {0: entity_id}
-                entity_positions.append((x,y))
+                self.grids[entity_category][(x, y)] = {0: (entity_category, entity_id)}
+                entity_positions[(entity_category, 0)] = (x, y)
         return entity_positions
 
 # Jafinoxal.

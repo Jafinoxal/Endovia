@@ -4,8 +4,8 @@
 import Basic
 
 class Character(Basic.Character):
-    def __init__(self, entity_id, unique_id, chart_id, grid_id, x, y, name, race):
-        super(Character, self).__init__(entity_id, unique_id, chart_id, grid_id, x, y)
+    def __init__(self, chart_id, grid_id, entity_id, unique_id, x, y, name, race):
+        super(Character, self).__init__(chart_id, grid_id, entity_id, unique_id, x, y)
         self.name = name
         self.race = race
         self.level = 1
@@ -21,6 +21,7 @@ class Character(Basic.Character):
         "endurance": 1,
         "dexterity": 1,
         "agility": 1,
+        "perception": 1,
         "intelligence": 1,
         "luck": 1,
         "charisma": 1,

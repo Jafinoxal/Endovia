@@ -33,6 +33,7 @@ def DrawAttributes(library, chart, player):
     endurance_to_draw = " endurance:    {0}".format(player.attributes["endurance"])
     dexterity_to_draw = " dexterity:    {0}".format(player.attributes["dexterity"])
     agility_to_draw = " agility:      {0}".format(player.attributes["agility"])
+    perception_to_draw = " perception:   {0}".format(player.attributes["perception"])
     intelligence_to_draw = " intelligence: {0}".format(player.attributes["intelligence"])
     charisma_to_draw = " charisma:     {0}".format(player.attributes["charisma"])
     luck_to_draw = " luck:         {0}".format(player.attributes["luck"])
@@ -44,6 +45,7 @@ def DrawAttributes(library, chart, player):
     endurance_to_draw,
     dexterity_to_draw,
     agility_to_draw,
+    perception_to_draw,
     intelligence_to_draw,
     charisma_to_draw,
     luck_to_draw,
@@ -65,7 +67,8 @@ def DrawSkills(library, chart, player):
     barter_to_draw = " barter:       {0}".format(player.skills["barter"][0])
     thieving_to_draw = " thieving:     {0}".format(player.skills["thieving"][0])
     forestry_to_draw = " forestry:     {0}".format(player.skills["forestry"][0])
-    kindling_to_draw = " fletching:    {0}".format(player.skills["kindling"][0])
+    kindling_to_draw = " kindling:     {0}".format(player.skills["kindling"][0])
+    fletching_to_draw = " fletching:    {0}".format(player.skills["fletching"][0])
     mining_to_draw = " mining:       {0}".format(player.skills["mining"][0])
     smithing_to_draw = " smithing:     {0}".format(player.skills["smithing"][0])
     crafting_to_draw = " crafting:     {0}".format(player.skills["crafting"][0])
@@ -86,6 +89,7 @@ def DrawSkills(library, chart, player):
     thieving_to_draw,
     forestry_to_draw,
     kindling_to_draw,
+    fletching_to_draw,
     mining_to_draw,
     smithing_to_draw,
     crafting_to_draw,
@@ -97,8 +101,8 @@ def DrawSkills(library, chart, player):
     )
     for y in range(0, len(to_draw_complete)):
         for x in range(0, len(to_draw_complete[y])):
-            library.console_set_char_foreground(0, x + chart.width + 2, y + 17, library.Color(255, 255, 255))
-            library.console_set_char_background(0, x + chart.width + 2, y + 17, library.Color(0, 0, 0))
-            library.console_set_char(0, x + chart.width + 2, y + 17, to_draw_complete[y][x])
+            library.console_set_char_foreground(0, x + chart.width + 2, y + 18, library.Color(255, 255, 255))
+            library.console_set_char_background(0, x + chart.width + 2, y + 18, library.Color(0, 0, 0))
+            library.console_set_char(0, x + chart.width + 2, y + 18, to_draw_complete[y][x])
 
 # Jafinoxal.

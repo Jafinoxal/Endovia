@@ -4,8 +4,8 @@
 import Basic
 
 class Character(Basic.Character):
-    def __init__(self, entity_id, unique_id, chart_id, grid_id, x, y, health):
-        super(Character, self).__init__(entity_id, unique_id, chart_id, grid_id, x, y)
+    def __init__(self, chart_id, grid_id, entity_id, unique_id, x, y, health):
+        super(Character, self).__init__(chart_id, grid_id, entity_id, unique_id, x, y)
         self.health = health
 
 # Jafinoxal
