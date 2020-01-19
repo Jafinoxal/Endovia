@@ -73,7 +73,7 @@ class Chart(Basic.Chart):
             for x in range(self.width):
                 if not self._is_free(objects, entities, x, y):
                     continue
-                self.grids[entity_category][(x, y)] = {0: entity_id}
+                self.grids[entity_category][(x, y)] = (entity_category, entity_id)
                 return (x, y)
 
     def _place_enemies_start(self, objects, entities, entity_category, entity_id):
@@ -83,8 +83,8 @@ class Chart(Basic.Chart):
             if not self._is_free(objects, entities, x, y):
                 continue
             if random.randint(0, 1):
-                self.grids[entity_category][(x, y)] = {0: (entity_category, entity_id)}
-                entity_positions[(entity_category, 0)] = (x, y)
+                self.grids[entity_category][(x, y)] = (entity_category, entity_id)
+                entity_positions[(entity_category, entity_id)] = (x, y)
         return entity_positions
 
 # Jafinoxal.
