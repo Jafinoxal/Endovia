@@ -7,14 +7,14 @@ def DrawFloorsWalls(library, objects, chart):
         for y in  range(0, chart.height):
             for x in range(0, chart.width):
                 if chart.grids[category][(x, y)] != None:
-                    object_reference = objects[category][chart.grids[category][(x, y)][0]]
+                    object_reference = objects[category][chart.grids[category][(x, y)][1]]
                     library.console_set_char_foreground(0, x+1, y+1, library.Color(object_reference[6][0][0],
                                                                                    object_reference[6][0][1],
                                                                                    object_reference[6][0][2]))
                     library.console_set_char_background(0, x+1, y+1, library.Color(object_reference[6][1][0],
                                                                                    object_reference[6][1][1],
                                                                                    object_reference[6][1][2]))
-                    library.console_put_char(0, x+1, y+1, object_reference[5], library.BKGND_SET)
+                    library.console_set_char(0, x+1, y+1, object_reference[5])
 
 def DrawEntities(library, entities, chart):
     for category in (2000, 2001):

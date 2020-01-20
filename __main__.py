@@ -24,7 +24,7 @@ SCREEN_HEIGHT = 85
 CHART_ID = 0
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
-WINDOW_NAME = "Endovia 1.053"
+WINDOW_NAME = "Endovia 1.054"
 FONT_NAME = "terminal8x8_gs_ro.png"
 FONT_TYPE = libtcodpy.FONT_TYPE_GREYSCALE | libtcodpy.FONT_LAYOUT_ASCII_INROW
 CHARTS_SAVE_FILE_NAME = "Saves/Charts.save"
@@ -54,24 +54,29 @@ def start_charts(load=False):
         player_position, enemy_positions = Charts.charts["Generators"].MainDungeonGenerator(Objects.objects, Entities.entities, charts[0], charts[0].rooms, 0, 0)
     return charts, player_position, enemy_positions
 
-def start_characters(player_position, enemy_positions, load=False):
+def start_characters(player_position, enemy_positions, charts, load=False):
     if load:
         return pickle.load(open(CHARACTERS_SAVE_FILE_NAME, "rb"))
     else:
+        # Find the active chart, if so save the chart id in chart_id.
+        for chart in charts.keys():
+            if charts[chart].active:
+                chart_id = charts[chart].id
+                break
         # Create a dictionary to hold the player's and enemies's characters.
         characters = {
-        (PLAYER_GRID_ID, PLAYER_ENTITY_ID): Characters.characters["Player"].Character(0, PLAYER_GRID_ID, PLAYER_ENTITY_ID, 0, player_position[0], player_position[1], "Player", "Human"),
+        0: Characters.characters["Player"].Character(chart_id, PLAYER_GRID_ID, PLAYER_ENTITY_ID, 0, player_position[0], player_position[1], "Player", "Human"),
         }
         # Start at 1 because player is always unique_id 0.
         unique_id = 1
         # Iterate through each enemy and create a Enemy Character object.
         for enemy_category_and_id, enemy_position in enemy_positions.items():
-            characters[(enemy_category_and_id[0], enemy_category_and_id[1], unique_id)] = Characters.characters["Enemy"].Character(0, enemy_category_and_id[0],
-                                                                                                                                      enemy_category_and_id[1],
-                                                                                                                                      unique_id,
-                                                                                                                                      enemy_position[0],
-                                                                                                                                      enemy_position[1],
-                                                                                                                                      Entities.entities[enemy_category_and_id[0]][enemy_category_and_id[1]][ENTITY_HEALTH])
+            characters[unique_id] = Characters.characters["Enemy"].Character(chart_id, enemy_category_and_id[0],
+                                                                                enemy_category_and_id[1],
+                                                                                unique_id,
+                                                                                enemy_position[0],
+                                                                                enemy_position[1],
+                                                                                Entities.entities[enemy_category_and_id[0]][enemy_category_and_id[1]][ENTITY_HEALTH])
 
             # Each character gets a fresh id.
             unique_id += 1
@@ -87,17 +92,17 @@ def main():
     # NOTE: player_position and enemy_positions are needed to place in the
     # object set characters. They can also be used in other places.
     charts, player_position, enemy_positions = start_charts(False)
-    characters = start_characters(player_position, enemy_positions, False)
+    characters = start_characters(player_position, enemy_positions, charts,  False)
     while not libtcodpy.console_is_window_closed():
         # Chart related drawing.
         Graphics.graphics["DrawChart"].DrawFloorsWalls(libtcodpy, Objects.objects, charts[0])
         Graphics.graphics["DrawChart"].DrawEntities(libtcodpy, Entities.entities, charts[0])
         Graphics.graphics["DrawChart"].DrawBorder(libtcodpy, charts[0].width, charts[0].height)
         # Info related drawing.
-        Graphics.graphics["DrawInfo"].DrawStats(libtcodpy, charts[0], characters[(PLAYER_GRID_ID, PLAYER_ENTITY_ID)])
-        Graphics.graphics["DrawInfo"].DrawAttributes(libtcodpy, charts[0], characters[(PLAYER_GRID_ID, PLAYER_ENTITY_ID)])
-        Graphics.graphics["DrawInfo"].DrawSkills(libtcodpy, charts[0], characters[(PLAYER_GRID_ID, PLAYER_ENTITY_ID)])
-        Graphics.graphics["DrawInfo"].DrawLocation(libtcodpy, charts[0], characters[(PLAYER_GRID_ID, PLAYER_ENTITY_ID)])
+        Graphics.graphics["DrawInfo"].DrawStats(libtcodpy, charts[0], characters[0])
+        Graphics.graphics["DrawInfo"].DrawAttributes(libtcodpy, charts[0], characters[0])
+        Graphics.graphics["DrawInfo"].DrawSkills(libtcodpy, charts[0], characters[0])
+        Graphics.graphics["DrawInfo"].DrawLocation(libtcodpy, charts[0], characters[0])
         # Flush the console.
         libtcodpy.console_flush()
         # Get the input event, event is a constant from Handlers.Constant.
@@ -108,21 +113,21 @@ def main():
             # Check if the event is a move key; If so then try to move a player.
             # Returns True if an enemy is in the way, store that in enemy_there.
         elif event == MOVE_PLAYER_NORTH:
-            enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(characters[(PLAYER_GRID_ID, PLAYER_ENTITY_ID)].x, characters[(PLAYER_GRID_ID, PLAYER_ENTITY_ID)].y, NORTH[0], NORTH[1], characters[(PLAYER_GRID_ID, PLAYER_ENTITY_ID)], charts[0], Objects.objects, Entities.entities)
+            enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(characters[0].x, characters[0].y, NORTH[0], NORTH[1], characters[0], charts[0], Objects.objects, Entities.entities)
             if enemy_there:
-                enemy_at = (characters[(PLAYER_GRID_ID, PLAYER_ENTITY_ID)].x + NORTH[0], characters[(PLAYER_GRID_ID, PLAYER_ENTITY_ID)].y + NORTH[1])
+                enemy_at = (characters[0].x + NORTH[0], characters[0].y + NORTH[1])
         elif event == MOVE_PLAYER_SOUTH:
-            enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(characters[(PLAYER_GRID_ID, PLAYER_ENTITY_ID)].x, characters[(PLAYER_GRID_ID, PLAYER_ENTITY_ID)].y, SOUTH[0], SOUTH[1], characters[(PLAYER_GRID_ID, PLAYER_ENTITY_ID)], charts[0], Objects.objects, Entities.entities)
+            enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(characters[0].x, characters[0].y, SOUTH[0], SOUTH[1], characters[0], charts[0], Objects.objects, Entities.entities)
             if enemy_there:
-                enemy_at = (characters[(PLAYER_GRID_ID, PLAYER_ENTITY_ID)].x + SOUTH[0], characters[(PLAYER_GRID_ID, PLAYER_ENTITY_ID)].y + SOUTH[1])
+                enemy_at = (characters[0].x + SOUTH[0], characters[0].y + SOUTH[1])
         elif event == MOVE_PLAYER_WEST:
-            enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(characters[(PLAYER_GRID_ID, PLAYER_ENTITY_ID)].x, characters[(PLAYER_GRID_ID, PLAYER_ENTITY_ID)].y, WEST[0], WEST[1], characters[(PLAYER_GRID_ID, PLAYER_ENTITY_ID)], charts[0], Objects.objects, Entities.entities)
+            enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(characters[0].x, characters[0].y, WEST[0], WEST[1], characters[0], charts[0], Objects.objects, Entities.entities)
             if enemy_there:
-                enemy_at = (characters[(PLAYER_GRID_ID, PLAYER_ENTITY_ID)].x + WEST[0], characters[(PLAYER_GRID_ID, PLAYER_ENTITY_ID)].y + WEST[1])
+                enemy_at = (characters[0].x + WEST[0], characters[0].y + WEST[1])
         elif event == MOVE_PLAYER_EAST:
-            enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(characters[(PLAYER_GRID_ID, PLAYER_ENTITY_ID)].x, characters[(PLAYER_GRID_ID, PLAYER_ENTITY_ID)].y, EAST[0], EAST[1], characters[(PLAYER_GRID_ID, PLAYER_ENTITY_ID)], charts[0], Objects.objects, Entities.entities)
+            enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(characters[0].x, characters[0].y, EAST[0], EAST[1], characters[0], charts[0], Objects.objects, Entities.entities)
             if enemy_there:
-                enemy_at = (characters[(PLAYER_GRID_ID, PLAYER_ENTITY_ID)].x + EAST[0], characters[(PLAYER_GRID_ID, PLAYER_ENTITY_ID)].y + EAST[1])
+                enemy_at = (characters[0].x + EAST[0], characters[0].y + EAST[1])
         #if enemy_there:
         #    Handlers.handlers["CombatHandler"].FightCharacter()
 

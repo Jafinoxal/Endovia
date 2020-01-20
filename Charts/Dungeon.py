@@ -41,7 +41,7 @@ class Chart(Basic.Chart):
                     self.grids[0][(x, y)] = None
                     # If floor is None; Replace with object_id (floor).
                     if self.grids[1][(x, y)] == None:
-                        self.grids[1][(x, y)] = {0: object_id}
+                        self.grids[1][(x, y)] = {0: 1, 1: object_id, 2: None}
             # Add this room to rooms list so other rooms don't intersect.
             self.rooms.append((start_x, start_y, end_x, end_y))
             # Return True because room carving was successful.
@@ -66,7 +66,7 @@ class Chart(Basic.Chart):
                         if width > x > start_x and height > y > start_y:
                             # Carve out tunnel position.
                             self.grids[0][(x, y)] = None
-                            self.grids[1][(x, y)] = (0, object_id)
+                            self.grids[1][(x, y)] = {0: 1, 1: object_id, 2: None}
                     horizontal_tunnels_dug += 1
                 # If by random chance start digging a vertical tunnel.
                 elif random.randint(0, 25) == 0 and vertical_tunnels_dug < 3:
@@ -77,7 +77,7 @@ class Chart(Basic.Chart):
                         if width > x > start_x and height > y > start_y:
                             # Carve out tunnel position.
                             self.grids[0][(x, y)] = None
-                            self.grids[1][(x, y)] = (0, object_id)
+                            self.grids[1][(x, y)] = {0: 1, 1: object_id, 2: None}
                     vertical_tunnels_dug += 1
 
     def _is_free(self, objects, entities, x, y): # HexDecimal
@@ -103,7 +103,7 @@ class Chart(Basic.Chart):
                 if not self._is_free(objects, entities, x, y):
                     continue
                 # Place the player at the position in the grid and return the position.
-                self.grids[entity_category][(x, y)] = (entity_category, entity_id)
+                self.grids[entity_category][(x, y)] = {0: entity_category, 1: entity_id, 2: None}
                 return (x, y)
 
     def _place_enemies_start(self, objects, entities, entity_category, entity_id):
@@ -118,7 +118,7 @@ class Chart(Basic.Chart):
             # There is a 50% chance to spawn a monster.
             if random.randint(0, 1):
                 # Place the enemy at the position in the grid.
-                self.grids[entity_category][(x, y)] = (entity_category, entity_id)
+                self.grids[entity_category][(x, y)] = {0: entity_category, 1: entity_id, 2: None}
                 entity_positions[(entity_category, entity_id)] = (x, y)
         # Return {(0, 0): (x, y), ...}
         return entity_positions
