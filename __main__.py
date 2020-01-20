@@ -24,12 +24,12 @@ SCREEN_HEIGHT = 85
 CHART_ID = 0
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
-WINDOW_NAME = "Endovia 1.055"
+WINDOW_NAME = "Endovia 1.056"
 FONT_NAME = "terminal8x8_gs_ro.png"
 FONT_TYPE = libtcodpy.FONT_TYPE_GREYSCALE | libtcodpy.FONT_LAYOUT_ASCII_INROW
 CHARTS_SAVE_FILE_NAME = "Saves/Charts.save"
 CHARACTERS_SAVE_FILE_NAME = "Saves/Characters.save"
-PLAYER_GRID_ID = 0
+PLAYER_GRID_ID = 2000
 PLAYER_ENTITY_ID = 0
 
 def start_charts(load=False):
@@ -107,25 +107,30 @@ def main():
         libtcodpy.console_flush()
         # Get the input event, event is a constant from Handlers.Constant.
         event = Handlers.handlers["InputHandler"].MainGame(libtcodpy)
+        # Find the active chart, if so save the chart id in chart_id.
+        for chart in charts.keys():
+            if charts[chart].active:
+                chart_id = charts[chart].id
+                break
         # If event is the escape key exit game without saving.
         if event == EXIT_GAME_WITHOUT_SAVE:
             exit(0)
             # Check if the event is a move key; If so then try to move a player.
             # Returns True if an enemy is in the way, store that in enemy_there.
         elif event == MOVE_PLAYER_NORTH:
-            enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(characters[0].x, characters[0].y, NORTH[0], NORTH[1], characters[0], charts[0], Objects.objects, Entities.entities)
+            enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(characters[0].x, characters[0].y, NORTH[0], NORTH[1], characters[0], charts[chart_id], Objects.objects, Entities.entities)
             if enemy_there:
                 enemy_at = (characters[0].x + NORTH[0], characters[0].y + NORTH[1])
         elif event == MOVE_PLAYER_SOUTH:
-            enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(characters[0].x, characters[0].y, SOUTH[0], SOUTH[1], characters[0], charts[0], Objects.objects, Entities.entities)
+            enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(characters[0].x, characters[0].y, SOUTH[0], SOUTH[1], characters[0], charts[chart_id], Objects.objects, Entities.entities)
             if enemy_there:
                 enemy_at = (characters[0].x + SOUTH[0], characters[0].y + SOUTH[1])
         elif event == MOVE_PLAYER_WEST:
-            enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(characters[0].x, characters[0].y, WEST[0], WEST[1], characters[0], charts[0], Objects.objects, Entities.entities)
+            enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(characters[0].x, characters[0].y, WEST[0], WEST[1], characters[0], charts[chart_id], Objects.objects, Entities.entities)
             if enemy_there:
                 enemy_at = (characters[0].x + WEST[0], characters[0].y + WEST[1])
         elif event == MOVE_PLAYER_EAST:
-            enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(characters[0].x, characters[0].y, EAST[0], EAST[1], characters[0], charts[0], Objects.objects, Entities.entities)
+            enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(characters[0].x, characters[0].y, EAST[0], EAST[1], characters[0], charts[chart_id], Objects.objects, Entities.entities)
             if enemy_there:
                 enemy_at = (characters[0].x + EAST[0], characters[0].y + EAST[1])
         #if enemy_there:

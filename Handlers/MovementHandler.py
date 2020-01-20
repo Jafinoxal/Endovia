@@ -18,14 +18,14 @@ def _no_obstruction(x_from, y_from, x_add, y_add, chart, objects, entities):
         if grid_number < 1000: # Objects.
             if chart.grids[grid_number][(x_from + x_add, y_from + y_add)] == None:
                 continue
-            if not objects[grid_number][chart.grids[grid_number][(x_from + x_add, y_from + y_add)][0]][7]: # 7 is clip.
+            if not objects[grid_number][chart.grids[grid_number][(x_from + x_add, y_from + y_add)][1]][7]: # 7 is clip.
                 continue
             else:
                 return False
         if grid_number > 1999 and grid_number < 3000: # Entities.
             if chart.grids[grid_number][(x_from + x_add, y_from + y_add)] == None:
                 continue
-            if not entities[grid_number][chart.grids[grid_number][(x_from + x_add, y_from + y_add)][0]][7]: # 7 is clip.
+            if not entities[grid_number][chart.grids[grid_number][(x_from + x_add, y_from + y_add)][1]][7]: # 7 is clip.
                 continue
             else:
                 return False

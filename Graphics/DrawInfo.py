@@ -7,9 +7,9 @@ def DrawStats(library, chart, player):
     name_to_draw = " Name:   {0}".format(player.name)
     race_to_draw = " Race:   {0}".format(player.race)
     level_to_draw = " Level:  {0}".format(player.level)
-    health_to_draw = " Health: {0}/{1}".format(player.stats["health"][0], player.stats["health"][1])
-    mana_to_draw = " Mana:   {0}/{1}".format(player.stats["mana"][0], player.stats["mana"][1])
-    energy_to_draw = " Energy: {0}/{1}".format(player.stats["energy"][0], player.stats["energy"][1])
+    health_to_draw = " Health: {0}/{1}   ".format(player.stats["health"][0], player.stats["health"][1])
+    mana_to_draw = " Mana:   {0}/{1}   ".format(player.stats["mana"][0], player.stats["mana"][1])
+    energy_to_draw = " Energy: {0}/{1}   ".format(player.stats["energy"][0], player.stats["energy"][1])
     to_draw_complete = (
     title_to_draw,
     name_to_draw,
@@ -107,10 +107,14 @@ def DrawSkills(library, chart, player):
 
 def DrawLocation(library, chart, player):
     title_to_draw = "+ LOCATION +"
-    location_to_draw = " Map: {0} X: {1} Y: {2}".format(chart.id, player.x, player.y)
+    location_to_draw = " Map: {0}".format(chart.id)
+    x_to_draw = " X:   {0}   ".format(player.x)
+    y_to_draw = " Y:   {0}   ".format(player.y)
     to_draw_complete = (
     title_to_draw,
     location_to_draw,
+    x_to_draw,
+    y_to_draw,
     )
     for y in range(0, len(to_draw_complete)):
         for x in range(0, len(to_draw_complete[y])):
