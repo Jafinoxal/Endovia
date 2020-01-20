@@ -51,4 +51,5 @@ def MoveCharacter(x_from, y_from, x_add, y_add, character_to_move, chart, object
     if _in_boundaries(x_from, y_from, x_add, y_add, chart):
         if _in_enemy(x_from, y_from, x_add, y_add, chart, entities):
             return True
+    return False
 # Jafinoxal.

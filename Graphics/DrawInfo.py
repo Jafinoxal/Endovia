@@ -17,7 +17,7 @@ def DrawStats(library, chart, player):
     level_to_draw,
     health_to_draw,
     mana_to_draw,
-    energy_to_draw
+    energy_to_draw,
     )
     for y in range(0, len(to_draw_complete)):
         for x in range(0, len(to_draw_complete[y])):
@@ -97,7 +97,7 @@ def DrawSkills(library, chart, player):
     cooking_to_draw,
     hunter_to_draw,
     construction_to_draw,
-    summoning_to_draw
+    summoning_to_draw,
     )
     for y in range(0, len(to_draw_complete)):
         for x in range(0, len(to_draw_complete[y])):
@@ -105,4 +105,16 @@ def DrawSkills(library, chart, player):
             library.console_set_char_background(0, x + chart.width + 2, y + 18, library.Color(0, 0, 0))
             library.console_set_char(0, x + chart.width + 2, y + 18, to_draw_complete[y][x])
 
+def DrawLocation(library, chart, player):
+    title_to_draw = "+ LOCATION +"
+    location_to_draw = " Map: {0} X: {1} Y: {2}".format(chart.id, player.x, player.y)
+    to_draw_complete = (
+    title_to_draw,
+    location_to_draw,
+    )
+    for y in range(0, len(to_draw_complete)):
+        for x in range(0, len(to_draw_complete[y])):
+            library.console_set_char_foreground(0, x + chart.width + 2, y + 38, library.Color(255, 255, 255))
+            library.console_set_char_background(0, x + chart.width + 2, y + 38, library.Color(0, 0, 0))
+            library.console_set_char(0, x + chart.width + 2, y + 38, to_draw_complete[y][x])
 # Jafinoxal.
