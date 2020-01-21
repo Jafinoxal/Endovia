@@ -119,7 +119,7 @@ class Chart(Basic.Chart):
             if random.randint(0, 1):
                 # Place the enemy at the position in the grid.
                 self.grids[entity_category][(x, y)] = {0: entity_category, 1: entity_id, 2: None}
-                entity_positions[(entity_category, entity_id)] = (x, y)
+                entity_positions[(entity_category, entity_id, i)] = (x, y)
         # Return {(0, 0): (x, y), ...}
         return entity_positions
 

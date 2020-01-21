@@ -24,7 +24,7 @@ SCREEN_HEIGHT = 85
 CHART_ID = 0
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
-WINDOW_NAME = "Endovia 1.056"
+WINDOW_NAME = "Endovia 1.057"
 FONT_NAME = "terminal8x8_gs_ro.png"
 FONT_TYPE = libtcodpy.FONT_TYPE_GREYSCALE | libtcodpy.FONT_LAYOUT_ASCII_INROW
 CHARTS_SAVE_FILE_NAME = "Saves/Charts.save"
@@ -80,6 +80,7 @@ def start_characters(player_position, enemy_positions, charts, load=False):
 
             # Each character gets a fresh id.
             unique_id += 1
+    print characters
     return characters
 
 # Basic libtcod initialization.
@@ -93,25 +94,34 @@ def main():
     # object set characters. They can also be used in other places.
     charts, player_position, enemy_positions = start_charts(False)
     characters = start_characters(player_position, enemy_positions, charts,  False)
+    # Messages will be displayed [-1:-10].
+    messages = []
+    # Initialize the enemy position for the DrawEnemyInfo function.
+    enemy_x, enemy_y = None, None
     while not libtcodpy.console_is_window_closed():
-        # Chart related drawing.
-        Graphics.graphics["DrawChart"].DrawFloorsWalls(libtcodpy, Objects.objects, charts[0])
-        Graphics.graphics["DrawChart"].DrawEntities(libtcodpy, Entities.entities, charts[0])
-        Graphics.graphics["DrawChart"].DrawBorder(libtcodpy, charts[0].width, charts[0].height)
-        # Info related drawing.
-        Graphics.graphics["DrawInfo"].DrawStats(libtcodpy, charts[0], characters[0])
-        Graphics.graphics["DrawInfo"].DrawAttributes(libtcodpy, charts[0], characters[0])
-        Graphics.graphics["DrawInfo"].DrawSkills(libtcodpy, charts[0], characters[0])
-        Graphics.graphics["DrawInfo"].DrawLocation(libtcodpy, charts[0], characters[0])
-        # Flush the console.
-        libtcodpy.console_flush()
-        # Get the input event, event is a constant from Handlers.Constant.
-        event = Handlers.handlers["InputHandler"].MainGame(libtcodpy)
         # Find the active chart, if so save the chart id in chart_id.
         for chart in charts.keys():
             if charts[chart].active:
                 chart_id = charts[chart].id
                 break
+        # Chart related drawing.
+        Graphics.graphics["DrawChart"].DrawFloorsWalls(libtcodpy, Objects.objects, charts[0])
+        Graphics.graphics["DrawChart"].DrawEntities(libtcodpy, Entities.entities, charts[0])
+        Graphics.graphics["DrawChart"].DrawBorder(libtcodpy, charts[chart_id].width, charts[0].height)
+        # Info related drawing.
+        Graphics.graphics["DrawInfo"].DrawStats(libtcodpy, charts[chart_id], characters[0])
+        Graphics.graphics["DrawInfo"].DrawAttributes(libtcodpy, charts[chart_id], characters[0])
+        Graphics.graphics["DrawInfo"].DrawSkills(libtcodpy, charts[chart_id], characters[0])
+        Graphics.graphics["DrawInfo"].DrawLocation(libtcodpy, charts[chart_id], characters[0])
+        Graphics.graphics["DrawInfo"].DrawMessages(libtcodpy, messages, charts[chart_id])
+        Graphics.graphics["DrawInfo"].DrawEnemyInfo(libtcodpy, charts[chart_id], characters[0], enemy_x, enemy_y, Entities.entities)
+        # Reset the enemy position so enemy info doesn't draw out of fight.
+        enemy_x, enemy_y = None, None
+        # Flush the console.
+        libtcodpy.console_flush()
+        # Get the input event, event is a constant from Handlers.Constant.
+        event = Handlers.handlers["InputHandler"].MainGame(libtcodpy)
+        enemy_there = False
         # If event is the escape key exit game without saving.
         if event == EXIT_GAME_WITHOUT_SAVE:
             exit(0)
@@ -133,9 +143,10 @@ def main():
             enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(characters[0].x, characters[0].y, EAST[0], EAST[1], characters[0], charts[chart_id], Objects.objects, Entities.entities)
             if enemy_there:
                 enemy_at = (characters[0].x + EAST[0], characters[0].y + EAST[1])
-        #if enemy_there:
-        #    Handlers.handlers["CombatHandler"].FightCharacter()
-
+        if enemy_there:
+            for message in (Handlers.handlers["CombatHandler"].FightCharacter(charts[chart_id], characters[0], characters, enemy_at[0], enemy_at[1], Entities.entities)):
+                messages.append(message)
+            enemy_x, enemy_y = enemy_at[0], enemy_at[1]
 # If running this file, call the main function.
 if __name__ == '__main__':
     main()

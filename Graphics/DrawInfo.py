@@ -121,4 +121,19 @@ def DrawLocation(library, chart, player):
             library.console_set_char_foreground(0, x + chart.width + 2, y + 38, library.Color(255, 255, 255))
             library.console_set_char_background(0, x + chart.width + 2, y + 38, library.Color(0, 0, 0))
             library.console_set_char(0, x + chart.width + 2, y + 38, to_draw_complete[y][x])
+
+def DrawMessages(library, messages, chart):
+    message_count = len(messages)
+    if message_count > 10:
+        message_count = 10
+    for message_index in range(0, message_count):
+        for x in range(0, len(messages[message_index])):
+            library.console_set_char_foreground(0, x, y + 38, library.Color(255, 255, 255))
+            library.console_set_char_background(0, x, y + 38, library.Color(0, 0, 0))
+            library.console_set_char(0, x + chart.width + 2, chart.height + 2, messages[-message_index][x])
+
+
+def DrawEnemyInfo(library, chart, player, enemy_x, enemy_y, entities):
+    pass
+
 # Jafinoxal.
