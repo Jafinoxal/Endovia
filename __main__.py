@@ -20,12 +20,13 @@ from Handlers.Constant import *
 from Objects.Constant import *
 
 SCREEN_WIDTH = 125
-SCREEN_HEIGHT = 85
+SCREEN_HEIGHT = 82
 CHART_ID = 0
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
-WINDOW_NAME = "Endovia 1.057"
+WINDOW_NAME = "Endovia 1.058"
 FONT_NAME = "terminal8x8_gs_ro.png"
+FILE_READ_MODE = "rb"
 FONT_TYPE = libtcodpy.FONT_TYPE_GREYSCALE | libtcodpy.FONT_LAYOUT_ASCII_INROW
 CHARTS_SAVE_FILE_NAME = "Saves/Charts.save"
 CHARACTERS_SAVE_FILE_NAME = "Saves/Characters.save"
@@ -34,7 +35,7 @@ PLAYER_ENTITY_ID = 0
 
 def start_charts(load=False):
     if load:
-        return pickle.load(open(CHARTS_SAVE_FILE_NAME, "rb"))
+        return pickle.load(open(CHARTS_SAVE_FILE_NAME, FILE_READ_MODE))
     else:
         charts = {
         0: Charts.charts["Dungeon"].Chart(CHART_ID, CHART_WIDTH, CHART_HEIGHT, True),
@@ -56,7 +57,7 @@ def start_charts(load=False):
 
 def start_characters(player_position, enemy_positions, charts, load=False):
     if load:
-        return pickle.load(open(CHARACTERS_SAVE_FILE_NAME, "rb"))
+        return pickle.load(open(CHARACTERS_SAVE_FILE_NAME, FILE_READ_MODE))
     else:
         # Find the active chart, if so save the chart id in chart_id.
         for chart in charts.keys():
@@ -80,7 +81,6 @@ def start_characters(player_position, enemy_positions, charts, load=False):
 
             # Each character gets a fresh id.
             unique_id += 1
-    print characters
     return characters
 
 # Basic libtcod initialization.
@@ -114,7 +114,7 @@ def main():
         Graphics.graphics["DrawInfo"].DrawSkills(libtcodpy, charts[chart_id], characters[0])
         Graphics.graphics["DrawInfo"].DrawLocation(libtcodpy, charts[chart_id], characters[0])
         Graphics.graphics["DrawInfo"].DrawMessages(libtcodpy, messages, charts[chart_id])
-        Graphics.graphics["DrawInfo"].DrawEnemyInfo(libtcodpy, charts[chart_id], characters[0], enemy_x, enemy_y, Entities.entities)
+        Graphics.graphics["DrawInfo"].DrawEnemyInfo(libtcodpy, charts[chart_id], characters, enemy_x, enemy_y, Entities.entities)
         # Reset the enemy position so enemy info doesn't draw out of fight.
         enemy_x, enemy_y = None, None
         # Flush the console.

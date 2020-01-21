@@ -107,7 +107,7 @@ def DrawSkills(library, chart, player):
 
 def DrawLocation(library, chart, player):
     title_to_draw = "+ LOCATION +"
-    location_to_draw = " Map: {0}".format(chart.id)
+    location_to_draw = " Map: {0}   ".format(chart.id)
     x_to_draw = " X:   {0}   ".format(player.x)
     y_to_draw = " Y:   {0}   ".format(player.y)
     to_draw_complete = (
@@ -122,18 +122,37 @@ def DrawLocation(library, chart, player):
             library.console_set_char_background(0, x + chart.width + 2, y + 38, library.Color(0, 0, 0))
             library.console_set_char(0, x + chart.width + 2, y + 38, to_draw_complete[y][x])
 
+def DrawEnemyInfo(library, chart, enemies, enemy_x, enemy_y, entities):
+    # Find the enemy.
+    for enemy in enemies.values():
+        if (enemy_x, enemy_y) == (enemy.x, enemy.y):
+            title_to_draw = "+ ENEMY +"
+            health_to_draw = " Health: {0}      ".format(enemy.health)
+            location_to_draw = " Map: {0}   ".format(chart.id)
+            x_to_draw = " X:   {0}   ".format(enemy_x)
+            y_to_draw = " Y:   {0}   ".format(enemy_y)
+            to_draw_complete = (
+            title_to_draw,
+            health_to_draw,
+            location_to_draw,
+            x_to_draw,
+            y_to_draw
+            )
+            for y in range(0, len(to_draw_complete)):
+                for x in range(0, len(to_draw_complete[y])):
+                    library.console_set_char_foreground(0, x + chart.width + 2, y + 42, library.Color(255, 255, 255))
+                    library.console_set_char_background(0, x + chart.width + 2, y + 42, library.Color(0, 0, 0))
+                    library.console_set_char(0, x + chart.width + 2, y + 42, to_draw_complete[y][x])
+            break
+
 def DrawMessages(library, messages, chart):
     message_count = len(messages)
     if message_count > 10:
         message_count = 10
-    for message_index in range(0, message_count):
-        for x in range(0, len(messages[message_index])):
-            library.console_set_char_foreground(0, x, y + 38, library.Color(255, 255, 255))
-            library.console_set_char_background(0, x, y + 38, library.Color(0, 0, 0))
-            library.console_set_char(0, x + chart.width + 2, chart.height + 2, messages[-message_index][x])
-
-
-def DrawEnemyInfo(library, chart, player, enemy_x, enemy_y, entities):
-    pass
+    for message_index in range(1, message_count + 1):
+        for x in range(0, len(messages[-message_index])):
+            library.console_set_char_foreground(0, x, message_index + chart.height + 1, library.Color(255, 255, 255))
+            library.console_set_char_background(0, x, message_index + chart.height + 1, library.Color(0, 0, 0))
+            library.console_set_char(0, x, message_index + chart.height + 1, messages[-message_index][x])
 
 # Jafinoxal.
