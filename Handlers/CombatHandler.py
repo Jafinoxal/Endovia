@@ -45,14 +45,15 @@ def _dead_character(chart, characters, entities):
     for character in characters.values():
         # Once again accessing health in the player is different from an enemy.
         if not character.unique_id:
-            if character.stats["health"] == 0:
+            if character.stats["health"] == 0 and character.dead == False:
                 character.dead = True
-                return "You have died!"
+                return "You have died!                                                             "
         # If an enemy.
         else:
-            if character.health == 0:
+            if character.health == 0 and character.dead == False:
                 character.dead = True
-                return "The {0} has died!".format(entities[characters[character.unique_id].grid_id][characters[character.unique_id].entity_id][2])
+                chart.grids[character.grid_id][(character.x, character.y)] = None
+                return "The {0} has died!                                                          ".format(entities[characters[character.unique_id].grid_id][characters[character.unique_id].entity_id][2])
     return False
 
 def FightCharacter(chart, player, characters, enemy_x, enemy_y, entities):
