@@ -52,14 +52,14 @@ def _description():
     5: "A nasty dirty fountain.",
     }
 
-def _symbol():
+def _symbol(): # 167.
     return {
-    0: u"º",
-    1: u"º",
-    2: u"º",
-    3: u"º",
-    4: u"º",
-    5: u"º",
+    0: "\xa7",
+    1: "\xa7",
+    2: "\xa7",
+    3: "\xa7",
+    4: "\xa7",
+    5: "\xa7",
     }
 
 def _color():

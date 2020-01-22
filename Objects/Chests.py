@@ -62,16 +62,16 @@ def _description():
     7: "A metal chest.",
     }
 
-def _symbol():
+def _symbol(): # 184.
     return {
-    0: u"©",
-    1: u"©",
-    2: u"©",
-    3: u"©",
-    4: u"©",
-    5: u"©",
-    6: u"©",
-    7: u"©",
+    0: "\xb8",
+    1: "\xb8",
+    2: "\xb8",
+    3: "\xb8",
+    4: "\xb8",
+    5: "\xb8",
+    6: "\xb8",
+    7: "\xb8",
     }
 
 def _color():

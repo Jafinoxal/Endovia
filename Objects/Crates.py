@@ -72,18 +72,18 @@ def _description():
     9: "A crate of spices.",
     }
 
-def _symbol(): # 184.
+def _symbol(): # 167.
     return {
-    0: u"\xb8",
-    1: u"\xb8",
-    2: u"\xb8",
-    3: u"\xb8",
-    4: u"\xb8",
-    5: u"\xb8",
-    6: u"\xb8",
-    7: u"\xb8",
-    8: u"\xb8",
-    9: u"\xb8",
+    0: u"\xa7",
+    1: u"\xa7",
+    2: u"\xa7",
+    3: u"\xa7",
+    4: u"\xa7",
+    5: u"\xa7",
+    6: u"\xa7",
+    7: u"\xa7",
+    8: u"\xa7",
+    9: u"\xa7",
     }
 
 def _color():

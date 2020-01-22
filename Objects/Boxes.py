@@ -62,16 +62,16 @@ def _description():
     7: "A box of bread.",
     }
 
-def _symbol():
+def _symbol(): # 245.
     return {
-    0: u"¬",
-    1: u"¬",
-    2: u"¬",
-    3: u"¬",
-    4: u"¬",
-    5: u"¬",
-    6: u"¬",
-    7: u"¬",
+    0: "\xf5",
+    1: "\xf5",
+    2: "\xf5",
+    3: "\xf5",
+    4: "\xf5",
+    5: "\xf5",
+    6: "\xf5",
+    7: "\xf5",
     }
 
 def _color():

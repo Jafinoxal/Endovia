@@ -57,15 +57,15 @@ def _description():
     6: "A somewhat strong pillar."
     }
 
-def _symbol():
+def _symbol(): # 221.
     return {
-    0: u"¦",
-    1: u"¦",
-    2: u"¦",
-    3: u"¦",
-    4: u"¦",
-    5: u"¦",
-    6: u"¦",
+    0: "\xdd",
+    1: "\xdd",
+    2: "\xdd",
+    3: "\xdd",
+    4: "\xdd",
+    5: "\xdd",
+    6: "\xdd",
     }
 
 def _color():

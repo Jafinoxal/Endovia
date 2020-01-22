@@ -57,15 +57,15 @@ def _description():
     6: "A sack of flour.",
     }
 
-def _symbol():
+def _symbol(): # 222.
     return {
-    0: u"§",
-    1: u"§",
-    2: u"§",
-    3: u"§",
-    4: u"§",
-    5: u"§",
-    6: u"§",
+    0: u"\xde",
+    1: u"\xde",
+    2: u"\xde",
+    3: u"\xde",
+    4: u"\xde",
+    5: u"\xde",
+    6: u"\xde",
     }
 
 def _color():

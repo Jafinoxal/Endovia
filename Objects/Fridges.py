@@ -47,13 +47,13 @@ def _description():
     4: "Perfect for beer and snacks.",
     }
 
-def _symbol():
+def _symbol(): # 241.
     return {
-    0: u"¶",
-    1: u"¶",
-    2: u"¶",
-    3: u"¶",
-    4: u"¶"
+    0: "\xf1",
+    1: "\xf1",
+    2: "\xf1",
+    3: "\xf1",
+    4: "\xf1",
     }
 
 def _color():

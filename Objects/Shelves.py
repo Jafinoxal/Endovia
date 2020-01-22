@@ -57,15 +57,15 @@ def _description():
     6: "A metal shelf.",
     }
 
-def _symbol():
+def _symbol(): # 8.
     return {
-    0: u"®",
-    1: u"®",
-    2: u"®",
-    3: u"®",
-    4: u"®",
-    5: u"®",
-    6: u"®",
+    0: "\x08",
+    1: "\x08",
+    2: "\x08",
+    3: "\x08",
+    4: "\x08",
+    5: "\x08",
+    6: "\x08",
     }
 
 def _color():

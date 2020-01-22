@@ -62,16 +62,16 @@ def _description():
     7: "A cracked glass window.",
     }
 
-def _symbol():
+def _symbol(): # 224.
     return {
-    0: "=",
-    1: "=",
-    2: "=",
-    3: "=",
-    4: "=",
-    5: "=",
-    6: "=",
-    7: "=",
+    0: "\xe0",
+    1: "\xe0",
+    2: "\xe0",
+    3: "\xe0",
+    4: "\xe0",
+    5: "\xe0",
+    6: "\xe0",
+    7: "\xe0",
     }
 
 def _color():

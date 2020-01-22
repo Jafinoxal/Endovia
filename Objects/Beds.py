@@ -53,14 +53,14 @@ def _description():
     5: "A soft bed roll and pillow filled with feathers.",
     }
 
-def _symbol():
+def _symbol(): # 15.
     return {
-    0: u"¥",
-    1: u"¥",
-    2: u"¥",
-    3: u"¥",
-    4: u"¥",
-    5: u"¥",
+    0: "\x0f",
+    1: "\x0f",
+    2: "\x0f",
+    3: "\x0f",
+    4: "\x0f",
+    5: "\x0f",
     }
 
 def _color():

@@ -52,7 +52,10 @@ def _dead_character(chart, characters, entities):
         else:
             if character.health == 0 and character.dead == False:
                 character.dead = True
+
                 chart.grids[character.grid_id][(character.x, character.y)] = None
+                character.x = None
+                character.y = None
                 return "The {0} has died!                                                          ".format(entities[characters[character.unique_id].grid_id][characters[character.unique_id].entity_id][2])
     return False
 
