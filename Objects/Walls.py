@@ -94,7 +94,7 @@ def _description():
 
 def _symbol(): # 219.
     return {
-    0: '\xf6',
+    0: "\xdb",
     1: "\xdb",
     2: "\xdb",
     3: "\xdb",

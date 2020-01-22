@@ -10,7 +10,8 @@ class Chart(object):
         self.active = active
         # Initialize all grids as empty.
         self.grids = {0:{}, 1:{}, 2:{}, 3:{}, 4:{}, 5:{}, 6:{}, 7:{}, 8:{},
-                      9:{}, 10:{}, 11:{}, 12:{}, 13:{}, 14:{}, 15:{}, 2000:{},
+                      9:{}, 10:{}, 11:{}, 12:{}, 13:{}, 14:{}, 15:{}, 16:{},
+                      17:{}, 18:{}, 2000:{},
                       2001:{}}
     def create_empty_grid(self, grid_id, grid_width, grid_height):
         # Loop through the entire grid and fill it with None.

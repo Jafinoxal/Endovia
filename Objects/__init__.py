@@ -18,6 +18,9 @@ import Sacks
 import Fountains
 import Pillars
 import Beds
+import Desks
+import Ovens
+import Sinks
 
 objects = {
 0: Walls.walls(),
@@ -36,6 +39,9 @@ objects = {
 13: Fountains.fountains(),
 14: Pillars.pillars(),
 15: Beds.beds(),
+16: Desks.desks(),
+17: Ovens.ovens(),
+18: Sinks.sinks(),
 }
 
 # Jafinoxal.
