@@ -4,11 +4,13 @@
 
 import CombatHandler
 import InputHandler
+import LevelingHandler
 import MovementHandler
 
 handlers = {
 "CombatHandler": CombatHandler,
 "InputHandler": InputHandler,
+"LevelingHandler": LevelingHandler,
 "MovementHandler": MovementHandler,
 }
 

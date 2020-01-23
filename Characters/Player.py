@@ -10,6 +10,7 @@ class Character(Basic.Character):
         self.name = name
         self.race = race
         self.level = 1
+        self.experience = 0
         self.stats = { # Current, Max.
         "health": (100, 100),
         "mana": (100, 100),
@@ -64,23 +65,5 @@ class Character(Basic.Character):
             self.skills[skill][0] = amount
             self.skills[skill][1] = (amount -1) * amount * 10
             return True
-
-    def _level_up_stat(self, stat):
-        if stat not in self.stats.keys():
-            return False
-        else:
-            self.stats[stat] = self.stats[stat](self.stats[stat][0], self.stats[stat][1] + 50)
-            return True
-
-    def _level_up_skill(self, skill):
-        if skill not in self.skills.keys():
-            return False
-        else:
-            experience_needed = self.skills[skill][0] * self.skills[skill][0] * 10
-            if self.skills[skill][1] >= experience_needed and self.skills[skill][0] != 100:
-                self.skills[skill] = self.skills[skill](self.skills[0] + 1, self.skills[1])
-                return True
-            else:
-                return False
 
 # Jafinoxal.

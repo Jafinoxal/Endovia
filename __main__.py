@@ -24,7 +24,7 @@ SCREEN_HEIGHT = 82
 CHART_ID = 0
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
-WINDOW_NAME = "Endovia 1.103"
+WINDOW_NAME = "Endovia 1.104"
 FONT_NAME = "terminal8x8_gs_ro.png"
 FILE_READ_MODE = "rb"
 FONT_TYPE = libtcodpy.FONT_TYPE_GREYSCALE | libtcodpy.FONT_LAYOUT_ASCII_INROW
@@ -144,9 +144,12 @@ def main():
             if enemy_there:
                 enemy_at = (characters[0].x + EAST[0], characters[0].y + EAST[1])
         if enemy_there:
-            for message in (Handlers.handlers["CombatHandler"].FightCharacter(charts[chart_id], characters[0], characters, enemy_at[0], enemy_at[1], Entities.entities)):
+            for message in Handlers.handlers["CombatHandler"].FightCharacter(charts[chart_id], characters[0], characters, enemy_at[0], enemy_at[1], Entities.entities):
                 messages.append(message)
             enemy_x, enemy_y = enemy_at[0], enemy_at[1]
+        for message in Handlers.handlers["LevelingHandler"].LevelCharacter(characters[0]):
+            messages.append(message)
+
 # If running this file, call the main function.
 if __name__ == '__main__':
     main()

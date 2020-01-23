@@ -6,7 +6,7 @@ def DrawStats(library, chart, player):
     title_to_draw = "+ STATS +"
     name_to_draw = " Name:   {0}".format(player.name)
     race_to_draw = " Race:   {0}".format(player.race)
-    level_to_draw = " Level:  {0}".format(player.level)
+    level_to_draw = " Level:  {0}:{1}/{2}          ".format(player.level, player.experience, player.level * player.level * 15)
     health_to_draw = " Health: {0}/{1}   ".format(player.stats["health"][0], player.stats["health"][1])
     mana_to_draw = " Mana:   {0}/{1}   ".format(player.stats["mana"][0], player.stats["mana"][1])
     energy_to_draw = " Energy: {0}/{1}   ".format(player.stats["energy"][0], player.stats["energy"][1])
