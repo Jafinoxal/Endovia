@@ -50,36 +50,6 @@ class Chart(Basic.Chart):
             # Return False because room carving was a failure.
             return False
 
-    def _carve_tunnels(self, start_x, start_y, width, height, object_id):
-        for y in range(start_y, height):
-            # The max horizontal or vertical tunnels that can be dug is 3.
-            horizontal_tunnels_dug = 0
-            vertical_tunnels_dug = 0
-            # Iterate the start of the the grid.
-            for x in range(start_x, width):
-                # If by random chance start carving a horizontal tunnel.
-                if random.randint(0, 25) == 0 and horizontal_tunnels_dug < 3:
-                    # Decide tunnel length.
-                    tunnel_length = random.randint(4, 12)
-                    for x in range(x, x + tunnel_length):
-                        # Check if tunnel position is within bounds.
-                        if width > x > start_x and height > y > start_y:
-                            # Carve out tunnel position.
-                            self.grids[0][(x, y)] = None
-                            self.grids[1][(x, y)] = {0: 1, 1: object_id, 2: None}
-                    horizontal_tunnels_dug += 1
-                # If by random chance start digging a vertical tunnel.
-                elif random.randint(0, 25) == 0 and vertical_tunnels_dug < 3:
-                    # Decide tunnel length.
-                    tunnel_length = random.randint(4, 12)
-                    for y in range(y, y + tunnel_length):
-                        # Check if tunnel position is within bounds.
-                        if width > x > start_x and height > y > start_y:
-                            # Carve out tunnel position.
-                            self.grids[0][(x, y)] = None
-                            self.grids[1][(x, y)] = {0: 1, 1: object_id, 2: None}
-                    vertical_tunnels_dug += 1
-
     def _is_free(self, objects, entities, x, y): # HexDecimal
         for category in objects.keys():
             # Skip category 1 because objects and entities can be placed on most floors.
@@ -94,6 +64,40 @@ class Chart(Basic.Chart):
                 return False
         # Returns True if nothing has been detected at the position.
         return True
+
+    def _carve_tunnels(self, objects, entities, start_x, start_y, width, height, object_id):
+        for y in range(start_y, height):
+            # The max horizontal or vertical tunnels that can be dug is 3.
+            horizontal_tunnels_dug = 0
+            vertical_tunnels_dug = 0
+            # Iterate the start of the the grid.
+            for x in range(start_x, width):
+                # If by random chance start carving a horizontal tunnel.
+                if random.randint(0, 25) == 0 and horizontal_tunnels_dug < 3:
+                    # Decide tunnel length.
+                    tunnel_length = random.randint(4, 12)
+                    for x in range(x, x + tunnel_length):
+                        # Check if tunnel starts at an open spot.
+                        if self._is_free(objects, entities, x, y):
+                            # Check if tunnel position is within bounds.
+                            if width > x > start_x and height > y > start_y:
+                                # Carve out tunnel position.
+                                self.grids[0][(x, y)] = None
+                                self.grids[1][(x, y)] = {0: 1, 1: object_id, 2: None}
+                    horizontal_tunnels_dug += 1
+                # If by random chance start digging a vertical tunnel.
+                elif random.randint(0, 25) == 0 and vertical_tunnels_dug < 3:
+                    # Decide tunnel length.
+                    tunnel_length = random.randint(4, 12)
+                    for y in range(y, y + tunnel_length):
+                        # Check if tunnel starts at an open spot.
+                        if self._is_free(objects, entities, x, y):
+                            # Check if tunnel position is within bounds.
+                            if width > x > start_x and height > y > start_y:
+                                # Carve out tunnel position.
+                                self.grids[0][(x, y)] = None
+                                self.grids[1][(x, y)] = {0: 1, 1: object_id, 2: None}
+                    vertical_tunnels_dug += 1
 
     def _place_player_start(self, objects, entities, entity_category, entity_id):
         # Iterate through entire grid to start.

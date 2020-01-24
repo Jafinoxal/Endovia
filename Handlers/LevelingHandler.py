@@ -40,12 +40,19 @@ def LevelCharacter(player):
     messages.append(_level_up_main(player))
     if not messages[-1]:
         messages.pop()
+        main_level_up = False
+    else:
+        main_level_up = True
     # Iterate through each skill and see if it meets the level up requirement.
     for skill in player.skills.keys():
         messages.append(_level_up_skill(player, skill))
         # If the skill returns False instead of a message remove it from messages.
         if not messages[-1]:
             messages.pop()
-    return messages
+    return main_level_up, messages
+
+def PickStat(player, stat):
+    stat = ("health", "mana", "energy")[stat]
+    _level_up_stat(player, stat)
 
 # Jafinoxal.

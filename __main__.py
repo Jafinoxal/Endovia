@@ -24,7 +24,7 @@ SCREEN_HEIGHT = 82
 CHART_ID = 0
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
-WINDOW_NAME = "Endovia 1.106"
+WINDOW_NAME = "Endovia 1.107"
 FONT_NAME = "terminal8x8_gs_ro.png"
 FILE_READ_MODE = "rb"
 FONT_TYPE = libtcodpy.FONT_TYPE_GREYSCALE | libtcodpy.FONT_LAYOUT_ASCII_INROW
@@ -98,12 +98,18 @@ def main():
     messages = []
     # Initialize the enemy position for the DrawEnemyInfo function.
     enemy_x, enemy_y = None, None
+    # Initialize main_level_up here so no error occurs.
+    main_level_up = False
     while not libtcodpy.console_is_window_closed():
+        # Reset turn_taken to False so enemies don't take a turn when player doesn't.
+        turn_taken = False
         # Find the active chart, if so save the chart id in chart_id.
         for chart in charts.keys():
             if charts[chart].active:
                 chart_id = charts[chart].id
                 break
+        # Stat menu drawing.
+        Graphics.graphics["DrawMenu"].DrawBorder(libtcodpy, charts[chart_id].width, charts[0].height)
         # Chart related drawing.
         Graphics.graphics["DrawChart"].DrawFloorsWalls(libtcodpy, Objects.objects, charts[0])
         Graphics.graphics["DrawChart"].DrawEntities(libtcodpy, Entities.entities, charts[0])
@@ -131,23 +137,29 @@ def main():
             enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(characters[0].x, characters[0].y, NORTH[0], NORTH[1], characters[0], charts[chart_id], Objects.objects, Entities.entities)
             if enemy_there:
                 enemy_at = (characters[0].x + NORTH[0], characters[0].y + NORTH[1])
+            turn_taken = True
         elif event == MOVE_PLAYER_SOUTH:
             enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(characters[0].x, characters[0].y, SOUTH[0], SOUTH[1], characters[0], charts[chart_id], Objects.objects, Entities.entities)
             if enemy_there:
                 enemy_at = (characters[0].x + SOUTH[0], characters[0].y + SOUTH[1])
+            turn_taken = True
         elif event == MOVE_PLAYER_WEST:
             enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(characters[0].x, characters[0].y, WEST[0], WEST[1], characters[0], charts[chart_id], Objects.objects, Entities.entities)
             if enemy_there:
                 enemy_at = (characters[0].x + WEST[0], characters[0].y + WEST[1])
+            turn_taken = True
         elif event == MOVE_PLAYER_EAST:
             enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(characters[0].x, characters[0].y, EAST[0], EAST[1], characters[0], charts[chart_id], Objects.objects, Entities.entities)
             if enemy_there:
                 enemy_at = (characters[0].x + EAST[0], characters[0].y + EAST[1])
+            turn_taken = True
         if enemy_there:
             for message in Handlers.handlers["CombatHandler"].FightCharacter(charts[chart_id], characters[0], characters, enemy_at[0], enemy_at[1], Entities.entities):
                 messages.append(message)
             enemy_x, enemy_y = enemy_at[0], enemy_at[1]
-        for message in Handlers.handlers["LevelingHandler"].LevelCharacter(characters[0]):
+            # main_level_up is used to see if we should pick a stat to increase.
+        main_level_up, messages_new = Handlers.handlers["LevelingHandler"].LevelCharacter(characters[0])
+        for message in messages_new:
             messages.append(message)
 
 # If running this file, call the main function.

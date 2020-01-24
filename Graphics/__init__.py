@@ -4,10 +4,12 @@
 
 import DrawChart
 import DrawInfo
+import DrawMenu
 
 graphics = {
 "DrawChart": DrawChart,
 "DrawInfo": DrawInfo,
+"DrawMenu": DrawMenu,
 }
 
 # Jafinoxal.
