@@ -48,6 +48,7 @@ class Character(Basic.Character):
         "hunter": (1, 0),
         "summoning": (1, 0),
         "construction": (1, 0),
+        "alchemy": (1, 0),
         }
 
     def _assign_stat(self, stat, amount):

@@ -58,25 +58,26 @@ def DrawAttributes(library, chart, player):
 
 def DrawSkills(library, chart, player):
     title_to_draw = "+ SKILLS +"
-    melee_to_draw = " melee:        {0}".format(player.skills["melee"][0])
-    ranged_to_draw = " ranged:       {0}".format(player.skills["ranged"][0])
-    magic_to_draw = " magic:        {0}".format(player.skills["magic"][0])
-    gunning_to_draw = " gunning:      {0}".format(player.skills["gunning"][0])
-    prayer_to_draw = " prayer:       {0}".format(player.skills["prayer"][0])
-    speech_to_draw = " speech:       {0}".format(player.skills["speech"][0])
-    barter_to_draw = " barter:       {0}".format(player.skills["barter"][0])
-    thieving_to_draw = " thieving:     {0}".format(player.skills["thieving"][0])
-    forestry_to_draw = " forestry:     {0}".format(player.skills["forestry"][0])
-    kindling_to_draw = " kindling:     {0}".format(player.skills["kindling"][0])
-    fletching_to_draw = " fletching:    {0}".format(player.skills["fletching"][0])
-    mining_to_draw = " mining:       {0}".format(player.skills["mining"][0])
-    smithing_to_draw = " smithing:     {0}".format(player.skills["smithing"][0])
-    crafting_to_draw = " crafting:     {0}".format(player.skills["crafting"][0])
-    fishing_to_draw = " fishing:      {0}".format(player.skills["fishing"][0])
-    cooking_to_draw = " cooking:      {0}".format(player.skills["cooking"][0])
-    hunter_to_draw = " hunter:       {0}".format(player.skills["hunter"][0])
-    construction_to_draw = " construction: {0}".format(player.skills["construction"][0])
-    summoning_to_draw = " summoning:    {0}".format(player.skills["summoning"][0])
+    melee_to_draw = " melee:        {0}:{1}/{2}                      ".format(player.skills["melee"][0], player.skills["melee"][1], player.skills["melee"][0] * player.skills["melee"][0] * 30)
+    ranged_to_draw = " ranged:       {0}:{1}/{2}                     ".format(player.skills["ranged"][0], player.skills["ranged"][1], player.skills["ranged"][0] * player.skills["ranged"][0] * 30)
+    magic_to_draw = " magic:        {0}:{1}/{2}                      ".format(player.skills["magic"][0], player.skills["magic"][1], player.skills["magic"][0] * player.skills["magic"][0] * 30)
+    gunning_to_draw = " gunning:      {0}:{1}/{2}                      ".format(player.skills["gunning"][0], player.skills["gunning"][1], player.skills["gunning"][0] * player.skills["gunning"][0] * 30)
+    prayer_to_draw = " prayer:       {0}:{1}/{2}                     ".format(player.skills["prayer"][0], player.skills["prayer"][1], player.skills["prayer"][0] * player.skills["prayer"][0] * 30)
+    speech_to_draw = " speech:       {0}:{1}/{2}                      ".format(player.skills["speech"][0], player.skills["speech"][1], player.skills["speech"][0] * player.skills["speech"][0] * 30)
+    barter_to_draw = " barter:       {0}:{1}/{2}                      ".format(player.skills["barter"][0], player.skills["barter"][1], player.skills["barter"][0] * player.skills["barter"][0] * 30)
+    thieving_to_draw = " thieving:     {0}:{1}/{2}                      ".format(player.skills["thieving"][0], player.skills["thieving"][1], player.skills["thieving"][0] * player.skills["thieving"][0] * 30)
+    forestry_to_draw = " forestry:     {0}:{1}/{2}                     ".format(player.skills["forestry"][0], player.skills["forestry"][1], player.skills["forestry"][0] * player.skills["forestry"][0] * 30)
+    kindling_to_draw = " kindling:     {0}:{1}/{2}                      ".format(player.skills["kindling"][0], player.skills["kindling"][1], player.skills["kindling"][0] * player.skills["kindling"][0] * 30)
+    fletching_to_draw = " fletching:    {0}:{1}/{2}                      ".format(player.skills["fletching"][0], player.skills["fletching"][1], player.skills["fletching"][0] * player.skills["fletching"][0] * 30)
+    mining_to_draw = " mining:       {0}:{1}/{2}                     ".format(player.skills["mining"][0], player.skills["mining"][1], player.skills["mining"][0] * player.skills["mining"][0] * 30)
+    smithing_to_draw = " smithing:     {0}:{1}/{2}                      ".format(player.skills["smithing"][0], player.skills["smithing"][1], player.skills["smithing"][0] * player.skills["smithing"][0] * 30)
+    crafting_to_draw = " crafting:     {0}:{1}/{2}                      ".format(player.skills["crafting"][0], player.skills["crafting"][1], player.skills["crafting"][0] * player.skills["crafting"][0] * 30)
+    fishing_to_draw = " fishing:      {0}:{1}/{2}                      ".format(player.skills["fishing"][0], player.skills["fishing"][1], player.skills["fishing"][0] * player.skills["fishing"][0] * 30)
+    cooking_to_draw = " cooking:      {0}:{1}/{2}                      ".format(player.skills["cooking"][0], player.skills["cooking"][1], player.skills["cooking"][0] * player.skills["cooking"][0] * 30)
+    hunter_to_draw = " hunter:       {0}:{1}/{2}                      ".format(player.skills["hunter"][0], player.skills["hunter"][1], player.skills["hunter"][0] * player.skills["hunter"][0] * 30)
+    construction_to_draw = " construction: {0}:{1}/{2}                      ".format(player.skills["construction"][0], player.skills["construction"][1], player.skills["construction"][0] * player.skills["construction"][0] * 30)
+    summoning_to_draw = " summoning:    {0}:{1}/{2}                      ".format(player.skills["summoning"][0], player.skills["summoning"][1], player.skills["summoning"][0] * player.skills["summoning"][0] * 30)
+    alchemy_to_draw = " alchemy:      {0}:{1}/{2}                      ".format(player.skills["alchemy"][0], player.skills["alchemy"][1], player.skills["alchemy"][0] * player.skills["alchemy"][0] * 30)
     to_draw_complete = (
     title_to_draw,
     melee_to_draw,
@@ -98,6 +99,7 @@ def DrawSkills(library, chart, player):
     hunter_to_draw,
     construction_to_draw,
     summoning_to_draw,
+    alchemy_to_draw,
     )
     for y in range(0, len(to_draw_complete)):
         for x in range(0, len(to_draw_complete[y])):
@@ -118,9 +120,9 @@ def DrawLocation(library, chart, player):
     )
     for y in range(0, len(to_draw_complete)):
         for x in range(0, len(to_draw_complete[y])):
-            library.console_set_char_foreground(0, x + chart.width + 2, y + 38, library.Color(255, 255, 255))
-            library.console_set_char_background(0, x + chart.width + 2, y + 38, library.Color(0, 0, 0))
-            library.console_set_char(0, x + chart.width + 2, y + 38, to_draw_complete[y][x])
+            library.console_set_char_foreground(0, x + chart.width + 2, y + 39, library.Color(255, 255, 255))
+            library.console_set_char_background(0, x + chart.width + 2, y + 39, library.Color(0, 0, 0))
+            library.console_set_char(0, x + chart.width + 2, y + 39, to_draw_complete[y][x])
 
 def DrawEnemyInfo(library, chart, enemies, enemy_x, enemy_y, entities):
     # Find the enemy.
@@ -140,9 +142,9 @@ def DrawEnemyInfo(library, chart, enemies, enemy_x, enemy_y, entities):
             )
             for y in range(0, len(to_draw_complete)):
                 for x in range(0, len(to_draw_complete[y])):
-                    library.console_set_char_foreground(0, x + chart.width + 2, y + 42, library.Color(255, 255, 255))
-                    library.console_set_char_background(0, x + chart.width + 2, y + 42, library.Color(0, 0, 0))
-                    library.console_set_char(0, x + chart.width + 2, y + 42, to_draw_complete[y][x])
+                    library.console_set_char_foreground(0, x + chart.width + 2, y + 43, library.Color(255, 255, 255))
+                    library.console_set_char_background(0, x + chart.width + 2, y + 43, library.Color(0, 0, 0))
+                    library.console_set_char(0, x + chart.width + 2, y + 43, to_draw_complete[y][x])
             break
 
 def DrawMessages(library, messages, chart):
