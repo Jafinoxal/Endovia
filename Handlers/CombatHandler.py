@@ -13,6 +13,7 @@ def _attack_enemy(chart, player, enemies, enemy_x, enemy_y, entities):
         if (enemy.x, enemy.y) == (enemy_x, enemy_y):
             name = entities[enemies[enemy.unique_id].grid_id][enemies[enemy.unique_id].entity_id][2]
             damage = (player.attributes["strength"] + player.skills["melee"][0])
+            player.experience += damage * 5
             enemies[enemy.unique_id].health -= damage
             return "You punch the {0} and deal {1} damage. Enemy at ({2},{3}).                        ".format(name, damage, enemy.x, enemy.y)
 

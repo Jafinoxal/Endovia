@@ -6,7 +6,7 @@ def _level_up_main(player):
     experience_needed = player.level * player.level * 15
     if player.experience >= experience_needed and player.level != 1000:
         player.level += 1
-        return "Your main level went from {1} to {2}!".format(self.level - 1, self.level)
+        return "Your main level went from {0} to {1}!                           ".format(player.level - 1, player.level)
     else:
         return False
 
@@ -15,14 +15,14 @@ def _level_up_stat(player, stat):
         return False
     else:
         player.stats[stat] = player.stats[stat](player.stats[stat][0], player.stats[stat][1] + 50)
-        return "Your total {0} went from {1} to {2}!".format(stat, player.stats[stat][1] - 50, player.stats[stat][1])
+        return "Your total {0} went from {1} to {2}!                            ".format(stat, player.stats[stat][1] - 50, player.stats[stat][1])
 
 def _level_up_attribute(player, attribute):
     if attribute not in player.attributes.keys():
         return False
     else:
         player.attributes[attribute] += 1
-        return "Your {0} level went from {1} to {2}!".format(attribute, player.attributes[attribute] - 1, player.attributes[attribute])
+        return "Your {0} level went from {1} to {2}!                            ".format(attribute, player.attributes[attribute] - 1, player.attributes[attribute])
 
 def _level_up_skill(player, skill):
     if skill not in player.skills.keys():
@@ -31,7 +31,7 @@ def _level_up_skill(player, skill):
         experience_needed = player.skills[skill][0] * player.skills[skill][0] * 30
         if player.skills[skill][1] >= experience_needed and player.skills[skill][0] != 100:
             player.skills[skill] = player.skills[skill](player.skills[0] + 1, player.skills[1])
-            return "Your {0} level went from {1} to {2}!".format(skill, player.skills[skill][0] - 1, player.skills[0])
+            return "Your {0} level went from {1} to {2}!                        ".format(skill, player.skills[skill][0] - 1, player.skills[0])
         else:
             return False
 
