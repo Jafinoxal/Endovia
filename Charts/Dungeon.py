@@ -77,10 +77,10 @@ class Chart(Basic.Chart):
                     # Decide tunnel length.
                     tunnel_length = random.randint(4, 12)
                     for x in range(x, x + tunnel_length):
-                        # Check if tunnel starts at an open spot.
-                        if self._is_free(objects, entities, x, y):
-                            # Check if tunnel position is within bounds.
-                            if width > x > start_x and height > y > start_y:
+                        # Check if tunnel position is within bounds.
+                        if width > x > start_x and height > y > start_y:
+                            # Check if tunnel is at an open spot.
+                            if self._is_free(objects, entities, x, y):
                                 # Carve out tunnel position.
                                 self.grids[0][(x, y)] = None
                                 self.grids[1][(x, y)] = {0: 1, 1: object_id, 2: None}
@@ -90,10 +90,10 @@ class Chart(Basic.Chart):
                     # Decide tunnel length.
                     tunnel_length = random.randint(4, 12)
                     for y in range(y, y + tunnel_length):
-                        # Check if tunnel starts at an open spot.
-                        if self._is_free(objects, entities, x, y):
-                            # Check if tunnel position is within bounds.
-                            if width > x > start_x and height > y > start_y:
+                        # Check if tunnel position is within bounds.
+                        if width > x > start_x and height > y > start_y:
+                            # Check if tunnel is at an open spot.
+                            if self._is_free(objects, entities, x, y):
                                 # Carve out tunnel position.
                                 self.grids[0][(x, y)] = None
                                 self.grids[1][(x, y)] = {0: 1, 1: object_id, 2: None}
