@@ -47,7 +47,7 @@ def _description():
     4: "A metal sink.",
     }
 
-def _symbol(): # 246.
+def _symbol(): # 10.
     return {
     0: "\x0a",
     1: "\x0a",
