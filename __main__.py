@@ -19,12 +19,13 @@ from Entities.Constant import *
 from Handlers.Constant import *
 from Objects.Constant import *
 
+# Constants.
 SCREEN_WIDTH = 125
 SCREEN_HEIGHT = 82
 CHART_ID = 0
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
-WINDOW_NAME = "Endovia 1.108"
+WINDOW_NAME = "Endovia 1.109"
 FONT_NAME = "terminal8x8_gs_ro.png"
 FILE_READ_MODE = "rb"
 FONT_TYPE = libtcodpy.FONT_TYPE_GREYSCALE | libtcodpy.FONT_LAYOUT_ASCII_INROW
@@ -33,6 +34,7 @@ CHARACTERS_SAVE_FILE_NAME = "Saves/Characters.save"
 PLAYER_GRID_ID = 2000
 PLAYER_ENTITY_ID = 0
 
+# All chart/map/dungeon generation and creation goes here.
 def start_charts(load=False):
     if load:
         return pickle.load(open(CHARTS_SAVE_FILE_NAME, FILE_READ_MODE))
@@ -55,6 +57,7 @@ def start_charts(load=False):
         player_position, enemy_positions = Charts.charts["Generators"].MainDungeonGenerator(Objects.objects, Entities.entities, charts[0], charts[0].rooms, 0, 0)
     return charts, player_position, enemy_positions
 
+# All entity/character generation and creation goes here.
 def start_characters(player_position, enemy_positions, charts, load=False):
     if load:
         return pickle.load(open(CHARACTERS_SAVE_FILE_NAME, FILE_READ_MODE))
@@ -108,8 +111,6 @@ def main():
             if charts[chart].active:
                 chart_id = charts[chart].id
                 break
-        # Stat menu drawing.
-        Graphics.graphics["DrawMenu"].DrawBorder(libtcodpy, charts[chart_id].width, charts[0].height)
         # Chart related drawing.
         Graphics.graphics["DrawChart"].DrawFloorsWalls(libtcodpy, Objects.objects, charts[0])
         Graphics.graphics["DrawChart"].DrawEntities(libtcodpy, Entities.entities, charts[0])
@@ -125,6 +126,32 @@ def main():
         enemy_x, enemy_y = None, None
         # Flush the console.
         libtcodpy.console_flush()
+        if main_level_up:
+            choice = 0
+            stat_choices = ("health", "mana", "energy")
+            while True:
+                # Stat menu drawing.
+                Graphics.graphics["DrawMenu"].DrawBorder(libtcodpy, charts[chart_id].width, charts[0].height)
+                Graphics.graphics["DrawMenu"].DrawFiller(libtcodpy)
+                Graphics.graphics["DrawMenu"].DrawStatChoice(libtcodpy, choice)
+                libtcodpy.console_flush()
+                # Choose a stat to advance and wait for the enter key.
+                event = Handlers.handlers["InputHandler"].StatMenu(libtcodpy)
+                if event == SELECT_MENU_ENTER:
+                    Handlers.handlers["LevelingHandler"].LevelStat(characters[0], stat_choices[choice])
+                    break
+                if choice == 0 and event == MOVE_MENU_UP:
+                    choice = 2
+                elif choice == 0 and event == MOVE_MENU_DOWN:
+                    choice = 1
+                elif choice == 2 and event == MOVE_MENU_DOWN:
+                    choice = 0
+                elif choice == 2 and event == MOVE_MENU_UP:
+                    choice = 1
+                elif choice == 1 and event == MOVE_MENU_UP:
+                    choice = 0
+                elif choice == 1 and event == MOVE_MENU_DOWN:
+                    choice = 2
         # Get the input event, event is a constant from Handlers.Constant.
         event = Handlers.handlers["InputHandler"].MainGame(libtcodpy)
         enemy_there = False

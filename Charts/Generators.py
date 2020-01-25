@@ -5,7 +5,7 @@
 import random
 
 def MainDungeonGenerator(objects, entities, chart, rooms, player_entity_id, enemy_entity_id):
-    for i in range(0, 200):
+    for i in range(0, 500):
         x = random.randint(1, chart.width - 11)
         x2 = random.randint(5, 10)
         y = random.randint(1, chart.height - 11)

@@ -58,7 +58,7 @@ class Chart(Basic.Chart):
             # If True, something is there. Return False because something is there.
             if self.grids[category][(x, y)]:
                 return False
-        for category in entities:
+        for category in entities.keys():
             # Like above, returns False if something is there.
             if self.grids[category][(x, y)]:
                 return False
@@ -72,31 +72,30 @@ class Chart(Basic.Chart):
             vertical_tunnels_dug = 0
             # Iterate the start of the the grid.
             for x in range(start_x, width):
+                counter = 0
                 # If by random chance start carving a horizontal tunnel.
-                if random.randint(0, 25) == 0 and horizontal_tunnels_dug < 3:
+                if random.randint(0, 13) == 0 and horizontal_tunnels_dug < 15:
                     # Decide tunnel length.
                     tunnel_length = random.randint(4, 12)
                     for x in range(x, x + tunnel_length):
-                        # Check if tunnel position is within bounds.
-                        if width > x > start_x and height > y > start_y:
-                            # Check if tunnel is at an open spot.
-                            if self._is_free(objects, entities, x, y):
+                        # Check if tunnel position is within bounds and if tunnel starts at an open spot.
+                        if width > x > start_x and height > y > start_y and (not counter and self._is_free(objects, entities, x, y)) or (counter):
                                 # Carve out tunnel position.
                                 self.grids[0][(x, y)] = None
                                 self.grids[1][(x, y)] = {0: 1, 1: object_id, 2: None}
+                                counter += 1
                     horizontal_tunnels_dug += 1
                 # If by random chance start digging a vertical tunnel.
-                elif random.randint(0, 25) == 0 and vertical_tunnels_dug < 3:
+                elif random.randint(0, 13) == 0 and vertical_tunnels_dug < 15:
                     # Decide tunnel length.
                     tunnel_length = random.randint(4, 12)
                     for y in range(y, y + tunnel_length):
-                        # Check if tunnel position is within bounds.
-                        if width > x > start_x and height > y > start_y:
-                            # Check if tunnel is at an open spot.
-                            if self._is_free(objects, entities, x, y):
+                        # Check if tunnel position is within bounds and if tunnel starts at an open spot.
+                        if width > x > start_x and height > y > start_y and (not counter and self._is_free(objects, entities, x, y)) or (counter):
                                 # Carve out tunnel position.
                                 self.grids[0][(x, y)] = None
                                 self.grids[1][(x, y)] = {0: 1, 1: object_id, 2: None}
+                                counter += 1
                     vertical_tunnels_dug += 1
 
     def _place_player_start(self, objects, entities, entity_category, entity_id):

@@ -14,7 +14,7 @@ def _level_up_stat(player, stat):
     if stat not in player.stats.keys():
         return False
     else:
-        player.stats[stat] = player.stats[stat](player.stats[stat][0], player.stats[stat][1] + 50)
+        player.stats[stat] = (player.stats[stat][0] + 50, player.stats[stat][1] + 50)
         return "Your total {0} went from {1} to {2}!                            ".format(stat, player.stats[stat][1] - 50, player.stats[stat][1])
 
 def _level_up_attribute(player, attribute):
@@ -51,8 +51,7 @@ def LevelCharacter(player):
             messages.pop()
     return main_level_up, messages
 
-def PickStat(player, stat):
-    stat = ("health", "mana", "energy")[stat]
+def LevelStat(player, stat):
     _level_up_stat(player, stat)
 
 # Jafinoxal.

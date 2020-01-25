@@ -34,4 +34,14 @@ ATTACKS = { # Name, plural, damages, specials.
 "bite": ("bites", 1, 3),
 }
 
+DROPS = { # Name, category, id, amounts.
+"pettymoney": (1037, 1, (3, 7, 20, 32)),
+"lessermoney": (1037, 1, (45, 71, 103)),
+"okaymoney": (1037, 1, (178, 199, 223, 263)),
+"goodmoney": (1037, 1, (271, 295, 312, 320, 340, 400)),
+"greatmoney": (1037, 1, (420, 478, 512, 600, 712)),
+"awesomemoney": (1037, 1, (850, 942, 1023, 1210)),
+"powermoney": (1037, 1, (1500, 1673, 1782, 2000)),
+}
+
 # Jafinoxal.
