@@ -21,6 +21,7 @@ import Beds
 import Desks
 import Ovens
 import Sinks
+import Larders
 
 objects = {
 0: Walls.walls(),
@@ -42,6 +43,7 @@ objects = {
 16: Desks.desks(),
 17: Ovens.ovens(),
 18: Sinks.sinks(),
+19: Larders.larders(),
 }
 
 # Jafinoxal.
