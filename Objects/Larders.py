@@ -20,7 +20,7 @@ def _identity():
 
 def _name():
     return {
-    0: "Larders",
+    0: "Larder",
     1: "Kitchen Larder",
     2: "Cooled Larder",
     3: "Non-Parishable Larder",
