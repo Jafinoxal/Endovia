@@ -24,6 +24,7 @@ import Sinks
 import Larders
 import Cabinets
 import Wells
+import Lights
 
 objects = {
 0: Walls.walls(),
@@ -48,6 +49,7 @@ objects = {
 19: Larders.larders(),
 20: Cabinets.cabinets(),
 21: Wells.wells(),
+22: Lights.lights(),
 }
 
 # Jafinoxal.

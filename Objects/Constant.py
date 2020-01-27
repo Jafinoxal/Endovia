@@ -2,7 +2,7 @@
 # Endovia (Constant)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
-OBJECT_CATEGORIES = 22
+OBJECT_CATEGORIES = 23
 
 OBJECT_CATEGORY = 0
 OBJECT_IDENTITY = 1
@@ -36,7 +36,7 @@ SINKS = 18 # Complete.
 LARDERS = 19 # Complete.
 CABINETS = 20 # Complete.
 WELLS = 21 # Complete.
-LIGHTS = 22
+LIGHTS = 22 # Complete.
 CAGES = 23
 BOOKCASES = 24
 STORAGES = 25
@@ -53,9 +53,8 @@ ROCKS = 35
 STATUES = 36
 ALTERS = 37
 FISHERY = 38
-STALAGMITES = 39
-OBSTACLES = 40
-LOOMS = 41
-SPINNERS = 42
+OBSTACLES = 39
+LOOMS = 40
+SPINNERS = 41
 
 # Jafinoxal.
