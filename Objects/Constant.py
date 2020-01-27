@@ -2,7 +2,7 @@
 # Endovia (Constant)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
-OBJECT_CATEGORIES = 23
+OBJECT_CATEGORIES = 24
 
 OBJECT_CATEGORY = 0
 OBJECT_IDENTITY = 1
@@ -37,7 +37,7 @@ LARDERS = 19 # Complete.
 CABINETS = 20 # Complete.
 WELLS = 21 # Complete.
 LIGHTS = 22 # Complete.
-CAGES = 23
+CAGES = 23 # Complete.
 BOOKCASES = 24
 STORAGES = 25
 FURNACES = 26
