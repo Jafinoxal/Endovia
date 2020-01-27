@@ -48,7 +48,6 @@ def _symbol(): # 215.
     1: "%",
     2: "%",
     3: "%",
-    4: "%",
     }
 
 def _color():
@@ -65,7 +64,6 @@ def _clip():
     1: True,
     2: True,
     3: True,
-    4: True,
     }
 
 def _transparent():
@@ -74,7 +72,6 @@ def _transparent():
     1: False,
     2: False,
     3: False,
-    4: False
     }
 
 def furnaces():
