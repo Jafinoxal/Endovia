@@ -25,7 +25,8 @@ SCREEN_HEIGHT = 82
 CHART_ID = 0
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
-WINDOW_NAME = "Endovia 1.119"
+FRAMES_PER_SECOND = 60
+WINDOW_NAME = "Endovia 1.120"
 FONT_NAME = "terminal8x8_gs_ro.png"
 FILE_READ_MODE = "rb"
 FONT_TYPE = libtcodpy.FONT_TYPE_GREYSCALE | libtcodpy.FONT_LAYOUT_ASCII_INROW
@@ -89,7 +90,7 @@ def start_characters(player_position, enemy_positions, charts, load=False):
 # Basic libtcod initialization.
 libtcodpy.console_set_custom_font(FONT_NAME, FONT_TYPE, 0, 0)
 libtcodpy.console_init_root(SCREEN_WIDTH, SCREEN_HEIGHT, WINDOW_NAME, False)
-libtcodpy.sys_set_fps(20)
+libtcodpy.sys_set_fps(FRAMES_PER_SECOND)
 
 def main():
     # Get the object set charts from start_charts.
@@ -114,7 +115,7 @@ def main():
                 break
         # Chart related drawing.
         Graphics.graphics["DrawChart"].DrawFloorsWalls(libtcodpy, Objects.objects, charts[0], characters[0])
-        Graphics.graphics["DrawChart"].DrawEntities(libtcodpy, Entities.entities, charts[0], characters[0])
+        Graphics.graphics["DrawChart"].DrawEntities(libtcodpy, Objects.objects, Entities.entities, charts[0], characters[0])
         Graphics.graphics["DrawChart"].DrawBorder(libtcodpy, charts[chart_id].width, charts[0].height)
         # Info related drawing.
         Graphics.graphics["DrawInfo"].DrawStats(libtcodpy, charts[chart_id], characters[0])

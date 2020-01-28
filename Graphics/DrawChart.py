@@ -17,6 +17,8 @@ def DrawFloorsWalls(library, objects, chart, player):
             for x in range(0, chart.width):
                 if chart.grids[category][(x, y)] != None:
                     if library.map_is_in_fov(fov_map, x, y):
+                        if (x, y) not in chart.seen:
+                            chart.seen.append((x, y))
                         object_reference = objects[category][chart.grids[category][(x, y)][1]]
                         library.console_set_char_foreground(0, x+1, y+1, library.Color(object_reference[6][0][0],
                                                                                        object_reference[6][0][1],
@@ -25,20 +27,29 @@ def DrawFloorsWalls(library, objects, chart, player):
                                                                                        object_reference[6][1][1],
                                                                                        object_reference[6][1][2]))
                         library.console_set_char(0, x+1, y+1, object_reference[5])
+                    elif (x, y) in chart.seen:
+                        object_reference = objects[category][chart.grids[category][(x, y)][1]]
+                        library.console_set_char_foreground(0, x+1, y+1, library.Color(35, 35, 35))
+                        library.console_set_char_background(0, x+1, y+1, library.Color(0, 0, 0))
+                        library.console_set_char(0, x+1, y+1, object_reference[5])
                     else:
                         library.console_set_char_foreground(0, x+1, y+1, library.Color(0, 0, 0))
                         library.console_set_char_background(0, x+1, y+1, library.Color(0, 0, 0))
                         library.console_set_char(0, x+1, y+1, " ")
 
-def DrawEntities(library, entities, chart, player):
+def DrawEntities(library, objects, entities, chart, player):
     fov_map = library.map_new(chart.width, chart.height)
-    for category in (2000, 2001):
+    for category in (0, 2000, 2001):
         for y in range(0, chart.height):
             for x in range(0, chart.width):
                 if chart.grids[category][(x, y)] == None:
                     library.map_set_properties(fov_map, x, y, True, True)
                 else:
-                    library.map_set_properties(fov_map, x, y, entities[category][chart.grids[category][(x, y)][1]][8], not entities[category][chart.grids[category][(x, y)][1]][7])
+                    # If category is walls.
+                    if not category:
+                        library.map_set_properties(fov_map, x, y, objects[category][chart.grids[category][(x, y)][1]][8], not objects[category][chart.grids[category][(x, y)][1]][7])
+                    else:
+                        library.map_set_properties(fov_map, x, y, entities[category][chart.grids[category][(x, y)][1]][8], not entities[category][chart.grids[category][(x, y)][1]][7])
     library.map_compute_fov(fov_map, player.x, player.y, 5, True, 0)
     for category in (2000, 2001):
         for y in  range(0, chart.height):
