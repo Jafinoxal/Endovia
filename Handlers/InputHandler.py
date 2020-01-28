@@ -6,7 +6,6 @@ import Constant
 
 def StatMenu(library):
     key = library.console_wait_for_keypress(True)
-    key = library.console_wait_for_keypress(True)
     # Switching fullscreen.
     if key.vk == library.KEY_ENTER and key.lalt:
         library.console_set_fullscreen(not library.console_is_fullscreen())
@@ -24,7 +23,6 @@ def StatMenu(library):
         return Constant.NULL
 
 def MainMenu(library):
-    key = library.console_wait_for_keypress(True)
     key = library.console_wait_for_keypress(True)
     # Switching fullscreen.
     if key.vk == library.KEY_ENTER and key.lalt:
@@ -48,7 +46,6 @@ def MainMenu(library):
 
 def CharacterSelectionMenu(library):
     key = library.console_wait_for_keypress(True)
-    key = library.console_wait_for_keypress(True)
     # Switching fullscreen.
     if key.vk == library.KEY_ENTER and key.lalt:
         library.console_set_fullscreen(not library.console_is_fullscreen())
@@ -67,7 +64,6 @@ def CharacterSelectionMenu(library):
 # Jafinoxal.
 
 def MainGame(library):
-    key = library.console_wait_for_keypress(True)
     key = library.console_wait_for_keypress(True)
     # Switching fullscreen.
     if key.vk == library.KEY_ENTER and key.lalt:
