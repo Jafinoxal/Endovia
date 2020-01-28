@@ -25,7 +25,7 @@ SCREEN_HEIGHT = 82
 CHART_ID = 0
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
-WINDOW_NAME = "Endovia 1.117"
+WINDOW_NAME = "Endovia 1.118"
 FONT_NAME = "terminal8x8_gs_ro.png"
 FILE_READ_MODE = "rb"
 FONT_TYPE = libtcodpy.FONT_TYPE_GREYSCALE | libtcodpy.FONT_LAYOUT_ASCII_INROW
@@ -104,6 +104,7 @@ def main():
     # Initialize main_level_up here so no error occurs.
     main_level_up = False
     while not libtcodpy.console_is_window_closed():
+        skip_input = False
         # Reset turn_taken to False so enemies don't take a turn when player doesn't.
         turn_taken = False
         # Find the active chart, if so save the chart id in chart_id.
@@ -112,8 +113,8 @@ def main():
                 chart_id = charts[chart].id
                 break
         # Chart related drawing.
-        Graphics.graphics["DrawChart"].DrawFloorsWalls(libtcodpy, Objects.objects, charts[0])
-        Graphics.graphics["DrawChart"].DrawEntities(libtcodpy, Entities.entities, charts[0])
+        Graphics.graphics["DrawChart"].DrawFloorsWalls(libtcodpy, Objects.objects, charts[0], characters[0])
+        Graphics.graphics["DrawChart"].DrawEntities(libtcodpy, Entities.entities, charts[0], characters[0])
         Graphics.graphics["DrawChart"].DrawBorder(libtcodpy, charts[chart_id].width, charts[0].height)
         # Info related drawing.
         Graphics.graphics["DrawInfo"].DrawStats(libtcodpy, charts[chart_id], characters[0])
@@ -139,6 +140,7 @@ def main():
                 event = Handlers.handlers["InputHandler"].StatMenu(libtcodpy)
                 if event == SELECT_MENU_ENTER:
                     Handlers.handlers["LevelingHandler"].LevelStat(characters[0], stat_choices[choice])
+                    skip_input = True
                     break
                 if choice == 0 and event == MOVE_MENU_UP:
                     choice = 2
@@ -153,7 +155,10 @@ def main():
                 elif choice == 1 and event == MOVE_MENU_DOWN:
                     choice = 2
         # Get the input event, event is a constant from Handlers.Constant.
-        event = Handlers.handlers["InputHandler"].MainGame(libtcodpy)
+        if not skip_input:
+            event = Handlers.handlers["InputHandler"].MainGame(libtcodpy)
+        else:
+            event = None
         enemy_there = False
         # If event is the escape key exit game without saving.
         if event == EXIT_GAME_WITHOUT_SAVE:
