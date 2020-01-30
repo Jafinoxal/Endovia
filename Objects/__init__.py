@@ -30,6 +30,7 @@ import Furnaces
 import Anvils
 import Fires
 import Trees
+import Veins
 
 objects = {
 0: Walls.walls(),
@@ -60,6 +61,7 @@ objects = {
 25: Anvils.anvils(),
 26: Fires.fires(),
 27: Trees.trees(),
+28: Veins.veins(),
 }
 
 # Jafinoxal.
