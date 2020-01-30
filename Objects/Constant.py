@@ -2,7 +2,7 @@
 # Endovia (Constant)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
-OBJECT_CATEGORIES = 27
+OBJECT_CATEGORIES = 28
 
 OBJECT_CATEGORY = 0
 OBJECT_IDENTITY = 1
@@ -41,7 +41,7 @@ CAGES = 23 # Complete.
 FURNACES = 24 # Complete.
 ANVILS = 25 # Complete.
 FIRES = 26 # Complete.
-TREES = 27
+TREES = 27 # Complete.
 STUMPS = 28
 PLANTS = 29
 VEINS = 30

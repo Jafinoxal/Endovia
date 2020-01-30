@@ -38,6 +38,7 @@ def _category():
     31: 1,
     32: 1,
     33: 1,
+    34: 1,
     }
 
 def _identity():
@@ -76,6 +77,7 @@ def _identity():
     31: 31,
     32: 32,
     33: 33,
+    34: 34,
     }
 
 def _name():
@@ -114,6 +116,7 @@ def _name():
     31: "Salt Water Floor",
     32: "Shallow Fresh Water Floor",
     33: "Fresh Water Floor",
+    34: "Lava Floor"
     }
 
 def _kind():
@@ -152,6 +155,7 @@ def _kind():
     31: "Floor",
     32: "Floor",
     33: "Floor",
+    34: "Floor",
     }
 
 def _description():
@@ -190,6 +194,7 @@ def _description():
     31: "A deep salt water floor.",
     32: "A shallow fresh water floor.",
     33: "A deep fresh water floor.",
+    34: "Nobody touch the floor it's now hot lava!"
     }
 
 def _symbol(): # 176, 177, 178.
@@ -228,6 +233,7 @@ def _symbol(): # 176, 177, 178.
     31: "\xb2",
     32: "\xb2",
     33: "\xb2",
+    34: "\xb0",
     }
 
 def _color():
@@ -266,6 +272,7 @@ def _color():
     31: ((0,95,191), (0,31,63)),
     32: ((114,255,184), (191,255,223)),
     33: ((0,191,95), (0,63,31)),
+    34: ((196,0,0), (45,0,0)),
     }
 
 def _clip():
@@ -304,6 +311,7 @@ def _clip():
     31: True,
     32: False,
     33: True,
+    34: False,
     }
 
 def _transparent():
@@ -342,6 +350,7 @@ def _transparent():
     31: True,
     32: True,
     33: True,
+    34: True
     }
 
 def floors():
@@ -380,6 +389,7 @@ def floors():
     31: (_category()[31], _identity()[31], _name()[31], _kind()[31], _description()[31], _symbol()[31], _color()[31], _clip()[31], _transparent()[31]),
     32: (_category()[32], _identity()[32], _name()[32], _kind()[32], _description()[32], _symbol()[32], _color()[32], _clip()[32], _transparent()[32]),
     33: (_category()[33], _identity()[33], _name()[33], _kind()[33], _description()[33], _symbol()[33], _color()[33], _clip()[33], _transparent()[33]),
+    34: (_category()[34], _identity()[34], _name()[34], _kind()[34], _description()[34], _symbol()[34], _color()[34], _clip()[34], _transparent()[34]),
     }
 
 # Jafinoxal.
