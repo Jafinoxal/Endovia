@@ -118,7 +118,7 @@ def _description():
     18: "Metal ore is in this, how precious.",
     }
 
-def _symbol(): # 219.
+def _symbol(): # 6.
     return {
     0: "\x06",
     1: "\x06",

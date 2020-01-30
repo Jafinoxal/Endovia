@@ -47,7 +47,7 @@ def _description():
     4: "A large fire, bang on the drums and dance in a circle!"
     }
 
-def _symbol(): # 215.
+def _symbol(): # *.
     return {
     0: "*",
     1: "*",

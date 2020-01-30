@@ -137,7 +137,7 @@ def _description():
     22: "The best wood around.",
     }
 
-def _symbol(): # 219.
+def _symbol(): # 5.
     return {
     0: "\x05",
     1: "\x05",
