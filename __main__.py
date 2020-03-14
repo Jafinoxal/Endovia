@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 # Endovia (Main)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.

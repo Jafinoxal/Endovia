@@ -1,24 +1,25 @@
 # -*- coding: utf-8 -*-
-# Endovia (Geodes)
+# Endovia (Rocks)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
 def _category():
     return {
-    0: 29,
-    1: 29,
-    2: 29,
-    3: 29,
-    4: 29,
-    5: 29,
-    6: 29,
-    7: 29,
-    8: 29,
-    9: 29,
-    10: 29,
-    11: 29,
-    12: 29,
-    13: 29,
-    14: 29,
+    0: 30,
+    1: 30,
+    2: 30,
+    3: 30,
+    4: 30,
+    5: 30,
+    6: 30,
+    7: 30,
+    8: 30,
+    9: 30,
+    10: 30,
+    11: 30,
+    12: 30,
+    13: 30,
+    14: 30,
+    15: 30,
     }
 
 def _identity():
@@ -38,101 +39,107 @@ def _identity():
     12: 12,
     13: 13,
     14: 14,
+    15: 15,
     }
 
 def _name():
     return {
-    0: "Opal Geode",
-    1: "Jade Geode",
-    2: "Topaz Geode",
-    3: "Garnet Geode",
-    4: "Amythest Geode",
-    5: "Agate Geode",
-    6: "Aquamarine Geode",
-    7: "Carnelian Geode",
-    8: "Coral Geode",
-    9: "Jasper Geode",
-    10: "Sapphire Geode",
-    11: "Emerald Geode",
-    12: "Ruby Geode",
-    13: "Diamond Geode",
-    14: "Onyx Geode",
+    0: "Talc Rock",
+    1: "Quartz Rock",
+    2: "Bari Rock",
+    3: "Celest Rock",
+    4: "Rhodo Rock",
+    5: "Azur Rock",
+    6: "Malac Rock",
+    7: "Calcium Rock",
+    8: "Magnet Rock",
+    9: "Hali Rock",
+    10: "Flouri Rock",
+    11: "Graphite Rock",
+    12: "Chalk Rock",
+    13: "Sulphur Rock",
+    14: "Marble Rock",
+    15: "Granite Rock",
     }
 
 def _kind():
     return {
-    0: "Geode",
-    1: "Geode",
-    2: "Geode",
-    3: "Geode",
-    4: "Geode",
-    5: "Geode",
-    6: "Geode",
-    7: "Geode",
-    8: "Geode",
-    9: "Geode",
-    10: "Geode",
-    11: "Geode",
-    12: "Geode",
-    13: "Geode",
-    14: "Geode",
+    0: "Rock",
+    1: "Rock",
+    2: "Rock",
+    3: "Rock",
+    4: "Rock",
+    5: "Rock",
+    6: "Rock",
+    7: "Rock",
+    8: "Rock",
+    9: "Rock",
+    10: "Rock",
+    11: "Rock",
+    12: "Rock",
+    13: "Rock",
+    14: "Rock",
+    15: "Rock",
     }
 
 def _description():
     return {
-    0: "A gemstone is in this, I should mine this.",
-    1: "A gemstone is in this, I should mine this.",
-    2: "A gemstone is in this, I should mine this.",
-    3: "A gemstone is in this, I should mine this.",
-    4: "A gemstone is in this, I should mine this.",
-    5: "A gemstone is in this, I should mine this.",
-    6: "A gemstone is in this, I should mine this.",
-    7: "A gemstone is in this, I should mine this.",
-    8: "A gemstone is in this, I should mine this.",
-    9: "A gemstone is in this, I should mine this.",
-    10: "A gemstone is in this, I should mine this.",
-    11: "A gemstone is in this, I should mine this.",
-    12: "A gemstone is in this, I should mine this.",
-    13: "A gemstone is in this, I should mine this.",
-    14: "A gemstone is in this, I should mine this.",
+    0: "A mineral deposit is in this.",
+    1: "A mineral deposit is in this.",
+    2: "A mineral deposit is in this.",
+    3: "A mineral deposit is in this.",
+    4: "A mineral deposit is in this.",
+    5: "A mineral deposit is in this.",
+    6: "A mineral deposit is in this.",
+    7: "A mineral deposit is in this.",
+    8: "A mineral deposit is in this.",
+    9: "A mineral deposit is in this.",
+    10: "A mineral deposit is in this.",
+    11: "A mineral deposit is in this.",
+    12: "A mineral deposit is in this.",
+    13: "A mineral deposit is in this.",
+    14: "A mineral deposit is in this.",
+    15: "A mineral deposit is in this.",
     }
 
-def _symbol(): # 4.
+def _symbol(): # 6.
     return {
-    0: "\x04",
-    1: "\x04",
-    2: "\x04",
-    3: "\x04",
-    4: "\x04",
-    5: "\x04",
-    6: "\x04",
-    7: "\x04",
-    8: "\x04",
-    9: "\x04",
-    10: "\x04",
-    11: "\x04",
-    12: "\x04",
-    13: "\x04",
-    14: "\x04",
+    0: "\x12",
+    1: "\x12",
+    2: "\x12",
+    3: "\x12",
+    4: "\x12",
+    5: "\x12",
+    6: "\x12",
+    7: "\x12",
+    8: "\x12",
+    9: "\x12",
+    10: "\x12",
+    11: "\x12",
+    12: "\x12",
+    13: "\x12",
+    14: "\x12",
+    15: "\x12",
     }
 
 def _color():
     return {
-    0: ((0,211,0), (0,0,0)),
-    1: ((0,255,210), (0,0,0)),
-    2: ((0,211,46), (0,0,0)),
-    3: ((0,255,0), (0,0,0)),
-    4: ((10,144,0), (0,0,0)),
-    5: ((74,144,0), (0,0,0)),
-    6: ((0,255,120), (0,0,0)),
-    7: ((32,255,0), (0,0,0)),
-    8: ((0,144,0), (0,0,0)),
-    9: ((0,255,0), (0,0,0)),
-    10: ((0,255,0), (0,0,0)),
-    11: ((90,255,240), (0,0,0)),
-    12: ((31,255,0), (0,0,0)),
-    13: ((42,211,21), (0,0,0)),
-    14: ((75,255,0), (0,0,0)),
+    0: (63,63,63, (0,0,0)),
+    1: ((127,127,127), (0,0,0)),
+    2: ((63,63,63), (0,0,0)),
+    3: ((63,63,63), (0,0,0)),
+    4: ((127,127,127), (0,0,0)),
+    5: ((191,191,191), (0,0,0)),
+    6: ((63,63,63), (0,0,0)),
+    7: ((191,191,191), (0,0,0)),
+    8: ((127,127,127), (0,0,0)),
+    9: ((127,127,127), (0,0,0)),
+    10: ((191,191,191), (0,0,0)),
+    11: ((63,63,63), (0,0,0)),
+    12: ((63,63,63), (0,0,0)),
+    13: ((63,63,63), (0,0,0)),
+    14: ((191,191,191), (0,0,0)),
+    15: ((191,191,191), (0,0,0)),
     }
 
 def _clip():
@@ -152,6 +159,7 @@ def _clip():
     12: True,
     13: True,
     14: True,
+    15: True,
     }
 
 def _transparent():
@@ -171,10 +179,11 @@ def _transparent():
     12: False,
     13: False,
     14: False,
+    15: False,
     }
 
 
-def geodes():
+def rocks():
     return {
     0: (_category()[0], _identity()[0], _name()[0], _kind()[0], _description()[0], _symbol()[0], _color()[0], _clip()[0], _transparent()[0]),
     1: (_category()[1], _identity()[1], _name()[1], _kind()[1], _description()[1], _symbol()[1], _color()[1], _clip()[1], _transparent()[1]),
@@ -191,6 +200,7 @@ def geodes():
     12: (_category()[12], _identity()[12], _name()[12], _kind()[12], _description()[12], _symbol()[12], _color()[12], _clip()[12], _transparent()[12]),
     13: (_category()[13], _identity()[13], _name()[13], _kind()[13], _description()[13], _symbol()[13], _color()[13], _clip()[13], _transparent()[13]),
     14: (_category()[14], _identity()[14], _name()[14], _kind()[14], _description()[14], _symbol()[14], _color()[14], _clip()[14], _transparent()[14]),
+    15: (_category()[15], _identity()[15], _name()[15], _kind()[15], _description()[15], _symbol()[15], _color()[15], _clip()[15], _transparent()[15]),
     }
 
 # Jafinoxal.
