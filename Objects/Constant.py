@@ -2,7 +2,7 @@
 # Endovia (Constant)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
-OBJECT_CATEGORIES = 33
+OBJECT_CATEGORIES = 34
 
 OBJECT_CATEGORY = 0
 OBJECT_IDENTITY = 1
@@ -47,7 +47,7 @@ GEODES = 29 # Complete.
 ROCKS = 30 # Complete.
 BUNCHES = 31 # Complete.
 CLUSTERS = 32 # Complete.
-BUSHES = 33
+BUSHES = 33 # Complete.
 CROPS = 34
 PLANTS = 35
 STATUES = 36
