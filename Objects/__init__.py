@@ -36,6 +36,7 @@ import Rocks
 import Bunches
 import Clusters
 import Bushes
+import Crops
 
 objects = {
 0: Walls.walls(),
@@ -71,7 +72,8 @@ objects = {
 30: Rocks.rocks(),
 31: Bunches.bunches(),
 32: Clusters.clusters(),
-33: Bushes.bushes()
+33: Bushes.bushes(),
+34: Crops.crops(),
 }
 
 # Jafinoxal.

@@ -2,7 +2,7 @@
 # Endovia (Constant)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
-OBJECT_CATEGORIES = 34
+OBJECT_CATEGORIES = 35
 
 OBJECT_CATEGORY = 0
 OBJECT_IDENTITY = 1
@@ -48,13 +48,14 @@ ROCKS = 30 # Complete.
 BUNCHES = 31 # Complete.
 CLUSTERS = 32 # Complete.
 BUSHES = 33 # Complete.
-CROPS = 34
+CROPS = 34 # Complete.
 PLANTS = 35
-STATUES = 36
-ALTERS = 37
-FISHERY = 38
-OBSTACLES = 39
-LOOMS = 40
-SPINNERS = 41
+SEATS = 36
+STATUES = 37
+ALTERS = 38
+FISHERY = 39
+OBSTACLES = 40
+LOOMS = 41
+SPINNERS = 42
 
 # Jafinoxal.
