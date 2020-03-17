@@ -39,6 +39,7 @@ import Bushes
 import Crops
 import Patches
 import Seats
+import Tables
 
 objects = {
 0: Walls.walls(),
@@ -78,6 +79,7 @@ objects = {
 34: Crops.crops(),
 35: Patches.patches(),
 36: Seats.seats(),
+37: Tables.tables(),
 }
 
 # Jafinoxal.
