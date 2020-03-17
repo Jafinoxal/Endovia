@@ -162,36 +162,36 @@ def _description():
     27: "Some type of crop is growing here.",
     }
 
-def _symbol(): # 6.
+def _symbol(): # 29.
     return {
-    0: "x1d",
-    1: "x1d",
-    2: "x1d",
-    3: "x1d",
-    4: "x1d",
-    5: "x1d",
-    6: "x1d",
-    7: "x1d",
-    8: "x1d",
-    9: "x1d",
-    10: "x1d",
-    11: "x1d",
-    12: "x1d",
-    13: "x1d",
-    14: "x1d",
-    15: "x1d",
-    16: "x1d",
-    17: "x1d",
-    18: "x1d",
-    19: "x1d",
-    20: "x1d",
-    21: "x1d",
-    22: "x1d",
-    23: "x1d",
-    24: "x1d",
-    25: "x1d",
-    26: "x1d",
-    27: "x1d",
+    0: "\x1d",
+    1: "\x1d",
+    2: "\x1d",
+    3: "\x1d",
+    4: "\x1d",
+    5: "\x1d",
+    6: "\x1d",
+    7: "\x1d",
+    8: "\x1d",
+    9: "\x1d",
+    10: "\x1d",
+    11: "\x1d",
+    12: "\x1d",
+    13: "\x1d",
+    14: "\x1d",
+    15: "\x1d",
+    16: "\x1d",
+    17: "\x1d",
+    18: "\x1d",
+    19: "\x1d",
+    20: "\x1d",
+    21: "\x1d",
+    22: "\x1d",
+    23: "\x1d",
+    24: "\x1d",
+    25: "\x1d",
+    26: "\x1d",
+    27: "\x1d",
     }
 
 def _color():
@@ -322,6 +322,5 @@ def crops():
     26: (_category()[26], _identity()[26], _name()[26], _kind()[26], _description()[26], _symbol()[26], _color()[26], _clip()[26], _transparent()[26]),
     27: (_category()[27], _identity()[27], _name()[27], _kind()[27], _description()[27], _symbol()[27], _color()[27], _clip()[27], _transparent()[27]),
     }
-
 
 # Jafinoxal.

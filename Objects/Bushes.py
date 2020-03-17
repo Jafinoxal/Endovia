@@ -97,23 +97,23 @@ def _description():
     14: "A berry or fruit is growing in this bush.",
     }
 
-def _symbol(): # 6.
+def _symbol(): # 29.
     return {
-    0: "x1d",
-    1: "x1d",
-    2: "x1d",
-    3: "x1d",
-    4: "x1d",
-    5: "x1d",
-    6: "x1d",
-    7: "x1d",
-    8: "x1d",
-    9: "x1d",
-    10: "x1d",
-    11: "x1d",
-    12: "x1d",
-    13: "x1d",
-    14: "x1d",
+    0: "\x1d",
+    1: "\x1d",
+    2: "\x1d",
+    3: "\x1d",
+    4: "\x1d",
+    5: "\x1d",
+    6: "\x1d",
+    7: "\x1d",
+    8: "\x1d",
+    9: "\x1d",
+    10: "\x1d",
+    11: "\x1d",
+    12: "\x1d",
+    13: "\x1d",
+    14: "\x1d",
     }
 
 def _color():

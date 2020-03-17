@@ -122,28 +122,28 @@ def _description():
     19: "Some type of flower is growing here.",
     }
 
-def _symbol(): # 6.
+def _symbol(): # 29.
     return {
-    0: "x1d",
-    1: "x1d",
-    2: "x1d",
-    3: "x1d",
-    4: "x1d",
-    5: "x1d",
-    6: "x1d",
-    7: "x1d",
-    8: "x1d",
-    9: "x1d",
-    10: "x1d",
-    11: "x1d",
-    12: "x1d",
-    13: "x1d",
-    14: "x1d",
-    15: "x1d",
-    16: "x1d",
-    17: "x1d",
-    18: "x1d",
-    19: "x1d",
+    0: "\x1d",
+    1: "\x1d",
+    2: "\x1d",
+    3: "\x1d",
+    4: "\x1d",
+    5: "\x1d",
+    6: "\x1d",
+    7: "\x1d",
+    8: "\x1d",
+    9: "\x1d",
+    10: "\x1d",
+    11: "\x1d",
+    12: "\x1d",
+    13: "\1d",
+    14: "\x1d",
+    15: "\x1d",
+    16: "\x1d",
+    17: "\x1d",
+    18: "\x1d",
+    19: "\x1d",
     }
 
 def _color():
@@ -241,6 +241,5 @@ def patches():
     17: (_category()[17], _identity()[17], _name()[17], _kind()[17], _description()[17], _symbol()[17], _color()[17], _clip()[17], _transparent()[17]),
     18: (_category()[18], _identity()[18], _name()[18], _kind()[18], _description()[18], _symbol()[18], _color()[18], _clip()[18], _transparent()[18]),
     19: (_category()[19], _identity()[19], _name()[19], _kind()[19], _description()[19], _symbol()[19], _color()[19], _clip()[19], _transparent()[19]),    }
-
 
 # Jafinoxal.
