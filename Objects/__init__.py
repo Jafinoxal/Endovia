@@ -41,6 +41,7 @@ import Patches
 import Seats
 import Tables
 import Statues
+import Alters
 
 objects = {
 0: Walls.walls(),
@@ -82,6 +83,7 @@ objects = {
 36: Seats.seats(),
 37: Tables.tables(),
 38: Statues.statues(),
+39: Alters.alters(),
 }
 
 # Jafinoxal.
