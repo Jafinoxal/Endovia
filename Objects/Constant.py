@@ -2,7 +2,7 @@
 # Endovia (Constant)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
-OBJECT_CATEGORIES = 38
+OBJECT_CATEGORIES = 39
 
 OBJECT_CATEGORY = 0
 OBJECT_IDENTITY = 1
@@ -52,7 +52,7 @@ CROPS = 34 # Complete.
 PATCHES = 35 # Complete.
 SEATS = 36 # Complete.
 TABLES = 37 # Complete.
-STATUES = 38
+STATUES = 38 # Complete.
 ALTERS = 39
 FISHERY = 40
 OBSTACLES = 41
