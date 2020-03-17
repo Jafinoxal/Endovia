@@ -1,11 +1,12 @@
 # Endovia
 ##### Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 ## Contributers:
-#### Jafinoxal
+#### [Jafinoxal](https://github.com/Jafinoxal "Jafinoxal Github")
 ## License:
-#### GPL 3+
+#### [GPL 3+](https://github.com/Jafinoxal/Endovia/blob/master/License "Endovia License")
 ## Releases:
 #### [Endovia Alpha 1.100](https://github.com/Jafinoxal/Endovia/releases/tag/1.100 "Endovia Alpha 1.100 Release")
 ## Installation:
     PACKAGES: build-essential, python2-dev, python2-pip, python2-numpy, libsdl2-dev, libffi-dev, libomp5.
-    RUN: python2 -m pip install tcod==6.0.7
+    INSTALL: python2 -m pip install tcod==6.0.7
+    RUN: python2 ./
