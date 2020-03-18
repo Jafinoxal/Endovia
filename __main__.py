@@ -27,7 +27,7 @@ CHART_ID = 0
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
 FRAMES_PER_SECOND = 60
-WINDOW_NAME = "Endovia 1.141"
+WINDOW_NAME = "Endovia 1.142"
 FONT_NAME = "terminal8x8_gs_ro.png"
 FILE_READ_MODE = "rb"
 FONT_TYPE = libtcodpy.FONT_TYPE_GREYSCALE | libtcodpy.FONT_LAYOUT_ASCII_INROW
@@ -101,7 +101,7 @@ def main():
     if not LOADING:
         charts, player_position, enemy_positions = start_charts(LOADING)
     else:
-        charts = enemy_positions = start_charts(LOADING)
+        charts = start_charts(LOADING)
     if not LOADING:
         characters = start_characters(player_position, enemy_positions, charts,  LOADING)
     else:
