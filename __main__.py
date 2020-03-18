@@ -34,6 +34,7 @@ CHARTS_SAVE_FILE_NAME = "Saves/Charts.save"
 CHARACTERS_SAVE_FILE_NAME = "Saves/Characters.save"
 PLAYER_GRID_ID = 2000
 PLAYER_ENTITY_ID = 0
+LOADING = False
 
 # All chart/map/dungeon generation and creation goes here.
 def start_charts(load=False):
@@ -96,8 +97,14 @@ def main():
     # Get the object set charts from start_charts.
     # NOTE: player_position and enemy_positions are needed to place in the
     # object set characters. They can also be used in other places.
-    charts, player_position, enemy_positions = start_charts(False)
-    characters = start_characters(player_position, enemy_positions, charts,  False)
+    if not LOADING:
+        charts, player_position, enemy_positions = start_charts(LOADING)
+    else:
+        charts = enemy_positions = start_charts(LOADING)
+    if not LOADING:
+        characters = start_characters(player_position, enemy_positions, charts,  LOADING)
+    else:
+        characters = start_characters(None, None, None,  LOADING)
     # Messages will be displayed [-1:-10].
     messages = []
     # Initialize the enemy position for the DrawEnemyInfo function.

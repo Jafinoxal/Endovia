@@ -44,6 +44,7 @@ import Statues
 import Alters
 import Fisheries
 import Looms
+import Exits
 
 objects = {
 0: Walls.walls(),
@@ -87,7 +88,8 @@ objects = {
 38: Statues.statues(),
 39: Alters.alters(),
 40: Fisheries.fisheries(),
-41: Looms.looms()
+41: Looms.looms(),
+42: Exits.exits(),
 }
 
 # Jafinoxal.
