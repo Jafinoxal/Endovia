@@ -17,6 +17,7 @@ import Objects
 
 from Entities.Constant import *
 from Handlers.Constant import *
+from Items.Constant import *
 from Objects.Constant import *
 
 # Constants.
@@ -26,7 +27,7 @@ CHART_ID = 0
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
 FRAMES_PER_SECOND = 60
-WINDOW_NAME = "Endovia 1.123"
+WINDOW_NAME = "Endovia 1.141"
 FONT_NAME = "terminal8x8_gs_ro.png"
 FILE_READ_MODE = "rb"
 FONT_TYPE = libtcodpy.FONT_TYPE_GREYSCALE | libtcodpy.FONT_LAYOUT_ASCII_INROW
