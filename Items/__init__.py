@@ -7,6 +7,7 @@ import Ores
 import Ingots
 import Clumps
 import UncutGems
+import CutGems
 
 items = {
 1000: Tools.tools(),
@@ -14,6 +15,7 @@ items = {
 1002: Ingots.ingots(),
 1003: Clumps.clumps(),
 1004: UncutGems.uncutgems(),
+1005: CutGems.cutgems(),
 }
 
 # Jafinoxal.
