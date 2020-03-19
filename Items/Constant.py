@@ -2,7 +2,7 @@
 # Endovia (Item Constant)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
-ITEM_CATEGORIES = 3
+ITEM_CATEGORIES = 4
 
 ITEM_CATEGORY = 0
 ITEM_IDENTITY = 1
@@ -19,7 +19,7 @@ ITEM_VALUE = 10
 TOOLS = 1000 # Complete.
 ORES = 1001 # Complete.
 INGOTS = 1002 # Complete.
-CLUMPS = 1003
+CLUMPS = 1003 # Complete.
 UNCUTGEMS = 1004
 CUTGEMS = 1005
 UNCOOKEDFISH = 1006
