@@ -10,3 +10,5 @@
     PACKAGES: build-essential, python2-dev, python2-pip, python2-numpy, libsdl2-dev, libffi-dev, libomp5.
     INSTALL: python2 -m pip install tcod==6.0.7
     RUN: python2 ./
+## Tags:
+#### roguelike, rogue, rpg, role playing game, endovia, jafinoxal, jaf, jeremy aaron flexer, python, game, tcod.
