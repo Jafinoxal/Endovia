@@ -1,25 +1,24 @@
 # -*- coding: utf-8 -*-
-# Endovia (Clumps)
+# Endovia (UncutGems)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
 def _category():
     return {
-    0: 1003,
-    1: 1003,
-    2: 1003,
-    3: 1003,
-    4: 1003,
-    5: 1003,
-    6: 1003,
-    7: 1003,
-    8: 1003,
-    9: 1003,
-    10: 1003,
-    11: 1003,
-    12: 1003,
-    13: 1003,
-    14: 1003,
-    15: 1003,
+    0: 1004,
+    1: 1004,
+    2: 1004,
+    3: 1004,
+    4: 1004,
+    5: 1004,
+    6: 1004,
+    7: 1004,
+    8: 1004,
+    9: 1004,
+    10: 1004,
+    11: 1004,
+    12: 1004,
+    13: 1004,
+    14: 1004,
     }
 
 def _identity():
@@ -39,67 +38,63 @@ def _identity():
     12: 12,
     13: 13,
     14: 14,
-    15: 15,
     }
 
 def _name():
     return {
-    0: "Talc Clump",
-    1: "Quartz Clump",
-    2: "Bari Clump",
-    3: "Celest Clump",
-    4: "Rhodo Clump",
-    5: "Azur Clump",
-    6: "Malac Clump",
-    7: "Calcium Clump",
-    8: "Magnet Clump",
-    9: "Hali Clump",
-    10: "Flouri Clump",
-    11: "Graphite Clump",
-    12: "Chalk Clump",
-    13: "Sulphur Clump",
-    14: "Marble Clump",
-    15: "Granite Clump",
+    0: "Opal Uncut Gem",
+    1: "Jade Uncut Gem",
+    2: "Topaz Uncut Gem",
+    3: "Garnet Uncut Gem",
+    4: "Amythest Uncut Gem",
+    5: "Agate Uncut Gem",
+    6: "Aquamarine Uncut Gem",
+    7: "Carnelian Uncut Gem",
+    8: "Coral Uncut Gem",
+    9: "Jasper Uncut Gem",
+    10: "Sapphire Uncut Gem",
+    11: "Emerald Uncut Gem",
+    12: "Ruby Uncut Gem",
+    13: "Diamond Uncut Gem",
+    14: "Onyx Uncut Gem",
     }
 
 def _kind():
     return {
-    0: "Clump",
-    1: "Clump",
-    2: "Clump",
-    3: "Clump",
-    4: "Clump",
-    5: "Clump",
-    6: "Clump",
-    7: "Clump",
-    8: "Clump",
-    9: "Clump",
-    10: "Clump",
-    11: "Clump",
-    12: "Clump",
-    13: "Clump",
-    14: "Clump",
-    15: "Clump",
+    0: "UncutGem",
+    1: "UncutGem",
+    2: "UncutGem",
+    3: "UncutGem",
+    4: "UncutGem",
+    5: "UncutGem",
+    6: "UncutGem",
+    7: "UncutGem",
+    8: "UncutGem",
+    9: "UncutGem",
+    10: "UncutGem",
+    11: "UncutGem",
+    12: "UncutGem",
+    13: "UncutGem",
+    14: "UncutGem",
     }
 
 def _description():
     return {
-    0: "Could be a valuable mineral or stone.",
-    1: "Could be a valuable mineral or stone.",
-    2: "Could be a valuable mineral or stone.",
-    3: "Could be a valuable mineral or stone.",
-    4: "Could be a valuable mineral or stone.",
-    5: "Could be a valuable mineral or stone.",
-    6: "Could be a valuable mineral or stone.",
-    7: "Could be a valuable mineral or stone.",
-    8: "Could be a valuable mineral or stone.",
-    9: "Could be a valuable mineral or stone.",
-    10: "Could be a valuable mineral or stone.",
-    11: "Could be a valuable mineral or stone.",
-    12: "Could be a valuable mineral or stone.",
-    13: "Could be a valuable mineral or stone.",
-    14: "Could be a valuable mineral or stone.",
-    15: "Could be a valuable mineral or stone.",
+    0: "Ooh, shiny; Could use some cutting though.",
+    1: "Ooh, shiny; Could use some cutting though.",
+    2: "Ooh, shiny; Could use some cutting though.",
+    3: "Ooh, shiny; Could use some cutting though.",
+    4: "Ooh, shiny; Could use some cutting though.",
+    5: "Ooh, shiny; Could use some cutting though.",
+    6: "Ooh, shiny; Could use some cutting though.",
+    7: "Ooh, shiny; Could use some cutting though.",
+    8: "Ooh, shiny; Could use some cutting though.",
+    9: "Ooh, shiny; Could use some cutting though.",
+    10: "Ooh, shiny; Could use some cutting though.",
+    11: "Ooh, shiny; Could use some cutting though.",
+    12: "Ooh, shiny; Could use some cutting though.",
+    13: "Ooh, shiny; Could use some cutting though.",
+    14: "Ooh, shiny; Could use some cutting though.",
     }
 
 def _symbol(): # %.
@@ -119,7 +114,6 @@ def _symbol(): # %.
     12: "%",
     13: "%",
     14: "%",
-    15: "%",
     }
 
 def _color():
@@ -139,7 +133,6 @@ def _color():
     12: ((127,127,127), (0,0,0)),
     13: ((127,127,127), (0,0,0)),
     14: ((127,127,127), (0,0,0)),
-    15: ((127,127,127), (0,0,0)),
     }
 
 def _clip():
@@ -159,7 +152,6 @@ def _clip():
     12: False,
     13: False,
     14: False,
-    15: False,
     }
 
 def _transparent():
@@ -179,50 +171,47 @@ def _transparent():
     12: True,
     13: True,
     14: True,
-    15: True,
     }
 
 def _weight():
     return {
-    0: 1.0,
-    1: 1.0,
-    2: 1.0,
-    3: 1.0,
-    4: 1.0,
-    5: 1.0,
-    6: 1.0,
-    7: 1.0,
-    8: 1.0,
-    9: 1.0,
-    10: 1.0,
-    11: 1.0,
-    12: 1.0,
-    13: 1.0,
-    14: 3.4,
-    15: 3.5,
+    0: 0.3,
+    1: 0.3,
+    2: 0.3,
+    3: 0.3,
+    4: 0.3,
+    5: 0.3,
+    6: 0.3,
+    7: 0.3,
+    8: 0.3,
+    9: 0.3,
+    10: 0.3,
+    11: 0.3,
+    12: 0.3,
+    13: 0.3,
+    14: 0.3,
     }
 
 def _value():
     return {
-    0: 13,
-    1: 45,
-    2: 132,
-    3: 220,
-    4: 410,
-    5: 724,
-    6: 1115,
-    7: 1467,
-    8: 1876,
-    9: 2350,
-    10: 2520,
-    11: 3040,
+    0: 45,
+    1: 120,
+    2: 206,
+    3: 465,
+    4: 790,
+    5: 1148,
+    6: 1387,
+    7: 1615,
+    8: 1950,
+    9: 2500,
+    10: 2600,
+    11: 2700,
     12: 3290,
-    13: 3750,
-    14: 9600,
-    15: 11000,
+    13: 13050,
+    14: 36400,
     }
 
-def clumps():
+def uncutgems():
     return {
     0: (_category()[0], _identity()[0], _name()[0], _kind()[0], _description()[0], _symbol()[0], _color()[0], _clip()[0], _transparent()[0], _weight()[0], _value()[0]),
     1: (_category()[1], _identity()[1], _name()[1], _kind()[1], _description()[1], _symbol()[1], _color()[1], _clip()[1], _transparent()[1], _weight()[1], _value()[1]),
@@ -239,7 +228,6 @@ def clumps():
     12: (_category()[12], _identity()[12], _name()[12], _kind()[12], _description()[12], _symbol()[12], _color()[12], _clip()[12], _transparent()[12], _weight()[12], _value()[12]),
     13: (_category()[13], _identity()[13], _name()[13], _kind()[13], _description()[13], _symbol()[13], _color()[13], _clip()[13], _transparent()[13], _weight()[13], _value()[13]),
     14: (_category()[14], _identity()[14], _name()[14], _kind()[14], _description()[14], _symbol()[14], _color()[14], _clip()[14], _transparent()[14], _weight()[14], _value()[14]),
-    15: (_category()[15], _identity()[15], _name()[15], _kind()[15], _description()[15], _symbol()[15], _color()[15], _clip()[15], _transparent()[15], _weight()[15], _value()[15]),
     }
 
 # Jafinoxal.
