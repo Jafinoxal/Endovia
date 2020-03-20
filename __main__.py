@@ -27,7 +27,7 @@ CHART_ID = 0
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
 FRAMES_PER_SECOND = 60
-WINDOW_NAME = "Endovia 1.148"
+WINDOW_NAME = "Endovia 1.149"
 FONT_NAME = "terminal8x8_gs_ro.png"
 FILE_READ_MODE = "rb"
 FONT_TYPE = libtcodpy.FONT_TYPE_GREYSCALE | libtcodpy.FONT_LAYOUT_ASCII_INROW
@@ -36,6 +36,9 @@ CHARACTERS_SAVE_FILE_NAME = "Saves/Characters.save"
 PLAYER_GRID_ID = 2000
 PLAYER_ENTITY_ID = 0
 LOADING = False
+
+
+
 
 # All chart/map/dungeon generation and creation goes here.
 def start_charts(load=False):
@@ -60,6 +63,9 @@ def start_charts(load=False):
         player_position, enemy_positions = Charts.charts["Generators"].MainDungeonGenerator(Objects.objects, Entities.entities, charts[0], charts[0].rooms, 0, 0)
     return charts, player_position, enemy_positions
 
+
+
+
 # All entity/character generation and creation goes here.
 def start_characters(player_position, enemy_positions, charts, load=False):
     if load:
@@ -79,20 +85,22 @@ def start_characters(player_position, enemy_positions, charts, load=False):
         # Iterate through each enemy and create a Enemy Character object.
         for enemy_category_and_id, enemy_position in enemy_positions.items():
             characters[unique_id] = Characters.characters["Enemy"].Character(chart_id, enemy_category_and_id[0],
-                                                                                enemy_category_and_id[1],
-                                                                                unique_id,
-                                                                                enemy_position[0],
-                                                                                enemy_position[1],
-                                                                                Entities.entities[enemy_category_and_id[0]][enemy_category_and_id[1]][ENTITY_HEALTH])
-
+            enemy_category_and_id[1], unique_id, enemy_position[0], enemy_position[1],
+            Entities.entities[enemy_category_and_id[0]][enemy_category_and_id[1]][ENTITY_HEALTH])
             # Each character gets a fresh id.
             unique_id += 1
     return characters
+
+
+
 
 # Basic libtcod initialization.
 libtcodpy.console_set_custom_font(FONT_NAME, FONT_TYPE, 0, 0)
 libtcodpy.console_init_root(SCREEN_WIDTH, SCREEN_HEIGHT, WINDOW_NAME, False)
 libtcodpy.sys_set_fps(FRAMES_PER_SECOND)
+
+
+
 
 def main():
     # Get the object set charts from start_charts.
