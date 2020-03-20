@@ -4,6 +4,8 @@
 #### [Jafinoxal](https://github.com/Jafinoxal "Jafinoxal Github")
 ## License:
 #### [GPL 3+](https://github.com/Jafinoxal/Endovia/blob/master/License "Endovia License")
+## Conduct:
+#### [Code Of Conduct](https://github.com/Jafinoxal/Endovia/blob/master/conduct.md "Endovia Conduct")
 ## Releases:
 #### [Endovia Alpha 1.100](https://github.com/Jafinoxal/Endovia/releases/tag/1.100 "Endovia Alpha 1.100 Release")
 ## Installation:
