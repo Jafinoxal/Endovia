@@ -9,6 +9,7 @@ import Clumps
 import UncutGems
 import CutGems
 import RawFish
+import CookedFish
 
 items = {
 1000: Tools.tools(),
@@ -18,6 +19,7 @@ items = {
 1004: UncutGems.uncutgems(),
 1005: CutGems.cutgems(),
 1006: RawFish.rawfish(),
+1007: CookedFish.cookedfish(),
 }
 
 # Jafinoxal.

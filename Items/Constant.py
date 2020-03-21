@@ -2,7 +2,7 @@
 # Endovia (Item Constant)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
-ITEM_CATEGORIES = 5
+ITEM_CATEGORIES = 8
 
 ITEM_CATEGORY = 0
 ITEM_IDENTITY = 1
@@ -23,7 +23,7 @@ CLUMPS = 1003 # Complete.
 UNCUTGEMS = 1004 # Complete.
 CUTGEMS = 1005 # Complete.
 RAWFISH = 1006 # Complete.
-COOKEDFISH = 1007
+COOKEDFISH = 1007 # Complete.
 HERBS = 1008
 MUSHROOMS = 1009
 BERRIES = 1010
