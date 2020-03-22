@@ -11,6 +11,7 @@ import CutGems
 import RawFish
 import CookedFish
 import Herbs
+import Mushrooms
 
 items = {
 1000: Tools.tools(),
@@ -22,6 +23,7 @@ items = {
 1006: RawFish.rawfish(),
 1007: CookedFish.cookedfish(),
 1008: Herbs.herbs(),
+1009: Mushrooms.mushrooms(),
 }
 
 # Jafinoxal.

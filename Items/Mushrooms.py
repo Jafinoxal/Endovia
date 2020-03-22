@@ -1,28 +1,24 @@
 # -*- coding: utf-8 -*-
-# Endovia (Herbs)
+# Endovia (Mushrooms)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
 def _category():
     return {
-    0: 1008,
-    1: 1008,
-    2: 1008,
-    3: 1008,
-    4: 1008,
-    5: 1008,
-    6: 1008,
-    7: 1008,
-    8: 1008,
-    9: 1008,
-    10: 1008,
-    11: 1008,
-    12: 1008,
-    13: 1008,
-    14: 1008,
-    15: 1008,
-    16: 1008,
-    17: 1008,
-    18: 1008,
+    0: 1009,
+    1: 1009,
+    2: 1009,
+    3: 1009,
+    4: 1009,
+    5: 1009,
+    6: 1009,
+    7: 1009,
+    8: 1009,
+    9: 1009,
+    10: 1009,
+    11: 1009,
+    12: 1009,
+    13: 1009,
+    14: 1009,
     }
 
 def _identity():
@@ -42,56 +38,44 @@ def _identity():
     12: 12,
     13: 13,
     14: 14,
-    15: 15,
-    16: 16,
-    17: 17,
-    18: 18,
     }
 
 def _name():
     return {
-    0: "Parsley Herb",
-    1: "Basil Herb",
-    2: "Rosemary Herb",
-    3: "Sage Herb",
-    4: "Thyme Herb",
-    5: "Chives Herb",
-    6: "Dill Herb",
-    7: "Oregano Herb",
-    8: "Mint Herb",
-    9: "Tarragon Herb",
-    10: "Coriander Herb",
-    11: "Garlic Herb",
-    12: "Savory Herb",
-    13: "Echinacea Herb",
-    14: "Feverfew Herb",
-    15: "Gingko Herb",
-    16: "Feldsiv Herb",
-    17: "Ucalim Herb",
-    18: "Haralor Herb",
+    0: "Button Mushroom",
+    1: "Crimini Mushroom",
+    2: "Portobello Mushroom",
+    3: "Shiitake Mushroom",
+    4: "Abalone Mushroom",
+    5: "Enoki Mushroom",
+    6: "Girolle Mushroom",
+    7: "Porcini Mushroom",
+    8: "Shimeji Mushroom",
+    9: "Morel Mushroom",
+    10: "Reishi Mushroom",
+    11: "Chaga Mushroom",
+    12: "Cordyceps Mushroom",
+    13: "Limane Mushroom",
+    14: "Turtail Mushroom",
     }
 
 def _kind():
     return {
-    0: "Herb",
-    1: "Herb",
-    2: "Herb",
-    3: "Herb",
-    4: "Herb",
-    5: "Herb",
-    6: "Herb",
-    7: "Herb",
-    8: "Herb",
-    9: "Herb",
-    10: "Herb",
-    11: "Herb",
-    12: "Herb",
-    13: "Herb",
-    14: "Herb",
-    15: "Herb",
-    16: "Herb",
-    17: "Herb",
-    18: "Herb",
+    0: "Mushroom",
+    1: "Mushroom",
+    2: "Mushroom",
+    3: "Mushroom",
+    4: "Mushroom",
+    5: "Mushroom",
+    6: "Mushroom",
+    7: "Mushroom",
+    8: "Mushroom",
+    9: "Mushroom",
+    10: "Mushroom",
+    11: "Mushroom",
+    12: "Mushroom",
+    13: "Mushroom",
+    14: "Mushroom",
     }
 
 def _description():
@@ -111,10 +95,6 @@ def _description():
     12: "Mix this with an ingredient in a vial of water, or food.",
     13: "Mix this with an ingredient in a vial of water, or food.",
     14: "Mix this with an ingredient in a vial of water, or food.",
-    15: "Mix this with an ingredient in a vial of water, or food.",
-    16: "Mix this with an ingredient in a vial of water, or food.",
-    17: "Mix this with an ingredient in a vial of water, or food.",
-    18: "Mix this with an ingredient in a vial of water, or food.",
     }
 
 def _symbol(): # %.
@@ -134,10 +114,6 @@ def _symbol(): # %.
     12: "%",
     13: "%",
     14: "%",
-    15: "%",
-    16: "%",
-    17: "%",
-    18: "%",
     }
 
 def _color():
@@ -157,10 +133,6 @@ def _color():
     12: ((127,127,127), (0,0,0)),
     13: ((127,127,127), (0,0,0)),
     14: ((127,127,127), (0,0,0)),
-    15: ((127,127,127), (0,0,0)),
-    16: ((127,127,127), (0,0,0)),
-    17: ((127,127,127), (0,0,0)),
-    18: ((127,127,127), (0,0,0)),
     }
 
 def _clip():
@@ -180,10 +152,6 @@ def _clip():
     12: False,
     13: False,
     14: False,
-    15: False,
-    16: False,
-    17: False,
-    18: False,
     }
 
 def _transparent():
@@ -203,59 +171,47 @@ def _transparent():
     12: True,
     13: True,
     14: True,
-    15: True,
-    16: True,
-    17: True,
-    18: True,
     }
 
 def _weight():
     return {
-    0: 0.3,
-    1: 0.3,
-    2: 0.3,
-    3: 0.3,
-    4: 0.3,
-    5: 0.3,
-    6: 0.3,
-    7: 0.3,
-    8: 0.3,
-    9: 0.3,
-    10: 0.3,
-    11: 0.3,
-    12: 0.3,
-    13: 0.3,
-    14: 0.3,
-    15: 0.3,
-    16: 0.3,
-    17: 0.3,
-    18: 0.3,
+    0: 0.4,
+    1: 0.4,
+    2: 0.4,
+    3: 0.4,
+    4: 0.4,
+    5: 0.4,
+    6: 0.4,
+    7: 0.4,
+    8: 0.4,
+    9: 0.4,
+    10: 0.4,
+    11: 0.4,
+    12: 0.4,
+    13: 0.4,
+    14: 0.4,
     }
 
 def _value():
     return {
-    0: 50,
-    1: 80,
-    2: 113,
-    3: 156,
-    4: 190,
-    5: 320,
-    6: 499,
-    7: 600,
-    8: 840,
-    9: 977,
-    10: 1281,
-    11: 1500,
-    12: 1740,
-    13: 1988,
-    14: 2100,
-    15: 2320,
-    16: 3175,
-    17: 3300,
-    18: 3540,
+    0: 40,
+    1: 68,
+    2: 110,
+    3: 160,
+    4: 224,
+    5: 410,
+    6: 550,
+    7: 780,
+    8: 920,
+    9: 1167,
+    10: 1402,
+    11: 1760,
+    12: 2000,
+    13: 2209,
+    14: 2440,
     }
 
-def herbs():
+def mushrooms():
     return {
     0: (_category()[0], _identity()[0], _name()[0], _kind()[0], _description()[0], _symbol()[0], _color()[0], _clip()[0], _transparent()[0], _weight()[0], _value()[0]),
     1: (_category()[1], _identity()[1], _name()[1], _kind()[1], _description()[1], _symbol()[1], _color()[1], _clip()[1], _transparent()[1], _weight()[1], _value()[1]),
@@ -272,10 +228,6 @@ def herbs():
     12: (_category()[12], _identity()[12], _name()[12], _kind()[12], _description()[12], _symbol()[12], _color()[12], _clip()[12], _transparent()[12], _weight()[12], _value()[12]),
     13: (_category()[13], _identity()[13], _name()[13], _kind()[13], _description()[13], _symbol()[13], _color()[13], _clip()[13], _transparent()[13], _weight()[13], _value()[13]),
     14: (_category()[14], _identity()[14], _name()[14], _kind()[14], _description()[14], _symbol()[14], _color()[14], _clip()[14], _transparent()[14], _weight()[14], _value()[14]),
-    15: (_category()[15], _identity()[15], _name()[15], _kind()[15], _description()[15], _symbol()[15], _color()[15], _clip()[15], _transparent()[15], _weight()[15], _value()[15]),
-    16: (_category()[16], _identity()[16], _name()[16], _kind()[16], _description()[16], _symbol()[16], _color()[16], _clip()[16], _transparent()[16], _weight()[16], _value()[16]),
-    17: (_category()[17], _identity()[17], _name()[17], _kind()[17], _description()[17], _symbol()[17], _color()[17], _clip()[17], _transparent()[17], _weight()[17], _value()[17]),
-    18: (_category()[18], _identity()[18], _name()[18], _kind()[12], _description()[18], _symbol()[18], _color()[18], _clip()[18], _transparent()[18], _weight()[18], _value()[18]),
     }
 
 # Jafinoxal.
