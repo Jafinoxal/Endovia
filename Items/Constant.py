@@ -2,7 +2,7 @@
 # Endovia (Item Constant)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
-ITEM_CATEGORIES = 11
+ITEM_CATEGORIES = 12
 
 ITEM_CATEGORY = 0
 ITEM_IDENTITY = 1
@@ -27,7 +27,7 @@ COOKEDFISH = 1007 # Complete.
 HERBS = 1008 # Complete.
 MUSHROOMS = 1009 # Complete.
 BERRIES = 1010 # Complete.
-FLOWERS = 1011
+FLOWERS = 1011 # Complete.
 INGREDIENTS = 1012
 POTIONS = 1013
 LOGS = 1014

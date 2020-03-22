@@ -2,6 +2,8 @@
 # Endovia (Item Init)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
+from Constant import *
+
 import Tools
 import Ores
 import Ingots
@@ -13,19 +15,21 @@ import CookedFish
 import Herbs
 import Mushrooms
 import Berries
+import Flowers
 
 items = {
-1000: Tools.tools(),
-1001: Ores.ores(),
-1002: Ingots.ingots(),
-1003: Clumps.clumps(),
-1004: UncutGems.uncutgems(),
-1005: CutGems.cutgems(),
-1006: RawFish.rawfish(),
-1007: CookedFish.cookedfish(),
-1008: Herbs.herbs(),
-1009: Mushrooms.mushrooms(),
-1010: Berries.berries(),
+TOOLS: Tools.tools(),
+ORES: Ores.ores(),
+INGOTS: Ingots.ingots(),
+CLUMPS: Clumps.clumps(),
+UNCUTGEMS: UncutGems.uncutgems(),
+CUTGEMS: CutGems.cutgems(),
+RAWFISH: RawFish.rawfish(),
+COOKEDFISH: CookedFish.cookedfish(),
+HERBS: Herbs.herbs(),
+MUSHROOMS: Mushrooms.mushrooms(),
+BERRIES: Berries.berries(),
+FLOWERS: Flowers.flowers(),
 }
 
 # Jafinoxal.

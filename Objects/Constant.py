@@ -54,7 +54,7 @@ SEATS = 36 # Complete.
 TABLES = 37 # Complete.
 STATUES = 38 # Complete.
 ALTERS = 39 # Complete.
-FISHERY = 40 # Complete.
+FISHERIES = 40 # Complete.
 LOOMS = 41 # Complete.
 EXITS = 42 # Complete.
 
