@@ -16,6 +16,7 @@ import Herbs
 import Mushrooms
 import Berries
 import Flowers
+import Ingredients
 
 items = {
 TOOLS: Tools.tools(),
@@ -30,6 +31,7 @@ HERBS: Herbs.herbs(),
 MUSHROOMS: Mushrooms.mushrooms(),
 BERRIES: Berries.berries(),
 FLOWERS: Flowers.flowers(),
+INGREDIENTS: Ingredients.ingredients(),
 }
 
 # Jafinoxal.
