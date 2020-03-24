@@ -1,15 +1,13 @@
 # -*- coding: utf-8 -*-
-# Endovia (Character Init)
+# Endovia (Entity Init)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
-import Basic
-import Enemy
-import Player
+import Players
+import Rodents
 
 characters = {
-"Basic": Basic,
-"Enemy": Enemy,
-"Player": Player,
+2000: Players.players(),
+2001: Rodents.rodents(),
 }
 
 # Jafinoxal.

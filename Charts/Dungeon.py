@@ -50,7 +50,7 @@ class Chart(Basic.Chart):
             # Return False because room carving was a failure.
             return False
 
-    def _is_free(self, objects, entities, x, y): # HexDecimal
+    def _is_free(self, objects, characters, x, y): # HexDecimal
         for category in objects.keys():
             # Skip category 1 because objects and entities can be placed on most floors.
             if category == 1:
@@ -58,14 +58,14 @@ class Chart(Basic.Chart):
             # If True, something is there. Return False because something is there.
             if self.grids[category][(x, y)]:
                 return False
-        for category in entities.keys():
+        for category in characters.keys():
             # Like above, returns False if something is there.
             if self.grids[category][(x, y)]:
                 return False
         # Returns True if nothing has been detected at the position.
         return True
 
-    def _carve_tunnels(self, objects, entities, start_x, start_y, width, height, object_id):
+    def _carve_tunnels(self, objects, characters, start_x, start_y, width, height, object_id):
         for y in range(start_y, height):
             # The max horizontal or vertical tunnels that can be dug is 3.
             horizontal_tunnels_dug = 0
@@ -79,7 +79,7 @@ class Chart(Basic.Chart):
                     tunnel_length = random.randint(4, 12)
                     for x in range(x, x + tunnel_length):
                         # Check if tunnel position is within bounds and if tunnel starts at an open spot.
-                        if width > x > start_x and height > y > start_y and (not counter and self._is_free(objects, entities, x, y)) or (counter):
+                        if width > x > start_x and height > y > start_y and (not counter and self._is_free(objects, characters, x, y)) or (counter):
                                 # Carve out tunnel position.
                                 self.grids[0][(x, y)] = None
                                 self.grids[1][(x, y)] = {0: 1, 1: object_id, 2: None}
@@ -91,39 +91,39 @@ class Chart(Basic.Chart):
                     tunnel_length = random.randint(4, 12)
                     for y in range(y, y + tunnel_length):
                         # Check if tunnel position is within bounds and if tunnel starts at an open spot.
-                        if width > x > start_x and height > y > start_y and (not counter and self._is_free(objects, entities, x, y)) or (counter):
+                        if width > x > start_x and height > y > start_y and (not counter and self._is_free(objects, characters, x, y)) or (counter):
                                 # Carve out tunnel position.
                                 self.grids[0][(x, y)] = None
                                 self.grids[1][(x, y)] = {0: 1, 1: object_id, 2: None}
                                 counter += 1
                     vertical_tunnels_dug += 1
 
-    def _place_player_start(self, objects, entities, entity_category, entity_id):
+    def _place_player_start(self, objects, characters, character_category, character_id):
         # Iterate through entire grid to start.
         for y in range(self.height):
             for x in range(self.width):
                 # If true, the position holds something other than None or a floor.
-                if not self._is_free(objects, entities, x, y):
+                if not self._is_free(objects, characters, x, y):
                     continue
                 # Place the player at the position in the grid and return the position.
-                self.grids[entity_category][(x, y)] = {0: entity_category, 1: entity_id, 2: None}
+                self.grids[character_category][(x, y)] = {0: character_category, 1: character_id, 2: None}
                 return (x, y)
 
-    def _place_enemies_start(self, objects, entities, entity_category, entity_id):
-        entity_positions = dict()
+    def _place_enemies_start(self, objects, characters, character_category, character_id):
+        character_positions = dict()
         # Try to place an enemy at max 100 times.
         for i in range (0, 100):
             # Select random position for the enemy.
             x, y = random.randint(0, self.width - 1), random.randint(0, self.height - 1)
             # If there is something there other than floor, continue to next iteration.
-            if not self._is_free(objects, entities, x, y):
+            if not self._is_free(objects, characters, x, y):
                 continue
             # There is a 50% chance to spawn a monster.
             if random.randint(0, 1):
                 # Place the enemy at the position in the grid.
-                self.grids[entity_category][(x, y)] = {0: entity_category, 1: entity_id, 2: None}
-                entity_positions[(entity_category, entity_id, i)] = (x, y)
+                self.grids[character_category][(x, y)] = {0: character_category, 1: character_id, 2: None}
+                character_positions[(character_category, character_id, i)] = (x, y)
         # Return {(0, 0): (x, y), ...}
-        return entity_positions
+        return character_positions
 
 # Jafinoxal.

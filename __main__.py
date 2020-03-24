@@ -15,7 +15,7 @@ import Handlers
 import Items
 import Objects
 
-from Entities.Constant import *
+from Characters.Constant import *
 from Handlers.Constant import *
 from Items.Constant import *
 from Objects.Constant import *
@@ -27,11 +27,11 @@ CHART_ID = 0
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
 FRAMES_PER_SECOND = 60
-WINDOW_NAME = "Endovia 1.157"
+WINDOW_NAME = "Endovia 1.158"
 FONT_NAME = "terminal8x8_gs_ro.png"
 FILE_READ_MODE = "rb"
 FONT_TYPE = libtcodpy.FONT_TYPE_GREYSCALE | libtcodpy.FONT_LAYOUT_ASCII_INROW
-CHARTS_SAVE_FILE_NAME = "Saves/Charts.save"
+SAVE_FILE_NAME = "game.save"
 CHARACTERS_SAVE_FILE_NAME = "Saves/Characters.save"
 PLAYER_GRID_ID = 2000
 PLAYER_ENTITY_ID = 0
@@ -41,9 +41,9 @@ LOADING = False
 
 
 # All chart/map/dungeon generation and creation goes here.
-def start_charts(load=False):
+def start_game(load=False):
     if load:
-        return pickle.load(open(CHARTS_SAVE_FILE_NAME, FILE_READ_MODE))
+        return pickle.load(open(SAVE_FILE_NAME, FILE_READ_MODE))
     else:
         charts = {
         0: Charts.charts["Dungeon"].Chart(CHART_ID, CHART_WIDTH, CHART_HEIGHT, True),
@@ -60,36 +60,27 @@ def start_charts(load=False):
         # enemy positions. NOTE: See Charts.Dungeon/Charts.Generators for more.
         # Enemy positions return as dictionairy of very many sets of key/value
         # [(entity_category, entity_id)] = (x, y).
-        player_position, enemy_positions = Charts.charts["Generators"].MainDungeonGenerator(Objects.objects, Entities.entities, charts[0], charts[0].rooms, 0, 0)
-    return charts, player_position, enemy_positions
-
-
-
-
-# All entity/character generation and creation goes here.
-def start_characters(player_position, enemy_positions, charts, load=False):
-    if load:
-        return pickle.load(open(CHARACTERS_SAVE_FILE_NAME, FILE_READ_MODE))
-    else:
+        player_position, enemy_positions = Charts.charts["Generators"].MainDungeonGenerator(Objects.objects, Characters.characters, charts[0], charts[0].rooms, 0, 0)
         # Find the active chart, if so save the chart id in chart_id.
         for chart in charts.keys():
             if charts[chart].active:
                 chart_id = charts[chart].id
                 break
         # Create a dictionary to hold the player's and enemies's characters.
-        characters = {
-        0: Characters.characters["Player"].Character(chart_id, PLAYER_GRID_ID, PLAYER_ENTITY_ID, 0, player_position[0], player_position[1], "Player", "Human"),
+        entities = {
+        0: Entities.entities["Player"].Character(chart_id, PLAYER_GRID_ID, PLAYER_ENTITY_ID, 0, player_position[0], player_position[1], "Player", "Human"),
         }
         # Start at 1 because player is always unique_id 0.
         unique_id = 1
         # Iterate through each enemy and create a Enemy Character object.
         for enemy_category_and_id, enemy_position in enemy_positions.items():
-            characters[unique_id] = Characters.characters["Enemy"].Character(chart_id, enemy_category_and_id[0],
+            entities[unique_id] = Entities.entities["Enemy"].Character(chart_id, enemy_category_and_id[0],
             enemy_category_and_id[1], unique_id, enemy_position[0], enemy_position[1],
-            Entities.entities[enemy_category_and_id[0]][enemy_category_and_id[1]][ENTITY_HEALTH])
+            Characters.characters[enemy_category_and_id[0]][enemy_category_and_id[1]][ENTITY_HEALTH])
             # Each character gets a fresh id.
             unique_id += 1
-    return characters
+            charts[0].entities = entities
+        return charts
 
 
 
@@ -103,17 +94,10 @@ libtcodpy.sys_set_fps(FRAMES_PER_SECOND)
 
 
 def main():
-    # Get the object set charts from start_charts.
-    # NOTE: player_position and enemy_positions are needed to place in the
+    # Get the object set charts from start_game.
+    # NOTE-DEFUNCT: player_position and enemy_positions are needed to place in the
     # object set characters. They can also be used in other places.
-    if not LOADING:
-        charts, player_position, enemy_positions = start_charts(LOADING)
-    else:
-        charts = start_charts(LOADING)
-    if not LOADING:
-        characters = start_characters(player_position, enemy_positions, charts,  LOADING)
-    else:
-        characters = start_characters(None, None, None,  LOADING)
+    charts = start_game(LOADING)
     # Messages will be displayed [-1:-10].
     messages = []
     # Initialize the enemy position for the DrawEnemyInfo function.
@@ -130,16 +114,16 @@ def main():
                 chart_id = charts[chart].id
                 break
         # Chart related drawing.
-        Graphics.graphics["DrawChart"].DrawFloorsWalls(libtcodpy, Objects.objects, charts[0], characters[0])
-        Graphics.graphics["DrawChart"].DrawEntities(libtcodpy, Objects.objects, Entities.entities, charts[0], characters[0])
+        Graphics.graphics["DrawChart"].DrawFloorsWalls(libtcodpy, Objects.objects, charts[0], charts[0].entities[0])
+        Graphics.graphics["DrawChart"].DrawEntities(libtcodpy, Objects.objects, Characters.characters, charts[0], charts[0].entities[0])
         Graphics.graphics["DrawChart"].DrawBorder(libtcodpy, charts[chart_id].width, charts[0].height)
         # Info related drawing.
-        Graphics.graphics["DrawInfo"].DrawStats(libtcodpy, charts[chart_id], characters[0])
-        Graphics.graphics["DrawInfo"].DrawAttributes(libtcodpy, charts[chart_id], characters[0])
-        Graphics.graphics["DrawInfo"].DrawSkills(libtcodpy, charts[chart_id], characters[0])
-        Graphics.graphics["DrawInfo"].DrawLocation(libtcodpy, charts[chart_id], characters[0])
+        Graphics.graphics["DrawInfo"].DrawStats(libtcodpy, charts[chart_id], charts[0].entities[0])
+        Graphics.graphics["DrawInfo"].DrawAttributes(libtcodpy, charts[chart_id], charts[0].entities[0])
+        Graphics.graphics["DrawInfo"].DrawSkills(libtcodpy, charts[chart_id], charts[0].entities[0])
+        Graphics.graphics["DrawInfo"].DrawLocation(libtcodpy, charts[chart_id], charts[0].entities[0])
         Graphics.graphics["DrawInfo"].DrawMessages(libtcodpy, messages, charts[chart_id])
-        Graphics.graphics["DrawInfo"].DrawEnemyInfo(libtcodpy, charts[chart_id], characters, enemy_x, enemy_y, Entities.entities)
+        Graphics.graphics["DrawInfo"].DrawEnemyInfo(libtcodpy, charts[chart_id], charts[0].entities, enemy_x, enemy_y)
         # Reset the enemy position so enemy info doesn't draw out of fight.
         enemy_x, enemy_y = None, None
         # Flush the console.
@@ -156,7 +140,7 @@ def main():
                 # Choose a stat to advance and wait for the enter key.
                 event = Handlers.handlers["InputHandler"].StatMenu(libtcodpy)
                 if event == SELECT_MENU_ENTER:
-                    Handlers.handlers["LevelingHandler"].LevelStat(characters[0], stat_choices[choice])
+                    Handlers.handlers["LevelingHandler"].LevelStat(charts[0].entities[0], stat_choices[choice])
                     skip_input = True
                     break
                 if choice == 0 and event == MOVE_MENU_UP:
@@ -183,31 +167,31 @@ def main():
             # Check if the event is a move key; If so then try to move a player.
             # Returns True if an enemy is in the way, store that in enemy_there.
         elif event == MOVE_PLAYER_NORTH:
-            enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(characters[0].x, characters[0].y, NORTH[0], NORTH[1], characters[0], charts[chart_id], Objects.objects, Entities.entities)
+            enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(charts[0].entities[0].x, charts[0].entities[0].y, NORTH[0], NORTH[1], charts[0].entities[0], charts[chart_id], Objects.objects, Characters.characters)
             if enemy_there:
-                enemy_at = (characters[0].x + NORTH[0], characters[0].y + NORTH[1])
+                enemy_at = (charts[0].entities[0].x + NORTH[0], charts[0].entities[0].y + NORTH[1])
             turn_taken = True
         elif event == MOVE_PLAYER_SOUTH:
-            enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(characters[0].x, characters[0].y, SOUTH[0], SOUTH[1], characters[0], charts[chart_id], Objects.objects, Entities.entities)
+            enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(charts[0].entities[0].x, charts[0].entities[0].y, SOUTH[0], SOUTH[1], charts[0].entities[0], charts[chart_id], Objects.objects, Characters.characters)
             if enemy_there:
-                enemy_at = (characters[0].x + SOUTH[0], characters[0].y + SOUTH[1])
+                enemy_at = (charts[0].entities[0].x + SOUTH[0], charts[0].entities[0].y + SOUTH[1])
             turn_taken = True
         elif event == MOVE_PLAYER_WEST:
-            enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(characters[0].x, characters[0].y, WEST[0], WEST[1], characters[0], charts[chart_id], Objects.objects, Entities.entities)
+            enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(charts[0].entities[0].x, charts[0].entities[0].y, WEST[0], WEST[1], charts[0].entities[0], charts[chart_id], Objects.objects, Characters.characters)
             if enemy_there:
-                enemy_at = (characters[0].x + WEST[0], characters[0].y + WEST[1])
+                enemy_at = (charts[0].entities[0].x + WEST[0], charts[0].entities[0].y + WEST[1])
             turn_taken = True
         elif event == MOVE_PLAYER_EAST:
-            enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(characters[0].x, characters[0].y, EAST[0], EAST[1], characters[0], charts[chart_id], Objects.objects, Entities.entities)
+            enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(charts[0].entities[0].x, charts[0].entities[0].y, EAST[0], EAST[1], charts[0].entities[0], charts[chart_id], Objects.objects, Characters.characters)
             if enemy_there:
-                enemy_at = (characters[0].x + EAST[0], characters[0].y + EAST[1])
+                enemy_at = (charts[0].entities[0].x + EAST[0], charts[0].entities[0].y + EAST[1])
             turn_taken = True
         if enemy_there:
-            for message in Handlers.handlers["CombatHandler"].FightCharacter(charts[chart_id], characters[0], characters, enemy_at[0], enemy_at[1], Entities.entities):
+            for message in Handlers.handlers["CombatHandler"].FightCharacter(charts[chart_id], charts[0].entities[0], charts[0].entities, enemy_at[0], enemy_at[1], Characters.characters):
                 messages.append(message)
             enemy_x, enemy_y = enemy_at[0], enemy_at[1]
             # main_level_up is used to see if we should pick a stat to increase.
-        main_level_up, messages_new = Handlers.handlers["LevelingHandler"].LevelCharacter(characters[0])
+        main_level_up, messages_new = Handlers.handlers["LevelingHandler"].LevelCharacter(charts[0].entities[0])
         for message in messages_new:
             messages.append(message)
 

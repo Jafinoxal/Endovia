@@ -37,7 +37,7 @@ def DrawFloorsWalls(library, objects, chart, player):
                         library.console_set_char_background(0, x+1, y+1, library.Color(0, 0, 0))
                         library.console_set_char(0, x+1, y+1, " ")
 
-def DrawEntities(library, objects, entities, chart, player):
+def DrawEntities(library, objects, characters, chart, player):
     fov_map = library.map_new(chart.width, chart.height)
     for category in (0, 2000, 2001):
         for y in range(0, chart.height):
@@ -49,21 +49,21 @@ def DrawEntities(library, objects, entities, chart, player):
                     if not category:
                         library.map_set_properties(fov_map, x, y, objects[category][chart.grids[category][(x, y)][1]][8], not objects[category][chart.grids[category][(x, y)][1]][7])
                     else:
-                        library.map_set_properties(fov_map, x, y, entities[category][chart.grids[category][(x, y)][1]][8], not entities[category][chart.grids[category][(x, y)][1]][7])
+                        library.map_set_properties(fov_map, x, y, characters[category][chart.grids[category][(x, y)][1]][8], not characters[category][chart.grids[category][(x, y)][1]][7])
     library.map_compute_fov(fov_map, player.x, player.y, 5, True, 0)
     for category in (2000, 2001):
         for y in  range(0, chart.height):
             for x in range(0, chart.width):
                 if chart.grids[category][(x, y)] != None:
                     if library.map_is_in_fov(fov_map, x, y):
-                        entity_reference = entities[category][chart.grids[category][(x, y)][1]]
-                        library.console_set_char_foreground(0, x+1, y+1, library.Color(entity_reference[6][0][0],
-                                                                                       entity_reference[6][0][1],
-                                                                                       entity_reference[6][0][2]))
-                        library.console_set_char_background(0, x+1, y+1, library.Color(entity_reference[6][1][0],
-                                                                                       entity_reference[6][1][1],
-                                                                                       entity_reference[6][1][2]))
-                        library.console_set_char(0, x+1, y+1, entity_reference[5])
+                        character_reference = characters[category][chart.grids[category][(x, y)][1]]
+                        library.console_set_char_foreground(0, x+1, y+1, library.Color(character_reference[6][0][0],
+                                                                                       character_reference[6][0][1],
+                                                                                       character_reference[6][0][2]))
+                        library.console_set_char_background(0, x+1, y+1, library.Color(character_reference[6][1][0],
+                                                                                       character_reference[6][1][1],
+                                                                                       character_reference[6][1][2]))
+                        library.console_set_char(0, x+1, y+1, character_reference[5])
                     else:
                         library.console_set_char_foreground(0, x+1, y+1, library.Color(0, 0, 0))
                         library.console_set_char_background(0, x+1, y+1, library.Color(0, 0, 0))

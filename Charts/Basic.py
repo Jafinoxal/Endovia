@@ -19,6 +19,7 @@ class Chart(object):
                       1011:{}, 1012:{}, 1013:{}, 2000:{}, 2001:{}}
         # Positions seen.
         self.seen = list()
+        entities = {}
     def create_empty_grid(self, grid_id, grid_width, grid_height):
         # Loop through the entire grid and fill it with None.
         for y in range(0, grid_height):

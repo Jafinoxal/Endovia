@@ -124,7 +124,7 @@ def DrawLocation(library, chart, player):
             library.console_set_char_background(0, x + chart.width + 2, y + 39, library.Color(0, 0, 0))
             library.console_set_char(0, x + chart.width + 2, y + 39, to_draw_complete[y][x])
 
-def DrawEnemyInfo(library, chart, enemies, enemy_x, enemy_y, entities):
+def DrawEnemyInfo(library, chart, enemies, enemy_x, enemy_y):
     # Find the enemy.
     for enemy in enemies.values():
         if (enemy_x, enemy_y) == (enemy.x, enemy.y):
