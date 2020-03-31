@@ -30,6 +30,8 @@ def _category():
     23: 1013,
     24: 1013,
     25: 1013,
+    26: 1013,
+    27: 1013,
     }
 
 def _identity():
@@ -60,6 +62,8 @@ def _identity():
     23: 23,
     24: 24,
     25: 25,
+    26: 26,
+    27: 27,
     }
 
 def _name():
@@ -90,6 +94,8 @@ def _name():
     23: "Archer's Potion",
     24: "Rogue's Potion",
     25: "Hybrid's Potion",
+    26: "Searcher's Potion",
+    27: "Seeker's Potion",
     }
 
 def _kind():
@@ -120,6 +126,8 @@ def _kind():
     23: "Potion",
     24: "Potion",
     25: "Potion",
+    26: "Potion",
+    27: "Potion",
     }
 
 def _description():
@@ -143,13 +151,15 @@ def _description():
     16: "Restores all of your skills.",
     17: "Makes you undetectable for 50 turns.",
     18: "Makes you able to walk on water for 50 turns.",
-    19: "Increases your speed by making you lighter.",
-    20: "Allows you to reach high places with a spring",
-    21: "Grants you warrior strength and strength.",
-    22: "Grants you wizardly powerful and intelligence.",
-    23: "Grants you ranger precision and agility.",
-    24: "Grants you rogueish nimbility and perception.",
-    25: "Grants random boosts.",
+    19: "Increases your speed by making you lighter for 75 turns.",
+    20: "Allows you to reach high places with a spring for 75 turns.",
+    21: "Grants you warrior strength and strength for 125 turns",
+    22: "Grants you wizardly powerful and intelligence for 125 turns.",
+    23: "Grants you ranger precision and agility for 125 turns.",
+    24: "Grants you rogueish nimbility and perception for 125 turns.",
+    25: "Grants random boosts for 125 turns.",
+    26: "Performs automatic searching for 85 turns.",
+    27: "Grants greater sight distance for 85 turns.",
     }
 
 def _symbol(): # %.
@@ -180,6 +190,8 @@ def _symbol(): # %.
     23: "%",
     24: "%",
     25: "%",
+    26: "%",
+    27: "%",
     }
 
 def _color():
@@ -210,6 +222,8 @@ def _color():
     23: ((127,127,127), (0,0,0)),
     24: ((127,127,127), (0,0,0)),
     25: ((127,127,127), (0,0,0)),
+    26: ((127,127,127), (0,0,0)),
+    27: ((127,127,127), (0,0,0)),
     }
 
 def _clip():
@@ -240,6 +254,8 @@ def _clip():
     23: False,
     24: False,
     25: False,
+    26: False,
+    27: False
     }
 
 def _transparent():
@@ -270,6 +286,8 @@ def _transparent():
     23: True,
     24: True,
     25: True,
+    26: True,
+    27: True,
     }
 
 def _weight():
@@ -300,6 +318,8 @@ def _weight():
     23: 0.5,
     24: 0.5,
     25: 0.5,
+    26: 0.5,
+    27: 0.5,
     }
 
 def _value():
@@ -330,6 +350,8 @@ def _value():
     23: 652,
     24: 652,
     25: 652,
+    26: 775,
+    27: 775,
     }
 
 def potions():
@@ -360,6 +382,8 @@ def potions():
     23: (_category()[23], _identity()[23], _name()[23], _kind()[23], _description()[23], _symbol()[23], _color()[23], _clip()[23], _transparent()[23], _weight()[23], _value()[23]),
     24: (_category()[24], _identity()[24], _name()[24], _kind()[24], _description()[24], _symbol()[24], _color()[24], _clip()[24], _transparent()[24], _weight()[24], _value()[24]),
     25: (_category()[25], _identity()[25], _name()[25], _kind()[25], _description()[25], _symbol()[25], _color()[25], _clip()[25], _transparent()[25], _weight()[25], _value()[25]),
+    26: (_category()[26], _identity()[26], _name()[26], _kind()[26], _description()[26], _symbol()[26], _color()[26], _clip()[26], _transparent()[26], _weight()[26], _value()[26]),
+    27: (_category()[27], _identity()[27], _name()[27], _kind()[27], _description()[27], _symbol()[27], _color()[27], _clip()[27], _transparent()[27], _weight()[27], _value()[27]),
     }
 
 # Jafinoxal.

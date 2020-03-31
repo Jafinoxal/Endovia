@@ -10,6 +10,8 @@ def DrawStats(library, chart, player):
     health_to_draw = " Health: {0}/{1}   ".format(player.stats["health"][0], player.stats["health"][1])
     mana_to_draw = " Mana:   {0}/{1}   ".format(player.stats["mana"][0], player.stats["mana"][1])
     energy_to_draw = " Energy: {0}/{1}   ".format(player.stats["energy"][0], player.stats["energy"][1])
+    faith_to_draw = " Faith:  {0}/{1}   ".format(player.stats["faith"][0], player.stats["faith"][1])
+    chakra_to_draw = " Chakra: {0}/{1}   ".format(player.stats["chakra"][0], player.stats["chakra"][1])
     to_draw_complete = (
     title_to_draw,
     name_to_draw,
@@ -18,6 +20,8 @@ def DrawStats(library, chart, player):
     health_to_draw,
     mana_to_draw,
     energy_to_draw,
+    faith_to_draw,
+    chakra_to_draw,
     )
     for y in range(0, len(to_draw_complete)):
         for x in range(0, len(to_draw_complete[y])):
@@ -52,9 +56,9 @@ def DrawAttributes(library, chart, player):
     )
     for y in range(0, len(to_draw_complete)):
         for x in range(0, len(to_draw_complete[y])):
-            library.console_set_char_foreground(0, x + chart.width + 2, y + 7, library.Color(255, 255, 255))
-            library.console_set_char_background(0, x + chart.width + 2, y + 7, library.Color(0, 0, 0))
-            library.console_set_char(0, x + chart.width + 2, y + 7, to_draw_complete[y][x])
+            library.console_set_char_foreground(0, x + chart.width + 2, y + 9, library.Color(255, 255, 255))
+            library.console_set_char_background(0, x + chart.width + 2, y + 9, library.Color(0, 0, 0))
+            library.console_set_char(0, x + chart.width + 2, y + 9, to_draw_complete[y][x])
 
 def DrawSkills(library, chart, player):
     title_to_draw = "+ SKILLS +"
@@ -103,9 +107,9 @@ def DrawSkills(library, chart, player):
     )
     for y in range(0, len(to_draw_complete)):
         for x in range(0, len(to_draw_complete[y])):
-            library.console_set_char_foreground(0, x + chart.width + 2, y + 18, library.Color(255, 255, 255))
-            library.console_set_char_background(0, x + chart.width + 2, y + 18, library.Color(0, 0, 0))
-            library.console_set_char(0, x + chart.width + 2, y + 18, to_draw_complete[y][x])
+            library.console_set_char_foreground(0, x + chart.width + 2, y + 20, library.Color(255, 255, 255))
+            library.console_set_char_background(0, x + chart.width + 2, y + 20, library.Color(0, 0, 0))
+            library.console_set_char(0, x + chart.width + 2, y + 20, to_draw_complete[y][x])
 
 def DrawLocation(library, chart, player):
     title_to_draw = "+ LOCATION +"
@@ -120,9 +124,9 @@ def DrawLocation(library, chart, player):
     )
     for y in range(0, len(to_draw_complete)):
         for x in range(0, len(to_draw_complete[y])):
-            library.console_set_char_foreground(0, x + chart.width + 2, y + 39, library.Color(255, 255, 255))
-            library.console_set_char_background(0, x + chart.width + 2, y + 39, library.Color(0, 0, 0))
-            library.console_set_char(0, x + chart.width + 2, y + 39, to_draw_complete[y][x])
+            library.console_set_char_foreground(0, x + chart.width + 2, y + 41, library.Color(255, 255, 255))
+            library.console_set_char_background(0, x + chart.width + 2, y + 41, library.Color(0, 0, 0))
+            library.console_set_char(0, x + chart.width + 2, y + 41, to_draw_complete[y][x])
 
 def DrawEnemyInfo(library, chart, enemies, enemy_x, enemy_y):
     # Find the enemy.
@@ -142,9 +146,9 @@ def DrawEnemyInfo(library, chart, enemies, enemy_x, enemy_y):
             )
             for y in range(0, len(to_draw_complete)):
                 for x in range(0, len(to_draw_complete[y])):
-                    library.console_set_char_foreground(0, x + chart.width + 2, y + 43, library.Color(255, 255, 255))
-                    library.console_set_char_background(0, x + chart.width + 2, y + 43, library.Color(0, 0, 0))
-                    library.console_set_char(0, x + chart.width + 2, y + 43, to_draw_complete[y][x])
+                    library.console_set_char_foreground(0, x + chart.width + 2, y + 45, library.Color(255, 255, 255))
+                    library.console_set_char_background(0, x + chart.width + 2, y + 45, library.Color(0, 0, 0))
+                    library.console_set_char(0, x + chart.width + 2, y + 45, to_draw_complete[y][x])
             break
 
 def DrawMessages(library, messages, chart):

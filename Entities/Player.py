@@ -15,6 +15,8 @@ class Character(Basic.Character):
         "health": (100, 100),
         "mana": (100, 100),
         "energy": (100, 100),
+        "faith": (100, 100),
+        "chakra": (100, 100),
         }
         self.attributes = {
         "attack": 1,

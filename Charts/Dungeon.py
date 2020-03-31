@@ -100,14 +100,16 @@ class Chart(Basic.Chart):
 
     def _place_player_start(self, objects, characters, character_category, character_id):
         # Iterate through entire grid to start.
-        for y in range(self.height):
-            for x in range(self.width):
-                # If true, the position holds something other than None or a floor.
-                if not self._is_free(objects, characters, x, y):
-                    continue
-                # Place the player at the position in the grid and return the position.
-                self.grids[character_category][(x, y)] = {0: character_category, 1: character_id, 2: None}
-                return (x, y)
+        while True:
+            for y in range(self.height):
+                for x in range(self.width):
+                    # If true, the position holds something other than None or a floor.
+                    if not self._is_free(objects, characters, x, y):
+                        continue
+                    # Place the player at the position in the grid and return the position.
+                    if not random.randint(0, 250):
+                        self.grids[character_category][(x, y)] = {0: character_category, 1: character_id, 2: None}
+                        return (x, y)
 
     def _place_enemies_start(self, objects, characters, character_category, character_id):
         character_positions = dict()

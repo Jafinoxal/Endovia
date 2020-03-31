@@ -27,12 +27,11 @@ CHART_ID = 0
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
 FRAMES_PER_SECOND = 60
-WINDOW_NAME = "Endovia 1.158"
+WINDOW_NAME = "Endovia 1.159"
 FONT_NAME = "terminal8x8_gs_ro.png"
 FILE_READ_MODE = "rb"
 FONT_TYPE = libtcodpy.FONT_TYPE_GREYSCALE | libtcodpy.FONT_LAYOUT_ASCII_INROW
-SAVE_FILE_NAME = "game.save"
-CHARACTERS_SAVE_FILE_NAME = "Saves/Characters.save"
+SAVE_FILE_NAME = "endovia.save"
 PLAYER_GRID_ID = 2000
 PLAYER_ENTITY_ID = 0
 LOADING = False
@@ -53,8 +52,11 @@ def start_game(load=False):
         # Fill all other object grids with None, they're empty.
         for category in range(1, OBJECT_CATEGORIES):
             charts[0].create_empty_grid(category, CHART_WIDTH, CHART_HEIGHT)
-        # Fill all entity grids with None, they're empty.
-        for category in range(2000, 2000 + ENTITY_CATEGORIES):
+        # Fill all item grids with None, they're empty.
+        for category in range(1000, 1000 + ITEM_CATEGORIES):
+            charts[0].create_empty_grid(category, CHART_WIDTH, CHART_HEIGHT)
+        # Fill all character grids with None, they're empty.
+        for category in range(2000, 2000 + CHARACTER_CATEGORIES):
             charts[0].create_empty_grid(category, CHART_WIDTH, CHART_HEIGHT)
         # Run the dungeon generator which returns the player position and the
         # enemy positions. NOTE: See Charts.Dungeon/Charts.Generators for more.
@@ -76,7 +78,7 @@ def start_game(load=False):
         for enemy_category_and_id, enemy_position in enemy_positions.items():
             entities[unique_id] = Entities.entities["Enemy"].Character(chart_id, enemy_category_and_id[0],
             enemy_category_and_id[1], unique_id, enemy_position[0], enemy_position[1],
-            Characters.characters[enemy_category_and_id[0]][enemy_category_and_id[1]][ENTITY_HEALTH])
+            Characters.characters[enemy_category_and_id[0]][enemy_category_and_id[1]][CHARACTER_HEALTH])
             # Each character gets a fresh id.
             unique_id += 1
             charts[0].entities = entities
