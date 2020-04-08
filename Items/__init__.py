@@ -18,6 +18,7 @@ import Berries
 import Flowers
 import Ingredients
 import Potions
+import Logs
 
 items = {
 TOOLS: Tools.tools(),
@@ -34,6 +35,7 @@ BERRIES: Berries.berries(),
 FLOWERS: Flowers.flowers(),
 INGREDIENTS: Ingredients.ingredients(),
 POTIONS: Potions.potions(),
+LOGS: Logs.logs(),
 }
 
 # Jafinoxal.

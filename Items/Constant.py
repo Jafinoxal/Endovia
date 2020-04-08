@@ -2,7 +2,7 @@
 # Endovia (Item Constant)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
-ITEM_CATEGORIES = 14
+ITEM_CATEGORIES = 15
 
 ITEM_CATEGORY = 0
 ITEM_IDENTITY = 1
@@ -30,7 +30,7 @@ BERRIES = 1010 # Complete.
 FLOWERS = 1011 # Complete.
 INGREDIENTS = 1012 # Complete.
 POTIONS = 1013 # Complete.
-LOGS = 1014
+LOGS = 1014 # Complete.
 NECKLACES = 1015
 AMULETS = 1016
 RINGS = 1017
