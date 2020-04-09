@@ -20,6 +20,7 @@ import Ingredients
 import Potions
 import Logs
 import Necklaces
+import Rings
 
 items = {
 TOOLS: Tools.tools(),
@@ -38,6 +39,7 @@ INGREDIENTS: Ingredients.ingredients(),
 POTIONS: Potions.potions(),
 LOGS: Logs.logs(),
 NECKLACES: Necklaces.necklaces(),
+RINGS: Rings.rings(),
 }
 
 # Jafinoxal.
