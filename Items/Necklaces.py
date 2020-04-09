@@ -20,6 +20,11 @@ def _category():
     13: 1015,
     14: 1015,
     15: 1015,
+    16: 1015,
+    17: 1015,
+    18: 1015,
+    19: 1015,
+    20: 1015
     }
 
 def _identity():
@@ -40,6 +45,11 @@ def _identity():
     13: 13,
     14: 14,
     15: 15,
+    16: 16,
+    17: 17,
+    18: 18,
+    19: 19,
+    20: 20,
     }
 
 def _name():
@@ -60,6 +70,11 @@ def _name():
     13: "Platinum Diamond Uncut Necklace",
     14: "Platinum Onyx Uncut Necklace",
     15: "Platinum Beryl Uncut Necklace",
+    16: "Brass Necklace",
+    17: "Bronze Necklace",
+    18: "Silver Necklace",
+    19: "Gold Necklace",
+    20: "Platinum Necklace",
     }
 
 def _kind():
@@ -80,6 +95,11 @@ def _kind():
     13: "Necklace",
     14: "Necklace",
     15: "Necklace",
+    16: "Necklace",
+    17: "Necklace",
+    18: "Necklace",
+    19: "Necklace",
+    20: "Necklace",
     }
 
 def _description():
@@ -100,6 +120,11 @@ def _description():
     13: "An exotic necklace with a rare gem.",
     14: "An exotic necklace with a rare gem.",
     15: "An exotic necklace with a rare gem.",
+    16: "A worthless necklace.",
+    17: "A cheap necklace.",
+    18: "A costly necklace.",
+    19: "An expensive necklace.",
+    20: "An exotic necklace.",
     }
 
 def _symbol(): # 215.
@@ -120,6 +145,11 @@ def _symbol(): # 215.
     13: "%",
     14: "%",
     15: "%",
+    16: "%",
+    17: "%",
+    18: "%",
+    19: "%",
+    20: "%",
     }
 
 def _color():
@@ -140,6 +170,11 @@ def _color():
     13: ((127,127,127), (0,0,0)),
     14: ((127,127,127), (0,0,0)),
     15: ((127,127,127), (0,0,0)),
+    16: ((127,127,127), (0,0,0)),
+    17: ((127,127,127), (0,0,0)),
+    18: ((127,127,127), (0,0,0)),
+    19: ((127,127,127), (0,0,0)),
+    20: ((127,127,127), (0,0,0)),
     }
 
 def _clip():
@@ -160,6 +195,11 @@ def _clip():
     13: False,
     14: False,
     15: False,
+    16: False,
+    17: False,
+    18: False,
+    19: False,
+    20: False,
     }
 
 def _transparent():
@@ -180,6 +220,11 @@ def _transparent():
     13: True,
     14: True,
     15: True,
+    16: True,
+    17: True,
+    18: True,
+    19: True,
+    20: True,
     }
 
 def _weight():
@@ -200,6 +245,11 @@ def _weight():
     13: 1.4,
     14: 1.4,
     15: 1.4,
+    16: 0.7,
+    17: 0.8,
+    18: 1.3,
+    19: 1.3,
+    20: 1.3,
     }
 
 def _value():
@@ -220,6 +270,11 @@ def _value():
     13: 27900,
     14: 52000,
     15: 184500,
+    16: 6,
+    17: 38,
+    18: 140,
+    19: 1370,
+    20: 13200,
     }
 
 def necklaces():
@@ -240,6 +295,11 @@ def necklaces():
     13: (_category()[13], _identity()[13], _name()[13], _kind()[13], _description()[13], _symbol()[13], _color()[13], _clip()[13], _transparent()[13], _weight()[13], _value()[13]),
     14: (_category()[14], _identity()[14], _name()[14], _kind()[14], _description()[14], _symbol()[14], _color()[14], _clip()[14], _transparent()[14], _weight()[14], _value()[14]),
     15: (_category()[15], _identity()[15], _name()[15], _kind()[15], _description()[15], _symbol()[15], _color()[15], _clip()[15], _transparent()[15], _weight()[15], _value()[15]),
+    16: (_category()[16], _identity()[16], _name()[16], _kind()[16], _description()[16], _symbol()[16], _color()[16], _clip()[16], _transparent()[16], _weight()[16], _value()[16]),
+    17: (_category()[17], _identity()[17], _name()[17], _kind()[17], _description()[17], _symbol()[17], _color()[17], _clip()[17], _transparent()[17], _weight()[17], _value()[17]),
+    18: (_category()[18], _identity()[18], _name()[18], _kind()[18], _description()[18], _symbol()[18], _color()[18], _clip()[18], _transparent()[18], _weight()[18], _value()[18]),
+    19: (_category()[19], _identity()[19], _name()[19], _kind()[19], _description()[19], _symbol()[19], _color()[19], _clip()[19], _transparent()[19], _weight()[19], _value()[19]),
+    20: (_category()[20], _identity()[20], _name()[20], _kind()[20], _description()[20], _symbol()[20], _color()[20], _clip()[20], _transparent()[20], _weight()[20], _value()[20]),
     }
 
 # Jafinoxal.

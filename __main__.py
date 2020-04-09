@@ -27,7 +27,7 @@ CHART_ID = 0
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
 FRAMES_PER_SECOND = 60
-WINDOW_NAME = "Endovia 1.162"
+WINDOW_NAME = "Endovia 1.163"
 FONT_NAME = "terminal8x8_gs_ro.png"
 FILE_READ_MODE = "rb"
 FONT_TYPE = libtcodpy.FONT_TYPE_GREYSCALE | libtcodpy.FONT_LAYOUT_ASCII_INROW
@@ -132,7 +132,7 @@ def main():
         libtcodpy.console_flush()
         if main_level_up:
             choice = 0
-            stat_choices = ("health", "mana", "energy")
+            stat_choices = ("health", "mana", "energy", "faith", "chakra")
             while True:
                 # Stat menu drawing.
                 Graphics.graphics["DrawMenu"].DrawBorder(libtcodpy, charts[chart_id].width, charts[0].height)
@@ -146,17 +146,13 @@ def main():
                     skip_input = True
                     break
                 if choice == 0 and event == MOVE_MENU_UP:
-                    choice = 2
-                elif choice == 0 and event == MOVE_MENU_DOWN:
-                    choice = 1
-                elif choice == 2 and event == MOVE_MENU_DOWN:
+                    choice = 4
+                elif choice == 4 and event == MOVE_MENU_DOWN:
                     choice = 0
-                elif choice == 2 and event == MOVE_MENU_UP:
-                    choice = 1
-                elif choice == 1 and event == MOVE_MENU_UP:
-                    choice = 0
-                elif choice == 1 and event == MOVE_MENU_DOWN:
-                    choice = 2
+                elif choice > 0 and event == MOVE_MENU_UP:
+                    choice -= 1
+                elif choice < 4 and event == MOVE_MENU_DOWN:
+                    choice += 1
         # Get the input event, event is a constant from Handlers.Constant.
         if not skip_input:
             event = Handlers.handlers["InputHandler"].MainGame(libtcodpy)
