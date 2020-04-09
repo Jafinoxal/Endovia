@@ -122,7 +122,7 @@ def _description():
     19: "I should probably cook this before eating.",
     }
 
-def _symbol(): # %.
+def _symbol(): # 215.
     return {
     0: "%",
     1: "%",

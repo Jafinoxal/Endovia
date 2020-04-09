@@ -137,7 +137,7 @@ def _description():
     22: "Useful for cleaning dirty herbs."
     }
 
-def _symbol(): # %.
+def _symbol(): # 215.
     return {
     0: "%",
     1: "%",

@@ -122,7 +122,7 @@ def _description():
     19: "Can be used in alchemy.",
     }
 
-def _symbol(): # %.
+def _symbol(): # 215.
     return {
     0: "%",
     1: "%",

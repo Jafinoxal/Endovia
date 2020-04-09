@@ -162,7 +162,7 @@ def _description():
     27: "Grants greater sight distance for 85 turns.",
     }
 
-def _symbol(): # %.
+def _symbol(): # 215.
     return {
     0: "%",
     1: "%",

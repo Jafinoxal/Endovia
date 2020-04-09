@@ -19,6 +19,7 @@ def _category():
     12: 1005,
     13: 1005,
     14: 1005,
+    15: 1005,
     }
 
 def _identity():
@@ -38,6 +39,7 @@ def _identity():
     12: 12,
     13: 13,
     14: 14,
+    15: 15,
     }
 
 def _name():
@@ -57,6 +59,7 @@ def _name():
     12: "Ruby Cut Gem",
     13: "Diamond Cut Gem",
     14: "Onyx Cut Gem",
+    15: "Beryl Cut Gem",
     }
 
 def _kind():
@@ -76,6 +79,7 @@ def _kind():
     12: "CutGem",
     13: "CutGem",
     14: "CutGem",
+    15: "CutGem",
     }
 
 def _description():
@@ -95,9 +99,10 @@ def _description():
     12: "What jewelry could I make from this?",
     13: "What jewelry could I make from this?",
     14: "What jewelry could I make from this?",
+    15: "What jewelry could I make from this?",
     }
 
-def _symbol(): # %.
+def _symbol(): # 215.
     return {
     0: "%",
     1: "%",
@@ -114,6 +119,7 @@ def _symbol(): # %.
     12: "%",
     13: "%",
     14: "%",
+    15: "%",
     }
 
 def _color():
@@ -133,6 +139,7 @@ def _color():
     12: ((127,127,127), (0,0,0)),
     13: ((127,127,127), (0,0,0)),
     14: ((127,127,127), (0,0,0)),
+    15: ((127,127,127), (0,0,0)),
     }
 
 def _clip():
@@ -152,6 +159,7 @@ def _clip():
     12: False,
     13: False,
     14: False,
+    15: False,
     }
 
 def _transparent():
@@ -171,25 +179,27 @@ def _transparent():
     12: True,
     13: True,
     14: True,
+    15: True,
     }
 
 def _weight():
     return {
-    0: 0.2,
-    1: 0.2,
-    2: 0.2,
-    3: 0.2,
-    4: 0.2,
-    5: 0.2,
-    6: 0.2,
-    7: 0.2,
-    8: 0.2,
-    9: 0.2,
-    10: 0.2,
-    11: 0.2,
-    12: 0.2,
-    13: 0.2,
-    14: 0.2,
+    0: 1.0,
+    1: 1.0,
+    2: 1.0,
+    3: 1.0,
+    4: 1.5,
+    5: 1.5,
+    6: 1.5,
+    7: 1.5,
+    8: 1.5,
+    9: 1.5,
+    10: 1.5,
+    11: 1.5,
+    12: 1.5,
+    13: 1.5,
+    14: 1.5,
+    15: 1.5,
     }
 
 def _value():
@@ -209,6 +219,7 @@ def _value():
     12: 3340,
     13: 13300,
     14: 37000,
+    15: 180000,
     }
 
 def cutgems():
@@ -228,6 +239,7 @@ def cutgems():
     12: (_category()[12], _identity()[12], _name()[12], _kind()[12], _description()[12], _symbol()[12], _color()[12], _clip()[12], _transparent()[12], _weight()[12], _value()[12]),
     13: (_category()[13], _identity()[13], _name()[13], _kind()[13], _description()[13], _symbol()[13], _color()[13], _clip()[13], _transparent()[13], _weight()[13], _value()[13]),
     14: (_category()[14], _identity()[14], _name()[14], _kind()[14], _description()[14], _symbol()[14], _color()[14], _clip()[14], _transparent()[14], _weight()[14], _value()[14]),
+    15: (_category()[15], _identity()[15], _name()[15], _kind()[15], _description()[15], _symbol()[15], _color()[15], _clip()[15], _transparent()[15], _weight()[15], _value()[15]),
     }
 
 # Jafinoxal.

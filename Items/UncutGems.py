@@ -19,6 +19,7 @@ def _category():
     12: 1004,
     13: 1004,
     14: 1004,
+    15: 1004,
     }
 
 def _identity():
@@ -38,6 +39,7 @@ def _identity():
     12: 12,
     13: 13,
     14: 14,
+    15: 15,
     }
 
 def _name():
@@ -57,6 +59,7 @@ def _name():
     12: "Ruby Uncut Gem",
     13: "Diamond Uncut Gem",
     14: "Onyx Uncut Gem",
+    15: "Beryl Uncut Gem",
     }
 
 def _kind():
@@ -76,6 +79,7 @@ def _kind():
     12: "UncutGem",
     13: "UncutGem",
     14: "UncutGem",
+    15: "UncutGem",
     }
 
 def _description():
@@ -95,9 +99,10 @@ def _description():
     12: "Ooh, shiny; Could use some cutting though.",
     13: "Ooh, shiny; Could use some cutting though.",
     14: "Ooh, shiny; Could use some cutting though.",
+    15: "Ooh, shiny; Could use some cutting though.",
     }
 
-def _symbol(): # %.
+def _symbol(): # 215.
     return {
     0: "%",
     1: "%",
@@ -114,6 +119,7 @@ def _symbol(): # %.
     12: "%",
     13: "%",
     14: "%",
+    15: "%",
     }
 
 def _color():
@@ -133,6 +139,7 @@ def _color():
     12: ((127,127,127), (0,0,0)),
     13: ((127,127,127), (0,0,0)),
     14: ((127,127,127), (0,0,0)),
+    15: ((127,127,127), (0,0,0)),
     }
 
 def _clip():
@@ -152,6 +159,7 @@ def _clip():
     12: False,
     13: False,
     14: False,
+    15: False,
     }
 
 def _transparent():
@@ -171,6 +179,7 @@ def _transparent():
     12: True,
     13: True,
     14: True,
+    15: True,
     }
 
 def _weight():
@@ -190,6 +199,7 @@ def _weight():
     12: 0.3,
     13: 0.3,
     14: 0.3,
+    15: 0.3,
     }
 
 def _value():
@@ -209,6 +219,7 @@ def _value():
     12: 3290,
     13: 13050,
     14: 36400,
+    15: 176900
     }
 
 def uncutgems():
@@ -228,6 +239,7 @@ def uncutgems():
     12: (_category()[12], _identity()[12], _name()[12], _kind()[12], _description()[12], _symbol()[12], _color()[12], _clip()[12], _transparent()[12], _weight()[12], _value()[12]),
     13: (_category()[13], _identity()[13], _name()[13], _kind()[13], _description()[13], _symbol()[13], _color()[13], _clip()[13], _transparent()[13], _weight()[13], _value()[13]),
     14: (_category()[14], _identity()[14], _name()[14], _kind()[14], _description()[14], _symbol()[14], _color()[14], _clip()[14], _transparent()[14], _weight()[14], _value()[14]),
+    15: (_category()[15], _identity()[15], _name()[15], _kind()[15], _description()[15], _symbol()[15], _color()[15], _clip()[15], _transparent()[15], _weight()[15], _value()[15]),
     }
 
 # Jafinoxal.

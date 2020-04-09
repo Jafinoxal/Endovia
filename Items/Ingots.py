@@ -23,6 +23,7 @@ def _category():
     16: 1002,
     17: 1002,
     18: 1002,
+    19: 1002,
     }
 
 def _identity():
@@ -46,6 +47,7 @@ def _identity():
     16: 16,
     17: 17,
     18: 18,
+    19: 19,
     }
 
 def _name():
@@ -70,6 +72,7 @@ def _name():
     16: "Silver Ingot",
     17: "Gold Ingot",
     18: "Platinum Ingot",
+    19: "Bronze Ingot",
     }
 
 def _kind():
@@ -93,6 +96,7 @@ def _kind():
     16: "Ingot",
     17: "Ingot",
     18: "Ingot",
+    19: "Ingot",
     }
 
 def _description():
@@ -116,9 +120,10 @@ def _description():
     16: "Can be smithed into metal items.",
     17: "Can be smithed into metal items.",
     18: "Can be smithed into metal items.",
+    19: "Can be smithed into metal items.",
     }
 
-def _symbol(): # %.
+def _symbol(): # 215.
     return {
     0: "%",
     1: "%",
@@ -139,6 +144,8 @@ def _symbol(): # %.
     16: "%",
     17: "%",
     18: "%",
+    19: "%",
+
     }
 
 def _color():
@@ -162,6 +169,7 @@ def _color():
     16: ((127,127,127), (0,0,0)),
     17: ((127,127,127), (0,0,0)),
     18: ((127,127,127), (0,0,0)),
+    19: ((127,127,127), (0,0,0)),
     }
 
 def _clip():
@@ -185,6 +193,7 @@ def _clip():
     16: False,
     17: False,
     18: False,
+    19: False,
     }
 
 def _transparent():
@@ -208,6 +217,8 @@ def _transparent():
     16: True,
     17: True,
     18: True,
+    18: True,
+    19: True,
     }
 
 def _weight():
@@ -231,6 +242,7 @@ def _weight():
     16: 1.3,
     17: 1.3,
     18: 1.3,
+    19: 0.8,
     }
 
 def _value():
@@ -254,6 +266,7 @@ def _value():
     16: 130,
     17: 1300,
     18: 13000,
+    19: 30,
     }
 
 def ingots():

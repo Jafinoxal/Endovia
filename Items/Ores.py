@@ -118,7 +118,7 @@ def _description():
     18: "Can be smelted into an ingot.",
     }
 
-def _symbol(): # %.
+def _symbol(): # 215.
     return {
     0: "%",
     1: "%",
