@@ -101,12 +101,24 @@ def DrawStatChoice(library, choice):
 
 def DrawInventoryChoice(library, choice, inventory, items):
     category_type = items[choice[0]][choice[1]][3]
-    selected_item = items[choice[0]][choice[1]][2]
-    print category_type
-    starts = {0: "+ Inventory +         ",
-              1: "[{0}]        ".format(category_type),
-             }
-    for key, value in starts.items():
+    selected_item = items[choice[0]][choice[1]][1]
+    choices = {0: "+ Inventory +     ",
+              1: "= {0} =    ".format(category_type),
+              }
+    item_index = 0
+    for item_id, item_amount in inventory[choice[0]].items():
+        if item_id == selected_item:
+            try:
+                choices[2 + item_index] = "[{0}] x{1}      ".format(items[choice[0]][item_id][2], inventory[choice[0]][item_id])
+            except:
+                choices[2 + item_index] = "[{0}] x{1}      ".format(items[choice[0]][item_id][2], 0)
+        else:
+            try:
+                choices[2 + item_index] = "{0} x{1}      ".format(items[choice[0]][item_id][2], inventory[choice[0]][item_id])
+            except:
+                choices[2 + item_index] = "{0} x{1}      ".format(items[choice[0]][item_id][2], 0)
+        item_index += 1
+    for key, value in choices.items():
         for index in range(0, len(value)):
             library.console_set_char_foreground(0, 3 + index, 3 + key, library.Color(255, 255, 255))
             library.console_set_char_background(0, 3 + index, 3 + key, library.Color(0, 0, 0))
