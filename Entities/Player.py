@@ -12,7 +12,7 @@ class Character(Basic.Character):
         self.level = 1
         self.experience = 0
         self.inventory = { # Category, (Id, Amount).
-        1000: {},
+        1000: {0:3, 3:55, 7: 20},
         1001: {},
         1002: {},
         1003: {},

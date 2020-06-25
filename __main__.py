@@ -27,7 +27,7 @@ CHART_ID = 0
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
 FRAMES_PER_SECOND = 60
-WINDOW_NAME = "Endovia 1.163"
+WINDOW_NAME = "Endovia 1.166a"
 FONT_NAME = "terminal8x8_gs_ro.png"
 FILE_READ_MODE = "rb"
 FONT_TYPE = libtcodpy.FONT_TYPE_GREYSCALE | libtcodpy.FONT_LAYOUT_ASCII_INROW
@@ -36,8 +36,10 @@ PLAYER_GRID_ID = 2000
 PLAYER_ENTITY_ID = 0
 LOADING = False
 
-
-
+# Globals (USE SPARINGLY!)
+inventory_category = 1000
+inventory_id = 0
+inventory_length = len(Items.items[inventory_category])
 
 # All chart/map/dungeon generation and creation goes here.
 def start_game(load=False):
@@ -96,6 +98,10 @@ libtcodpy.sys_set_fps(FRAMES_PER_SECOND)
 
 
 def main():
+    # I hate using globals.
+    global inventory_category
+    global inventory_id
+    global inventory_length
     # Get the object set charts from start_game.
     # NOTE-DEFUNCT: player_position and enemy_positions are needed to place in the
     # object set characters. They can also be used in other places.
@@ -185,10 +191,38 @@ def main():
                 enemy_at = (charts[0].entities[0].x + EAST[0], charts[0].entities[0].y + EAST[1])
             turn_taken = True
         elif event == ACCESS_INVENTORY:
-            Graphics.graphics["DrawMenu"].DrawBorder2(libtcodpy)
-            Graphics.graphics["DrawMenu"].DrawFiller2(libtcodpy)
-            Graphics.graphics["DrawMenu"].DrawInventoryChoice(libtcodpy, (1000, 0), charts[0].entities[0].inventory, Items.items)
-            libtcodpy.console_flush()
+            while True:
+                Graphics.graphics["DrawMenu"].DrawBorder2(libtcodpy)
+                Graphics.graphics["DrawMenu"].DrawFiller2(libtcodpy)
+                Graphics.graphics["DrawMenu"].DrawInventoryChoice(libtcodpy, (inventory_category, inventory_id), charts[0].entities[0].inventory, Items.items)
+                libtcodpy.console_flush()
+                event = Handlers.handlers["InputHandler"].InventoryMenu(libtcodpy)
+                if event == SELECT_MENU_ENTER:
+                    skip_input = True
+                    break
+                # These 4 conditionals move the inventory up and down.
+                if inventory_id == 0 and event == MOVE_MENU_UP:
+                    inventory_id = inventory_length
+                elif inventory_id == inventory_length and event == MOVE_MENU_DOWN:
+                    inventory_id = 0
+                elif inventory_id > 0 and event == MOVE_MENU_UP:
+                    inventory_id -= 1
+                elif inventory_id < inventory_length and event == MOVE_MENU_DOWN:
+                    inventory_id += 1
+                # These 4 conditionals move the category type.
+                elif inventory_category == 0 and event == MOVE_MENU_LEFT:
+                    inventory_category = ITEM_CATEGORIES - 1
+                elif inventory_category < ITEM_CATEGORIES - 1 and event == MOVE_MENU_RIGHT:
+                    inventory_category += 1
+                elif inventory_category > 0 and event == MOVE_MENU_LEFT:
+                    inventory_category -= 1
+                elif inventory_category == ITEM_CATEGORIES - 1 and event == MOVE_MENU_RIGHT:
+                    inventory_category = 0
+        # Get the input event, event is a constant from Handlers.Constant.
+        if not skip_input:
+            event = Handlers.handlers["InputHandler"].MainGame(libtcodpy)
+        else:
+            event = None
         if enemy_there:
             for message in Handlers.handlers["CombatHandler"].FightCharacter(charts[chart_id], charts[0].entities[0], charts[0].entities, enemy_at[0], enemy_at[1], Characters.characters):
                 messages.append(message)
