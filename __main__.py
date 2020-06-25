@@ -60,7 +60,7 @@ def start_game(load=False):
             charts[0].create_empty_grid(category, CHART_WIDTH, CHART_HEIGHT)
         # Run the dungeon generator which returns the player position and the
         # enemy positions. NOTE: See Charts.Dungeon/Charts.Generators for more.
-        # Enemy positions return as dictionairy of very many sets of key/value
+        # Enemy positions return as dictionary of very many sets of key/value
         # [(entity_category, entity_id)] = (x, y).
         player_position, enemy_positions = Charts.charts["Generators"].MainDungeonGenerator(Objects.objects, Characters.characters, charts[0], charts[0].rooms, 0, 2001, range(0, RODENT_COUNT))
         # Find the active chart, if so save the chart id in chart_id.
@@ -135,8 +135,8 @@ def main():
             stat_choices = ("health", "mana", "energy", "faith", "chakra")
             while True:
                 # Stat menu drawing.
-                Graphics.graphics["DrawMenu"].DrawBorder(libtcodpy, charts[chart_id].width, charts[0].height)
-                Graphics.graphics["DrawMenu"].DrawFiller(libtcodpy)
+                Graphics.graphics["DrawMenu"].DrawBorder1(libtcodpy)
+                Graphics.graphics["DrawMenu"].DrawFiller1(libtcodpy)
                 Graphics.graphics["DrawMenu"].DrawStatChoice(libtcodpy, choice)
                 libtcodpy.console_flush()
                 # Choose a stat to advance and wait for the enter key.
@@ -184,6 +184,11 @@ def main():
             if enemy_there:
                 enemy_at = (charts[0].entities[0].x + EAST[0], charts[0].entities[0].y + EAST[1])
             turn_taken = True
+        elif event == ACCESS_INVENTORY:
+            Graphics.graphics["DrawMenu"].DrawBorder2(libtcodpy)
+            Graphics.graphics["DrawMenu"].DrawFiller2(libtcodpy)
+            Graphics.graphics["DrawMenu"].DrawInventoryChoice(libtcodpy, (1000, 0), charts[0].entities[0].inventory, Items.items)
+            libtcodpy.console_flush()
         if enemy_there:
             for message in Handlers.handlers["CombatHandler"].FightCharacter(charts[chart_id], charts[0].entities[0], charts[0].entities, enemy_at[0], enemy_at[1], Characters.characters):
                 messages.append(message)

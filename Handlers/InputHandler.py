@@ -87,5 +87,7 @@ def MainGame(library):
     # Entering the selection.
     elif key.vk == library.KEY_ENTER:
         return Constant.SELECT_MENU_ENTER
+    elif key.vk == library.KEY_CHAR:
+        return Constant.ACCESS_INVENTORY
     else:
         return Constant.NULL

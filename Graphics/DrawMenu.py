@@ -2,7 +2,7 @@
 # Endovia (DrawMenu)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
-def DrawBorder(library, chart_width, chart_height):
+def DrawBorder1(library):
     library.console_set_char_foreground(0, 2, 2, library.Color(255, 255, 255))
     library.console_set_char_background(0, 2, 2, library.Color(0, 0, 0))
     library.console_set_char(0, 2, 2, '\xc9')
@@ -30,9 +30,44 @@ def DrawBorder(library, chart_width, chart_height):
         library.console_set_char_background(0, x, 9, library.Color(0, 0, 0))
         library.console_set_char(0, x, 9, '\xcd')
 
-def DrawFiller(library):
+def DrawBorder2(library):
+    library.console_set_char_foreground(0, 2, 2, library.Color(255, 255, 255))
+    library.console_set_char_background(0, 2, 2, library.Color(0, 0, 0))
+    library.console_set_char(0, 2, 2, '\xc9')
+    library.console_set_char_foreground(0, 40, 2, library.Color(255, 255, 255))
+    library.console_set_char_background(0, 40, 2, library.Color(0, 0, 0))
+    library.console_set_char(0, 40, 2, '\xbb')
+    library.console_set_char_foreground(0, 2, 69, library.Color(255, 255, 255))
+    library.console_set_char_background(0, 2, 69, library.Color(0, 0, 0))
+    library.console_set_char(0, 2, 69, '\xc8')
+    library.console_set_char_foreground(0, 40, 69, library.Color(255, 255, 255))
+    library.console_set_char_background(0, 40, 69, library.Color(0, 0, 0))
+    library.console_set_char(0, 40, 69, '\xbc')
+    for y in range(3, 69):
+        library.console_set_char_foreground(0, 2, y, library.Color(255, 255, 255))
+        library.console_set_char_background(0, 2, y, library.Color(0, 0, 0))
+        library.console_set_char(0, 2, y, '\xba')
+        library.console_set_char_foreground(0, 40, y, library.Color(255, 255, 255))
+        library.console_set_char_background(0, 40, y, library.Color(0, 0, 0))
+        library.console_set_char(0, 40, y, '\xba')
+    for x in range(3, 40):
+        library.console_set_char_foreground(0, x, 2, library.Color(255, 255, 255))
+        library.console_set_char_background(0, x, 2, library.Color(0, 0, 0))
+        library.console_set_char(0, x, 2, '\xcd')
+        library.console_set_char_foreground(0, x, 69, library.Color(255, 255, 255))
+        library.console_set_char_background(0, x, 69, library.Color(0, 0, 0))
+        library.console_set_char(0, x, 69, '\xcd')
+
+def DrawFiller1(library):
     for y in range(3, 9):
         for x in range(3, 25):
+            library.console_set_char_foreground(0, x, y, library.Color(255, 255, 255))
+            library.console_set_char_background(0, x, y, library.Color(0, 0, 0))
+            library.console_set_char(0, x, y, ' ')
+
+def DrawFiller2(library):
+    for y in range(3, 69):
+        for x in range(3, 40):
             library.console_set_char_foreground(0, x, y, library.Color(255, 255, 255))
             library.console_set_char_background(0, x, y, library.Color(0, 0, 0))
             library.console_set_char(0, x, y, ' ')
@@ -64,5 +99,25 @@ def DrawStatChoice(library, choice):
             library.console_set_char_background(0, 3 + index, 3 + key, library.Color(0, 0, 0))
             library.console_set_char(0, 3 + index, 3 + key, value[index])
 
+def DrawInventoryChoice(library, choice, inventory, items):
+    category_type = items[choice[0]][choice[1]][3]
+    selected_item = items[choice[0]][choice[1]][2]
+    print category_type
+    starts = {0: "+ Inventory +         ",
+              1: "{0}        ".format(category_type),
+             }
+    for key, value in starts.items():
+        for index in range(0, len(value)):
+            library.console_set_char_foreground(0, 3 + index, 3 + key, library.Color(255, 255, 255))
+            library.console_set_char_background(0, 3 + index, 3 + key, library.Color(0, 0, 0))
+            library.console_set_char(0, 3 + index, 3 + key, value[index])
 
+# Jafinoxal.
+
+        return False
+    for key, value in choices.items():
+        for index in range(0, len(value)):
+            library.console_set_char_foreground(0, 3 + index, 3 + key, library.Color(255, 255, 255))
+            library.console_set_char_background(0, 3 + index, 3 + key, library.Color(0, 0, 0))
+            library.console_set_char(0, 3 + index, 3 + key, value[index])
 # Jafinoxal.

@@ -24,14 +24,18 @@ MOVE_PLAYER_NORTHEAST = 13
 MOVE_PLAYER_SOUTHWEST = 14
 MOVE_PLAYER_SOUTHEAST = 15
 
+ACCESS_INVENTORY = 16
+
 NORTH = (0, -1)
 SOUTH = (0, +1)
 WEST = (-1, 0)
 EAST = (+1, 0)
 
-ATTACKS = { # Name, plural, damages, specials.
+ATTACKS = { # Name, plural, damages.
 "scratch": ("scratches", 1, 2),
 "bite": ("bites", 1, 3),
+"quill": ("quills", 2, 5),
+"whack": ("whacks", 2, 4),
 }
 
 DROPS = { # Name, category, id, amounts.
