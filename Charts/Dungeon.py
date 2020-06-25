@@ -111,7 +111,7 @@ class Chart(Basic.Chart):
                         self.grids[character_category][(x, y)] = {0: character_category, 1: character_id, 2: None}
                         return (x, y)
 
-    def _place_enemies_start(self, objects, characters, character_category, character_id):
+    def _place_enemies_start(self, objects, characters, character_category, character_ids):
         character_positions = dict()
         # Try to place an enemy at max 100 times.
         for i in range (0, 100):
@@ -122,9 +122,10 @@ class Chart(Basic.Chart):
                 continue
             # There is a 50% chance to spawn a monster.
             if random.randint(0, 1):
+                character_choice = random.choice(character_ids)
                 # Place the enemy at the position in the grid.
-                self.grids[character_category][(x, y)] = {0: character_category, 1: character_id, 2: None}
-                character_positions[(character_category, character_id, i)] = (x, y)
+                self.grids[character_category][(x, y)] = {0: character_category, 1: character_choice, 2: None}
+                character_positions[(character_category, character_choice, i)] = (x, y)
         # Return {(0, 0): (x, y), ...}
         return character_positions
 

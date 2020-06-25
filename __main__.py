@@ -62,7 +62,7 @@ def start_game(load=False):
         # enemy positions. NOTE: See Charts.Dungeon/Charts.Generators for more.
         # Enemy positions return as dictionairy of very many sets of key/value
         # [(entity_category, entity_id)] = (x, y).
-        player_position, enemy_positions = Charts.charts["Generators"].MainDungeonGenerator(Objects.objects, Characters.characters, charts[0], charts[0].rooms, 0, 0)
+        player_position, enemy_positions = Charts.charts["Generators"].MainDungeonGenerator(Objects.objects, Characters.characters, charts[0], charts[0].rooms, 0, 2001, range(0, RODENT_COUNT))
         # Find the active chart, if so save the chart id in chart_id.
         for chart in charts.keys():
             if charts[chart].active:
