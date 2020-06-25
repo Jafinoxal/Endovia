@@ -104,7 +104,7 @@ def DrawInventoryChoice(library, choice, inventory, items):
     selected_item = items[choice[0]][choice[1]][2]
     print category_type
     starts = {0: "+ Inventory +         ",
-              1: "{0}        ".format(category_type),
+              1: "[{0}]        ".format(category_type),
              }
     for key, value in starts.items():
         for index in range(0, len(value)):
@@ -112,12 +112,4 @@ def DrawInventoryChoice(library, choice, inventory, items):
             library.console_set_char_background(0, 3 + index, 3 + key, library.Color(0, 0, 0))
             library.console_set_char(0, 3 + index, 3 + key, value[index])
 
-# Jafinoxal.
-
-        return False
-    for key, value in choices.items():
-        for index in range(0, len(value)):
-            library.console_set_char_foreground(0, 3 + index, 3 + key, library.Color(255, 255, 255))
-            library.console_set_char_background(0, 3 + index, 3 + key, library.Color(0, 0, 0))
-            library.console_set_char(0, 3 + index, 3 + key, value[index])
 # Jafinoxal.
