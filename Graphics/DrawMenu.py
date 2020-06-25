@@ -111,12 +111,12 @@ def DrawInventoryChoice(library, choice, inventory, items):
             try:
                 choices[2 + item_index] = "[{0}] x{1}      ".format(items[choice[0]][item_id][2], inventory[choice[0]][item_id])
             except:
-                choices[2 + item_index] = "[{0}] x{1}      ".format(items[choice[0]][item_id][2], 0)
+                choices[2 + item_index] = "[Empty]"
         else:
             try:
                 choices[2 + item_index] = "{0} x{1}      ".format(items[choice[0]][item_id][2], inventory[choice[0]][item_id])
             except:
-                choices[2 + item_index] = "{0} x{1}      ".format(items[choice[0]][item_id][2], 0)
+                choices[2 + item_index] = "Empty"
         item_index += 1
     for key, value in choices.items():
         for index in range(0, len(value)):

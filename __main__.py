@@ -27,7 +27,7 @@ CHART_ID = 0
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
 FRAMES_PER_SECOND = 60
-WINDOW_NAME = "Endovia 1.166b"
+WINDOW_NAME = "Endovia 1.167"
 FONT_NAME = "terminal8x8_gs_ro.png"
 FILE_READ_MODE = "rb"
 FONT_TYPE = libtcodpy.FONT_TYPE_GREYSCALE | libtcodpy.FONT_LAYOUT_ASCII_INROW
@@ -76,7 +76,7 @@ def start_game(load=False):
         }
         # Start at 1 because player is always unique_id 0.
         unique_id = 1
-        # Iterate through each enemy and create a Enemy Character object.
+        # Iterate through each enemy and create an Enemy Character object.
         for enemy_category_and_id, enemy_position in enemy_positions.items():
             entities[unique_id] = Entities.entities["Enemy"].Character(chart_id, enemy_category_and_id[0],
             enemy_category_and_id[1], unique_id, enemy_position[0], enemy_position[1],
@@ -210,17 +210,21 @@ def main():
                 elif inventory_id < inventory_length - 1 and event == MOVE_MENU_DOWN:
                     inventory_id += 1
                 # These 4 conditionals move the category type.
-                elif inventory_category == 0 and event == MOVE_MENU_LEFT:
-                    inventory_category = ITEM_CATEGORIES - 1
-                elif inventory_category < ITEM_CATEGORIES - 1 and event == MOVE_MENU_RIGHT:
+                elif inventory_category == 1000 and event == MOVE_MENU_LEFT:
+                    inventory_category = 1000 + ITEM_CATEGORIES - 1
+                    inventory_id = 0
+                elif inventory_category < 1000 + ITEM_CATEGORIES - 1 and event == MOVE_MENU_RIGHT:
                     inventory_category += 1
-                elif inventory_category > 0 and event == MOVE_MENU_LEFT:
+                    inventory_id = 0
+                elif inventory_category > 1000 and event == MOVE_MENU_LEFT:
                     inventory_category -= 1
-                elif inventory_category == ITEM_CATEGORIES - 1 and event == MOVE_MENU_RIGHT:
-                    inventory_category = 0
-        # Get the input event, event is a constant from Handlers.Constant.
-        if not skip_input:
-            event = Handlers.handlers["InputHandler"].MainGame(libtcodpy)
+                    inventory_id = 0
+                elif inventory_category == 1000 + ITEM_CATEGORIES - 1 and event == MOVE_MENU_RIGHT:
+                    inventory_category = 1000
+                    inventory_id = 0
+            # Get the input event, event is a constant from Handlers.Constant.
+            if not skip_input:
+                event = Handlers.handlers["InputHandler"].MainGame(libtcodpy)
         else:
             event = None
         if enemy_there:

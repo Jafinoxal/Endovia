@@ -34,6 +34,12 @@ def InventoryMenu(library):
     # Moving selection down.
     elif key.vk == library.KEY_DOWN:
         return Constant.MOVE_MENU_DOWN
+    # Moving selection left.
+    elif key.vk == library.KEY_LEFT:
+        return Constant.MOVE_MENU_LEFT
+    # Moving selection right.
+    elif key.vk == library.KEY_RIGHT:
+        return Constant.MOVE_MENU_RIGHT
     # Entering the selection.
     elif key.vk == library.KEY_ENTER:
         return Constant.SELECT_MENU_ENTER
