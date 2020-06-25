@@ -27,7 +27,7 @@ CHART_ID = 0
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
 FRAMES_PER_SECOND = 60
-WINDOW_NAME = "Endovia 1.166a"
+WINDOW_NAME = "Endovia 1.166b"
 FONT_NAME = "terminal8x8_gs_ro.png"
 FILE_READ_MODE = "rb"
 FONT_TYPE = libtcodpy.FONT_TYPE_GREYSCALE | libtcodpy.FONT_LAYOUT_ASCII_INROW
@@ -202,12 +202,12 @@ def main():
                     break
                 # These 4 conditionals move the inventory up and down.
                 if inventory_id == 0 and event == MOVE_MENU_UP:
-                    inventory_id = inventory_length
-                elif inventory_id == inventory_length and event == MOVE_MENU_DOWN:
+                    inventory_id = inventory_length - 1
+                elif inventory_id == inventory_length - 1 and event == MOVE_MENU_DOWN:
                     inventory_id = 0
                 elif inventory_id > 0 and event == MOVE_MENU_UP:
                     inventory_id -= 1
-                elif inventory_id < inventory_length and event == MOVE_MENU_DOWN:
+                elif inventory_id < inventory_length - 1 and event == MOVE_MENU_DOWN:
                     inventory_id += 1
                 # These 4 conditionals move the category type.
                 elif inventory_category == 0 and event == MOVE_MENU_LEFT:
