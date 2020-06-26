@@ -102,7 +102,7 @@ def _description():
     15: "What jewelry could I make from this?",
     }
 
-def _symbol(): # 215.
+def _symbol(): # %.
     return {
     0: "%",
     1: "%",

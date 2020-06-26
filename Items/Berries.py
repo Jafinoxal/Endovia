@@ -97,7 +97,7 @@ def _description():
     14: "Can be used in alchemy, wine making, or cooking.",
     }
 
-def _symbol(): # 215.
+def _symbol(): # %.
     return {
     0: "%",
     1: "%",

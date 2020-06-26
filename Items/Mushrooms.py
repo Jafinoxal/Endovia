@@ -97,7 +97,7 @@ def _description():
     14: "Mix this with an ingredient in a vial of water, or food.",
     }
 
-def _symbol(): # 215.
+def _symbol(): # %.
     return {
     0: "%",
     1: "%",

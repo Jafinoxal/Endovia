@@ -154,7 +154,7 @@ def _description():
     19: "Increases your speed by making you lighter for 75 turns.",
     20: "Allows you to reach high places with a spring for 75 turns.",
     21: "Grants you warrior strength and strength for 125 turns",
-    22: "Grants you wizardly powerful and intelligence for 125 turns.",
+    22: "Grants you wizardly power and intelligence for 125 turns.",
     23: "Grants you ranger precision and agility for 125 turns.",
     24: "Grants you rogueish nimbility and perception for 125 turns.",
     25: "Grants random boosts for 125 turns.",
@@ -162,7 +162,7 @@ def _description():
     27: "Grants greater sight distance for 85 turns.",
     }
 
-def _symbol(): # 215.
+def _symbol(): # %.
     return {
     0: "%",
     1: "%",

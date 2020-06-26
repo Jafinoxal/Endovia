@@ -27,7 +27,7 @@ CHART_ID = 0
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
 FRAMES_PER_SECOND = 60
-WINDOW_NAME = "Endovia 1.167"
+WINDOW_NAME = "Endovia 1.168"
 FONT_NAME = "terminal8x8_gs_ro.png"
 FILE_READ_MODE = "rb"
 FONT_TYPE = libtcodpy.FONT_TYPE_GREYSCALE | libtcodpy.FONT_LAYOUT_ASCII_INROW
@@ -35,11 +35,6 @@ SAVE_FILE_NAME = "endovia.save"
 PLAYER_GRID_ID = 2000
 PLAYER_ENTITY_ID = 0
 LOADING = False
-
-# Globals (USE SPARINGLY!)
-inventory_category = 1000
-inventory_id = 0
-inventory_length = len(Items.items[inventory_category])
 
 # All chart/map/dungeon generation and creation goes here.
 def start_game(load=False):
@@ -86,16 +81,10 @@ def start_game(load=False):
             charts[0].entities = entities
         return charts
 
-
-
-
 # Basic libtcod initialization.
 libtcodpy.console_set_custom_font(FONT_NAME, FONT_TYPE, 0, 0)
 libtcodpy.console_init_root(SCREEN_WIDTH, SCREEN_HEIGHT, WINDOW_NAME, False)
 libtcodpy.sys_set_fps(FRAMES_PER_SECOND)
-
-
-
 
 def main():
     # I hate using globals.
@@ -191,13 +180,16 @@ def main():
                 enemy_at = (charts[0].entities[0].x + EAST[0], charts[0].entities[0].y + EAST[1])
             turn_taken = True
         elif event == ACCESS_INVENTORY:
+            inventory_category = 1000
+            inventory_id = 0
+            inventory_length = len(Items.items[inventory_category])
             while True:
                 Graphics.graphics["DrawMenu"].DrawBorder2(libtcodpy)
                 Graphics.graphics["DrawMenu"].DrawFiller2(libtcodpy)
                 Graphics.graphics["DrawMenu"].DrawInventoryChoice(libtcodpy, (inventory_category, inventory_id), charts[0].entities[0].inventory, Items.items)
                 libtcodpy.console_flush()
                 event = Handlers.handlers["InputHandler"].InventoryMenu(libtcodpy)
-                if event == SELECT_MENU_ENTER:
+                if event == EXIT_MENU:
                     skip_input = True
                     break
                 # These 4 conditionals move the inventory up and down.
@@ -222,6 +214,7 @@ def main():
                 elif inventory_category == 1000 + ITEM_CATEGORIES - 1 and event == MOVE_MENU_RIGHT:
                     inventory_category = 1000
                     inventory_id = 0
+                inventory_length = len(Items.items[inventory_category])
             # Get the input event, event is a constant from Handlers.Constant.
             if not skip_input:
                 event = Handlers.handlers["InputHandler"].MainGame(libtcodpy)

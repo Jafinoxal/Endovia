@@ -23,6 +23,7 @@ def _category():
     16: 1001,
     17: 1001,
     18: 1001,
+    19: 1001,
     }
 
 def _identity():
@@ -46,6 +47,7 @@ def _identity():
     16: 16,
     17: 17,
     18: 18,
+    19: 19,
     }
 
 def _name():
@@ -70,6 +72,7 @@ def _name():
     16: "Silver Ore",
     17: "Gold Ore",
     18: "Platinum Ore",
+    19: "Coal",
     }
 
 def _kind():
@@ -93,6 +96,7 @@ def _kind():
     16: "Ore",
     17: "Ore",
     18: "Ore",
+    19: "Ore",
     }
 
 def _description():
@@ -116,9 +120,10 @@ def _description():
     16: "Can be smelted into an ingot.",
     17: "Can be smelted into an ingot.",
     18: "Can be smelted into an ingot.",
+    19: "Used to power furnaces.",
     }
 
-def _symbol(): # 215.
+def _symbol(): # %.
     return {
     0: "%",
     1: "%",
@@ -139,6 +144,7 @@ def _symbol(): # 215.
     16: "%",
     17: "%",
     18: "%",
+    19: "%",
     }
 
 def _color():
@@ -162,6 +168,7 @@ def _color():
     16: ((127,127,127), (0,0,0)),
     17: ((127,127,127), (0,0,0)),
     18: ((127,127,127), (0,0,0)),
+    19: ((127,127,127), (0,0,0)),
     }
 
 def _clip():
@@ -185,6 +192,7 @@ def _clip():
     16: False,
     17: False,
     18: False,
+    19: False,
     }
 
 def _transparent():
@@ -208,6 +216,7 @@ def _transparent():
     16: True,
     17: True,
     18: True,
+    19: True,
     }
 
 def _weight():
@@ -231,6 +240,7 @@ def _weight():
     16: 1.4,
     17: 1.4,
     18: 1.4,
+    19: 0.6,
     }
 
 def _value():
@@ -254,6 +264,7 @@ def _value():
     16: 125,
     17: 1250,
     18: 12500,
+    19: 70,
     }
 
 def ores():
@@ -277,6 +288,7 @@ def ores():
     16: (_category()[16], _identity()[16], _name()[16], _kind()[16], _description()[16], _symbol()[16], _color()[16], _clip()[16], _transparent()[16], _weight()[16], _value()[16]),
     17: (_category()[17], _identity()[17], _name()[17], _kind()[17], _description()[17], _symbol()[17], _color()[17], _clip()[17], _transparent()[17], _weight()[17], _value()[17]),
     18: (_category()[18], _identity()[18], _name()[18], _kind()[12], _description()[18], _symbol()[18], _color()[18], _clip()[18], _transparent()[18], _weight()[18], _value()[18]),
+    19: (_category()[19], _identity()[19], _name()[19], _kind()[19], _description()[19], _symbol()[19], _color()[19], _clip()[19], _transparent()[19], _weight()[19], _value()[19]),
     }
 
 # Jafinoxal.

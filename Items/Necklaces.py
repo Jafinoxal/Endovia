@@ -127,7 +127,7 @@ def _description():
     20: "An exotic necklace.",
     }
 
-def _symbol(): # 215.
+def _symbol(): # %.
     return {
     0: "%",
     1: "%",

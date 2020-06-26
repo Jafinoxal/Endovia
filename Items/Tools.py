@@ -134,10 +134,10 @@ def _description():
     19: "Good for alchemic purposes.",
     20: "Good for trimming dying parts of plants.",
     21: "Every needle needs a thread.",
-    22: "Useful for cleaning dirty herbs."
+    22: "Useful for cleaning."
     }
 
-def _symbol(): # 215.
+def _symbol(): # %.
     return {
     0: "%",
     1: "%",

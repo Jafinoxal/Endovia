@@ -102,7 +102,7 @@ def _description():
     15: "Ooh, shiny; Could use some cutting though.",
     }
 
-def _symbol(): # 215.
+def _symbol(): # %.
     return {
     0: "%",
     1: "%",

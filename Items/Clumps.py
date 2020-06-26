@@ -102,7 +102,7 @@ def _description():
     15: "Could be a valuable mineral or stone.",
     }
 
-def _symbol(): # 215.
+def _symbol(): # %.
     return {
     0: "%",
     1: "%",

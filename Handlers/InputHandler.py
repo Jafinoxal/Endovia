@@ -43,6 +43,8 @@ def InventoryMenu(library):
     # Entering the selection.
     elif key.vk == library.KEY_ENTER:
         return Constant.SELECT_MENU_ENTER
+    elif key.vk == library.KEY_ESCAPE:
+        return Constant.EXIT_MENU
     else:
         return Constant.NULL
 

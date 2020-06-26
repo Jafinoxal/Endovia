@@ -108,14 +108,14 @@ def DrawInventoryChoice(library, choice, inventory, items):
     item_index = 0
     for item_id, item_amount in inventory[choice[0]].items():
         if item_id == selected_item:
-            try:
+            if item_amount > 0:
                 choices[2 + item_index] = "[{0}] x{1}      ".format(items[choice[0]][item_id][2], inventory[choice[0]][item_id])
-            except:
+            else:
                 choices[2 + item_index] = "[Empty]"
         else:
-            try:
+            if item_amount > 0:
                 choices[2 + item_index] = "{0} x{1}      ".format(items[choice[0]][item_id][2], inventory[choice[0]][item_id])
-            except:
+            else:
                 choices[2 + item_index] = "Empty"
         item_index += 1
     for key, value in choices.items():

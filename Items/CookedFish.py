@@ -122,7 +122,7 @@ def _description():
     19: "So a blind man was walking past this fish market, right.",
     }
 
-def _symbol(): # 215.
+def _symbol(): # %.
     return {
     0: "%",
     1: "%",
