@@ -27,74 +27,76 @@ CHART_ID = 0
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
 FRAMES_PER_SECOND = 60
-WINDOW_NAME = "Endovia 1.168"
+WINDOW_NAME = "Endovia 1.169"
 FONT_NAME = "terminal8x8_gs_ro.png"
 FILE_READ_MODE = "rb"
+FILE_WRITE_MODE = "wb"
 FONT_TYPE = libtcodpy.FONT_TYPE_GREYSCALE | libtcodpy.FONT_LAYOUT_ASCII_INROW
 SAVE_FILE_NAME = "endovia.save"
 PLAYER_GRID_ID = 2000
 PLAYER_ENTITY_ID = 0
-LOADING = False
+
+def load_game():
+    return pickle.load(open(SAVE_FILE_NAME, FILE_READ_MODE))
+
+def save_game(data):
+    pickle.dump(data, open(SAVE_FILE_NAME, FILE_WRITE_MODE))
 
 # All chart/map/dungeon generation and creation goes here.
-def start_game(load=False):
-    if load:
-        return pickle.load(open(SAVE_FILE_NAME, FILE_READ_MODE))
-    else:
-        charts = {
-        0: Charts.charts["Dungeon"].Chart(CHART_ID, CHART_WIDTH, CHART_HEIGHT, True),
-        }
-        # Fill the object wall grid with walls, can be carved out later.
-        charts[0].create_filled_grid(0, CHART_WIDTH, CHART_HEIGHT, 0)
-        # Fill all other object grids with None, they're empty.
-        for category in range(1, OBJECT_CATEGORIES):
-            charts[0].create_empty_grid(category, CHART_WIDTH, CHART_HEIGHT)
-        # Fill all item grids with None, they're empty.
-        for category in range(1000, 1000 + ITEM_CATEGORIES):
-            charts[0].create_empty_grid(category, CHART_WIDTH, CHART_HEIGHT)
-        # Fill all character grids with None, they're empty.
-        for category in range(2000, 2000 + CHARACTER_CATEGORIES):
-            charts[0].create_empty_grid(category, CHART_WIDTH, CHART_HEIGHT)
-        # Run the dungeon generator which returns the player position and the
-        # enemy positions. NOTE: See Charts.Dungeon/Charts.Generators for more.
-        # Enemy positions return as dictionary of very many sets of key/value
-        # [(entity_category, entity_id)] = (x, y).
-        player_position, enemy_positions = Charts.charts["Generators"].MainDungeonGenerator(Objects.objects, Characters.characters, charts[0], charts[0].rooms, 0, 2001, range(0, RODENT_COUNT))
-        # Find the active chart, if so save the chart id in chart_id.
-        for chart in charts.keys():
-            if charts[chart].active:
-                chart_id = charts[chart].id
-                break
-        # Create a dictionary to hold the player's and enemies's characters.
-        entities = {
-        0: Entities.entities["Player"].Character(chart_id, PLAYER_GRID_ID, PLAYER_ENTITY_ID, 0, player_position[0], player_position[1], "Player", "Human"),
-        }
-        # Start at 1 because player is always unique_id 0.
-        unique_id = 1
-        # Iterate through each enemy and create an Enemy Character object.
-        for enemy_category_and_id, enemy_position in enemy_positions.items():
-            entities[unique_id] = Entities.entities["Enemy"].Character(chart_id, enemy_category_and_id[0],
-            enemy_category_and_id[1], unique_id, enemy_position[0], enemy_position[1],
-            Characters.characters[enemy_category_and_id[0]][enemy_category_and_id[1]][CHARACTER_HEALTH])
-            # Each character gets a fresh id.
-            unique_id += 1
-            charts[0].entities = entities
-        return charts
+def new_game():
+    charts = {
+    0: Charts.charts["Dungeon"].Chart(CHART_ID, CHART_WIDTH, CHART_HEIGHT, True),
+    }
+    # Fill the object wall grid with walls, can be carved out later.
+    charts[0].create_filled_grid(0, CHART_WIDTH, CHART_HEIGHT, 0)
+    # Fill all other object grids with None, they're empty.
+    for category in range(1, OBJECT_CATEGORIES):
+        charts[0].create_empty_grid(category, CHART_WIDTH, CHART_HEIGHT)
+    # Fill all item grids with None, they're empty.
+    for category in range(1000, 1000 + ITEM_CATEGORIES):
+        charts[0].create_empty_grid(category, CHART_WIDTH, CHART_HEIGHT)
+    # Fill all character grids with None, they're empty.
+    for category in range(2000, 2000 + CHARACTER_CATEGORIES):
+        charts[0].create_empty_grid(category, CHART_WIDTH, CHART_HEIGHT)
+    # Run the dungeon generator which returns the player position and the
+    # enemy positions. NOTE: See Charts.Dungeon/Charts.Generators for more.
+    # Enemy positions return as dictionary of very many sets of key/value
+    # [(entity_category, entity_id)] = (x, y).
+    player_position, enemy_positions = Charts.charts["Generators"].MainDungeonGenerator(Objects.objects, Characters.characters, charts[0], charts[0].rooms, 0, 2001, range(0, RODENT_COUNT))
+    # Find the active chart, if so save the chart id in chart_id.
+    for chart in charts.keys():
+        if charts[chart].active:
+            chart_id = charts[chart].id
+            break
+    # Create a dictionary to hold the player's and enemy's characters.
+    entities = {
+    0: Entities.entities["Player"].Character(chart_id, PLAYER_GRID_ID, PLAYER_ENTITY_ID, 0, player_position[0], player_position[1], "Player", "Human"),
+    }
+    # Start at 1 because player is always unique_id 0.
+    unique_id = 1
+    # Iterate through each enemy and create an Enemy Character object.
+    for enemy_category_and_id, enemy_position in enemy_positions.items():
+        entities[unique_id] = Entities.entities["Enemy"].Character(chart_id, enemy_category_and_id[0],
+        enemy_category_and_id[1], unique_id, enemy_position[0], enemy_position[1],
+        Characters.characters[enemy_category_and_id[0]][enemy_category_and_id[1]][CHARACTER_HEALTH])
+        # Each character gets a fresh id.
+        unique_id += 1
+        charts[0].entities = entities
+    return charts
 
 # Basic libtcod initialization.
 libtcodpy.console_set_custom_font(FONT_NAME, FONT_TYPE, 0, 0)
 libtcodpy.console_init_root(SCREEN_WIDTH, SCREEN_HEIGHT, WINDOW_NAME, False)
 libtcodpy.sys_set_fps(FRAMES_PER_SECOND)
 
-def main():
-    # I hate using globals.
-    global inventory_category
-    global inventory_id
-    global inventory_length
+def main(load = False):
     # Get the object set charts from start_game.
     # NOTE-DEFUNCT: player_position and enemy_positions are needed to place in the
     # object set characters. They can also be used in other places.
-    charts = start_game(LOADING)
+    if load:
+        pass
+    else:
+        charts = new_game()
     # Messages will be displayed [-1:-10].
     messages = []
     # Initialize the enemy position for the DrawEnemyInfo function.
