@@ -27,7 +27,7 @@ CHART_ID = 0
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
 FRAMES_PER_SECOND = 60
-WINDOW_NAME = "Endovia 1.170"
+WINDOW_NAME = "Endovia 1.171"
 FONT_NAME = "terminal8x8_gs_ro.png"
 FILE_READ_MODE = "rb"
 FILE_WRITE_MODE = "wb"
@@ -132,8 +132,8 @@ def main(load = False):
             stat_choices = ("health", "mana", "energy", "faith", "chakra")
             while True:
                 # Stat menu drawing.
-                Graphics.graphics["DrawMenu"].DrawBorder1(libtcodpy)
-                Graphics.graphics["DrawMenu"].DrawFiller1(libtcodpy)
+                Graphics.graphics["DrawMenu"].DrawBorderStatChoice(libtcodpy)
+                Graphics.graphics["DrawMenu"].DrawFillerStatChoice(libtcodpy)
                 Graphics.graphics["DrawMenu"].DrawStatChoice(libtcodpy, choice)
                 libtcodpy.console_flush()
                 # Choose a stat to advance and wait for the enter key.
@@ -186,8 +186,8 @@ def main(load = False):
             inventory_id = 0
             inventory_length = len(Items.items[inventory_category])
             while True:
-                Graphics.graphics["DrawMenu"].DrawBorder2(libtcodpy)
-                Graphics.graphics["DrawMenu"].DrawFiller2(libtcodpy)
+                Graphics.graphics["DrawMenu"].DrawBorderInventoryChoice(libtcodpy)
+                Graphics.graphics["DrawMenu"].DrawFillerInventoryChoice(libtcodpy)
                 Graphics.graphics["DrawMenu"].DrawInventoryChoice(libtcodpy, (inventory_category, inventory_id), charts[0].entities[0].inventory, Items.items)
                 libtcodpy.console_flush()
                 event = Handlers.handlers["InputHandler"].InventoryMenu(libtcodpy)

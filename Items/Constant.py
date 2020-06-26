@@ -2,7 +2,7 @@
 # Endovia (Item Constant)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
-ITEM_CATEGORIES = 18
+ITEM_CATEGORIES = 19
 
 ITEM_CATEGORY = 0
 ITEM_IDENTITY = 1
@@ -34,7 +34,7 @@ LOGS = 1014 # Complete.
 NECKLACES = 1015 # Complete.
 RINGS = 1016 # Complete.
 BRACELETS = 1017 # Complete.
-RUNES = 1018
+STONES = 1018 # Complete.
 ARROWS = 1019
 BOLTS = 1020
 MELEEARMOURS = 1021
@@ -74,5 +74,6 @@ LOGS_LENGTH = 23
 NECKLACES_LENGTH = 21
 RINGS_LENGTH = 21
 BRACELETS_LENGTH = 21
+STONE_LENGTH = 19
 
 # Jafinoxal.

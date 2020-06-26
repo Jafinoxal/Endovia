@@ -2,7 +2,7 @@
 # Endovia (DrawMenu)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
-def DrawBorder1(library):
+def DrawBorderStatChoice(library):
     library.console_set_char_foreground(0, 2, 2, library.Color(255, 255, 255))
     library.console_set_char_background(0, 2, 2, library.Color(0, 0, 0))
     library.console_set_char(0, 2, 2, '\xc9')
@@ -30,7 +30,7 @@ def DrawBorder1(library):
         library.console_set_char_background(0, x, 9, library.Color(0, 0, 0))
         library.console_set_char(0, x, 9, '\xcd')
 
-def DrawBorder2(library):
+def DrawBorderInventoryChoice(library):
     library.console_set_char_foreground(0, 2, 2, library.Color(255, 255, 255))
     library.console_set_char_background(0, 2, 2, library.Color(0, 0, 0))
     library.console_set_char(0, 2, 2, '\xc9')
@@ -58,14 +58,14 @@ def DrawBorder2(library):
         library.console_set_char_background(0, x, 69, library.Color(0, 0, 0))
         library.console_set_char(0, x, 69, '\xcd')
 
-def DrawFiller1(library):
+def DrawFillerStatChoice(library):
     for y in range(3, 9):
         for x in range(3, 25):
             library.console_set_char_foreground(0, x, y, library.Color(255, 255, 255))
             library.console_set_char_background(0, x, y, library.Color(0, 0, 0))
             library.console_set_char(0, x, y, ' ')
 
-def DrawFiller2(library):
+def DrawFillerInventoryChoice(library):
     for y in range(3, 69):
         for x in range(3, 40):
             library.console_set_char_foreground(0, x, y, library.Color(255, 255, 255))
