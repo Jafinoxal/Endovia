@@ -61,8 +61,8 @@ def _dead_character(chart, characters, entities):
 
 def FightCharacter(chart, player, characters, enemy_x, enemy_y, entities):
     messages = []
-    messages.append(_attack_enemy(chart, player, characters, enemy_x, enemy_y, entities))
     messages.append(_attack_player(chart, player, characters, enemy_x, enemy_y, entities))
+    messages.append(_attack_enemy(chart, player, characters, enemy_x, enemy_y, entities))
     _health_below_zero(characters)
     something_died = _dead_character(chart, characters, entities)
     if something_died:
