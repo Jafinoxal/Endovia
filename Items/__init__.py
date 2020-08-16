@@ -25,6 +25,7 @@ import Bracelets
 import Stones
 import Arrows
 import Bolts
+import Pies
 
 items = {
 TOOLS: Tools.tools(),
@@ -48,5 +49,6 @@ BRACELETS: Bracelets.bracelets(),
 STONES: Stones.stones(),
 ARROWS: Arrows.arrows(),
 BOLTS: Bolts.bolts(),
+PIES: Pies.pies(),
 }
 # Jafinoxal.

@@ -1,25 +1,24 @@
 # -*- coding: utf-8 -*-
-# Endovia (Berries)
+# Endovia (Pies)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
 def _category():
     return {
-    0: 1010,
-    1: 1010,
-    2: 1010,
-    3: 1010,
-    4: 1010,
-    5: 1010,
-    6: 1010,
-    7: 1010,
-    8: 1010,
-    9: 1010,
-    10: 1010,
-    11: 1010,
-    12: 1010,
-    13: 1010,
-    14: 1010,
-    15: 1010,
+    0: 1021,
+    1: 1021,
+    2: 1021,
+    3: 1021,
+    4: 1021,
+    5: 1021,
+    6: 1021,
+    7: 1021,
+    8: 1021,
+    9: 1021,
+    10: 1021,
+    11: 1021,
+    12: 1021,
+    13: 1021,
+    14: 1021,
     }
 
 def _identity():
@@ -39,67 +38,63 @@ def _identity():
     12: 12,
     13: 13,
     14: 14,
-    15: 15,
     }
 
 def _name():
     return {
-    0: "Blueberry",
-    1: "Blackberry",
-    2: "Strawberry",
-    3: "Lingonberry",
-    4: "Boysenberry",
-    5: "Cranberry",
-    6: "Cloudberry",
-    7: "Redberry",
-    8: "Whiteberry",
-    9: "Elderberry",
-    10: "Gooseberry",
-    11: "Mulberry",
-    12: "Juniberry",
-    13: "Poisonberry",
-    14: "Grape",
-    15: "Cherry",
+    0: "Blueberry Pie",
+    1: "Cranberry Pie",
+    2: "Redberry Pie",
+    3: "Mulberry Pie",
+    4: "Juniberry Pie",
+    5: "Mackerel Pie",
+    6: "Garlic Tuna Pie"
+    7: "Crab Pie",
+    8: "Lobster Pie",
+    9: "Shepherd's Pie",
+    10: "Turtle Pie",
+    11: "Apple Pie",
+    12: "Cherry Pie"
+    13: "Lemon Pie",
+    14: "Pumpkin Pie",
     }
 
 def _kind():
     return {
-    0: "Berry",
-    1: "Berry",
-    2: "Berry",
-    3: "Berry",
-    4: "Berry",
-    5: "Berry",
-    6: "Berry",
-    7: "Berry",
-    8: "Berry",
-    9: "Berry",
-    10: "Berry",
-    11: "Berry",
-    12: "Berry",
-    13: "Berry",
-    14: "Berry",
-    15: "Berry",
+    0: "Pie",
+    1: "Pie",
+    2: "Pie",
+    3: "Pie",
+    4: "Pie",
+    5: "Pie",
+    6: "Pie",
+    7: "Pie",
+    8: "Pie",
+    9: "Pie",
+    10: "Pie",
+    11: "Pie",
+    12: "Pie",
+    13: "Pie",
+    14: "Pie",
     }
 
 def _description():
     return {
-    0: "Can be used in alchemy or cooking.",
-    1: "Can be used in alchemy or cooking.",
-    2: "Can be used in alchemy or cooking.",
-    3: "Can be used in alchemy or cooking.",
-    4: "Can be used in alchemy or cooking.",
-    5: "Can be used in alchemy or cooking.",
-    6: "Can be used in alchemy or cooking.",
-    7: "Can be used in alchemy or cooking.",
-    8: "Can be used in alchemy or cooking.",
-    9: "Can be used in alchemy or cooking.",
-    10: "Can be used in alchemy or cooking.",
-    11: "Can be used in alchemy or cooking.",
-    12: "Can be used in alchemy or cooking.",
-    13: "Can be used in alchemy or cooking.",
-    14: "Can be used in alchemy, wine making, or cooking.",
-    15: "Can be used in alchemy or cooking.",
+    0: "Good for restoring energy.",
+    1: "Good for restoring energy.",
+    2: "Good for restoring energy.",
+    3: "Good for restoring energy.",
+    4: "Good for restoring energy.",
+    5: "Good for restoring energy.",
+    6: "Good for restoring energy.",
+    7: "Good for restoring energy.",
+    8: "Good for restoring energy.",
+    9: "Good for restoring energy.",
+    10: "Good for restoring energy.",
+    11: "Good for restoring energy.",
+    12: "Good for restoring energy.",
+    13: "Good for restoring energy.",
+    14: "Good for restoring energy.",
     }
 
 def _symbol(): # %.
@@ -119,7 +114,6 @@ def _symbol(): # %.
     12: "%",
     13: "%",
     14: "%",
-    15: "%",
     }
 
 def _color():
@@ -139,7 +133,6 @@ def _color():
     12: ((127,127,127), (0,0,0)),
     13: ((127,127,127), (0,0,0)),
     14: ((127,127,127), (0,0,0)),
-    15: ((127,127,127), (0,0,0)),
     }
 
 def _clip():
@@ -158,8 +151,7 @@ def _clip():
     11: False,
     12: False,
     13: False,
-    14: False,
-    15: False,
+    14: False
     }
 
 def _transparent():
@@ -179,50 +171,47 @@ def _transparent():
     12: True,
     13: True,
     14: True,
-    15: True,
     }
 
 def _weight():
     return {
-    0: 0.1,
-    1: 0.1,
-    2: 0.1,
-    3: 0.1,
-    4: 0.1,
-    5: 0.1,
-    6: 0.1,
-    7: 0.1,
-    8: 0.1,
-    9: 0.1,
-    10: 0.1,
-    11: 0.1,
-    12: 0.1,
-    13: 0.1,
-    14: 0.1,
-    15: 0.1,
+    0: 1.1,
+    1: 1.1,
+    2: 1.1,
+    3: 1.1,
+    4: 1.1,
+    5: 1.1,
+    6: 1.1,
+    7: 1.1,
+    8: 1.1,
+    9: 1.1,
+    10: 1.1,
+    11: 1.1,
+    12: 1.1,
+    13: 1.1,
+    14: 1.1,
     }
 
 def _value():
     return {
-    0: 30,
-    1: 98,
-    2: 170,
-    3: 245,
-    4: 315,
-    5: 380,
-    6: 450,
-    7: 513,
-    8: 580,
-    9: 630,
-    10: 698,
-    11: 761,
-    12: 800,
-    13: 876,
-    14: 910,
-    15: 1050,
+    0: 54,
+    1: 471,
+    2: 730,
+    3: 1012,
+    4: 1160,
+    5: 240,
+    6: 597,
+    7: 660,
+    8: 684,
+    9: 140,
+    10: 1100,
+    11: 80,
+    12: 84,
+    13: 89,
+    14: 140,
     }
 
-def berries():
+def pies():
     return {
     0: (_category()[0], _identity()[0], _name()[0], _kind()[0], _description()[0], _symbol()[0], _color()[0], _clip()[0], _transparent()[0], _weight()[0], _value()[0]),
     1: (_category()[1], _identity()[1], _name()[1], _kind()[1], _description()[1], _symbol()[1], _color()[1], _clip()[1], _transparent()[1], _weight()[1], _value()[1]),
@@ -239,7 +228,6 @@ def berries():
     12: (_category()[12], _identity()[12], _name()[12], _kind()[12], _description()[12], _symbol()[12], _color()[12], _clip()[12], _transparent()[12], _weight()[12], _value()[12]),
     13: (_category()[13], _identity()[13], _name()[13], _kind()[13], _description()[13], _symbol()[13], _color()[13], _clip()[13], _transparent()[13], _weight()[13], _value()[13]),
     14: (_category()[14], _identity()[14], _name()[14], _kind()[14], _description()[14], _symbol()[14], _color()[14], _clip()[14], _transparent()[14], _weight()[14], _value()[14]),
-    15: (_category()[15], _identity()[15], _name()[15], _kind()[15], _description()[15], _symbol()[15], _color()[15], _clip()[15], _transparent()[15], _weight()[15], _value()[15]),
-        }
+    }
 
 # Jafinoxal.
