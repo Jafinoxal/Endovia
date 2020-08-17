@@ -2,7 +2,7 @@
 # Endovia (Item Constant)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
-ITEM_CATEGORIES = 22
+ITEM_CATEGORIES = 23
 
 ITEM_CATEGORY = 0
 ITEM_IDENTITY = 1
@@ -38,7 +38,7 @@ STONES = 1018 # Complete.
 ARROWS = 1019 # Complete
 BOLTS = 1020 # Complete.
 PIES = 1021 # Complete.
-CAKES = 1022
+CAKES = 1022 # Complete.
 FRUITS = 1023
 VEGETABLES = 1024
 SEEDS = 1025
@@ -71,5 +71,6 @@ STONE_LENGTH = 19
 ARROWS_LENGTH = 22
 BOLTS_LENGTH = 22
 PIES_LENGTH = 15
+CAKES_LENGTH = 10
 
 # Jafinoxal.
