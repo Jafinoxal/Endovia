@@ -30,6 +30,7 @@ import Cakes
 import Fruits
 import Vegetables
 import Scrolls
+import Talismans
 
 items = {
 TOOLS: Tools.tools(),
@@ -58,5 +59,7 @@ CAKES: Cakes.cakes(),
 FRUITS: Fruits.fruits(),
 VEGETABLES: Vegetables.vegetables(),
 SCROLLS: Scrolls.scrolls(),
+TALISMANS: Talismans.talismans(),
 }
+
 # Jafinoxal.
