@@ -29,6 +29,7 @@ import Pies
 import Cakes
 import Fruits
 import Vegetables
+import Scrolls
 
 items = {
 TOOLS: Tools.tools(),
@@ -56,5 +57,6 @@ PIES: Pies.pies(),
 CAKES: Cakes.cakes(),
 FRUITS: Fruits.fruits(),
 VEGETABLES: Vegetables.vegetables(),
+SCROLLS: Scrolls.scrolls(),
 }
 # Jafinoxal.
