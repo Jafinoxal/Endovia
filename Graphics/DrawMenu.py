@@ -58,6 +58,34 @@ def DrawBorderInventoryChoice(library):
         library.console_set_char_background(0, x, 69, library.Color(0, 0, 0))
         library.console_set_char(0, x, 69, '\xcd')
 
+def DrawBorderMagicChoice(library):
+    library.console_set_char_foreground(0, 2, 2, library.Color(255, 255, 255))
+    library.console_set_char_background(0, 2, 2, library.Color(0, 0, 0))
+    library.console_set_char(0, 2, 2, '\xc9')
+    library.console_set_char_foreground(0, 40, 2, library.Color(255, 255, 255))
+    library.console_set_char_background(0, 40, 2, library.Color(0, 0, 0))
+    library.console_set_char(0, 40, 2, '\xbb')
+    library.console_set_char_foreground(0, 2, 69, library.Color(255, 255, 255))
+    library.console_set_char_background(0, 2, 69, library.Color(0, 0, 0))
+    library.console_set_char(0, 2, 69, '\xc8')
+    library.console_set_char_foreground(0, 40, 69, library.Color(255, 255, 255))
+    library.console_set_char_background(0, 40, 69, library.Color(0, 0, 0))
+    library.console_set_char(0, 40, 69, '\xbc')
+    for y in range(3, 69):
+        library.console_set_char_foreground(0, 2, y, library.Color(255, 255, 255))
+        library.console_set_char_background(0, 2, y, library.Color(0, 0, 0))
+        library.console_set_char(0, 2, y, '\xba')
+        library.console_set_char_foreground(0, 40, y, library.Color(255, 255, 255))
+        library.console_set_char_background(0, 40, y, library.Color(0, 0, 0))
+        library.console_set_char(0, 40, y, '\xba')
+    for x in range(3, 40):
+        library.console_set_char_foreground(0, x, 2, library.Color(255, 255, 255))
+        library.console_set_char_background(0, x, 2, library.Color(0, 0, 0))
+        library.console_set_char(0, x, 2, '\xcd')
+        library.console_set_char_foreground(0, x, 69, library.Color(255, 255, 255))
+        library.console_set_char_background(0, x, 69, library.Color(0, 0, 0))
+        library.console_set_char(0, x, 69, '\xcd')
+
 def DrawFillerStatChoice(library):
     for y in range(3, 9):
         for x in range(3, 25):
@@ -71,6 +99,14 @@ def DrawFillerInventoryChoice(library):
             library.console_set_char_foreground(0, x, y, library.Color(255, 255, 255))
             library.console_set_char_background(0, x, y, library.Color(0, 0, 0))
             library.console_set_char(0, x, y, ' ')
+
+def DrawFillerMagicChoice(library):
+    for y in range(3, 69):
+        for x in range(3, 40):
+            library.console_set_char_foreground(0, x, y, library.Color(255, 255, 255))
+            library.console_set_char_background(0, x, y, library.Color(0, 0, 0))
+            library.console_set_char(0, x, y, ' ')
+
 
 def DrawStatChoice(library, choice):
     choices = {
@@ -123,5 +159,33 @@ def DrawInventoryChoice(library, choice, inventory, items):
             library.console_set_char_foreground(0, 3 + index, 3 + key, library.Color(255, 255, 255))
             library.console_set_char_background(0, 3 + index, 3 + key, library.Color(0, 0, 0))
             library.console_set_char(0, 3 + index, 3 + key, value[index])
+
+def DrawMagicChoice(library, choice, destruction_spells):
+    category_type = choice[0]
+    selected_spell = choice[1]
+    if choice not in ("destruction", "restoration"):
+        return 1
+    choices = {0: "+ Magic +     ",
+              1: "= {0} =    ".format(category_type),
+              }
+    spell_index = 0
+    for spell_id, spell_info in destruction_spells.items():
+        if spell_id == selected_spell:
+            if item_amount > 0:
+                choices[2 + spell_index] = " [{0}]       ".format(destruction_spells[spell_id][0])
+            else:
+                choices[2 + spell_index] = " [Unknown]"
+        else:
+            if item_amount > 0:
+                choices[2 + spell_index] = " {0}      ".format(destruction_spells[spell_id][0])
+            else:
+                choices[2 + spell_index] = " Unknown"
+        item_index += 1
+    for key, value in choices.items():
+        for index in range(0, len(value)):
+            library.console_set_char_foreground(0, 3 + index, 3 + key, library.Color(255, 255, 255))
+            library.console_set_char_background(0, 3 + index, 3 + key, library.Color(0, 0, 0))
+            library.console_set_char(0, 3 + index, 3 + key, value[index])
+
 
 # Jafinoxal.
