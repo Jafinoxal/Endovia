@@ -40,8 +40,8 @@ INVENTORY_EQUIP_BACK = 27
 INVENTORY_EQUIP_NECK = 28
 INVENTORY_EQUIP_FINGER = 29
 
-ACCESS_SPELLS = 30
-SPELLS_SET_ACTIVE = 31
+ACCESS_MAGIC = 30
+MAGIC_SET_ACTIVE = 31
 
 NORTH = (0, -1)
 SOUTH = (0, +1)
@@ -57,7 +57,6 @@ SPELLS_EFFECT_TYPE = 4
 SPELLS_MANA_NEEDED = 5
 
 DESTRUCTION_SPELLS = { # Identitiy, name, level, damage, damage_type, effect_type, mana_needed.
-None: (None, None, None, None, None, None),
 0: ("air smack", 0, 4, "air", None, 5),
 1: ("air blast", 10, 8, "air", None, 10),
 2: ("air bolt", 20, 22, "air", None, 25),

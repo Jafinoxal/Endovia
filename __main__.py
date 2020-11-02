@@ -27,7 +27,7 @@ CHART_ID = 0
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
 FRAMES_PER_SECOND = 60
-WINDOW_NAME = "Endovia 1.179"
+WINDOW_NAME = "Endovia 1.181"
 FONT_NAME = "terminal8x8_gs_ro.png"
 FILE_READ_MODE = "rb"
 FILE_WRITE_MODE = "wb"
@@ -217,6 +217,33 @@ def main(load = False):
                     inventory_category = 1000
                     inventory_id = 0
                 inventory_length = len(Items.items[inventory_category])
+            # Get the input event, event is a constant from Handlers.Constant.
+            if not skip_input:
+                event = Handlers.handlers["InputHandler"].MainGame(libtcodpy)
+        elif event == ACCESS_MAGIC:
+            magic_category = "destruction"
+            magic_id = 0
+            magic_length = len(DESTRUCTION_SPELLS.values())
+            magic_categories = ("destruction",)
+            while True:
+                Graphics.graphics["DrawMenu"].DrawBorderMagicChoice(libtcodpy)
+                Graphics.graphics["DrawMenu"].DrawFillerMagicChoice(libtcodpy)
+                Graphics.graphics["DrawMenu"].DrawMagicChoice(libtcodpy, (magic_category, magic_id), DESTRUCTION_SPELLS, charts[0].entities[0])
+                libtcodpy.console_flush()
+                event = Handlers.handlers["InputHandler"].MagicMenu(libtcodpy)
+                if event == EXIT_MENU:
+                    skip_input = True
+                    break
+                # These 4 conditionals move the inventory up and down.
+                if magic_id == 0 and event == MOVE_MENU_UP:
+                    magic_id = magic_length - 1
+                elif magic_id == magic_length - 1 and event == MOVE_MENU_DOWN:
+                    magic_id = 0
+                elif magic_id > 0 and event == MOVE_MENU_UP:
+                    magic_id -= 1
+                elif magic_id < magic_length - 1 and event == MOVE_MENU_DOWN:
+                    magic_id += 1
+                magic_length = len(DESTRUCTION_SPELLS.values())
             # Get the input event, event is a constant from Handlers.Constant.
             if not skip_input:
                 event = Handlers.handlers["InputHandler"].MainGame(libtcodpy)
