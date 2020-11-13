@@ -52,36 +52,49 @@ EAST = (+1, 0)
 SPELLS_NAME = 0
 SPELLS_LEVEL = 1
 SPELLS_DAMAGE = 2
+SPELLS_EFFECT_AMOUNT = 2
 SPELLS_DAMAGE_TYPE = 3
+SPELLS_EFFECT_TYPE = 3
 SPELLS_EFFECT_TYPE = 4
-SPELLS_MANA_NEEDED = 5
+SPELLS_DES_MANA_NEEDED = 5
+SPELLS_RES_MANA_NEEDED = 4
 
 DESTRUCTION_SPELLS = { # Identitiy, name, level, damage, damage_type, effect_type, mana_needed.
-0: ("air smack", 0, 4, "air", None, 5),
-1: ("air blast", 10, 8, "air", None, 10),
-2: ("air bolt", 20, 22, "air", None, 25),
-3: ("air surge", 40, 70, "air", None, 60),
-4: ("air rocket", 75, 230, "air", None, 150),
-5: ("water smack", 2, 5, "water", None, 5),
-6: ("water blast", 12, 10, "water", None, 10),
-7: ("water bolt", 24, 25, "water", None, 25),
-8: ("water surge", 44, 77, "water", None, 60),
-9: ("water rocket", 80, 246, "water", None, 150),
-10: ("earth smack", 4, 6, "earth", None, 5),
-11: ("earth blast", 14, 12, "earth", None, 10),
-12: ("earth bolt", 28, 28, "earth", None, 25),
-13: ("earth surge", 48, 84, "earth", None, 60),
-14: ("earth rocket", 85, 262, "earth", None, 150),
-15: ("fire smack", 6, 7, "fire", None, 5),
-16: ("fire blast", 16, 14, "fire", None, 10),
-17: ("fire bolt", 32, 31, "fire", None, 25),
-18: ("fire surge", 52, 91, "fire", None, 60),
-19: ("fire rocket", 90, 278, "fire", None, 150),
-20: ("shock smack", 8, 8, "shock", None, 5),
-21: ("shock blast", 10, 9, "shock", None, 10),
-22: ("shock bolt", 36, 34, "shock", None, 25),
-23: ("shock surge", 56, 98, "shock", None, 60),
-24: ("shock rocket", 95, 294, "shock", None, 150),
+0: ("Air Smack", 0, 4, "air", None, 5),
+1: ("Air Blast", 10, 8, "air", None, 10),
+2: ("Air Bolt", 20, 22, "air", None, 25),
+3: ("Air Surge", 40, 70, "air", None, 60),
+4: ("Air Rocket", 75, 230, "air", None, 150),
+5: ("Water Smack", 2, 5, "water", None, 5),
+6: ("Water Blast", 12, 10, "water", None, 10),
+7: ("Water Bolt", 24, 25, "water", None, 25),
+8: ("Water Surge", 44, 77, "water", None, 60),
+9: ("Water Rocket", 80, 246, "water", None, 150),
+10: ("Earth Smack", 4, 6, "earth", None, 5),
+11: ("Earth Blast", 14, 12, "earth", None, 10),
+12: ("Earth Bolt", 28, 28, "earth", None, 25),
+13: ("Earth Surge", 48, 84, "earth", None, 60),
+14: ("Earth Rocket", 85, 262, "earth", None, 150),
+15: ("Fire Smack", 6, 7, "fire", None, 5),
+16: ("Fire Blast", 16, 14, "fire", None, 10),
+17: ("Fire Bolt", 32, 31, "fire", None, 25),
+18: ("Fire Surge", 52, 91, "fire", None, 60),
+19: ("Fire Rocket", 90, 278, "fire", None, 150),
+20: ("Shock Smack", 8, 8, "shock", None, 5),
+21: ("Shock Blast", 10, 9, "shock", None, 10),
+22: ("Shock Bolt", 36, 34, "shock", None, 25),
+23: ("Shock Surge", 56, 98, "shock", None, 60),
+24: ("Shock Rocket", 95, 294, "shock", None, 150),
+}
+
+RESTORATION_SPELLS = { # Identitiy, name, level, effect_amount, effect_type, mana_needed.
+0: ("Crude Heal", 0, 40, "heal", 20),
+1: ("Fair Heal", 7, 100, "heal", 50),
+2: ("Strong Heal", 17, 300, "heal", 150),
+3: ("Mighty Heal", 29, 680, "heal", 340),
+4: ("Vigor Heal", 48, 1600, "heal", 800),
+5: ("Massive Heal", 75, 3500, "heal", 1750),
+6: ("Godly Heal", 100, 10000, "heal", 5000),
 }
 
 ATTACKS = { # Name, plural, damages.

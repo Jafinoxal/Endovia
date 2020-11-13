@@ -160,7 +160,7 @@ def DrawInventoryChoice(library, choice, inventory, items):
             library.console_set_char_background(0, 3 + index, 3 + key, library.Color(0, 0, 0))
             library.console_set_char(0, 3 + index, 3 + key, value[index])
 
-def DrawMagicChoice(library, choice, destruction_spells, player):
+def DrawMagicChoice(library, choice, destruction_spells, restoration_spells, player):
     category_type = choice[0]
     selected_spell = choice[1]
     if category_type not in ("destruction", "restoration"):
@@ -169,18 +169,32 @@ def DrawMagicChoice(library, choice, destruction_spells, player):
               1: "= {0} =    ".format(category_type),
               }
     spell_index = 0
-    for spell_id, spell_info in destruction_spells.items():
-        if spell_id == selected_spell:
-            if player.skills["magic"][0] >= spell_info[1]:
-                choices[2 + spell_index] = " [{0}] (LVL:{1})     ".format(spell_info[0], spell_info[1])
+    if category_type == "destruction":
+        for spell_id, spell_info in destruction_spells.items():
+            if spell_id == selected_spell:
+                if player.skills["magic"][0] >= spell_info[1]:
+                    choices[2 + spell_index] = " [{0}] (LVL:{1})     ".format(spell_info[0], spell_info[1])
+                else:
+                    choices[2 + spell_index] = " [Unknown]"
             else:
-                choices[2 + spell_index] = " [Unknown]"
-        else:
-            if player.skills["magic"][0] >= spell_info[1]:
-                choices[2 + spell_index] = " {0} (LVL:{1})     ".format(spell_info[0], spell_info[1])
+                if player.skills["magic"][0] >= spell_info[1]:
+                    choices[2 + spell_index] = " {0} (LVL:{1})     ".format(spell_info[0], spell_info[1])
+                else:
+                    choices[2 + spell_index] = " Unknown"
+            spell_index += 1
+    if category_type == "restoration":
+        for spell_id, spell_info in restoration_spells.items():
+            if spell_id == selected_spell:
+                if player.skills["magic"][0] >= spell_info[1]:
+                    choices[2 + spell_index] = " [{0}] (LVL:{1})     ".format(spell_info[0], spell_info[1])
+                else:
+                    choices[2 + spell_index] = " [Unknown]"
             else:
-                choices[2 + spell_index] = " Unknown"
-        spell_index += 1
+                if player.skills["magic"][0] >= spell_info[1]:
+                    choices[2 + spell_index] = " {0} (LVL:{1})     ".format(spell_info[0], spell_info[1])
+                else:
+                    choices[2 + spell_index] = " Unknown"
+            spell_index += 1
     for key, value in choices.items():
         for index in range(0, len(value)):
             library.console_set_char_foreground(0, 3 + index, 3 + key, library.Color(255, 255, 255))

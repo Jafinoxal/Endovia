@@ -20,6 +20,14 @@ from Handlers.Constant import *
 from Items.Constant import *
 from Objects.Constant import *
 
+# Guide:
+# 1. The player is stored at charts[0].entities[0], This is the host. The host
+#    and the board's entities are stored with the host/player.
+# 2. If a multiplayer online adaptation is made, store non-host players in a
+#    variable named charts[0].foreign.
+# 3. Games are saved with the pickle module (endovia.save).
+# 4. A library called libtcod is used for /fov/ and /graphics/.
+
 # Constants.
 SCREEN_WIDTH = 125
 SCREEN_HEIGHT = 82
@@ -27,7 +35,7 @@ CHART_ID = 0
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
 FRAMES_PER_SECOND = 60
-WINDOW_NAME = "Endovia 1.181"
+WINDOW_NAME = "Endovia 1.182"
 FONT_NAME = "terminal8x8_gs_ro.png"
 FILE_READ_MODE = "rb"
 FILE_WRITE_MODE = "wb"
@@ -103,7 +111,17 @@ def main(load = False):
     enemy_x, enemy_y = None, None
     # Initialize main_level_up here so no error occurs.
     main_level_up = False
+    # Initialize the active spell info as nothing.
+    spell_info = None
     while not libtcodpy.console_is_window_closed():
+        # To draw spell info to screen.
+        if charts[0].entities[0].active_spell != (None, None):
+            if charts[0].entities[0].active_spell[0] == "destruction":
+                spell_info = DESTRUCTION_SPELLS[charts[0].entities[0].active_spell[1]]
+            elif charts[0].entities[0].active_spell[0] == "restoration":
+                spell_info = RESTORATION_SPELLS[charts[0].entities[0].active_spell[1]]
+            else:
+                spell_info = None
         skip_input = False
         # Reset turn_taken to False so enemies don't take a turn when player doesn't.
         turn_taken = False
@@ -123,6 +141,7 @@ def main(load = False):
         Graphics.graphics["DrawInfo"].DrawLocation(libtcodpy, charts[chart_id], charts[0].entities[0])
         Graphics.graphics["DrawInfo"].DrawMessages(libtcodpy, messages, charts[chart_id])
         Graphics.graphics["DrawInfo"].DrawEnemyInfo(libtcodpy, charts[chart_id], charts[0].entities, enemy_x, enemy_y)
+        Graphics.graphics["DrawInfo"].DrawMagicInfo(libtcodpy, charts[chart_id], charts[0].entities[0], spell_info)
         # Reset the enemy position so enemy info doesn't draw out of fight.
         enemy_x, enemy_y = None, None
         # Flush the console.
@@ -224,11 +243,11 @@ def main(load = False):
             magic_category = "destruction"
             magic_id = 0
             magic_length = len(DESTRUCTION_SPELLS.values())
-            magic_categories = ("destruction",)
+            magic_categories = ("destruction", "restoration")
             while True:
                 Graphics.graphics["DrawMenu"].DrawBorderMagicChoice(libtcodpy)
                 Graphics.graphics["DrawMenu"].DrawFillerMagicChoice(libtcodpy)
-                Graphics.graphics["DrawMenu"].DrawMagicChoice(libtcodpy, (magic_category, magic_id), DESTRUCTION_SPELLS, charts[0].entities[0])
+                Graphics.graphics["DrawMenu"].DrawMagicChoice(libtcodpy, (magic_category, magic_id), DESTRUCTION_SPELLS, RESTORATION_SPELLS, charts[0].entities[0])
                 libtcodpy.console_flush()
                 event = Handlers.handlers["InputHandler"].MagicMenu(libtcodpy)
                 if event == EXIT_MENU:
@@ -243,7 +262,16 @@ def main(load = False):
                     magic_id -= 1
                 elif magic_id < magic_length - 1 and event == MOVE_MENU_DOWN:
                     magic_id += 1
-                magic_length = len(DESTRUCTION_SPELLS.values())
+                elif magic_category == "destruction" and event in (MOVE_MENU_LEFT, MOVE_MENU_RIGHT):
+                    magic_category = "restoration"
+                    magic_id = 0
+                    magic_length = len(RESTORATION_SPELLS.values())
+                elif magic_category == "restoration" and event in (MOVE_MENU_LEFT, MOVE_MENU_RIGHT):
+                    magic_category = "destruction"
+                    magic_id = 0
+                    magic_length = len(DESTRUCTION_SPELLS.values())
+                elif event == MAGIC_SET_ACTIVE:
+                    pass
             # Get the input event, event is a constant from Handlers.Constant.
             if not skip_input:
                 event = Handlers.handlers["InputHandler"].MainGame(libtcodpy)
