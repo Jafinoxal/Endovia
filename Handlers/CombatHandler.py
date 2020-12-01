@@ -23,12 +23,13 @@ def _attack_enemy_magic(chart, player, enemies, enemy_x, enemy_y, characters):
     for enemy in enemies.values():
         # Make sure it's the enemy we're in combat with.
         if (enemy.x, enemy.y) == (enemy_x, enemy_y):
-            name = characters[enemies[enemy.unique_id].grid_id][enemies[enemy.unique_id].entity_id][Constant.SPELLS_NAME]
-            damage = player.attributes["intelligence"] + player.skills["magic"][0] + DESTRUCTION_SPELLS[player.destruction_spell][Constant.SPELLS_DAMAGE]
+            spell = Constant.DESTRUCTION_SPELLS[player.active_destruction_spell[1]][Constant.SPELLS_NAME]
+            name = characters[enemies[enemy.unique_id].grid_id][enemies[enemy.unique_id].entity_id][2]
+            damage = player.attributes["intelligence"] + player.skills["magic"][0] + Constant.DESTRUCTION_SPELLS[player.active_destruction_spell[1]][Constant.SPELLS_DAMAGE]
             player.experience += damage * 5
             player.skills["magic"] = (player.skills["magic"][0], player.skills["magic"][1] + damage * 2)
             enemies[enemy.unique_id].health -= damage
-            return "You cast {0} on the {1} and deal {2} damage. Enemy at ({3},{4}).             ".format(DESTRUCTION_SPELLS[player.destruction_spell][Constant.SPELLS_NAME], name, damage, enemy.x, enemy.y)
+            return "You cast {0} on the {1} and deal {2} damage. Enemy at ({3},{4}).             ".format(spell, name, damage, enemy.x, enemy.y)
 
 def _attack_player(chart, player, enemies, enemy_x, enemy_y, characters):
     # Iterate through all characters.
@@ -74,8 +75,19 @@ def _dead_entity(chart, enemies, characters):
 
 def FightCharacter(chart, player, enemies, enemy_x, enemy_y, characters):
     messages = []
+    if player.combat_style == Constant.ATTACK_MELEE:
+        messages.append(_attack_enemy_melee(chart, player, enemies, enemy_x, enemy_y, characters))
+    elif player.combat_style == Constant.ATTACK_RANGED:
+        messages.append("Ranged combat not implemented.")
+    elif player.combat_style == Constant.ATTACK_MAGIC:
+        messages.append(_attack_enemy_magic(chart, player, enemies, enemy_x, enemy_y, characters))
+    elif player.combat_style == Constant.ATTACK_JUTSU:
+        messages.append("Jutsu combat not implemented.")
+    elif player.combat_style == Constant.ATTACK_ARMS:
+        messages.append("Arms combat not implemented.")
+    else:
+        messages.append("How did you get here? O.o")
     messages.append(_attack_player(chart, player, enemies, enemy_x, enemy_y, characters))
-    messages.append(_attack_enemy_melee(chart, player, enemies, enemy_x, enemy_y, characters))
     _health_below_zero(enemies)
     something_died = _dead_entity(chart, enemies, characters)
     if something_died:

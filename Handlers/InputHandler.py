@@ -22,6 +22,24 @@ def StatMenu(library):
     else:
         return Constant.NULL
 
+def CombatMenu(library):
+    key = library.console_wait_for_keypress(True)
+    # Switching fullscreen.
+    if key.vk == library.KEY_ENTER and key.lalt:
+        library.console_set_fullscreen(not library.console_is_fullscreen())
+        return Constant.SWITCH_FULLSCREENS
+    # Moving selection up.
+    elif key.vk == library.KEY_UP:
+        return Constant.MOVE_MENU_UP
+    # Moving selection down.
+    elif key.vk == library.KEY_DOWN:
+        return Constant.MOVE_MENU_DOWN
+    # Entering the selection.
+    elif key.vk == library.KEY_ENTER:
+        return Constant.SELECT_MENU_ENTER
+    else:
+        return Constant.NULL
+
 def InventoryMenu(library):
     key = library.console_wait_for_keypress(True)
     # Switching fullscreen.
@@ -140,9 +158,13 @@ def MainGame(library):
     elif key.vk == library.KEY_ENTER:
         return Constant.SELECT_MENU_ENTER
     elif key.vk == library.KEY_CHAR:
-            if chr(key.c) == 'i':
+            if chr(key.c) == 'x':
+                return Constant.ACCESS_COMBAT
+            elif chr(key.c) == 'i':
                 return Constant.ACCESS_INVENTORY
             elif chr(key.c) == 'm':
                 return Constant.ACCESS_MAGIC
+            else:
+                return Constant.NULL
     else:
         return Constant.NULL

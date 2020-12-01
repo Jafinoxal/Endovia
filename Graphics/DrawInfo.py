@@ -170,38 +170,15 @@ def DrawEnemyInfo(library, chart, enemies, enemy_x, enemy_y):
                     library.console_set_char(0, x + chart.width + 2, y + 45, to_draw_complete[y][x])
             break
 
-def DrawMagicInfo(library, chart, player, spell_info):
-    if player.active_spell == (None, None):
-        title_to_draw = "+ MAGIC +"
-        school_to_draw = " School: None"
-        spell_to_draw = " Spell:  None"
-        level_to_draw = " Level:  None"
-        amount_to_draw = " Amount: None"
-        mana_to_draw = " Mana:   None"
-        to_draw_complete = (
-        title_to_draw,
-        school_to_draw,
-        spell_to_draw,
-        level_to_draw,
-        amount_to_draw,
-        )
-    else:
-        title_to_draw = "+ MAGIC +"
-        school_to_draw = "School: {0}".format(player.active_spell[0])
-        spell_to_draw = "Spell:  {0}".format(spell_info[0])
-        level_to_draw = "Level:  {0}".format(spell_info[1])
-        amount_to_draw = "Amount: {0}".format(spell_info[2])
-        if player.active_spell[0] == "destruction":
-            mana_to_draw = "Mana:   {0}".format(spell_info[5])
-        elif player.active_spell[0] == "restoration":
-            mana_to_draw = "Mana:   {0}".format(spell_info[4])
-        to_draw_complete = (
-        title_to_draw,
-        school_to_draw,
-        spell_to_draw,
-        level_to_draw,
-        amount_to_draw,
-        )
+def DrawMagicInfo(library, chart, player, destruction_spell_info, restoration_spell_info):
+    title_to_draw = "+ MAGIC +"
+    destruction_spell_to_draw = "<DES>:  {0}".format(destruction_spell_info[0])
+    restoration_spell_to_draw = "<RES>:  {0}".format(restoration_spell_info[0])
+    to_draw_complete = (
+    title_to_draw,
+    destruction_spell_to_draw,
+    restoration_spell_to_draw,
+    )
     for y in range(0, len(to_draw_complete)):
         for x in range(0, len(to_draw_complete[y])):
             library.console_set_char_foreground(0, x + chart.width + 2, y + 50, library.Color(255, 255, 255))

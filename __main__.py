@@ -35,7 +35,7 @@ CHART_ID = 0
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
 FRAMES_PER_SECOND = 60
-WINDOW_NAME = "Endovia 1.182"
+WINDOW_NAME = "Endovia 1.200"
 FONT_NAME = "terminal8x8_gs_ro.png"
 FILE_READ_MODE = "rb"
 FILE_WRITE_MODE = "wb"
@@ -111,17 +111,11 @@ def main(load = False):
     enemy_x, enemy_y = None, None
     # Initialize main_level_up here so no error occurs.
     main_level_up = False
-    # Initialize the active spell info as nothing.
-    spell_info = None
     while not libtcodpy.console_is_window_closed():
         # To draw spell info to screen.
-        if charts[0].entities[0].active_spell != (None, None):
-            if charts[0].entities[0].active_spell[0] == "destruction":
-                spell_info = DESTRUCTION_SPELLS[charts[0].entities[0].active_spell[1]]
-            elif charts[0].entities[0].active_spell[0] == "restoration":
-                spell_info = RESTORATION_SPELLS[charts[0].entities[0].active_spell[1]]
-            else:
-                spell_info = None
+        destruction_spell_info = DESTRUCTION_SPELLS[charts[0].entities[0].active_destruction_spell[1]]
+        restoration_spell_info = RESTORATION_SPELLS[charts[0].entities[0].active_restoration_spell[1]]
+        # Don't skip input.
         skip_input = False
         # Reset turn_taken to False so enemies don't take a turn when player doesn't.
         turn_taken = False
@@ -141,7 +135,7 @@ def main(load = False):
         Graphics.graphics["DrawInfo"].DrawLocation(libtcodpy, charts[chart_id], charts[0].entities[0])
         Graphics.graphics["DrawInfo"].DrawMessages(libtcodpy, messages, charts[chart_id])
         Graphics.graphics["DrawInfo"].DrawEnemyInfo(libtcodpy, charts[chart_id], charts[0].entities, enemy_x, enemy_y)
-        Graphics.graphics["DrawInfo"].DrawMagicInfo(libtcodpy, charts[chart_id], charts[0].entities[0], spell_info)
+        Graphics.graphics["DrawInfo"].DrawMagicInfo(libtcodpy, charts[chart_id], charts[0].entities[0], destruction_spell_info, restoration_spell_info)
         # Reset the enemy position so enemy info doesn't draw out of fight.
         enemy_x, enemy_y = None, None
         # Flush the console.
@@ -200,6 +194,31 @@ def main(load = False):
             if enemy_there:
                 enemy_at = (charts[0].entities[0].x + EAST[0], charts[0].entities[0].y + EAST[1])
             turn_taken = True
+        if event == ACCESS_COMBAT:
+            choice = 0
+            stat_choices = ("melee", "ranged", "magic", "jutsu", "arms")
+            while True:
+                # Stat menu drawing.
+                Graphics.graphics["DrawMenu"].DrawBorderCombatChoice(libtcodpy)
+                Graphics.graphics["DrawMenu"].DrawFillerCombatChoice(libtcodpy)
+                Graphics.graphics["DrawMenu"].DrawCombatChoice(libtcodpy, choice)
+                libtcodpy.console_flush()
+                # Choose a stat to advance and wait for the enter key.
+                event = Handlers.handlers["InputHandler"].CombatMenu(libtcodpy)
+                if event == SELECT_MENU_ENTER:
+                    # Look in Handlers.Constant.
+                    charts[0].entities[0].combat_style = choice
+                    skip_input = True
+                    break
+                if choice == 0 and event == MOVE_MENU_UP:
+                    choice = 4
+                elif choice == 4 and event == MOVE_MENU_DOWN:
+                    choice = 0
+                elif choice > 0 and event == MOVE_MENU_UP:
+                    choice -= 1
+                elif choice < 4 and event == MOVE_MENU_DOWN:
+                    choice += 1
+        # Inventory work.
         elif event == ACCESS_INVENTORY:
             inventory_category = 1000
             inventory_id = 0
