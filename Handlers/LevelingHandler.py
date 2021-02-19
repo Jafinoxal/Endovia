@@ -31,8 +31,8 @@ def _level_up_skill(player, skill):
     else:
         experience_needed = player.skills[skill][0] * player.skills[skill][0] * 30
         if player.skills[skill][1] >= experience_needed and player.skills[skill][0] != 100:
-            player.skills[skill] = player.skills[skill](player.skills[0] + 1, player.skills[1])
-            return "Your {0} level went from {1} to {2}!                        ".format(skill, player.skills[skill][0] - 1, player.skills[0])
+            player.skills[skill] = (player.skills[skill][0] + 1, player.skills[skill][1])
+            return "Your {0} level went from {1} to {2}!                        ".format(skill, player.skills[skill][0] - 1, player.skills[skill][0])
         else:
             return False
 

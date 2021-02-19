@@ -35,7 +35,7 @@ CHART_ID = 0
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
 FRAMES_PER_SECOND = 60
-WINDOW_NAME = "Endovia 1.200"
+WINDOW_NAME = "Endovia 1.201"
 FONT_NAME = "terminal8x8_gs_ro.png"
 FILE_READ_MODE = "rb"
 FILE_WRITE_MODE = "wb"
@@ -140,6 +140,13 @@ def main(load = False):
         enemy_x, enemy_y = None, None
         # Flush the console.
         libtcodpy.console_flush()
+        # The game is up, nice try though!
+        if charts[0].entities[0].stats["health"][0] <= 0:
+            Graphics.graphics["DrawDeath"].DrawWindow(libtcodpy, SCREEN_WIDTH, SCREEN_HEIGHT)
+            Graphics.graphics["DrawDeath"].DrawMessage(libtcodpy)
+            libtcodpy.console_flush()
+            libtcodpy.console_wait_for_keypress(True)
+            exit()
         if main_level_up:
             choice = 0
             stat_choices = ("health", "mana", "energy", "faith", "chakra")
@@ -220,6 +227,7 @@ def main(load = False):
                     choice += 1
         # Inventory work.
         elif event == ACCESS_INVENTORY:
+            # In practice all item categories start at 1000.
             inventory_category = 1000
             inventory_id = 0
             inventory_length = len(Items.items[inventory_category])

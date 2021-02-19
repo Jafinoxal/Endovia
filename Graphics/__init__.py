@@ -5,11 +5,13 @@
 import DrawChart
 import DrawInfo
 import DrawMenu
+import DrawDeath
 
 graphics = {
 "DrawChart": DrawChart,
 "DrawInfo": DrawInfo,
 "DrawMenu": DrawMenu,
+"DrawDeath": DrawDeath,
 }
 
 # Jafinoxal.
