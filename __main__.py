@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 # Endovia (Main)
-# Copyright (C) 2010-2020 Jeremy Aaron Flexer.
+# Copyright (C) 2010-2021 Jeremy Aaron Flexer.
 
 import libtcodpy
 import pickle
@@ -35,7 +35,7 @@ CHART_ID = 0
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
 FRAMES_PER_SECOND = 60
-WINDOW_NAME = "Endovia 1.201"
+WINDOW_NAME = "Endovia 1.202"
 FONT_NAME = "terminal8x8_gs_ro.png"
 FILE_READ_MODE = "rb"
 FILE_WRITE_MODE = "wb"
@@ -129,13 +129,14 @@ def main(load = False):
         Graphics.graphics["DrawChart"].DrawEntities(libtcodpy, Objects.objects, Characters.characters, charts[0], charts[0].entities[0])
         Graphics.graphics["DrawChart"].DrawBorder(libtcodpy, charts[chart_id].width, charts[0].height)
         # Info related drawing.
-        Graphics.graphics["DrawInfo"].DrawStats(libtcodpy, charts[chart_id], charts[0].entities[0])
-        Graphics.graphics["DrawInfo"].DrawAttributes(libtcodpy, charts[chart_id], charts[0].entities[0])
-        Graphics.graphics["DrawInfo"].DrawSkills(libtcodpy, charts[chart_id], charts[0].entities[0])
-        Graphics.graphics["DrawInfo"].DrawLocation(libtcodpy, charts[chart_id], charts[0].entities[0])
+        Graphics.graphics["DrawInfo"].DrawStats(libtcodpy, charts[chart_id], charts[chart_id].entities[0])
+        Graphics.graphics["DrawInfo"].DrawAttributes(libtcodpy, charts[chart_id], charts[chart_id].entities[0])
+        Graphics.graphics["DrawInfo"].DrawSkills(libtcodpy, charts[chart_id], charts[chart_id].entities[0])
+        Graphics.graphics["DrawInfo"].DrawLocation(libtcodpy, charts[chart_id], charts[chart_id].entities[0])
         Graphics.graphics["DrawInfo"].DrawMessages(libtcodpy, messages, charts[chart_id])
-        Graphics.graphics["DrawInfo"].DrawEnemyInfo(libtcodpy, charts[chart_id], charts[0].entities, enemy_x, enemy_y)
-        Graphics.graphics["DrawInfo"].DrawMagicInfo(libtcodpy, charts[chart_id], charts[0].entities[0], destruction_spell_info, restoration_spell_info)
+        Graphics.graphics["DrawInfo"].DrawEnemy(libtcodpy, charts[chart_id], charts[chart_id].entities, enemy_x, enemy_y)
+        Graphics.graphics["DrawInfo"].DrawMagic(libtcodpy, charts[chart_id], charts[chart_id].entities[0], destruction_spell_info, restoration_spell_info)
+        Graphics.graphics["DrawInfo"].DrawCombat(libtcodpy, charts[chart_id], charts[chart_id].entities[0], COMBAT_STYLES)
         # Reset the enemy position so enemy info doesn't draw out of fight.
         enemy_x, enemy_y = None, None
         # Flush the console.

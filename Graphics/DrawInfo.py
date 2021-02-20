@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Endovia (DrawInfo)
-# Copyright (C) 2010-2020 Jeremy Aaron Flexer.
+# Copyright (C) 2010-2021 Jeremy Aaron Flexer.
 
 def DrawStats(library, chart, player):
     title_to_draw = "+ STATS +"
@@ -128,7 +128,7 @@ def DrawLocation(library, chart, player):
             library.console_set_char_background(0, x + chart.width + 2, y + 41, library.Color(0, 0, 0))
             library.console_set_char(0, x + chart.width + 2, y + 41, to_draw_complete[y][x])
 
-def DrawEnemyInfo(library, chart, enemies, enemy_x, enemy_y):
+def DrawEnemy(library, chart, enemies, enemy_x, enemy_y):
     # Find the enemy.
     for enemy in enemies.values():
         if (enemy_x, enemy_y) == (enemy.x, enemy.y):
@@ -170,10 +170,10 @@ def DrawEnemyInfo(library, chart, enemies, enemy_x, enemy_y):
                     library.console_set_char(0, x + chart.width + 2, y + 45, to_draw_complete[y][x])
             break
 
-def DrawMagicInfo(library, chart, player, destruction_spell_info, restoration_spell_info):
+def DrawMagic(library, chart, player, destruction_spell_info, restoration_spell_info):
     title_to_draw = "+ MAGIC +"
-    destruction_spell_to_draw = "<DES>:  {0}".format(destruction_spell_info[0])
-    restoration_spell_to_draw = "<RES>:  {0}".format(restoration_spell_info[0])
+    destruction_spell_to_draw = " <DES>:  {0}".format(destruction_spell_info[0])
+    restoration_spell_to_draw = " <RES>:  {0}".format(restoration_spell_info[0])
     to_draw_complete = (
     title_to_draw,
     destruction_spell_to_draw,
@@ -184,6 +184,19 @@ def DrawMagicInfo(library, chart, player, destruction_spell_info, restoration_sp
             library.console_set_char_foreground(0, x + chart.width + 2, y + 50, library.Color(255, 255, 255))
             library.console_set_char_background(0, x + chart.width + 2, y + 50, library.Color(0, 0, 0))
             library.console_set_char(0, x + chart.width + 2, y + 50, to_draw_complete[y][x])
+
+def DrawCombat(library, chart, player, combat_styles):
+    title_to_draw = "+ COMBAT +"
+    style_to_draw = " Style: {0}".format(combat_styles[player.combat_style])
+    to_draw_complete = (
+    title_to_draw,
+    style_to_draw,
+    )
+    for y in range(0, len(to_draw_complete)):
+        for x in range(0, len(to_draw_complete[y])):
+            library.console_set_char_foreground(0, x + chart.width + 2, y + 53, library.Color(255, 255, 255))
+            library.console_set_char_background(0, x + chart.width + 2, y + 53, library.Color(0, 0, 0))
+            library.console_set_char(0, x + chart.width + 2, y + 53, to_draw_complete[y][x])
 
 def DrawMessages(library, messages, chart):
     message_count = len(messages)

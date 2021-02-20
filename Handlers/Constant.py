@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Endovia (Handler Init)
-# Copyright (C) 2010-2020 Jeremy Aaron Flexer.
+# Copyright (C) 2010-2021 Jeremy Aaron Flexer.
 
 NULL = -1
 
@@ -52,6 +52,13 @@ ATTACK_RANGED = 1
 ATTACK_MAGIC = 2
 ATTACK_JUTSU = 3
 ATTACK_ARMS = 4
+
+COMBAT_STYLES = {0:"Melee",
+1:"Ranged",
+2:"Magic",
+3:"Jutsu",
+4:"Arms",
+}
 
 NORTH = (0, -1)
 SOUTH = (0, +1)

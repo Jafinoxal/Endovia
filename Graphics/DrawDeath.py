@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Endovia (DrawChart)
+# Endovia (DrawDeath)
 # Copyright (C) 2010-2021 Jeremy Aaron Flexer.
 
 import random

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Endovia (LevelingHandler)
-# Copyright (C) 2010-2020 Jeremy Aaron Flexer.
+# Copyright (C) 2010-2021 Jeremy Aaron Flexer.
 
 def _level_up_main(player):
     experience_needed = player.level * player.level * 15
