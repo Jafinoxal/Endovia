@@ -55,4 +55,7 @@ def LevelCharacter(player):
 def LevelStat(player, stat):
     _level_up_stat(player, stat)
 
+def LevelSkill(player, skill):
+    _level_up_skill(player, skill)
+
 # Jafinoxal.

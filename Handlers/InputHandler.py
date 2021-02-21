@@ -157,14 +157,33 @@ def MainGame(library):
     elif key.vk == library.KEY_ENTER:
         return Constant.SELECT_MENU_ENTER
     elif key.vk == library.KEY_CHAR:
-            if chr(key.c) == 'x':
-                return Constant.ACCESS_COMBAT
-            elif chr(key.c) == 'i':
-                return Constant.ACCESS_INVENTORY
-            elif chr(key.c) == 'm':
-                return Constant.ACCESS_MAGIC
-            else:
-                return Constant.NULL
+        if chr(key.c) == 'x':
+            return Constant.ACCESS_COMBAT
+        elif chr(key.c) == 'b':
+            return Constant.BREAK_WALL
+        elif chr(key.c) == 'i':
+            return Constant.ACCESS_INVENTORY
+        elif chr(key.c) == 'm':
+            return Constant.ACCESS_MAGIC
+        else:
+            return Constant.NULL
+    else:
+        return Constant.NULL
+
+def SkillDirection(library):
+    key = library.console_wait_for_keypress(True)
+    # Switching fullscreen.
+    if key.vk == library.KEY_ENTER and key.lalt:
+        library.console_set_fullscreen(not library.console_is_fullscreen())
+        return Constant.SWITCH_FULLSCREEN
+    elif key.vk == library.KEY_UP:
+        return Constant.MOVE_MENU_UP
+    elif key.vk == library.KEY_DOWN:
+        return Constant.MOVE_MENU_DOWN
+    elif key.vk == library.KEY_LEFT:
+        return Constant.MOVE_MENU_LEFT
+    elif key.vk == library.KEY_RIGHT:
+        return Constant.MOVE_MENU_RIGHT
     else:
         return Constant.NULL
 

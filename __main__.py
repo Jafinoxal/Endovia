@@ -36,7 +36,7 @@ RANDOM_CHART_ID = 0
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
 FRAMES_PER_SECOND = 60
-WINDOW_NAME = "Endovia 1.203"
+WINDOW_NAME = "Endovia 1.204"
 FONT_NAME = "terminal8x8_gs_ro.png"
 FILE_READ_MODE = "rb"
 FILE_WRITE_MODE = "wb"
@@ -59,7 +59,8 @@ def new_game():
     # Fill the object wall grid with walls, can be carved out later.
     charts[RANDOM_CHART_ID].create_filled_grid(0, CHART_WIDTH, CHART_HEIGHT, 0)
     # Fill all other object grids with None, they're empty.
-    for category in range(1, OBJECT_CATEGORIES):
+    charts[RANDOM_CHART_ID].create_filled_grid(1, CHART_WIDTH, CHART_HEIGHT, 0)
+    for category in range(2, OBJECT_CATEGORIES):
         charts[RANDOM_CHART_ID].create_empty_grid(category, CHART_WIDTH, CHART_HEIGHT)
     # Fill all item grids with None, they're empty.
     for category in range(1000, 1000 + ITEM_CATEGORIES):
@@ -212,6 +213,23 @@ def Main():
             exit(0)
             # Check if the event is a move key; If so then try to move a player.
             # Returns True if an enemy is in the way, store that in enemy_there.
+        # If event is the break wall key.
+        elif event == BREAK_WALL:
+            direction = Handlers.handlers["InputHandler"].SkillDirection(libtcodpy)
+            if direction == 3:
+                direction = NORTH
+            elif direction == 4:
+                direction = SOUTH
+            elif direction == 5:
+                direction = WEST
+            elif direction == 6:
+                direction = EAST
+            else:
+                direction = (0, 0)
+            if direction in (NORTH, SOUTH, WEST, EAST):
+                message = Handlers.handlers["SkillHandler"].BreakWall(charts[chart_id], charts[chart_id].entities[player_id], direction)
+                messages.append(message)
+                turn_taken = True
         elif event == MOVE_PLAYER_NORTH:
             enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(charts[chart_id].entities[player_id].x, charts[chart_id].entities[player_id].y, NORTH[0], NORTH[1], charts[chart_id].entities[player_id], charts[chart_id], Objects.objects, Characters.characters)
             if enemy_there:
