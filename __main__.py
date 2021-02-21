@@ -1,11 +1,12 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
-# Endovia (Main)
+# Endovia (Endovia Main)
 # Copyright (C) 2010-2021 Jeremy Aaron Flexer.
 
 import libtcodpy
 import pickle
 import random
+import os.path
 
 import Characters
 import Charts
@@ -31,11 +32,11 @@ from Objects.Constant import *
 # Constants.
 SCREEN_WIDTH = 125
 SCREEN_HEIGHT = 82
-CHART_ID = 0
+RANDOM_CHART_ID = 0
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
 FRAMES_PER_SECOND = 60
-WINDOW_NAME = "Endovia 1.202"
+WINDOW_NAME = "Endovia 1.203"
 FONT_NAME = "terminal8x8_gs_ro.png"
 FILE_READ_MODE = "rb"
 FILE_WRITE_MODE = "wb"
@@ -53,19 +54,19 @@ def save_game(data):
 # All chart/map/dungeon generation and creation goes here.
 def new_game():
     charts = {
-    0: Charts.charts["Dungeon"].Chart(CHART_ID, CHART_WIDTH, CHART_HEIGHT, True),
+    RANDOM_CHART_ID: Charts.charts["Dungeon"].Chart(RANDOM_CHART_ID, CHART_WIDTH, CHART_HEIGHT, True),
     }
     # Fill the object wall grid with walls, can be carved out later.
-    charts[0].create_filled_grid(0, CHART_WIDTH, CHART_HEIGHT, 0)
+    charts[RANDOM_CHART_ID].create_filled_grid(0, CHART_WIDTH, CHART_HEIGHT, 0)
     # Fill all other object grids with None, they're empty.
     for category in range(1, OBJECT_CATEGORIES):
-        charts[0].create_empty_grid(category, CHART_WIDTH, CHART_HEIGHT)
+        charts[RANDOM_CHART_ID].create_empty_grid(category, CHART_WIDTH, CHART_HEIGHT)
     # Fill all item grids with None, they're empty.
     for category in range(1000, 1000 + ITEM_CATEGORIES):
-        charts[0].create_empty_grid(category, CHART_WIDTH, CHART_HEIGHT)
+        charts[RANDOM_CHART_ID].create_empty_grid(category, CHART_WIDTH, CHART_HEIGHT)
     # Fill all character grids with None, they're empty.
     for category in range(2000, 2000 + CHARACTER_CATEGORIES):
-        charts[0].create_empty_grid(category, CHART_WIDTH, CHART_HEIGHT)
+        charts[RANDOM_CHART_ID].create_empty_grid(category, CHART_WIDTH, CHART_HEIGHT)
     # Run the dungeon generator which returns the player position and the
     # enemy positions. NOTE: See Charts.Dungeon/Charts.Generators for more.
     # Enemy positions return as dictionary of very many sets of key/value
@@ -89,7 +90,7 @@ def new_game():
         Characters.characters[enemy_category_and_id[0]][enemy_category_and_id[1]][CHARACTER_HEALTH])
         # Each character gets a fresh id.
         unique_id += 1
-        charts[0].entities = entities
+        charts[RANDOM_CHART_ID].entities = entities
     return charts
 
 # Basic libtcod initialization.
@@ -97,12 +98,40 @@ libtcodpy.console_set_custom_font(FONT_NAME, FONT_TYPE, 0, 0)
 libtcodpy.console_init_root(SCREEN_WIDTH, SCREEN_HEIGHT, WINDOW_NAME, False)
 libtcodpy.sys_set_fps(FRAMES_PER_SECOND)
 
-def main(load = False):
+def Main():
     # Get the object set charts from start_game.
     # NOTE-DEFUNCT: player_position and enemy_positions are needed to place in the
     # object set characters. They can also be used in other places.
-    if load:
-        pass
+    # The Main Menu!
+    while not libtcodpy.console_is_window_closed():
+        choice = 0
+        while True:
+            Graphics.graphics["DrawMenu"].DrawMainMenu(libtcodpy, choice)
+            libtcodpy.console_flush()
+            event = Handlers.handlers["InputHandler"].MainMenu(libtcodpy)
+            if event == SELECT_MENU_ENTER:
+                # For unimplemented options.
+                if choice not in (2, 3): # TODO: Construct & Credits.
+                    break
+            if choice == 0 and event == MOVE_MENU_UP:
+                choice = 4
+            elif choice == 4 and event == MOVE_MENU_DOWN:
+                choice = 0
+            elif choice > 0 and event == MOVE_MENU_UP:
+                choice -= 1
+            elif choice < 4 and event == MOVE_MENU_DOWN:
+                choice += 1
+        break
+    if choice == 0:
+        charts = new_game()
+    elif choice == 1:
+        if os.path.isfile(SAVE_FILE_NAME):
+            charts = load_game()
+        else:
+            charts = new_game()
+            print("NO SAVED GAME FOUND, STARTING NEW GAME.")
+    elif choice == 4:
+        exit()
     else:
         charts = new_game()
     # Messages will be displayed [-1:-10].
@@ -124,25 +153,26 @@ def main(load = False):
             if charts[chart].active:
                 chart_id = charts[chart].id
                 break
+        player_id = 0
         # Chart related drawing.
-        Graphics.graphics["DrawChart"].DrawFloorsWalls(libtcodpy, Objects.objects, charts[0], charts[0].entities[0])
-        Graphics.graphics["DrawChart"].DrawEntities(libtcodpy, Objects.objects, Characters.characters, charts[0], charts[0].entities[0])
-        Graphics.graphics["DrawChart"].DrawBorder(libtcodpy, charts[chart_id].width, charts[0].height)
+        Graphics.graphics["DrawChart"].DrawFloorsWalls(libtcodpy, Objects.objects, charts[chart_id], charts[chart_id].entities[player_id])
+        Graphics.graphics["DrawChart"].DrawEntities(libtcodpy, Objects.objects, Characters.characters, charts[chart_id], charts[chart_id].entities[player_id])
+        Graphics.graphics["DrawChart"].DrawBorder(libtcodpy, charts[chart_id].width, charts[chart_id].height)
         # Info related drawing.
-        Graphics.graphics["DrawInfo"].DrawStats(libtcodpy, charts[chart_id], charts[chart_id].entities[0])
-        Graphics.graphics["DrawInfo"].DrawAttributes(libtcodpy, charts[chart_id], charts[chart_id].entities[0])
-        Graphics.graphics["DrawInfo"].DrawSkills(libtcodpy, charts[chart_id], charts[chart_id].entities[0])
-        Graphics.graphics["DrawInfo"].DrawLocation(libtcodpy, charts[chart_id], charts[chart_id].entities[0])
+        Graphics.graphics["DrawInfo"].DrawStats(libtcodpy, charts[chart_id], charts[chart_id].entities[player_id])
+        Graphics.graphics["DrawInfo"].DrawAttributes(libtcodpy, charts[chart_id], charts[chart_id].entities[player_id])
+        Graphics.graphics["DrawInfo"].DrawSkills(libtcodpy, charts[chart_id], charts[chart_id].entities[player_id])
+        Graphics.graphics["DrawInfo"].DrawLocation(libtcodpy, charts[chart_id], charts[chart_id].entities[player_id])
         Graphics.graphics["DrawInfo"].DrawMessages(libtcodpy, messages, charts[chart_id])
         Graphics.graphics["DrawInfo"].DrawEnemy(libtcodpy, charts[chart_id], charts[chart_id].entities, enemy_x, enemy_y)
-        Graphics.graphics["DrawInfo"].DrawMagic(libtcodpy, charts[chart_id], charts[chart_id].entities[0], destruction_spell_info, restoration_spell_info)
-        Graphics.graphics["DrawInfo"].DrawCombat(libtcodpy, charts[chart_id], charts[chart_id].entities[0], COMBAT_STYLES)
+        Graphics.graphics["DrawInfo"].DrawMagic(libtcodpy, charts[chart_id], charts[chart_id].entities[player_id], destruction_spell_info, restoration_spell_info)
+        Graphics.graphics["DrawInfo"].DrawCombat(libtcodpy, charts[chart_id], charts[chart_id].entities[player_id], COMBAT_STYLES)
         # Reset the enemy position so enemy info doesn't draw out of fight.
         enemy_x, enemy_y = None, None
         # Flush the console.
         libtcodpy.console_flush()
         # The game is up, nice try though!
-        if charts[0].entities[0].stats["health"][0] <= 0:
+        if charts[chart_id].entities[player_id].stats["health"][0] <= 0:
             Graphics.graphics["DrawDeath"].DrawWindow(libtcodpy, SCREEN_WIDTH, SCREEN_HEIGHT)
             Graphics.graphics["DrawDeath"].DrawMessage(libtcodpy)
             libtcodpy.console_flush()
@@ -160,7 +190,7 @@ def main(load = False):
                 # Choose a stat to advance and wait for the enter key.
                 event = Handlers.handlers["InputHandler"].StatMenu(libtcodpy)
                 if event == SELECT_MENU_ENTER:
-                    Handlers.handlers["LevelingHandler"].LevelStat(charts[0].entities[0], stat_choices[choice])
+                    Handlers.handlers["LevelingHandler"].LevelStat(charts[chart_id].entities[player_id], stat_choices[choice])
                     skip_input = True
                     break
                 if choice == 0 and event == MOVE_MENU_UP:
@@ -183,24 +213,24 @@ def main(load = False):
             # Check if the event is a move key; If so then try to move a player.
             # Returns True if an enemy is in the way, store that in enemy_there.
         elif event == MOVE_PLAYER_NORTH:
-            enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(charts[0].entities[0].x, charts[0].entities[0].y, NORTH[0], NORTH[1], charts[0].entities[0], charts[chart_id], Objects.objects, Characters.characters)
+            enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(charts[chart_id].entities[player_id].x, charts[chart_id].entities[player_id].y, NORTH[0], NORTH[1], charts[chart_id].entities[player_id], charts[chart_id], Objects.objects, Characters.characters)
             if enemy_there:
-                enemy_at = (charts[0].entities[0].x + NORTH[0], charts[0].entities[0].y + NORTH[1])
+                enemy_at = (charts[chart_id].entities[player_id].x + NORTH[0], charts[chart_id].entities[player_id].y + NORTH[1])
             turn_taken = True
         elif event == MOVE_PLAYER_SOUTH:
-            enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(charts[0].entities[0].x, charts[0].entities[0].y, SOUTH[0], SOUTH[1], charts[0].entities[0], charts[chart_id], Objects.objects, Characters.characters)
+            enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(charts[chart_id].entities[player_id].x, charts[chart_id].entities[player_id].y, SOUTH[0], SOUTH[1], charts[chart_id].entities[player_id], charts[chart_id], Objects.objects, Characters.characters)
             if enemy_there:
-                enemy_at = (charts[0].entities[0].x + SOUTH[0], charts[0].entities[0].y + SOUTH[1])
+                enemy_at = (charts[chart_id].entities[player_id].x + SOUTH[0], charts[chart_id].entities[player_id].y + SOUTH[1])
             turn_taken = True
         elif event == MOVE_PLAYER_WEST:
-            enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(charts[0].entities[0].x, charts[0].entities[0].y, WEST[0], WEST[1], charts[0].entities[0], charts[chart_id], Objects.objects, Characters.characters)
+            enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(charts[chart_id].entities[player_id].x, charts[chart_id].entities[player_id].y, WEST[0], WEST[1], charts[chart_id].entities[player_id], charts[chart_id], Objects.objects, Characters.characters)
             if enemy_there:
-                enemy_at = (charts[0].entities[0].x + WEST[0], charts[0].entities[0].y + WEST[1])
+                enemy_at = (charts[chart_id].entities[player_id].x + WEST[0], charts[chart_id].entities[player_id].y + WEST[1])
             turn_taken = True
         elif event == MOVE_PLAYER_EAST:
-            enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(charts[0].entities[0].x, charts[0].entities[0].y, EAST[0], EAST[1], charts[0].entities[0], charts[chart_id], Objects.objects, Characters.characters)
+            enemy_there = Handlers.handlers["MovementHandler"].MoveCharacter(charts[chart_id].entities[player_id].x, charts[chart_id].entities[0].y, EAST[0], EAST[1], charts[chart_id].entities[player_id], charts[chart_id], Objects.objects, Characters.characters)
             if enemy_there:
-                enemy_at = (charts[0].entities[0].x + EAST[0], charts[0].entities[0].y + EAST[1])
+                enemy_at = (charts[chart_id].entities[player_id].x + EAST[0], charts[chart_id].entities[player_id].y + EAST[1])
             turn_taken = True
         if event == ACCESS_COMBAT:
             choice = 0
@@ -316,6 +346,6 @@ def main(load = False):
 
 # If running this file, call the main function.
 if __name__ == '__main__':
-    main()
+    Main()
 
 # Jafinoxal.

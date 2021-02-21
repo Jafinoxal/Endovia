@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Endovia (InputHandler)
-# Copyright (C) 2010-2020 Jeremy Aaron Flexer.
+# Copyright (C) 2010-2021 Jeremy Aaron Flexer.
 
 import Constant
 
@@ -131,7 +131,6 @@ def CharacterSelectionMenu(library):
         return Constant.MOVE_MENU_DOWN
     else:
         return Constant.NULL
-# Jafinoxal.
 
 def MainGame(library):
     key = library.console_wait_for_keypress(True)
@@ -168,3 +167,5 @@ def MainGame(library):
                 return Constant.NULL
     else:
         return Constant.NULL
+
+# Jafinoxal.

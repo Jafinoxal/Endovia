@@ -264,4 +264,30 @@ def DrawMagicChoice(library, choice, destruction_spells, restoration_spells, pla
             library.console_set_char(0, 3 + index, 3 + key, value[index])
 
 
+def DrawMainMenu(library, choice):
+    choices = {
+    0: "Endovia /Alpha/",
+    1: " New           ",
+    2: " Load           ",
+    3: " Construct        ",
+    4: " Credits          ",
+    5: " Exit           ",
+    }
+    if choice == 0:
+        choices[1] = " [New]"
+    elif choice == 1:
+        choices[2] = " [Load]"
+    elif choice == 2:
+        choices[3] = " [Construct]"
+    elif choice == 3:
+        choices[4] = " [Credits]"
+    elif choice == 4:
+        choices[5] = " [Exit]"
+    else:
+        return False
+    for key, value in choices.items():
+        for index in range(0, len(value)):
+            library.console_set_char_foreground(0, 1 + index, 1 + key, library.Color(255, 255, 255))
+            library.console_set_char_background(0, 1 + index, 1 + key, library.Color(0, 0, 0))
+            library.console_set_char(0, 1 + index, 1 + key, value[index])
 # Jafinoxal.
