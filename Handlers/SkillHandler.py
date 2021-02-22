@@ -15,9 +15,9 @@ def BreakWall(chart, player, direction):
 def MineVein(chart, player, direction, veins):
     if chart.grids[28][(player.x + direction[0], player.y + direction[1])] != None:
         if player.inventory[1000][0]:
-            vein_to_mine = chart.grids[28][(player.x + direction[0], player.y + direction[1])]
-            vein_name = veins[chart.grids[28][(player.x + direction[0], player.y + direction[1])]][2]
-            experience_gained = veins[chart.grids[28][(player.x + direction[0], player.y + direction[1])]][9]
+            vein_info = veins[chart.grids[28][(player.x + direction[0], player.y + direction[1])][1]]
+            vein_name = vein_info[2]
+            experience_gained = vein_info[9]
             chart.grids[28][(player.x + direction[0], player.y + direction[1])] = None
             player.skills["mining"] = (player.skills["mining"][0], player.skills["mining"][1] + experience_gained)
             return "You mine through the {0}! You gain {1} mining experience.            ".format(vein_name, experience_gained)

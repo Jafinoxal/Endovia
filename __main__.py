@@ -36,7 +36,7 @@ RANDOM_CHART_ID = 0
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
 FRAMES_PER_SECOND = 60
-WINDOW_NAME = "Endovia 1.205"
+WINDOW_NAME = "Endovia 1.206"
 FONT_NAME = "terminal8x8_gs_ro.png"
 FILE_READ_MODE = "rb"
 FILE_WRITE_MODE = "wb"
@@ -72,7 +72,7 @@ def new_game():
     # enemy positions. NOTE: See Charts.Dungeon/Charts.Generators for more.
     # Enemy positions return as dictionary of very many sets of key/value
     # [(entity_category, entity_id)] = (x, y).
-    player_position, enemy_positions = Charts.charts["Generators"].MainDungeonGenerator(Objects.objects, Characters.characters, charts[0], charts[0].rooms, 0, 2001, range(0, RODENT_COUNT))
+    player_position, enemy_positions = Charts.charts["Generators"].MainDungeonGenerator1(Objects.objects, Characters.characters, charts[0], charts[0].rooms, 0, 2001, range(0, RODENT_COUNT))
     # Find the active chart, if so save the chart id in chart_id.
     for chart in charts.keys():
         if charts[chart].active:
@@ -157,6 +157,7 @@ def Main():
         player_id = 0
         # Chart related drawing.
         Graphics.graphics["DrawChart"].DrawFloorsWalls(libtcodpy, Objects.objects, charts[chart_id], charts[chart_id].entities[player_id])
+        Graphics.graphics["DrawChart"].DrawObjects(libtcodpy, Objects.objects, charts[chart_id], charts[chart_id].entities[player_id])
         Graphics.graphics["DrawChart"].DrawEntities(libtcodpy, Objects.objects, Characters.characters, charts[chart_id], charts[chart_id].entities[player_id])
         Graphics.graphics["DrawChart"].DrawBorder(libtcodpy, charts[chart_id].width, charts[chart_id].height)
         # Info related drawing.
