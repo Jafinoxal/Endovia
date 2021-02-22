@@ -6,6 +6,7 @@
 #### [GPL 3+](https://github.com/Jafinoxal/Endovia/blob/master/License "Endovia License")
 ## Releases:
 #### [Endovia Alpha 1.100](https://github.com/Jafinoxal/Endovia/releases/tag/1.100 "Endovia Alpha 1.100 Release")
+#### [Endovia Alpha 1.200](https://github.com/Jafinoxal/Endovia/releases/tag/1.200 "Endovia Alpha 1.200 Release")
 ## Installation:
     PACKAGES: build-essential, python2-dev, python2-pip, python2-numpy, libsdl2-dev, libffi-dev, libomp5.
     INSTALL: python2 -m pip install tcod==6.0.7
