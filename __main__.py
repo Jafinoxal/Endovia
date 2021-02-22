@@ -36,7 +36,7 @@ RANDOM_CHART_ID = 0
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
 FRAMES_PER_SECOND = 60
-WINDOW_NAME = "Endovia 1.204"
+WINDOW_NAME = "Endovia 1.205"
 FONT_NAME = "terminal8x8_gs_ro.png"
 FILE_READ_MODE = "rb"
 FILE_WRITE_MODE = "wb"
@@ -214,7 +214,7 @@ def Main():
             # Check if the event is a move key; If so then try to move a player.
             # Returns True if an enemy is in the way, store that in enemy_there.
         # If event is the break wall key.
-        elif event == BREAK_WALL:
+        elif event in (BREAK_WALL, MINE_VEIN):
             direction = Handlers.handlers["InputHandler"].SkillDirection(libtcodpy)
             if direction == 3:
                 direction = NORTH
@@ -227,7 +227,10 @@ def Main():
             else:
                 direction = (0, 0)
             if direction in (NORTH, SOUTH, WEST, EAST):
-                message = Handlers.handlers["SkillHandler"].BreakWall(charts[chart_id], charts[chart_id].entities[player_id], direction)
+                if event == BREAK_WALL:
+                    message = Handlers.handlers["SkillHandler"].BreakWall(charts[chart_id], charts[chart_id].entities[player_id], direction)
+                elif event == MINE_VEIN:
+                    message = Handlers.handlers["SkillHandler"].MineVein(charts[chart_id], charts[chart_id].entities[player_id], direction, Objects.objects[VEINS])
                 messages.append(message)
                 turn_taken = True
         elif event == MOVE_PLAYER_NORTH:

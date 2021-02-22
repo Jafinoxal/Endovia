@@ -112,7 +112,7 @@ class Character(Basic.Character):
         1038: {},
         }
         self.stats = { # Current, Max.
-        "health": (7, 100),
+        "health": (100, 100),
         "mana": (100, 100),
         "energy": (100, 100),
         "faith": (100, 100),

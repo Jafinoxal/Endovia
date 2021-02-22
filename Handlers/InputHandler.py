@@ -161,6 +161,8 @@ def MainGame(library):
             return Constant.ACCESS_COMBAT
         elif chr(key.c) == 'b':
             return Constant.BREAK_WALL
+        elif chr(key.c) == 'n':
+            return Constant.MINE_VEIN
         elif chr(key.c) == 'i':
             return Constant.ACCESS_INVENTORY
         elif chr(key.c) == 'm':

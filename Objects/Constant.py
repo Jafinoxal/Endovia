@@ -14,6 +14,8 @@ OBJECT_COLOR = 6
 OBJECT_CLIP = 7
 OBJECT_TRANSPARENT = 8
 
+VEIN_EXPERIENCE = 9
+
 WALLS = 0 # Complete.
 FLOORS = 1 # Complete.
 WINDOWS = 2 # Complete.
