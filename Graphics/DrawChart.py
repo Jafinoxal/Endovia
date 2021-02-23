@@ -11,7 +11,7 @@ def DrawFloorsWalls(library, objects, chart, player):
                     library.map_set_properties(fov_map, x, y, True, True)
                 else:
                     library.map_set_properties(fov_map, x, y, objects[category][chart.grids[category][(x, y)][1]][8], not objects[category][chart.grids[category][(x, y)][1]][7])
-    library.map_compute_fov(fov_map, player.x, player.y, 5, True, 5)
+    library.map_compute_fov(fov_map, player.x, player.y, 5, True, 3)
     for category in (1, 0):
         for y in  range(0, chart.height):
             for x in range(0, chart.width):
@@ -46,7 +46,7 @@ def DrawObjects(library, objects, chart, player):
                     library.map_set_properties(fov_map, x, y, True, True)
                 else:
                     library.map_set_properties(fov_map, x, y, objects[category][chart.grids[category][(x, y)][1]][8], not objects[category][chart.grids[category][(x, y)][1]][7])
-    library.map_compute_fov(fov_map, player.x, player.y, 5, True, 5)
+    library.map_compute_fov(fov_map, player.x, player.y, 5, True, 3)
     for category in range(2, 43):
         for y in  range(0, chart.height):
             for x in range(0, chart.width):
@@ -74,14 +74,22 @@ def DrawObjects(library, objects, chart, player):
 
 def DrawEntities(library, objects, characters, chart, player):
     fov_map = library.map_new(chart.width, chart.height)
+    grids = []
+    for category in range(0, 43):
+        grids.append(category)
     for category in range(2000, 2002):
+        grids.append(category)
+    for category in grids:
         for y in range(0, chart.height):
             for x in range(0, chart.width):
                 if chart.grids[category][(x, y)] == None:
                     library.map_set_properties(fov_map, x, y, True, True)
                 else:
-                    library.map_set_properties(fov_map, x, y, characters[category][chart.grids[category][(x, y)][1]][8], not characters[category][chart.grids[category][(x, y)][1]][7])
-    library.map_compute_fov(fov_map, player.x, player.y, 5, True, 5)
+                    if 2002 > category >= 2000:
+                        library.map_set_properties(fov_map, x, y, characters[category][chart.grids[category][(x, y)][1]][8], not characters[category][chart.grids[category][(x, y)][1]][7])
+                    else:
+                        library.map_set_properties(fov_map, x, y, objects[category][chart.grids[category][(x, y)][1]][8], not objects[category][chart.grids[category][(x, y)][1]][7])
+    library.map_compute_fov(fov_map, player.x, player.y, 5, True, 3)
     for category in range(2000, 2002):
         for y in  range(0, chart.height):
             for x in range(0, chart.width):
