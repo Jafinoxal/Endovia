@@ -4,7 +4,7 @@
 
 import random
 
-import Basic
+from . import Basic
 
 # NOTE: This will be Dungeon.Chart, or just Chart if used here.
 class Chart(Basic.Chart):
@@ -103,7 +103,7 @@ class Chart(Basic.Chart):
             for x in range(0, width):
                 if self._is_free(objects, characters, x, y):
                     vein_to_place = random.randint(0, len(objects[28].keys()) - 1)
-                    if not random.randint(0, objects[28][vein_to_place][9] / 2):
+                    if not random.randint(0, objects[28][vein_to_place][9] // 2):
                         self.grids[28][(x, y)] = {0:28, 1:vein_to_place, 2: None}
 
     def _place_player_start(self, objects, characters, character_category, character_id):

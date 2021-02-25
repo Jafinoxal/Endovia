@@ -1,9 +1,9 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # Endovia (Endovia Main)
 # Copyright (C) 2010-2021 Jeremy Aaron Flexer.
 
-import libtcodpy
+import tcod as libtcodpy
 import pickle
 import random
 import os.path
@@ -36,7 +36,7 @@ RANDOM_CHART_ID = 0
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
 FRAMES_PER_SECOND = 60
-WINDOW_NAME = "Endovia 1.207b"
+WINDOW_NAME = "Endovia 1.208"
 FONT_NAME = "terminal8x8_gs_ro.png"
 FILE_READ_MODE = "rb"
 FILE_WRITE_MODE = "wb"

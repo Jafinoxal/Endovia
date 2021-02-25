@@ -1,52 +1,52 @@
 # -*- coding: utf-8 -*-
 # Endovia (Object Init)
-# Copyright (C) 2010-2020 Jeremy Aaron Flexer.
+# Copyright (C) 2010-2021 Jeremy Aaron Flexer.
 
-from Constant import *
+from .Constant import *
 
-import Walls
-import Floors
-import Windows
-import Doors
-import Fences
-import Gates
-import Fridges
-import Chests
-import Shelves
-import Crates
-import Boxes
-import Barrels
-import Sacks
-import Fountains
-import Pillars
-import Beds
-import Desks
-import Ovens
-import Sinks
-import Larders
-import Cabinets
-import Wells
-import Lights
-import Cages
-import Furnaces
-import Anvils
-import Fires
-import Trees
-import Veins
-import Geodes
-import Rocks
-import Bunches
-import Clusters
-import Bushes
-import Crops
-import Patches
-import Seats
-import Tables
-import Statues
-import Alters
-import Fisheries
-import Looms
-import Exits
+from . import Walls
+from . import Floors
+from . import Windows
+from . import Doors
+from . import Fences
+from . import Gates
+from . import Fridges
+from . import Chests
+from . import Shelves
+from . import Crates
+from . import Boxes
+from . import Barrels
+from . import Sacks
+from . import Fountains
+from . import Pillars
+from . import Beds
+from . import Desks
+from . import Ovens
+from . import Sinks
+from . import Larders
+from . import Cabinets
+from . import Wells
+from . import Lights
+from . import Cages
+from . import Furnaces
+from . import Anvils
+from . import Fires
+from . import Trees
+from . import Veins
+from . import Geodes
+from . import Rocks
+from . import Bunches
+from . import Clusters
+from . import Bushes
+from . import Crops
+from . import Patches
+from . import Seats
+from . import Tables
+from . import Statues
+from . import Alters
+from . import Fisheries
+from . import Looms
+from . import Exits
 
 objects = {
 WALLS: Walls.walls(),

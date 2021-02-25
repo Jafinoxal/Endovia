@@ -2,11 +2,11 @@
 # Endovia (Handler Init)
 # Copyright (C) 2010-2021 Jeremy Aaron Flexer.
 
-import CombatHandler
-import InputHandler
-import LevelingHandler
-import MovementHandler
-import SkillHandler
+from . import CombatHandler
+from . import InputHandler
+from . import LevelingHandler
+from . import MovementHandler
+from . import SkillHandler
 
 handlers = {
 "CombatHandler": CombatHandler,

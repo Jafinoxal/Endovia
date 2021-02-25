@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 # Endovia (Character Init)
-# Copyright (C) 2010-2020 Jeremy Aaron Flexer.
+# Copyright (C) 2010-2021 Jeremy Aaron Flexer.
 
-import Players
-import Rodents
+from . import Players
+from . import Rodents
 
 characters = {
 2000: Players.players(),

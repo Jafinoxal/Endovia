@@ -1,36 +1,36 @@
 # -*- coding: utf-8 -*-
 # Endovia (Item Init)
-# Copyright (C) 2010-2020 Jeremy Aaron Flexer.
+# Copyright (C) 2010-2021 Jeremy Aaron Flexer.
 
-from Constant import *
+from .Constant import *
 
-import Tools
-import Ores
-import Ingots
-import Clumps
-import UncutGems
-import CutGems
-import RawFish
-import CookedFish
-import Herbs
-import Mushrooms
-import Berries
-import Flowers
-import Ingredients
-import Potions
-import Logs
-import Necklaces
-import Rings
-import Bracelets
-import Stones
-import Arrows
-import Bolts
-import Pies
-import Cakes
-import Fruits
-import Vegetables
-import Scrolls
-import Talismans
+from . import Tools
+from . import Ores
+from . import Ingots
+from . import Clumps
+from . import UncutGems
+from . import CutGems
+from . import RawFish
+from . import CookedFish
+from . import Herbs
+from . import Mushrooms
+from . import Berries
+from . import Flowers
+from . import Ingredients
+from . import Potions
+from . import Logs
+from . import Necklaces
+from . import Rings
+from . import Bracelets
+from . import Stones
+from . import Arrows
+from . import Bolts
+from . import Pies
+from . import Cakes
+from . import Fruits
+from . import Vegetables
+from . import Scrolls
+from . import Talismans
 
 items = {
 TOOLS: Tools.tools(),

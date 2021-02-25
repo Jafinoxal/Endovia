@@ -1,7 +1,7 @@
 # Endovia (Player)
 # Copyright (C) 2010-2021 Jeremy Aaron Flexer.
 
-import Basic
+from . import Basic
 
 class Character(Basic.Character):
     def __init__(self, chart_id, grid_id, entity_id, unique_id, x, y, name, race):

@@ -2,7 +2,7 @@
 # Endovia (InputHandler)
 # Copyright (C) 2010-2021 Jeremy Aaron Flexer.
 
-import Constant
+from . import Constant
 
 def StatMenu(library):
     key = library.console_wait_for_keypress(True)

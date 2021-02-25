@@ -4,7 +4,7 @@
 
 import random
 
-import Constant
+from . import Constant
 
 def _attack_enemy_melee(chart, player, enemies, enemy_x, enemy_y, characters):
     # Iterate through all characters.
