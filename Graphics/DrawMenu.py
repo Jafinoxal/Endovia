@@ -3,47 +3,25 @@
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
 def DrawBorderStatChoice(library):
-    library.console_set_char_foreground(0, 2, 2, library.Color(255, 255, 255))
-    library.console_set_char_background(0, 2, 2, library.Color(0, 0, 0))
-    library.console_set_char(0, 2, 2, '\xc9')
-    library.console_set_char_foreground(0, 25, 2, library.Color(255, 255, 255))
-    library.console_set_char_background(0, 25, 2, library.Color(0, 0, 0))
-    library.console_set_char(0, 25, 2, '\xbb')
-    library.console_set_char_foreground(0, 2, 9, library.Color(255, 255, 255))
-    library.console_set_char_background(0, 2, 9, library.Color(0, 0, 0))
-    library.console_set_char(0, 2, 9, '\xc8')
-    library.console_set_char_foreground(0, 25, 9, library.Color(255, 255, 255))
-    library.console_set_char_background(0, 25, 9, library.Color(0, 0, 0))
-    library.console_set_char(0, 25, 9, '\xbc')
+    console.print(x=2, y=2, string='\xc9', fg=(255,255,255), bg=(0,0,0))
+    console.print(x=25, y=2, string='\xbb', fg=(255,255,255), bg=(0,0,0))
+    console.print(x=2, y=9, string='\xc8', fg=(255,255,255), bg=(0,0,0))
+    console.print(x=25, y=9, string='\xbc', fg=(255,255,255), bg=(0,0,0))
     for y in range(3, 9):
-        library.console_set_char_foreground(0, 2, y, library.Color(255, 255, 255))
-        library.console_set_char_background(0, 2, y, library.Color(0, 0, 0))
-        library.console_set_char(0, 2, y, '\xba')
-        library.console_set_char_foreground(0, 25, y, library.Color(255, 255, 255))
-        library.console_set_char_background(0, 25, y, library.Color(0, 0, 0))
-        library.console_set_char(0, 25, y, '\xba')
+        console.print(x=2, y=y, string='\xba', fg=(255,255,255), bg=(0,0,0))
+        console.print(x=25, y=y, string='\xba', fg=(255,255,255), bg=(0,0,0))
     for x in range(3, 25):
-        library.console_set_char_foreground(0, x, 2, library.Color(255, 255, 255))
-        library.console_set_char_background(0, x, 2, library.Color(0, 0, 0))
-        library.console_set_char(0, x, 2, '\xcd')
-        library.console_set_char_foreground(0, x, 9, library.Color(255, 255, 255))
-        library.console_set_char_background(0, x, 9, library.Color(0, 0, 0))
-        library.console_set_char(0, x, 9, '\xcd')
+        console.print(x=x, y=2, string='\xcd', fg=(255,255,255), bg=(0,0,0))
+        console.print(x=x, y=9, string='\xcd', fg=(255,255,255), bg=(0,0,0))
 
 def DrawBorderCombatChoice(library):
-    library.console_set_char_foreground(0, 2, 2, library.Color(255, 255, 255))
-    library.console_set_char_background(0, 2, 2, library.Color(0, 0, 0))
-    library.console_set_char(0, 2, 2, '\xc9')
-    library.console_set_char_foreground(0, 25, 2, library.Color(255, 255, 255))
-    library.console_set_char_background(0, 25, 2, library.Color(0, 0, 0))
-    library.console_set_char(0, 25, 2, '\xbb')
-    library.console_set_char_foreground(0, 2, 9, library.Color(255, 255, 255))
-    library.console_set_char_background(0, 2, 9, library.Color(0, 0, 0))
-    library.console_set_char(0, 2, 9, '\xc8')
-    library.console_set_char_foreground(0, 25, 9, library.Color(255, 255, 255))
-    library.console_set_char_background(0, 25, 9, library.Color(0, 0, 0))
-    library.console_set_char(0, 25, 9, '\xbc')
+    console.print(x=2, y=2, string='\xc9', fg=(255,255,255), bg=(0,0,0))
+    console.print(x=25, y=2, string='\xbb', fg=(255,255,255), bg=(0,0,0))
+    console.print(x=2, y=9, string='\xc8', fg=(255,255,255), bg=(0,0,0))
+    console.print(x=25, y=9, string='\xbc', fg=(255,255,255), bg=(0,0,0))
     for y in range(3, 9):
+        console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
+        console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
         library.console_set_char_foreground(0, 2, y, library.Color(255, 255, 255))
         library.console_set_char_background(0, 2, y, library.Color(0, 0, 0))
         library.console_set_char(0, 2, y, '\xba')
@@ -51,6 +29,8 @@ def DrawBorderCombatChoice(library):
         library.console_set_char_background(0, 25, y, library.Color(0, 0, 0))
         library.console_set_char(0, 25, y, '\xba')
     for x in range(3, 25):
+        console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
+        console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
         library.console_set_char_foreground(0, x, 2, library.Color(255, 255, 255))
         library.console_set_char_background(0, x, 2, library.Color(0, 0, 0))
         library.console_set_char(0, x, 2, '\xcd')
@@ -59,6 +39,10 @@ def DrawBorderCombatChoice(library):
         library.console_set_char(0, x, 9, '\xcd')
 
 def DrawBorderInventoryChoice(library):
+    console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
+    console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
+    console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
+    console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
     library.console_set_char_foreground(0, 2, 2, library.Color(255, 255, 255))
     library.console_set_char_background(0, 2, 2, library.Color(0, 0, 0))
     library.console_set_char(0, 2, 2, '\xc9')
@@ -72,6 +56,8 @@ def DrawBorderInventoryChoice(library):
     library.console_set_char_background(0, 40, 69, library.Color(0, 0, 0))
     library.console_set_char(0, 40, 69, '\xbc')
     for y in range(3, 69):
+        console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
+        console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
         library.console_set_char_foreground(0, 2, y, library.Color(255, 255, 255))
         library.console_set_char_background(0, 2, y, library.Color(0, 0, 0))
         library.console_set_char(0, 2, y, '\xba')
@@ -79,6 +65,8 @@ def DrawBorderInventoryChoice(library):
         library.console_set_char_background(0, 40, y, library.Color(0, 0, 0))
         library.console_set_char(0, 40, y, '\xba')
     for x in range(3, 40):
+        console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
+        console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
         library.console_set_char_foreground(0, x, 2, library.Color(255, 255, 255))
         library.console_set_char_background(0, x, 2, library.Color(0, 0, 0))
         library.console_set_char(0, x, 2, '\xcd')
@@ -87,6 +75,10 @@ def DrawBorderInventoryChoice(library):
         library.console_set_char(0, x, 69, '\xcd')
 
 def DrawBorderMagicChoice(library):
+    console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
+    console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
+    console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
+    console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
     library.console_set_char_foreground(0, 2, 2, library.Color(255, 255, 255))
     library.console_set_char_background(0, 2, 2, library.Color(0, 0, 0))
     library.console_set_char(0, 2, 2, '\xc9')
@@ -100,6 +92,8 @@ def DrawBorderMagicChoice(library):
     library.console_set_char_background(0, 40, 69, library.Color(0, 0, 0))
     library.console_set_char(0, 40, 69, '\xbc')
     for y in range(3, 69):
+        console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
+        console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
         library.console_set_char_foreground(0, 2, y, library.Color(255, 255, 255))
         library.console_set_char_background(0, 2, y, library.Color(0, 0, 0))
         library.console_set_char(0, 2, y, '\xba')
@@ -107,6 +101,8 @@ def DrawBorderMagicChoice(library):
         library.console_set_char_background(0, 40, y, library.Color(0, 0, 0))
         library.console_set_char(0, 40, y, '\xba')
     for x in range(3, 40):
+        console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
+        console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
         library.console_set_char_foreground(0, x, 2, library.Color(255, 255, 255))
         library.console_set_char_background(0, x, 2, library.Color(0, 0, 0))
         library.console_set_char(0, x, 2, '\xcd')
@@ -117,6 +113,7 @@ def DrawBorderMagicChoice(library):
 def DrawFillerStatChoice(library):
     for y in range(3, 9):
         for x in range(3, 25):
+            console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
             library.console_set_char_foreground(0, x, y, library.Color(255, 255, 255))
             library.console_set_char_background(0, x, y, library.Color(0, 0, 0))
             library.console_set_char(0, x, y, ' ')
@@ -124,6 +121,7 @@ def DrawFillerStatChoice(library):
 def DrawFillerCombatChoice(library):
     for y in range(3, 9):
         for x in range(3, 25):
+            console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
             library.console_set_char_foreground(0, x, y, library.Color(255, 255, 255))
             library.console_set_char_background(0, x, y, library.Color(0, 0, 0))
             library.console_set_char(0, x, y, ' ')
@@ -131,6 +129,7 @@ def DrawFillerCombatChoice(library):
 def DrawFillerInventoryChoice(library):
     for y in range(3, 69):
         for x in range(3, 40):
+            console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
             library.console_set_char_foreground(0, x, y, library.Color(255, 255, 255))
             library.console_set_char_background(0, x, y, library.Color(0, 0, 0))
             library.console_set_char(0, x, y, ' ')
@@ -138,6 +137,7 @@ def DrawFillerInventoryChoice(library):
 def DrawFillerMagicChoice(library):
     for y in range(3, 69):
         for x in range(3, 40):
+            console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
             library.console_set_char_foreground(0, x, y, library.Color(255, 255, 255))
             library.console_set_char_background(0, x, y, library.Color(0, 0, 0))
             library.console_set_char(0, x, y, ' ')
@@ -166,6 +166,7 @@ def DrawStatChoice(library, choice):
         return False
     for key, value in choices.items():
         for index in range(0, len(value)):
+            console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
             library.console_set_char_foreground(0, 3 + index, 3 + key, library.Color(255, 255, 255))
             library.console_set_char_background(0, 3 + index, 3 + key, library.Color(0, 0, 0))
             library.console_set_char(0, 3 + index, 3 + key, value[index])
@@ -193,6 +194,7 @@ def DrawCombatChoice(library, choice):
         return False
     for key, value in choices.items():
         for index in range(0, len(value)):
+            console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
             library.console_set_char_foreground(0, 3 + index, 3 + key, library.Color(255, 255, 255))
             library.console_set_char_background(0, 3 + index, 3 + key, library.Color(0, 0, 0))
             library.console_set_char(0, 3 + index, 3 + key, value[index])
@@ -218,6 +220,7 @@ def DrawInventoryChoice(library, choice, inventory, items):
         item_index += 1
     for key, value in choices.items():
         for index in range(0, len(value)):
+            console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
             library.console_set_char_foreground(0, 3 + index, 3 + key, library.Color(255, 255, 255))
             library.console_set_char_background(0, 3 + index, 3 + key, library.Color(0, 0, 0))
             library.console_set_char(0, 3 + index, 3 + key, value[index])
@@ -259,6 +262,7 @@ def DrawMagicChoice(library, choice, destruction_spells, restoration_spells, pla
             spell_index += 1
     for key, value in choices.items():
         for index in range(0, len(value)):
+            console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
             library.console_set_char_foreground(0, 3 + index, 3 + key, library.Color(255, 255, 255))
             library.console_set_char_background(0, 3 + index, 3 + key, library.Color(0, 0, 0))
             library.console_set_char(0, 3 + index, 3 + key, value[index])
@@ -287,6 +291,7 @@ def DrawMainMenu(library, choice):
         return False
     for key, value in choices.items():
         for index in range(0, len(value)):
+            console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
             library.console_set_char_foreground(0, 1 + index, 1 + key, library.Color(255, 255, 255))
             library.console_set_char_background(0, 1 + index, 1 + key, library.Color(0, 0, 0))
             library.console_set_char(0, 1 + index, 1 + key, value[index])

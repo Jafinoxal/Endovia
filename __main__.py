@@ -3,7 +3,7 @@
 # Endovia (Endovia Main)
 # Copyright (C) 2010-2021 Jeremy Aaron Flexer.
 
-import tcod as libtcodpy
+import tcod
 import pickle
 import random
 import os.path
@@ -40,10 +40,13 @@ WINDOW_NAME = "Endovia 1.208"
 FONT_NAME = "terminal8x8_gs_ro.png"
 FILE_READ_MODE = "rb"
 FILE_WRITE_MODE = "wb"
-FONT_TYPE = libtcodpy.FONT_TYPE_GREYSCALE | libtcodpy.FONT_LAYOUT_ASCII_INROW
+FONT_TYPE = tcod.FONT_TYPE_GREYSCALE | tcod.FONT_LAYOUT_ASCII_INROW
+FONT_CHAR_MAP = tcod.tileset.CHARMAP_TCOD
 SAVE_FILE_NAME = "endovia.save"
 PLAYER_GRID_ID = 2000
 PLAYER_ENTITY_ID = 0
+VSYNC = True
+ORDER = 'F'
 
 def load_game():
     return pickle.load(open(SAVE_FILE_NAME, FILE_READ_MODE))
@@ -94,22 +97,23 @@ def new_game():
         charts[RANDOM_CHART_ID].entities = entities
     return charts
 
-# Basic libtcod initialization.
-libtcodpy.console_set_custom_font(FONT_NAME, FONT_TYPE, 0, 0)
-libtcodpy.console_init_root(SCREEN_WIDTH, SCREEN_HEIGHT, WINDOW_NAME, False)
-libtcodpy.sys_set_fps(FRAMES_PER_SECOND)
+# Basic libtcod initialization (Python 3+).
+TILESET = tcod.tileset.load_tilesheet(FONT_NAME, 16, 16, FONT_CHAR_MAP)
+CONTEXT = tcod.context.new_terminal(SCREEN_WIDTH, SCREEN_HEIGHT, tileset=TILESET, title=WINDOW_NAME, vsync=VSYNC)
+CONSOLE = tcod.Console(SCREEN_WIDTH, SCREEN_HEIGHT, order=ORDER)
 
 def Main():
     # Get the object set charts from start_game.
     # NOTE-DEFUNCT: player_position and enemy_positions are needed to place in the
     # object set characters. They can also be used in other places.
     # The Main Menu!
-    while not libtcodpy.console_is_window_closed():
+    #while not tcod.console_is_window_closed():
+    while True:
         choice = 0
         while True:
-            Graphics.graphics["DrawMenu"].DrawMainMenu(libtcodpy, choice)
-            libtcodpy.console_flush()
-            event = Handlers.handlers["InputHandler"].MainMenu(libtcodpy)
+            Graphics.graphics["DrawMenu"].DrawMainMenu(tcod, choice)
+            tcod.console_flush()
+            event = Handlers.handlers["InputHandler"].MainMenu(tcod)
             if event == SELECT_MENU_ENTER:
                 # For unimplemented options.
                 if choice not in (2, 3): # TODO: Construct & Credits.
@@ -141,7 +145,7 @@ def Main():
     enemy_x, enemy_y = None, None
     # Initialize main_level_up here so no error occurs.
     main_level_up = False
-    while not libtcodpy.console_is_window_closed():
+    while not tcod.console_is_window_closed():
         # To draw spell info to screen.
         destruction_spell_info = DESTRUCTION_SPELLS[charts[0].entities[0].active_destruction_spell[1]]
         restoration_spell_info = RESTORATION_SPELLS[charts[0].entities[0].active_restoration_spell[1]]
@@ -156,41 +160,41 @@ def Main():
                 break
         player_id = 0
         # Chart related drawing.
-        Graphics.graphics["DrawChart"].DrawFloorsWalls(libtcodpy, Objects.objects, charts[chart_id], charts[chart_id].entities[player_id])
-        Graphics.graphics["DrawChart"].DrawObjects(libtcodpy, Objects.objects, charts[chart_id], charts[chart_id].entities[player_id])
-        Graphics.graphics["DrawChart"].DrawEntities(libtcodpy, Objects.objects, Characters.characters, charts[chart_id], charts[chart_id].entities[player_id])
-        Graphics.graphics["DrawChart"].DrawBorder(libtcodpy, charts[chart_id].width, charts[chart_id].height)
+        Graphics.graphics["DrawChart"].DrawFloorsWalls(tcod, CONSOLE, Objects.objects, charts[chart_id], charts[chart_id].entities[player_id])
+        Graphics.graphics["DrawChart"].DrawObjects(tcod, CONSOLE, Objects.objects, charts[chart_id], charts[chart_id].entities[player_id])
+        Graphics.graphics["DrawChart"].DrawEntities(tcod, CONSOLE, Objects.objects, Characters.characters, charts[chart_id], charts[chart_id].entities[player_id])
+        Graphics.graphics["DrawChart"].DrawBorder(tcod, charts[chart_id].width, charts[chart_id].height)
         # Info related drawing.
-        Graphics.graphics["DrawInfo"].DrawStats(libtcodpy, charts[chart_id], charts[chart_id].entities[player_id])
-        Graphics.graphics["DrawInfo"].DrawAttributes(libtcodpy, charts[chart_id], charts[chart_id].entities[player_id])
-        Graphics.graphics["DrawInfo"].DrawSkills(libtcodpy, charts[chart_id], charts[chart_id].entities[player_id])
-        Graphics.graphics["DrawInfo"].DrawLocation(libtcodpy, charts[chart_id], charts[chart_id].entities[player_id])
-        Graphics.graphics["DrawInfo"].DrawMessages(libtcodpy, messages, charts[chart_id])
-        Graphics.graphics["DrawInfo"].DrawEnemy(libtcodpy, charts[chart_id], charts[chart_id].entities, enemy_x, enemy_y)
-        Graphics.graphics["DrawInfo"].DrawMagic(libtcodpy, charts[chart_id], charts[chart_id].entities[player_id], destruction_spell_info, restoration_spell_info)
-        Graphics.graphics["DrawInfo"].DrawCombat(libtcodpy, charts[chart_id], charts[chart_id].entities[player_id], COMBAT_STYLES)
+        Graphics.graphics["DrawInfo"].DrawStats(tcod, charts[chart_id], charts[chart_id].entities[player_id])
+        Graphics.graphics["DrawInfo"].DrawAttributes(tcod, charts[chart_id], charts[chart_id].entities[player_id])
+        Graphics.graphics["DrawInfo"].DrawSkills(tcod, charts[chart_id], charts[chart_id].entities[player_id])
+        Graphics.graphics["DrawInfo"].DrawLocation(tcod, charts[chart_id], charts[chart_id].entities[player_id])
+        Graphics.graphics["DrawInfo"].DrawMessages(tcod, messages, charts[chart_id])
+        Graphics.graphics["DrawInfo"].DrawEnemy(tcod, charts[chart_id], charts[chart_id].entities, enemy_x, enemy_y)
+        Graphics.graphics["DrawInfo"].DrawMagic(tcod, charts[chart_id], charts[chart_id].entities[player_id], destruction_spell_info, restoration_spell_info)
+        Graphics.graphics["DrawInfo"].DrawCombat(tcod, charts[chart_id], charts[chart_id].entities[player_id], COMBAT_STYLES)
         # Reset the enemy position so enemy info doesn't draw out of fight.
         enemy_x, enemy_y = None, None
         # Flush the console.
-        libtcodpy.console_flush()
+        tcod.console_flush()
         # The game is up, nice try though!
         if charts[chart_id].entities[player_id].stats["health"][0] <= 0:
-            Graphics.graphics["DrawDeath"].DrawWindow(libtcodpy, SCREEN_WIDTH, SCREEN_HEIGHT)
-            Graphics.graphics["DrawDeath"].DrawMessage(libtcodpy)
-            libtcodpy.console_flush()
-            libtcodpy.console_wait_for_keypress(True)
+            Graphics.graphics["DrawDeath"].DrawWindow(tcod, SCREEN_WIDTH, SCREEN_HEIGHT)
+            Graphics.graphics["DrawDeath"].DrawMessage(tcod)
+            tcod.console_flush()
+            tcod.console_wait_for_keypress(True)
             exit()
         if main_level_up:
             choice = 0
             stat_choices = ("health", "mana", "energy", "faith", "chakra")
             while True:
                 # Stat menu drawing.
-                Graphics.graphics["DrawMenu"].DrawBorderStatChoice(libtcodpy)
-                Graphics.graphics["DrawMenu"].DrawFillerStatChoice(libtcodpy)
-                Graphics.graphics["DrawMenu"].DrawStatChoice(libtcodpy, choice)
-                libtcodpy.console_flush()
+                Graphics.graphics["DrawMenu"].DrawBorderStatChoice(tcod)
+                Graphics.graphics["DrawMenu"].DrawFillerStatChoice(tcod)
+                Graphics.graphics["DrawMenu"].DrawStatChoice(tcod, choice)
+                tcod.console_flush()
                 # Choose a stat to advance and wait for the enter key.
-                event = Handlers.handlers["InputHandler"].StatMenu(libtcodpy)
+                event = Handlers.handlers["InputHandler"].StatMenu(tcod)
                 if event == SELECT_MENU_ENTER:
                     Handlers.handlers["LevelingHandler"].LevelStat(charts[chart_id].entities[player_id], stat_choices[choice])
                     skip_input = True
@@ -205,7 +209,7 @@ def Main():
                     choice += 1
         # Get the input event, event is a constant from Handlers.Constant.
         if not skip_input:
-            event = Handlers.handlers["InputHandler"].MainGame(libtcodpy)
+            event = Handlers.handlers["InputHandler"].MainGame(tcod)
         else:
             event = None
         enemy_there = False
@@ -216,7 +220,7 @@ def Main():
             # Returns True if an enemy is in the way, store that in enemy_there.
         # If event is the break wall key.
         elif event in (BREAK_WALL, MINE_VEIN):
-            direction = Handlers.handlers["InputHandler"].SkillDirection(libtcodpy)
+            direction = Handlers.handlers["InputHandler"].SkillDirection(tcod)
             if direction == 3:
                 direction = NORTH
             elif direction == 4:
@@ -259,12 +263,12 @@ def Main():
             stat_choices = ("melee", "ranged", "magic", "jutsu", "arms")
             while True:
                 # Stat menu drawing.
-                Graphics.graphics["DrawMenu"].DrawBorderCombatChoice(libtcodpy)
-                Graphics.graphics["DrawMenu"].DrawFillerCombatChoice(libtcodpy)
-                Graphics.graphics["DrawMenu"].DrawCombatChoice(libtcodpy, choice)
-                libtcodpy.console_flush()
+                Graphics.graphics["DrawMenu"].DrawBorderCombatChoice(tcod)
+                Graphics.graphics["DrawMenu"].DrawFillerCombatChoice(tcod)
+                Graphics.graphics["DrawMenu"].DrawCombatChoice(tcod, choice)
+                tcod.console_flush()
                 # Choose a stat to advance and wait for the enter key.
-                event = Handlers.handlers["InputHandler"].CombatMenu(libtcodpy)
+                event = Handlers.handlers["InputHandler"].CombatMenu(tcod)
                 if event == SELECT_MENU_ENTER:
                     # Look in Handlers.Constant.
                     charts[0].entities[0].combat_style = choice
@@ -285,11 +289,11 @@ def Main():
             inventory_id = 0
             inventory_length = len(Items.items[inventory_category])
             while True:
-                Graphics.graphics["DrawMenu"].DrawBorderInventoryChoice(libtcodpy)
-                Graphics.graphics["DrawMenu"].DrawFillerInventoryChoice(libtcodpy)
-                Graphics.graphics["DrawMenu"].DrawInventoryChoice(libtcodpy, (inventory_category, inventory_id), charts[0].entities[0].inventory, Items.items)
-                libtcodpy.console_flush()
-                event = Handlers.handlers["InputHandler"].InventoryMenu(libtcodpy)
+                Graphics.graphics["DrawMenu"].DrawBorderInventoryChoice(tcod)
+                Graphics.graphics["DrawMenu"].DrawFillerInventoryChoice(tcod)
+                Graphics.graphics["DrawMenu"].DrawInventoryChoice(tcod, (inventory_category, inventory_id), charts[0].entities[0].inventory, Items.items)
+                tcod.console_flush()
+                event = Handlers.handlers["InputHandler"].InventoryMenu(tcod)
                 if event == EXIT_MENU:
                     skip_input = True
                     break
@@ -318,18 +322,18 @@ def Main():
                 inventory_length = len(Items.items[inventory_category])
             # Get the input event, event is a constant from Handlers.Constant.
             if not skip_input:
-                event = Handlers.handlers["InputHandler"].MainGame(libtcodpy)
+                event = Handlers.handlers["InputHandler"].MainGame(tcod)
         elif event == ACCESS_MAGIC:
             magic_category = "destruction"
             magic_id = 0
             magic_length = len(DESTRUCTION_SPELLS.values())
             magic_categories = ("destruction", "restoration")
             while True:
-                Graphics.graphics["DrawMenu"].DrawBorderMagicChoice(libtcodpy)
-                Graphics.graphics["DrawMenu"].DrawFillerMagicChoice(libtcodpy)
-                Graphics.graphics["DrawMenu"].DrawMagicChoice(libtcodpy, (magic_category, magic_id), DESTRUCTION_SPELLS, RESTORATION_SPELLS, charts[0].entities[0])
-                libtcodpy.console_flush()
-                event = Handlers.handlers["InputHandler"].MagicMenu(libtcodpy)
+                Graphics.graphics["DrawMenu"].DrawBorderMagicChoice(tcod)
+                Graphics.graphics["DrawMenu"].DrawFillerMagicChoice(tcod)
+                Graphics.graphics["DrawMenu"].DrawMagicChoice(tcod, (magic_category, magic_id), DESTRUCTION_SPELLS, RESTORATION_SPELLS, charts[0].entities[0])
+                tcod.console_flush()
+                event = Handlers.handlers["InputHandler"].MagicMenu(tcod)
                 if event == EXIT_MENU:
                     skip_input = True
                     break
@@ -354,7 +358,7 @@ def Main():
                     pass
             # Get the input event, event is a constant from Handlers.Constant.
             if not skip_input:
-                event = Handlers.handlers["InputHandler"].MainGame(libtcodpy)
+                event = Handlers.handlers["InputHandler"].MainGame(tcod)
         else:
             event = None
         if enemy_there:

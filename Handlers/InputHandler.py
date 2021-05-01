@@ -5,22 +5,23 @@
 from . import Constant
 
 def StatMenu(library):
-    key = library.console_wait_for_keypress(True)
+    #key = library.console_wait_for_keypress(True)
+    for event in tcod.event.wait():
     # Switching fullscreen.
-    if key.vk == library.KEY_ENTER and key.lalt:
-        library.console_set_fullscreen(not library.console_is_fullscreen())
-        return Constant.SWITCH_FULLSCREENS
-    # Moving selection up.
-    elif key.vk == library.KEY_UP:
-        return Constant.MOVE_MENU_UP
-    # Moving selection down.
-    elif key.vk == library.KEY_DOWN:
-        return Constant.MOVE_MENU_DOWN
-    # Entering the selection.
-    elif key.vk == library.KEY_ENTER:
-        return Constant.SELECT_MENU_ENTER
-    else:
-        return Constant.NULL
+        if key.vk == library.KEY_ENTER and key.lalt:
+            library.console_set_fullscreen(not library.console_is_fullscreen())
+            return Constant.SWITCH_FULLSCREENS
+        # Moving selection up.
+        elif key.vk == library.KEY_UP:
+            return Constant.MOVE_MENU_UP
+        # Moving selection down.
+        elif key.vk == library.KEY_DOWN:
+            return Constant.MOVE_MENU_DOWN
+        # Entering the selection.
+        elif key.vk == library.KEY_ENTER:
+            return Constant.SELECT_MENU_ENTER
+        else:
+            return Constant.NULL
 
 def CombatMenu(library):
     key = library.console_wait_for_keypress(True)
@@ -120,9 +121,6 @@ def CharacterSelectionMenu(library):
     if key.vk == library.KEY_ENTER and key.lalt:
         library.console_set_fullscreen(not library.console_is_fullscreen())
         return Constant.SWITCH_FULLSCREEN
-    # Exiting the game.
-    elif key.vk == library.KEY_ESCAPE:
-        return Constant.EXIT_GAME_WITHOUT_SAVE
     # Moving selection up.
     elif key.vk == library.KEY_UP:
         return Constant.MOVE_MENU_UP
@@ -139,7 +137,9 @@ def MainGame(library):
         library.console_set_fullscreen(not library.console_is_fullscreen())
         return Constant.SWITCH_FULLSCREEN
     # Exiting the game without saving.
-    elif key.vk == library.KEY_ESCAPE:
+    #elif key.vk == library.KEY_ESCAPE:
+    #    return Constant.EXIT_GAME_WITHOUT_SAVE
+    if event.type == "QUIT":
         return Constant.EXIT_GAME_WITHOUT_SAVE
     # Moving north.
     elif key.vk == library.KEY_UP:

@@ -2,7 +2,7 @@
 # Endovia (DrawChart)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
-def DrawFloorsWalls(library, objects, chart, player):
+def DrawFloorsWalls(library, console, objects, chart, player):
     fov_map = library.map_new(chart.width, chart.height)
     for category in (1, 0):
         for y in range(0, chart.height):
@@ -20,24 +20,13 @@ def DrawFloorsWalls(library, objects, chart, player):
                         if (x, y) not in chart.seen:
                             chart.seen.append((x, y))
                         object_reference = objects[category][chart.grids[category][(x, y)][1]]
-                        library.console_set_char_foreground(0, x+1, y+1, library.Color(object_reference[6][0][0],
-                                                                                       object_reference[6][0][1],
-                                                                                       object_reference[6][0][2]))
-                        library.console_set_char_background(0, x+1, y+1, library.Color(object_reference[6][1][0],
-                                                                                       object_reference[6][1][1],
-                                                                                       object_reference[6][1][2]))
-                        library.console_set_char(0, x+1, y+1, object_reference[5])
+                        console.print(x=x+1, y=y+1, string=object_reference[5], fg=(object_reference[6][0][0],object_reference[6][0][1],object_reference[6][0][2]), bg=(object_reference[6][1][0],object_reference[6][1][1],object_reference[6][1][2]))
                     elif (x, y) in chart.seen:
-                        object_reference = objects[category][chart.grids[category][(x, y)][1]]
-                        library.console_set_char_foreground(0, x+1, y+1, library.Color(35, 35, 35))
-                        library.console_set_char_background(0, x+1, y+1, library.Color(0, 0, 0))
-                        library.console_set_char(0, x+1, y+1, object_reference[5])
+                        console.print(x=x+1, y=y+1, string='?', fg=(35,35,35), bg=(0,0,0))
                     else:
-                        library.console_set_char_foreground(0, x+1, y+1, library.Color(0, 0, 0))
-                        library.console_set_char_background(0, x+1, y+1, library.Color(0, 0, 0))
-                        library.console_set_char(0, x+1, y+1, " ")
+                        console.print(x=x+1, y=y+1, string=' ', fg=(0,0,0), bg=(0,0,0))
 
-def DrawObjects(library, objects, chart, player):
+def DrawObjects(library, console, objects, chart, player):
     fov_map = library.map_new(chart.width, chart.height)
     for category in range(0, 43):
         for y in range(0, chart.height):
@@ -55,31 +44,16 @@ def DrawObjects(library, objects, chart, player):
                         if (x, y) not in chart.seen:
                             chart.seen.append((x, y))
                         object_reference = objects[category][chart.grids[category][(x, y)][1]]
-                        library.console_set_char_foreground(0, x + 1, y + 1, library.Color(object_reference[6][0][0],
-                                                                                       object_reference[6][0][1],
-                                                                                       object_reference[6][0][2]))
-                        library.console_set_char_background(0, x + 1, y + 1, library.Color(object_reference[6][1][0],
-                                                                                       object_reference[6][1][1],
-                                                                                       object_reference[6][1][2]))
-                        library.console_set_char(0, x+1, y+1, object_reference[5])
+                        console.print(x=x+1, y=y+1, string=object_reference[5], fg=(object_reference[6][0][0],object_reference[6][0][1],object_reference[6][0][2]), bg=(object_reference[6][1][0],object_reference[6][1][1],object_reference[6][1][2]))
                     elif (x, y) in chart.seen:
-                        object_reference = objects[category][chart.grids[category][(x, y)][1]]
-                        library.console_set_char_foreground(0, x + 1, y + 1, library.Color(35, 35, 35))
-                        library.console_set_char_background(0, x + 1, y + 1, library.Color(0, 0, 0))
-                        library.console_set_char(0, x+1, y+1, object_reference[5])
+                        console.print(x=x+1, y=y+1, string='?', fg=(35,35,35), bg=(0,0,0))
                     else:
-                        library.console_set_char_foreground(0, x + 1, y + 1, library.Color(0, 0, 0))
-                        library.console_set_char_background(0, x + 1, y + 1, library.Color(0, 0, 0))
-                        library.console_set_char(0, x + 1, y + 1, " ")
+                        console.print(x=x+1, y=y+1, string=' ', fg=(0,0,0), bg=(0,0,0))
 
-def DrawEntities(library, objects, characters, chart, player):
+def DrawEntities(library, console, objects, characters, chart, player):
     fov_map = library.map_new(chart.width, chart.height)
     grids = []
     for category in range(0, 43):
-        grids.append(category)
-    for category in range(2000, 2002):
-        grids.append(category)
-    for category in grids:
         for y in range(0, chart.height):
             for x in range(0, chart.width):
                 if chart.grids[category][(x, y)] == None:
@@ -98,49 +72,18 @@ def DrawEntities(library, objects, characters, chart, player):
                         if (x, y) not in chart.seen:
                             chart.seen.append((x, y))
                         character_reference = characters[category][chart.grids[category][(x, y)][1]]
-                        library.console_set_char_foreground(0, x + 1, y + 1, library.Color(character_reference[6][0][0],
-                                                                                       character_reference[6][0][1],
-                                                                                       character_reference[6][0][2]))
-                        library.console_set_char_background(0, x + 1, y + 1, library.Color(character_reference[6][1][0],
-                                                                                       character_reference[6][1][1],
-                                                                                       character_reference[6][1][2]))
-                        library.console_set_char(0, x+1, y+1, character_reference[5])
-                    elif (x, y) in chart.seen:
-                        character_reference = characters[category][chart.grids[category][(x, y)][1]]
-                        library.console_set_char_foreground(0, x + 1, y + 1, library.Color(35, 35, 35))
-                        library.console_set_char_background(0, x + 1, y + 1, library.Color(0, 0, 0))
-                        library.console_set_char(0, x+1, y+1, character_reference[5])
-                    else:
-                        library.console_set_char_foreground(0, x + 1, y + 1, library.Color(0, 0, 0))
-                        library.console_set_char_background(0, x + 1, y + 1, library.Color(0, 0, 0))
-                        library.console_set_char(0, x + 1, y + 1, " ")
+                        console.print(x=x+1, y=y+1, string=object_reference[5], fg=(character_reference[6][0][0],character_reference[6][0][1], character_reference[6][0][2]), bg = (character_reference[6][1][0], character_reference[6][1][1], character_reference[6][1][2]))
 
-def DrawBorder(library, chart_width, chart_height):
-    library.console_set_char_foreground(0, 0, 0, library.Color(255, 255, 255))
-    library.console_set_char_background(0, 0, 0, library.Color(0, 0, 0))
-    library.console_set_char(0, 0, 0, '\xc9')
-    library.console_set_char_foreground(0, chart_width + 1, 0, library.Color(255, 255, 255))
-    library.console_set_char_background(0, chart_width + 1, 0, library.Color(0, 0, 0))
-    library.console_set_char(0, chart_width + 1, 0, '\xbb')
-    library.console_set_char_foreground(0, 0, chart_height + 1, library.Color(255, 255, 255))
-    library.console_set_char_background(0, 0, chart_height + 1, library.Color(0, 0, 0))
-    library.console_set_char(0, 0, chart_height + 1, '\xc8')
-    library.console_set_char_foreground(0, chart_width + 1, chart_height + 1, library.Color(255, 255, 255))
-    library.console_set_char_background(0, chart_width + 1, chart_height + 1, library.Color(0, 0, 0))
-    library.console_set_char(0, chart_width + 1, chart_height + 1, '\xbc')
+def DrawBorder(library, console, chart_width, chart_height):
+    console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
+    console.print(x=chart_width+1, y=0, string='\xbb', fg=(255,255,255), bg=(0,0,0))
+    console.print(x=0, y=chart_height+1, string='\xc8', fg=(255,255,255), bg=(0,0,0))
+    console.print(x=chart_width+1, y=chart_height+1, string='\xbc', fg =(255,255,255), bg=(0,0,0))
     for y in range(1, chart_height + 1):
-        library.console_set_char_foreground(0, 0, y, library.Color(255, 255, 255))
-        library.console_set_char_background(0, 0, y, library.Color(0, 0, 0))
-        library.console_set_char(0, 0, y, '\xba')
-        library.console_set_char_foreground(0, chart_width + 1, y, library.Color(255, 255, 255))
-        library.console_set_char_background(0, chart_width + 1, y, library.Color(0, 0, 0))
-        library.console_set_char(0, chart_width + 1, y, '\xba')
+        console.print(x=0, y=y, string='\xba', fg=(255,255,255), bg=(0,0,0))
+        console.print(x=chart_width+1, y=y, string='\xba', fg=(255,255,255), bg=(0,0,0))
     for x in range(1, chart_width + 1):
-        library.console_set_char_foreground(0, x, 0, library.Color(255, 255, 255))
-        library.console_set_char_background(0, x, 0, library.Color(0, 0, 0))
-        library.console_set_char(0, x, 0, '\xcd')
-        library.console_set_char_foreground(0, x, chart_height + 1, library.Color(255, 255, 255))
-        library.console_set_char_background(0, x, chart_height + 1, library.Color(0, 0, 0))
-        library.console_set_char(0, x, chart_height + 1, '\xcd')
+        console.print(x=x, y=0, string='\xcd', fg=(255,255,255), bg=(0,0,0))
+        console.print(x=x, y=chart_height+1, string='\xcd', fg=(255,255,255), bg=(0,0,0))
 
 # Jafinoxal.
