@@ -2,148 +2,76 @@
 # Endovia (DrawMenu)
 # Copyright (C) 2010-2020 Jeremy Aaron Flexer.
 
-def DrawBorderStatChoice(library):
-    console.print(x=2, y=2, string='\xc9', fg=(255,255,255), bg=(0,0,0))
-    console.print(x=25, y=2, string='\xbb', fg=(255,255,255), bg=(0,0,0))
-    console.print(x=2, y=9, string='\xc8', fg=(255,255,255), bg=(0,0,0))
-    console.print(x=25, y=9, string='\xbc', fg=(255,255,255), bg=(0,0,0))
+def DrawBorderStatChoice(console):
+    console.print(x=2, y=2, string='╔', fg=(255,255,255), bg=(0,0,0))
+    console.print(x=27, y=2, string='╗', fg=(255,255,255), bg=(0,0,0))
+    console.print(x=2, y=9, string='╚', fg=(255,255,255), bg=(0,0,0))
+    console.print(x=27, y=9, string='╝', fg=(255,255,255), bg=(0,0,0))
     for y in range(3, 9):
-        console.print(x=2, y=y, string='\xba', fg=(255,255,255), bg=(0,0,0))
-        console.print(x=25, y=y, string='\xba', fg=(255,255,255), bg=(0,0,0))
-    for x in range(3, 25):
-        console.print(x=x, y=2, string='\xcd', fg=(255,255,255), bg=(0,0,0))
-        console.print(x=x, y=9, string='\xcd', fg=(255,255,255), bg=(0,0,0))
+        console.print(x=2, y=y, string='║', fg=(255,255,255), bg=(0,0,0))
+        console.print(x=27, y=y, string='║', fg=(255,255,255), bg=(0,0,0))
+    for x in range(3, 27):
+        console.print(x=x, y=2, string='═', fg=(255,255,255), bg=(0,0,0))
+        console.print(x=x, y=9, string='═', fg=(255,255,255), bg=(0,0,0))
 
-def DrawBorderCombatChoice(library):
-    console.print(x=2, y=2, string='\xc9', fg=(255,255,255), bg=(0,0,0))
-    console.print(x=25, y=2, string='\xbb', fg=(255,255,255), bg=(0,0,0))
-    console.print(x=2, y=9, string='\xc8', fg=(255,255,255), bg=(0,0,0))
-    console.print(x=25, y=9, string='\xbc', fg=(255,255,255), bg=(0,0,0))
+def DrawBorderCombatChoice(console):
+    console.print(x=2, y=2, string='╔', fg=(255,255,255), bg=(0,0,0))
+    console.print(x=25, y=2, string='╗', fg=(255,255,255), bg=(0,0,0))
+    console.print(x=2, y=9, string='╚', fg=(255,255,255), bg=(0,0,0))
+    console.print(x=25, y=9, string='╝', fg=(255,255,255), bg=(0,0,0))
     for y in range(3, 9):
-        console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
-        console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
-        library.console_set_char_foreground(0, 2, y, library.Color(255, 255, 255))
-        library.console_set_char_background(0, 2, y, library.Color(0, 0, 0))
-        library.console_set_char(0, 2, y, '\xba')
-        library.console_set_char_foreground(0, 25, y, library.Color(255, 255, 255))
-        library.console_set_char_background(0, 25, y, library.Color(0, 0, 0))
-        library.console_set_char(0, 25, y, '\xba')
+        console.print(x=2, y=y, string='║', fg=(255,255,255), bg=(0,0,0))
+        console.print(x=25, y=y, string='║', fg=(255,255,255), bg=(0,0,0))
     for x in range(3, 25):
-        console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
-        console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
-        library.console_set_char_foreground(0, x, 2, library.Color(255, 255, 255))
-        library.console_set_char_background(0, x, 2, library.Color(0, 0, 0))
-        library.console_set_char(0, x, 2, '\xcd')
-        library.console_set_char_foreground(0, x, 9, library.Color(255, 255, 255))
-        library.console_set_char_background(0, x, 9, library.Color(0, 0, 0))
-        library.console_set_char(0, x, 9, '\xcd')
+        console.print(x=x, y=2, string='═', fg=(255,255,255), bg=(0,0,0))
+        console.print(x=x, y=9, string='═', fg=(255,255,255), bg=(0,0,0))
 
-def DrawBorderInventoryChoice(library):
-    console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
-    console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
-    console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
-    console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
-    library.console_set_char_foreground(0, 2, 2, library.Color(255, 255, 255))
-    library.console_set_char_background(0, 2, 2, library.Color(0, 0, 0))
-    library.console_set_char(0, 2, 2, '\xc9')
-    library.console_set_char_foreground(0, 40, 2, library.Color(255, 255, 255))
-    library.console_set_char_background(0, 40, 2, library.Color(0, 0, 0))
-    library.console_set_char(0, 40, 2, '\xbb')
-    library.console_set_char_foreground(0, 2, 69, library.Color(255, 255, 255))
-    library.console_set_char_background(0, 2, 69, library.Color(0, 0, 0))
-    library.console_set_char(0, 2, 69, '\xc8')
-    library.console_set_char_foreground(0, 40, 69, library.Color(255, 255, 255))
-    library.console_set_char_background(0, 40, 69, library.Color(0, 0, 0))
-    library.console_set_char(0, 40, 69, '\xbc')
+def DrawBorderInventoryChoice(console):
+    console.print(x=2, y=2, string='╔', fg=(255,255,255), bg=(0,0,0))
+    console.print(x=40, y=2, string='╗', fg=(255,255,255), bg=(0,0,0))
+    console.print(x=2, y=69, string='╚', fg=(255,255,255), bg=(0,0,0))
+    console.print(x=40, y=69, string='╝', fg=(255,255,255), bg=(0,0,0))
     for y in range(3, 69):
-        console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
-        console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
-        library.console_set_char_foreground(0, 2, y, library.Color(255, 255, 255))
-        library.console_set_char_background(0, 2, y, library.Color(0, 0, 0))
-        library.console_set_char(0, 2, y, '\xba')
-        library.console_set_char_foreground(0, 40, y, library.Color(255, 255, 255))
-        library.console_set_char_background(0, 40, y, library.Color(0, 0, 0))
-        library.console_set_char(0, 40, y, '\xba')
+        console.print(x=2, y=y, string='║', fg=(255,255,255), bg=(0,0,0))
+        console.print(x=40, y=y, string='║', fg=(255,255,255), bg=(0,0,0))
     for x in range(3, 40):
-        console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
-        console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
-        library.console_set_char_foreground(0, x, 2, library.Color(255, 255, 255))
-        library.console_set_char_background(0, x, 2, library.Color(0, 0, 0))
-        library.console_set_char(0, x, 2, '\xcd')
-        library.console_set_char_foreground(0, x, 69, library.Color(255, 255, 255))
-        library.console_set_char_background(0, x, 69, library.Color(0, 0, 0))
-        library.console_set_char(0, x, 69, '\xcd')
+        console.print(x=x, y=2, string='═', fg=(255,255,255), bg=(0,0,0))
+        console.print(x=x, y=69, string='═', fg=(255,255,255), bg=(0,0,0))
 
-def DrawBorderMagicChoice(library):
-    console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
-    console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
-    console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
-    console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
-    library.console_set_char_foreground(0, 2, 2, library.Color(255, 255, 255))
-    library.console_set_char_background(0, 2, 2, library.Color(0, 0, 0))
-    library.console_set_char(0, 2, 2, '\xc9')
-    library.console_set_char_foreground(0, 40, 2, library.Color(255, 255, 255))
-    library.console_set_char_background(0, 40, 2, library.Color(0, 0, 0))
-    library.console_set_char(0, 40, 2, '\xbb')
-    library.console_set_char_foreground(0, 2, 69, library.Color(255, 255, 255))
-    library.console_set_char_background(0, 2, 69, library.Color(0, 0, 0))
-    library.console_set_char(0, 2, 69, '\xc8')
-    library.console_set_char_foreground(0, 40, 69, library.Color(255, 255, 255))
-    library.console_set_char_background(0, 40, 69, library.Color(0, 0, 0))
-    library.console_set_char(0, 40, 69, '\xbc')
+def DrawBorderMagicChoice(console):
+    console.print(x=2, y=2, string='╔', fg=(255,255,255), bg=(0,0,0))
+    console.print(x=40, y=2, string='╗', fg=(255,255,255), bg=(0,0,0))
+    console.print(x=2, y=69, string='╚', fg=(255,255,255), bg=(0,0,0))
+    console.print(x=40, y=69, string='╝', fg=(255,255,255), bg=(0,0,0))
     for y in range(3, 69):
-        console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
-        console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
-        library.console_set_char_foreground(0, 2, y, library.Color(255, 255, 255))
-        library.console_set_char_background(0, 2, y, library.Color(0, 0, 0))
-        library.console_set_char(0, 2, y, '\xba')
-        library.console_set_char_foreground(0, 40, y, library.Color(255, 255, 255))
-        library.console_set_char_background(0, 40, y, library.Color(0, 0, 0))
-        library.console_set_char(0, 40, y, '\xba')
+        console.print(x=2, y=y, string='║', fg=(255,255,255), bg=(0,0,0))
+        console.print(x=40, y=y, string='║', fg=(255,255,255), bg=(0,0,0))
     for x in range(3, 40):
-        console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
-        console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
-        library.console_set_char_foreground(0, x, 2, library.Color(255, 255, 255))
-        library.console_set_char_background(0, x, 2, library.Color(0, 0, 0))
-        library.console_set_char(0, x, 2, '\xcd')
-        library.console_set_char_foreground(0, x, 69, library.Color(255, 255, 255))
-        library.console_set_char_background(0, x, 69, library.Color(0, 0, 0))
-        library.console_set_char(0, x, 69, '\xcd')
+        console.print(x=x, y=2, string='═', fg=(255,255,255), bg=(0,0,0))
+        console.print(x=x, y=69, string='═', fg=(255,255,255), bg=(0,0,0))
 
-def DrawFillerStatChoice(library):
+def DrawFillerStatChoice(console):
     for y in range(3, 9):
         for x in range(3, 25):
-            console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
-            library.console_set_char_foreground(0, x, y, library.Color(255, 255, 255))
-            library.console_set_char_background(0, x, y, library.Color(0, 0, 0))
-            library.console_set_char(0, x, y, ' ')
+            console.print(x=x, y=y, string=' ', fg=(255,255,255), bg=(0,0,0))
 
-def DrawFillerCombatChoice(library):
+def DrawFillerCombatChoice(console):
     for y in range(3, 9):
         for x in range(3, 25):
-            console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
-            library.console_set_char_foreground(0, x, y, library.Color(255, 255, 255))
-            library.console_set_char_background(0, x, y, library.Color(0, 0, 0))
-            library.console_set_char(0, x, y, ' ')
+            console.print(x=x, y=y, string=' ', fg=(255,255,255), bg=(0,0,0))
 
-def DrawFillerInventoryChoice(library):
+def DrawFillerInventoryChoice(console):
     for y in range(3, 69):
         for x in range(3, 40):
-            console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
-            library.console_set_char_foreground(0, x, y, library.Color(255, 255, 255))
-            library.console_set_char_background(0, x, y, library.Color(0, 0, 0))
-            library.console_set_char(0, x, y, ' ')
+            console.print(x=x, y=y, string=' ', fg=(255,255,255), bg=(0,0,0))
 
-def DrawFillerMagicChoice(library):
+def DrawFillerMagicChoice(console):
     for y in range(3, 69):
         for x in range(3, 40):
-            console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
-            library.console_set_char_foreground(0, x, y, library.Color(255, 255, 255))
-            library.console_set_char_background(0, x, y, library.Color(0, 0, 0))
-            library.console_set_char(0, x, y, ' ')
+            console.print(x=x, y=y, string=' ', fg=(255,255,255), bg=(0,0,0))
 
 
-def DrawStatChoice(library, choice):
+def DrawStatChoice(console, choice):
     choices = {
     0: "+ Choose Stat Increase +",
     1: " Health    ",
@@ -166,12 +94,9 @@ def DrawStatChoice(library, choice):
         return False
     for key, value in choices.items():
         for index in range(0, len(value)):
-            console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
-            library.console_set_char_foreground(0, 3 + index, 3 + key, library.Color(255, 255, 255))
-            library.console_set_char_background(0, 3 + index, 3 + key, library.Color(0, 0, 0))
-            library.console_set_char(0, 3 + index, 3 + key, value[index])
+            console.print(x=3 + index, y=3 + key, string=value[index], fg=(255,255,255), bg=(0,0,0))
 
-def DrawCombatChoice(library, choice):
+def DrawCombatChoice(console, choice):
     choices = {
     0: "+ Choose Combat Style +",
     1: " Melee     ",
@@ -194,12 +119,9 @@ def DrawCombatChoice(library, choice):
         return False
     for key, value in choices.items():
         for index in range(0, len(value)):
-            console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
-            library.console_set_char_foreground(0, 3 + index, 3 + key, library.Color(255, 255, 255))
-            library.console_set_char_background(0, 3 + index, 3 + key, library.Color(0, 0, 0))
-            library.console_set_char(0, 3 + index, 3 + key, value[index])
+            console.print(x=3 + index, y=3 + key, string=value[index], fg=(255,255,255), bg=(0,0,0))
 
-def DrawInventoryChoice(library, choice, inventory, items):
+def DrawInventoryChoice(console, choice, inventory, items):
     category_type = items[choice[0]][choice[1]][3]
     selected_item = items[choice[0]][choice[1]][1]
     choices = {0: "+ Inventory +     ",
@@ -220,12 +142,9 @@ def DrawInventoryChoice(library, choice, inventory, items):
         item_index += 1
     for key, value in choices.items():
         for index in range(0, len(value)):
-            console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
-            library.console_set_char_foreground(0, 3 + index, 3 + key, library.Color(255, 255, 255))
-            library.console_set_char_background(0, 3 + index, 3 + key, library.Color(0, 0, 0))
-            library.console_set_char(0, 3 + index, 3 + key, value[index])
+            console.print(x=3 + index, y=3 + key, string=value[index], fg=(255,255,255), bg=(0,0,0))
 
-def DrawMagicChoice(library, choice, destruction_spells, restoration_spells, player):
+def DrawMagicChoice(console, choice, destruction_spells, restoration_spells, player):
     category_type = choice[0]
     selected_spell = choice[1]
     if category_type not in ("destruction", "restoration"):
@@ -262,13 +181,9 @@ def DrawMagicChoice(library, choice, destruction_spells, restoration_spells, pla
             spell_index += 1
     for key, value in choices.items():
         for index in range(0, len(value)):
-            console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
-            library.console_set_char_foreground(0, 3 + index, 3 + key, library.Color(255, 255, 255))
-            library.console_set_char_background(0, 3 + index, 3 + key, library.Color(0, 0, 0))
-            library.console_set_char(0, 3 + index, 3 + key, value[index])
+            console.print(x=3 + index, y=3 + key, string=value[index], fg=(255,255,255), bg=(0,0,0))
 
-
-def DrawMainMenu(library, choice):
+def DrawMainMenu(console, choice):
     choices = {
     0: "Endovia /Alpha/",
     1: " New           ",
@@ -291,8 +206,6 @@ def DrawMainMenu(library, choice):
         return False
     for key, value in choices.items():
         for index in range(0, len(value)):
-            console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
-            library.console_set_char_foreground(0, 1 + index, 1 + key, library.Color(255, 255, 255))
-            library.console_set_char_background(0, 1 + index, 1 + key, library.Color(0, 0, 0))
-            library.console_set_char(0, 1 + index, 1 + key, value[index])
+            console.print(x=1 + index, y=1 + key, string=value[index], fg=(255,255,255), bg=(0,0,0))
+
 # Jafinoxal.

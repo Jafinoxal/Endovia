@@ -60,7 +60,7 @@ def _dead_entity(chart, enemies, characters):
     for enemy in enemies.values():
         # Once again accessing health in the player is different from an enemy.
         if not enemy.unique_id:
-            if enemy.stats["health"] <= 0 and enemy.dead == False:
+            if enemy.stats["health"][0] <= 0 and enemy.dead == False:
                 enemy.dead = True
                 return "You have died!                                                             "
         # If an enemy.

@@ -36,10 +36,11 @@ def _in_enemy(x_from, y_from, x_add, y_add, chart, entities):
         if grid_number > 1999 and grid_number < 3000: # Entities.
             if chart.grids[grid_number][(x_from + x_add, y_from + y_add)] == None:
                 continue
-            if not entities[grid_number][chart.grids[grid_number][(x_from + x_add, y_from + y_add)][1]][7]: # 7 is clip.
-                continue
+            #if not entities[grid_number][chart.grids[grid_number][(x_from + x_add, y_from + y_add)][1]][7]: # 7 is clip.
+            #    continue
             else:
                 return True
+    return False
 
 def MoveCharacter(x_from, y_from, x_add, y_add, character_to_move, chart, objects, entities):
     if _in_boundaries(x_from, y_from, x_add, y_add, chart) and _no_obstruction(x_from, y_from, x_add, y_add, chart, objects, entities):

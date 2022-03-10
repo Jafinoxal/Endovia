@@ -72,18 +72,18 @@ def DrawEntities(library, console, objects, characters, chart, player):
                         if (x, y) not in chart.seen:
                             chart.seen.append((x, y))
                         character_reference = characters[category][chart.grids[category][(x, y)][1]]
-                        console.print(x=x+1, y=y+1, string=object_reference[5], fg=(character_reference[6][0][0],character_reference[6][0][1], character_reference[6][0][2]), bg = (character_reference[6][1][0], character_reference[6][1][1], character_reference[6][1][2]))
+                        console.print(x=x+1, y=y+1, string=character_reference[5], fg=(character_reference[6][0][0],character_reference[6][0][1], character_reference[6][0][2]), bg = (character_reference[6][1][0], character_reference[6][1][1], character_reference[6][1][2]))
 
-def DrawBorder(library, console, chart_width, chart_height):
-    console.print(x=0, y=0, string='\xc9', fg=(255,255,255), bg=(0,0,0))
-    console.print(x=chart_width+1, y=0, string='\xbb', fg=(255,255,255), bg=(0,0,0))
-    console.print(x=0, y=chart_height+1, string='\xc8', fg=(255,255,255), bg=(0,0,0))
-    console.print(x=chart_width+1, y=chart_height+1, string='\xbc', fg =(255,255,255), bg=(0,0,0))
+def DrawBorder(console, chart_width, chart_height):
+    console.print(x=0, y=0, string='╔', fg=(255,255,255), bg=(0,0,0))
+    console.print(x=chart_width+1, y=0, string='╗', fg=(255,255,255), bg=(0,0,0))
+    console.print(x=0, y=chart_height+1, string='╚', fg=(255,255,255), bg=(0,0,0))
+    console.print(x=chart_width+1, y=chart_height+1, string='╝', fg =(255,255,255), bg=(0,0,0))
     for y in range(1, chart_height + 1):
-        console.print(x=0, y=y, string='\xba', fg=(255,255,255), bg=(0,0,0))
-        console.print(x=chart_width+1, y=y, string='\xba', fg=(255,255,255), bg=(0,0,0))
+        console.print(x=0, y=y, string='║', fg=(255,255,255), bg=(0,0,0))
+        console.print(x=chart_width+1, y=y, string='║', fg=(255,255,255), bg=(0,0,0))
     for x in range(1, chart_width + 1):
-        console.print(x=x, y=0, string='\xcd', fg=(255,255,255), bg=(0,0,0))
-        console.print(x=x, y=chart_height+1, string='\xcd', fg=(255,255,255), bg=(0,0,0))
+        console.print(x=x, y=0, string='═', fg=(255,255,255), bg=(0,0,0))
+        console.print(x=x, y=chart_height+1, string='═', fg=(255,255,255), bg=(0,0,0))
 
 # Jafinoxal.

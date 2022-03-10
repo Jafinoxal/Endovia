@@ -2,7 +2,7 @@
 # Endovia (DrawInfo)
 # Copyright (C) 2010-2021 Jeremy Aaron Flexer.
 
-def DrawStats(library, chart, player):
+def DrawStats(console, chart, player):
     title_to_draw = "+ STATS +"
     name_to_draw = " Name:   {0}".format(player.name)
     race_to_draw = " Race:   {0}".format(player.race)
@@ -25,11 +25,9 @@ def DrawStats(library, chart, player):
     )
     for y in range(0, len(to_draw_complete)):
         for x in range(0, len(to_draw_complete[y])):
-            library.console_set_char_foreground(0, x + chart.width + 2, y, library.Color(255, 255, 255))
-            library.console_set_char_background(0, x + chart.width + 2, y, library.Color(0, 0, 0))
-            library.console_set_char(0, x + chart.width + 2, y, to_draw_complete[y][x])
+            console.print(x=x + chart.width + 2, y=y, string=to_draw_complete[y][x], fg=(255,255,255), bg=(0,0,0))
 
-def DrawAttributes(library, chart, player):
+def DrawAttributes(console, chart, player):
     title_to_draw = "+ ATTRIBUTES +"
     attack_to_draw = " attack:       {0}".format(player.attributes["attack"])
     defense_to_draw = " defense:      {0}".format(player.attributes["defense"])
@@ -56,11 +54,9 @@ def DrawAttributes(library, chart, player):
     )
     for y in range(0, len(to_draw_complete)):
         for x in range(0, len(to_draw_complete[y])):
-            library.console_set_char_foreground(0, x + chart.width + 2, y + 9, library.Color(255, 255, 255))
-            library.console_set_char_background(0, x + chart.width + 2, y + 9, library.Color(0, 0, 0))
-            library.console_set_char(0, x + chart.width + 2, y + 9, to_draw_complete[y][x])
+            console.print(x=x + chart.width + 2, y=y + 9, string=to_draw_complete[y][x], fg=(255,255,255), bg=(0,0,0))
 
-def DrawSkills(library, chart, player):
+def DrawSkills(console, chart, player):
     title_to_draw = "+ SKILLS +"
     melee_to_draw = " melee:        {0}:{1}/{2}                      ".format(player.skills["melee"][0], player.skills["melee"][1], player.skills["melee"][0] * player.skills["melee"][0] * 30)
     ranged_to_draw = " ranged:       {0}:{1}/{2}                     ".format(player.skills["ranged"][0], player.skills["ranged"][1], player.skills["ranged"][0] * player.skills["ranged"][0] * 30)
@@ -107,11 +103,9 @@ def DrawSkills(library, chart, player):
     )
     for y in range(0, len(to_draw_complete)):
         for x in range(0, len(to_draw_complete[y])):
-            library.console_set_char_foreground(0, x + chart.width + 2, y + 20, library.Color(255, 255, 255))
-            library.console_set_char_background(0, x + chart.width + 2, y + 20, library.Color(0, 0, 0))
-            library.console_set_char(0, x + chart.width + 2, y + 20, to_draw_complete[y][x])
+            console.print(x=x + chart.width + 2, y=y + 20, string=to_draw_complete[y][x], fg=(255,255,255), bg=(0,0,0))
 
-def DrawLocation(library, chart, player):
+def DrawLocation(console, chart, player):
     title_to_draw = "+ LOCATION +"
     location_to_draw = " Map: {0}   ".format(chart.id)
     x_to_draw = " X:   {0}   ".format(player.x)
@@ -124,11 +118,9 @@ def DrawLocation(library, chart, player):
     )
     for y in range(0, len(to_draw_complete)):
         for x in range(0, len(to_draw_complete[y])):
-            library.console_set_char_foreground(0, x + chart.width + 2, y + 41, library.Color(255, 255, 255))
-            library.console_set_char_background(0, x + chart.width + 2, y + 41, library.Color(0, 0, 0))
-            library.console_set_char(0, x + chart.width + 2, y + 41, to_draw_complete[y][x])
+            console.print(x=x + chart.width + 2, y=y + 41, string=to_draw_complete[y][x], fg=(255,255,255), bg=(0,0,0))
 
-def DrawEnemy(library, chart, enemies, enemy_x, enemy_y):
+def DrawEnemy(console, chart, enemies, enemy_x, enemy_y):
     # Find the enemy.
     for enemy in enemies.values():
         if (enemy_x, enemy_y) == (enemy.x, enemy.y):
@@ -146,9 +138,7 @@ def DrawEnemy(library, chart, enemies, enemy_x, enemy_y):
             )
             for y in range(0, len(to_draw_complete)):
                 for x in range(0, len(to_draw_complete[y])):
-                    library.console_set_char_foreground(0, x + chart.width + 2, y + 45, library.Color(255, 255, 255))
-                    library.console_set_char_background(0, x + chart.width + 2, y + 45, library.Color(0, 0, 0))
-                    library.console_set_char(0, x + chart.width + 2, y + 45, to_draw_complete[y][x])
+                    console.print(x=x + chart.width + 2, y=y + 45, string=to_draw_complete[y][x], fg=(255,255,255), bg=(0,0,0))
             break
         else:
             title_to_draw = "+ ENEMY +"
@@ -165,12 +155,10 @@ def DrawEnemy(library, chart, enemies, enemy_x, enemy_y):
             )
             for y in range(0, len(to_draw_complete)):
                 for x in range(0, len(to_draw_complete[y])):
-                    library.console_set_char_foreground(0, x + chart.width + 2, y + 45, library.Color(255, 255, 255))
-                    library.console_set_char_background(0, x + chart.width + 2, y + 45, library.Color(0, 0, 0))
-                    library.console_set_char(0, x + chart.width + 2, y + 45, to_draw_complete[y][x])
+                    console.print(x=x + chart.width + 2, y=y + 45, string=to_draw_complete[y][x], fg=(255,255,255), bg=(0,0,0))
             break
 
-def DrawMagic(library, chart, player, destruction_spell_info, restoration_spell_info):
+def DrawMagic(console, chart, player, destruction_spell_info, restoration_spell_info):
     title_to_draw = "+ MAGIC +"
     destruction_spell_to_draw = " <DES>:  {0}".format(destruction_spell_info[0])
     restoration_spell_to_draw = " <RES>:  {0}".format(restoration_spell_info[0])
@@ -181,11 +169,9 @@ def DrawMagic(library, chart, player, destruction_spell_info, restoration_spell_
     )
     for y in range(0, len(to_draw_complete)):
         for x in range(0, len(to_draw_complete[y])):
-            library.console_set_char_foreground(0, x + chart.width + 2, y + 50, library.Color(255, 255, 255))
-            library.console_set_char_background(0, x + chart.width + 2, y + 50, library.Color(0, 0, 0))
-            library.console_set_char(0, x + chart.width + 2, y + 50, to_draw_complete[y][x])
+            console.print(x=x + chart.width + 2, y=y + 50, string=to_draw_complete[y][x], fg=(255,255,255), bg=(0,0,0))
 
-def DrawCombat(library, chart, player, combat_styles):
+def DrawCombat(console, chart, player, combat_styles):
     title_to_draw = "+ COMBAT +"
     style_to_draw = " Style: {0}".format(combat_styles[player.combat_style])
     to_draw_complete = (
@@ -194,18 +180,14 @@ def DrawCombat(library, chart, player, combat_styles):
     )
     for y in range(0, len(to_draw_complete)):
         for x in range(0, len(to_draw_complete[y])):
-            library.console_set_char_foreground(0, x + chart.width + 2, y + 53, library.Color(255, 255, 255))
-            library.console_set_char_background(0, x + chart.width + 2, y + 53, library.Color(0, 0, 0))
-            library.console_set_char(0, x + chart.width + 2, y + 53, to_draw_complete[y][x])
+            console.print(x=x + chart.width + 2, y=y + 53, string=to_draw_complete[y][x], fg=(255,255,255), bg=(0,0,0))
 
-def DrawMessages(library, messages, chart):
+def DrawMessages(console, messages, chart):
     message_count = len(messages)
     if message_count > 10:
         message_count = 10
     for message_index in range(1, message_count + 1):
         for x in range(0, len(messages[-message_index])):
-            library.console_set_char_foreground(0, x, message_index + chart.height + 1, library.Color(255, 255, 255))
-            library.console_set_char_background(0, x, message_index + chart.height + 1, library.Color(0, 0, 0))
-            library.console_set_char(0, x, message_index + chart.height + 1, messages[-message_index][x])
+            console.print(x=x, y=message_index + chart.height + 1, string=messages[-message_index][x], fg=(255,255,255), bg=(0,0,0))
 
 # Jafinoxal.

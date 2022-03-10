@@ -13,3 +13,5 @@ def DrawMessage(library):
     death_message = "Oh dear, you have died!"
     for x in range(1, len(death_message) + 1):
         console.print(x=x, y=1, string=death_message[x-1], fg=(255,255,255), bg=(0,0,0))
+
+# Jafinoxal.
