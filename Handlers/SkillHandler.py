@@ -1,6 +1,8 @@
 # Endovia (SkillHandler)
 # Copyright (C) 2010-2021 Jeremy Aaron Flexer.
 
+from . import Constant
+
 def BreakWall(chart, player, direction):
     if chart.grids[0][(player.x + direction[0], player.y + direction[1])] != None:
         if player.inventory[1000][0]:
@@ -17,6 +19,9 @@ def MineVein(chart, player, direction, veins):
         if player.inventory[1000][0]:
             vein_info = veins[chart.grids[28][(player.x + direction[0], player.y + direction[1])][1]]
             vein_name = vein_info[2]
+            vein_level = Constant.VEIN_LEVELS[vein_info[1]]
+            if vein_level > player.skills["mining"][0]:
+                return "You need a mining level of {0} to mine the {1}.              ".format(vein_level, vein_name)
             experience_gained = vein_info[9]
             chart.grids[28][(player.x + direction[0], player.y + direction[1])] = None
             player.skills["mining"] = (player.skills["mining"][0], player.skills["mining"][1] + experience_gained)
