@@ -34,5 +34,18 @@ class Chart(object):
             for x in range(0, grid_width):
                 self.grids[grid_id][(x, y)] = {}
                 self.grids[grid_id][(x, y)] = (grid_id, thing_id)
+    def is_obstruction_single(self, grid_id, grid_x, grid_y):
+        if self.grids[grid_id][(grid_x, grid_y)] != None:
+            return True
+        else:
+            return False
+    def is_obstruction_all(self, grid_x, grid_y, ignore_floor = True):
+        for grid_id in self.grids.keys():
+            # Ignore the floor possibly because objects go over floors.
+            if ignore_floor:
+                if grid_id == 1:
+                    continue
+            if self.grids[grid_id][(grid_x, grid_y)] != None:
+                return True
 
 # Jafinoxal.
