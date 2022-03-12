@@ -74,22 +74,22 @@ def DrawFillerMagicChoice(console):
 def DrawStatChoice(console, choice):
     choices = {
     0: "+ Choose Stat Increase +",
-    1: " Health    ",
-    2: " Mana    ",
-    3: " Energy    ",
-    4: " Faith    ",
-    5: " Chakra    ",
+    1: " Health      ",
+    2: " Mana        ",
+    3: " Energy      ",
+    4: " Faith       ",
+    5: " Chakra      ",
     }
     if choice == 0:
-        choices[1] = " [Health]"
+        choices[1] = " [Health]     "
     elif choice == 1:
-        choices[2] = " [Mana]"
+        choices[2] = " [Mana]       "
     elif choice == 2:
-        choices[3] = " [Energy]"
+        choices[3] = " [Energy]     "
     elif choice == 3:
-        choices[4] = " [Faith]"
+        choices[4] = " [Faith]      "
     elif choice == 4:
-        choices[5] = " [Chakra]"
+        choices[5] = " [Chakra]     "
     else:
         return False
     for key, value in choices.items():

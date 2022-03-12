@@ -36,7 +36,7 @@ RANDOM_CHART_ID = 0
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
 FRAMES_PER_SECOND = 60
-WINDOW_NAME = "Endovia 1.213"
+WINDOW_NAME = "Endovia 1.214"
 FONT_NAME = "ascii_8x8.png"
 FILE_READ_MODE = "rb"
 FILE_WRITE_MODE = "wb"
@@ -159,9 +159,10 @@ def Main():
                 break
         player_id = 0
         # Chart related drawing.
-        Graphics.graphics["DrawChart"].DrawFloorsWalls(tcod, CONSOLE, Objects.objects, charts[chart_id], charts[chart_id].entities[player_id])
-        Graphics.graphics["DrawChart"].DrawObjects(tcod, CONSOLE, Objects.objects, charts[chart_id], charts[chart_id].entities[player_id])
-        Graphics.graphics["DrawChart"].DrawEntities(tcod, CONSOLE, Objects.objects, Characters.characters, charts[chart_id], charts[chart_id].entities[player_id])
+        #Graphics.graphics["DrawChart"].DrawFloorsWalls(CONSOLE, Objects.objects, charts[chart_id], charts[chart_id].entities[player_id])
+        #Graphics.graphics["DrawChart"].DrawObjects(CONSOLE, Objects.objects, charts[chart_id], charts[chart_id].entities[player_id])
+        #Graphics.graphics["DrawChart"].DrawEntities(CONSOLE, Objects.objects, Characters.characters, charts[chart_id], charts[chart_id].entities[player_id])
+        Graphics.graphics["DrawChart"].DrawAll(CONSOLE, Objects.objects, Characters.characters, charts[chart_id], charts[chart_id].entities[player_id])
         Graphics.graphics["DrawChart"].DrawBorder(CONSOLE, charts[chart_id].width, charts[chart_id].height)
         # Info related drawing.
         Graphics.graphics["DrawInfo"].DrawStats(CONSOLE, charts[chart_id], charts[chart_id].entities[player_id])
