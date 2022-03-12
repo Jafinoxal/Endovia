@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Endovia (Veins)
-# Copyright (C) 2010-2021 Jeremy Aaron Flexer.
+# Copyright (C) 2010-2022 Jeremy Aaron Flexer.
 
 def _category():
     return {

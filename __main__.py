@@ -27,7 +27,8 @@ from Objects.Constant import *
 # 2. If a multiplayer online adaptation is made, store non-host players in a
 #    variable named charts[0].foreign.
 # 3. Games are saved with the pickle module (endovia.save).
-# 4. A library called libtcod is used for /fov/ and /graphics/.
+# 4. A library called libtcod(now tcod) is used for /fov/ and /graphics/.
+# 5. Python 3.+ is required to use this software, visit python.org.
 
 # Constants.
 SCREEN_WIDTH = 125
@@ -36,7 +37,7 @@ RANDOM_CHART_ID = 0
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
 FRAMES_PER_SECOND = 60
-WINDOW_NAME = "Endovia 1.214"
+WINDOW_NAME = "Endovia 1.215"
 FONT_NAME = "ascii_8x8.png"
 FILE_READ_MODE = "rb"
 FILE_WRITE_MODE = "wb"
@@ -112,7 +113,7 @@ def Main():
         while True:
             Graphics.graphics["DrawMenu"].DrawMainMenu(CONSOLE, choice)
             CONTEXT.present(CONSOLE)
-            event = Handlers.handlers["InputHandler"].MainMenu(tcod)
+            event = Handlers.handlers["InputHandler"].MainMenu()
             if event == SELECT_MENU_ENTER:
                 # For unimplemented options.
                 if choice not in (2, 3): # TODO: Construct & Credits.
@@ -179,8 +180,8 @@ def Main():
         CONTEXT.present(CONSOLE)
         # The game is up, nice try though!
         if charts[chart_id].entities[player_id].stats["health"][0] <= 0:
-            Graphics.graphics["DrawDeath"].DrawWindow(tcod, SCREEN_WIDTH, SCREEN_HEIGHT)
-            Graphics.graphics["DrawDeath"].DrawMessage(tcod)
+            Graphics.graphics["DrawDeath"].DrawWindow(CONSOLE, SCREEN_WIDTH, SCREEN_HEIGHT)
+            Graphics.graphics["DrawDeath"].DrawMessage(CONSOLE)
             CONTEXT.present(CONSOLE)
             tcod.console_wait_for_keypress(True)
             exit()
@@ -194,7 +195,7 @@ def Main():
                 Graphics.graphics["DrawMenu"].DrawStatChoice(CONSOLE, choice)
                 CONTEXT.present(CONSOLE)
                 # Choose a stat to advance and wait for the enter key.
-                event = Handlers.handlers["InputHandler"].StatMenu(tcod)
+                event = Handlers.handlers["InputHandler"].StatMenu()
                 if event == SELECT_MENU_ENTER:
                     Handlers.handlers["LevelingHandler"].LevelStat(charts[chart_id].entities[player_id], stat_choices[choice])
                     skip_input = True
@@ -209,7 +210,7 @@ def Main():
                     choice += 1
         # Get the input event, event is a constant from Handlers.Constant.
         if not skip_input:
-            event = Handlers.handlers["InputHandler"].MainGame(tcod)
+            event = Handlers.handlers["InputHandler"].MainGame()
         else:
             event = None
         enemy_there = False
@@ -219,8 +220,8 @@ def Main():
         # Check if the event is a move key; If so then try to move a player.
         # Returns True if an enemy is in the way, store that in enemy_there.
         # If event is the break wall key.
-        elif event in (BREAK_WALL, MINE_VEIN):
-            direction = Handlers.handlers["InputHandler"].SkillDirection(tcod)
+        elif event in (BREAK_WALL, MINE_VEIN, CHOP_TREE):
+            direction = Handlers.handlers["InputHandler"].SkillDirection()
             if direction == 3:
                 direction = NORTH
             elif direction == 4:
@@ -236,6 +237,8 @@ def Main():
                     message = Handlers.handlers["SkillHandler"].BreakWall(charts[chart_id], charts[chart_id].entities[player_id], direction)
                 elif event == MINE_VEIN:
                     message = Handlers.handlers["SkillHandler"].MineVein(charts[chart_id], charts[chart_id].entities[player_id], direction, Objects.objects[VEINS])
+                elif event == CHOP_TREE:
+                    message = Handlers.handlers["SkillHandler"].ChopTree(charts[chart_id], charts[chart_id].entities[player_id], direction, Objecta.objects[TREES])
                 messages.append(message)
                 turn_taken = True
         elif event == MOVE_PLAYER_NORTH:
@@ -268,7 +271,7 @@ def Main():
                 Graphics.graphics["DrawMenu"].DrawCombatChoice(CONSOLE, choice)
                 CONTEXT.present(CONSOLE)
                 # Choose a stat to advance and wait for the enter key.
-                event = Handlers.handlers["InputHandler"].CombatMenu(tcod)
+                event = Handlers.handlers["InputHandler"].CombatMenu()
                 if event == SELECT_MENU_ENTER:
                     # Look in Handlers.Constant.
                     charts[0].entities[0].combat_style = choice
@@ -293,7 +296,7 @@ def Main():
                 Graphics.graphics["DrawMenu"].DrawFillerInventoryChoice(CONSOLE)
                 Graphics.graphics["DrawMenu"].DrawInventoryChoice(CONSOLE, (inventory_category, inventory_id), charts[0].entities[0].inventory, Items.items)
                 CONTEXT.present(CONSOLE)
-                event = Handlers.handlers["InputHandler"].InventoryMenu(tcod)
+                event = Handlers.handlers["InputHandler"].InventoryMenu()
                 if event == EXIT_MENU:
                     skip_input = True
                     break
@@ -322,7 +325,7 @@ def Main():
                 inventory_length = len(Items.items[inventory_category])
             # Get the input event, event is a constant from Handlers.Constant.
             if not skip_input:
-                event = Handlers.handlers["InputHandler"].MainGame(tcod)
+                event = Handlers.handlers["InputHandler"].MainGame()
         elif event == ACCESS_MAGIC:
             magic_category = "destruction"
             magic_id = 0
@@ -333,7 +336,7 @@ def Main():
                 Graphics.graphics["DrawMenu"].DrawFillerMagicChoice(CONSOLE)
                 Graphics.graphics["DrawMenu"].DrawMagicChoice(CONSOLE, (magic_category, magic_id), DESTRUCTION_SPELLS, RESTORATION_SPELLS, charts[0].entities[0])
                 CONTEXT.present(CONSOLE)
-                event = Handlers.handlers["InputHandler"].MagicMenu(tcod)
+                event = Handlers.handlers["InputHandler"].MagicMenu()
                 if event == EXIT_MENU:
                     skip_input = True
                     break
@@ -358,7 +361,7 @@ def Main():
                     pass
             # Get the input event, event is a constant from Handlers.Constant.
             if not skip_input:
-                event = Handlers.handlers["InputHandler"].MainGame(tcod)
+                event = Handlers.handlers["InputHandler"].MainGame()
         else:
             event = None
         in_combat_id = 0

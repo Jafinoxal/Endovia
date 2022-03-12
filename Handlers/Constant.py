@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Endovia (Handler Init)
-# Copyright (C) 2010-2021 Jeremy Aaron Flexer.
+# Copyright (C) 2010-2022 Jeremy Aaron Flexer.
 
 NULL = -1
 
@@ -49,6 +49,7 @@ ACCESS_QUICK_INVENTORY = 33
 
 BREAK_WALL = 34
 MINE_VEIN = 35
+CHOP_TREE = 36
 
 ATTACK_MELEE = 0
 ATTACK_RANGED = 1
@@ -154,6 +155,32 @@ VEIN_LEVELS = {
 16: 80,
 17: 85,
 18: 90,
+}
+
+TREE_LEVELS = {
+0: 0,
+1: 5,
+2: 10,
+3: 15,
+4: 20,
+5: 25,
+6: 30,
+7: 35,
+8: 40,
+9: 45,
+10: 50,
+11: 55,
+12: 60,
+13: 65,
+14: 70,
+15: 75,
+16: 80,
+17: 85,
+18: 90,
+19: 92,
+20: 94,
+21: 96,
+22: 98,
 }
 
 # Jafinoxal.

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Endovia (DrawMenu)
-# Copyright (C) 2010-2020 Jeremy Aaron Flexer.
+# Copyright (C) 2010-2022 Jeremy Aaron Flexer.
 
 def DrawBorderStatChoice(console):
     console.print(x=2, y=2, string='╔', fg=(255,255,255), bg=(0,0,0))
@@ -185,12 +185,21 @@ def DrawMagicChoice(console, choice, destruction_spells, restoration_spells, pla
 
 def DrawMainMenu(console, choice):
     choices = {
-    0: "Endovia /Alpha/",
+    0: " Endovia /Alpha/",
     1: " New           ",
     2: " Load           ",
     3: " Construct        ",
     4: " Credits          ",
     5: " Exit           ",
+    6: "",
+    7: "  ______           _            _",
+    8: " |  ____|         | |          (_)",
+    9: " | |__   _ __   __| | _____   ___  __ _",
+    10: " |  __| | '_ \ / _` |/ _ \ \ / / |/ _` |",
+    11: " | |____| | | | (_| | (_) \ V /| | (_| |",
+    12: " |______|_| |_|\__,_|\___/ \_/ |_|\__,_|",
+    13: "",
+    13: "  Welcome to the never ending story..."
     }
     if choice == 0:
         choices[1] = " [New]"

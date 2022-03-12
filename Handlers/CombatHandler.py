@@ -77,8 +77,7 @@ def _in_combat(chart, enemy_x, enemy_y, enemies):
     for enemy in enemies.values():
         if (enemy.x, enemy.y) == (enemy_x, enemy_y):
             return enemy.unique_id
-        else:
-            return 0
+    return 0
 
 def DetectEnemyFight(chart, enemy_x, enemy_y, enemies):
     return _in_combat(chart, enemy_x, enemy_y, enemies),
