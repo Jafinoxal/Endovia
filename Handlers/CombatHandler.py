@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Endovia (CombatHandler)
-# Copyright (C) 2010-2020 Jeremy Aaron Flexer.
+# Copyright (C) 2010-2022 Jeremy Aaron Flexer.
 
 import random
 
@@ -72,6 +72,16 @@ def _dead_entity(chart, enemies, characters):
                 enemy.y = None
                 return "The {0} has died!                                                          ".format(characters[enemy.grid_id][enemy.entity_id][2])
     return False
+
+def _in_combat(chart, enemy_x, enemy_y, enemies):
+    for enemy in enemies.values():
+        if (enemy.x, enemy.y) == (enemy_x, enemy_y):
+            return enemy.unique_id
+        else:
+            return 0
+
+def DetectEnemyFight(chart, enemy_x, enemy_y, enemies):
+    return _in_combat(chart, enemy_x, enemy_y, enemies),
 
 def FightCharacter(chart, player, enemies, enemy_x, enemy_y, characters):
     messages = []

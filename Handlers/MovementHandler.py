@@ -91,9 +91,11 @@ def _in_enemy(x_from, y_from, x_add, y_add, chart, entities):
 #    tcod.path_delete(my_path)
 #    return False
 
-def MoveEnemies(chart, entities, objects, characters):
+def MoveEnemies(chart, entities, objects, characters, stay):
     for entity in entities.keys():
         if entity == 0:
+            continue
+        if entity == stay:
             continue
         if entities[entity].dead:
             continue

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Endovia (DrawChart)
-# Copyright (C) 2010-2020 Jeremy Aaron Flexer.
+# Copyright (C) 2010-2022 Jeremy Aaron Flexer.
 
 def DrawFloorsWalls(library, console, objects, chart, player):
     fov_map = library.map_new(chart.width, chart.height)

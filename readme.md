@@ -1,5 +1,5 @@
 # Endovia
-##### Copyright (C) 2010-2021 Jeremy Aaron Flexer.
+##### Copyright (C) 2010-2022 Jeremy Aaron Flexer.
 ## Contributers:
 #### [Jafinoxal](https://github.com/Jafinoxal "Jafinoxal Github")
 ## License:

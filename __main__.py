@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # Endovia (Endovia Main)
-# Copyright (C) 2010-2021 Jeremy Aaron Flexer.
+# Copyright (C) 2010-2022 Jeremy Aaron Flexer.
 
 import tcod
 import pickle
@@ -36,7 +36,7 @@ RANDOM_CHART_ID = 0
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
 FRAMES_PER_SECOND = 60
-WINDOW_NAME = "Endovia 1.212"
+WINDOW_NAME = "Endovia 1.213"
 FONT_NAME = "ascii_8x8.png"
 FILE_READ_MODE = "rb"
 FILE_WRITE_MODE = "wb"
@@ -360,12 +360,14 @@ def Main():
                 event = Handlers.handlers["InputHandler"].MainGame(tcod)
         else:
             event = None
+        in_combat_id = 0
         if enemy_there:
-            for message in Handlers.handlers["CombatHandler"].FightCharacter(charts[chart_id], charts[0].entities[0], charts[0].entities, enemy_at[0], enemy_at[1], Characters.characters):
-                messages.append(message)
             enemy_x, enemy_y = enemy_at[0], enemy_at[1]
-        if turn_taken:
-            Handlers.handlers["MovementHandler"].MoveEnemies(charts[chart_id], charts[chart_id].entities, Objects.objects, Characters.characters)
+            for message in Handlers.handlers["CombatHandler"].FightCharacter(charts[chart_id], charts[chart_id].entities[0], charts[chart_id].entities, enemy_at[0], enemy_at[1], Characters.characters):
+                in_combat_id = Handlers.handlers["CombatHandler"].DetectEnemyFight(charts[chart_id], enemy_x, enemy_y, charts[chart_id].entities)
+                messages.append(message)
+                # Make sure an enemy that is being attacked doesn't move.
+        Handlers.handlers["MovementHandler"].MoveEnemies(charts[chart_id], charts[chart_id].entities, Objects.objects, Characters.characters, in_combat_id)
         # main_level_up is used to see if we should pick a stat to increase.
         main_level_up, messages_new = Handlers.handlers["LevelingHandler"].LevelCharacter(charts[0].entities[0])
         for message in messages_new:
