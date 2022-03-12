@@ -36,7 +36,7 @@ RANDOM_CHART_ID = 0
 CHART_WIDTH = 70
 CHART_HEIGHT = 70
 FRAMES_PER_SECOND = 60
-WINDOW_NAME = "Endovia 1.211"
+WINDOW_NAME = "Endovia 1.212"
 FONT_NAME = "ascii_8x8.png"
 FILE_READ_MODE = "rb"
 FILE_WRITE_MODE = "wb"
@@ -364,7 +364,9 @@ def Main():
             for message in Handlers.handlers["CombatHandler"].FightCharacter(charts[chart_id], charts[0].entities[0], charts[0].entities, enemy_at[0], enemy_at[1], Characters.characters):
                 messages.append(message)
             enemy_x, enemy_y = enemy_at[0], enemy_at[1]
-            # main_level_up is used to see if we should pick a stat to increase.
+        if turn_taken:
+            Handlers.handlers["MovementHandler"].MoveEnemies(charts[chart_id], charts[chart_id].entities, Objects.objects, Characters.characters)
+        # main_level_up is used to see if we should pick a stat to increase.
         main_level_up, messages_new = Handlers.handlers["LevelingHandler"].LevelCharacter(charts[0].entities[0])
         for message in messages_new:
             messages.append(message)
