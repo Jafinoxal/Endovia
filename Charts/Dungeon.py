@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Endovia (Dungeon)
-# Copyright (C) 2010-2021 Jeremy Aaron Flexer.
+# Copyright (C) 2010-2022 Jeremy Aaron Flexer.
 
 import random
 
@@ -105,6 +105,14 @@ class Chart(Basic.Chart):
                     vein_to_place = random.randint(0, len(objects[28].keys()) - 1)
                     if not random.randint(0, objects[28][vein_to_place][9] // 2):
                         self.grids[28][(x, y)] = {0:28, 1:vein_to_place, 2: None}
+
+    def _place_trees(self, objects, characters, width, height):
+        for y in range(height):
+            for x in range(width):
+                if self._is_free(objects, characters, x, y):
+                    tree_to_place = random.randint(0, len(objects[27].keys()) - 1)
+                    if not random.randint(0, objects[27][tree_to_place][9] // 2):
+                        self.grids[27][(x, y)] = {0:27, 1:tree_to_place, 2: None}
 
     def _place_player_start(self, objects, characters, character_category, character_id):
         # Iterate through entire grid to start.

@@ -238,7 +238,7 @@ def Main():
                 elif event == MINE_VEIN:
                     message = Handlers.handlers["SkillHandler"].MineVein(charts[chart_id], charts[chart_id].entities[player_id], direction, Objects.objects[VEINS])
                 elif event == CHOP_TREE:
-                    message = Handlers.handlers["SkillHandler"].ChopTree(charts[chart_id], charts[chart_id].entities[player_id], direction, Objecta.objects[TREES])
+                    message = Handlers.handlers["SkillHandler"].ChopTree(charts[chart_id], charts[chart_id].entities[player_id], direction, Objects.objects[TREES])
                 messages.append(message)
                 turn_taken = True
         elif event == MOVE_PLAYER_NORTH:

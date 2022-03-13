@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 # Endovia (DrawInfo)
-# Copyright (C) 2010-2021 Jeremy Aaron Flexer.
+# Copyright (C) 2010-2022 Jeremy Aaron Flexer.
 
 def DrawStats(console, chart, player):
-    title_to_draw = "+ STATS +"
+    title_to_draw = " Ω STATS Ω"
     name_to_draw = " Name:   {0}".format(player.name)
     race_to_draw = " Race:   {0}".format(player.race)
     level_to_draw = " Level:  {0}:{1}/{2}          ".format(player.level, player.experience, player.level * player.level * 15)
@@ -28,7 +28,7 @@ def DrawStats(console, chart, player):
             console.print(x=x + chart.width + 2, y=y, string=to_draw_complete[y][x], fg=(255,255,255), bg=(0,0,0))
 
 def DrawAttributes(console, chart, player):
-    title_to_draw = "+ ATTRIBUTES +"
+    title_to_draw = " Ω ATTRIBUTES Ω"
     attack_to_draw = " attack:       {0}".format(player.attributes["attack"])
     defense_to_draw = " defense:      {0}".format(player.attributes["defense"])
     strength_to_draw = " strength:     {0}".format(player.attributes["strength"])
@@ -57,7 +57,7 @@ def DrawAttributes(console, chart, player):
             console.print(x=x + chart.width + 2, y=y + 9, string=to_draw_complete[y][x], fg=(255,255,255), bg=(0,0,0))
 
 def DrawSkills(console, chart, player):
-    title_to_draw = "+ SKILLS +"
+    title_to_draw = " Ω SKILLS Ω"
     melee_to_draw = " melee:        {0}:{1}/{2}                      ".format(player.skills["melee"][0], player.skills["melee"][1], player.skills["melee"][0] * player.skills["melee"][0] * 30)
     ranged_to_draw = " ranged:       {0}:{1}/{2}                     ".format(player.skills["ranged"][0], player.skills["ranged"][1], player.skills["ranged"][0] * player.skills["ranged"][0] * 30)
     magic_to_draw = " magic:        {0}:{1}/{2}                      ".format(player.skills["magic"][0], player.skills["magic"][1], player.skills["magic"][0] * player.skills["magic"][0] * 30)
@@ -106,7 +106,7 @@ def DrawSkills(console, chart, player):
             console.print(x=x + chart.width + 2, y=y + 20, string=to_draw_complete[y][x], fg=(255,255,255), bg=(0,0,0))
 
 def DrawLocation(console, chart, player):
-    title_to_draw = "+ LOCATION +"
+    title_to_draw = " Ω LOCATION Ω"
     location_to_draw = " Map: {0}   ".format(chart.id)
     x_to_draw = " X:   {0}   ".format(player.x)
     y_to_draw = " Y:   {0}   ".format(player.y)
@@ -124,7 +124,7 @@ def DrawEnemy(console, chart, enemies, enemy_x, enemy_y):
     # Find the enemy.
     for enemy in enemies.values():
         if (enemy_x, enemy_y) == (enemy.x, enemy.y):
-            title_to_draw = "+ ENEMY +"
+            title_to_draw = " Ω ENEMY Ω"
             health_to_draw = " Health: {0}      ".format(enemy.health)
             location_to_draw = " Map:    {0}   ".format(chart.id)
             x_to_draw = " X:      {0}   ".format(enemy_x)
@@ -141,7 +141,7 @@ def DrawEnemy(console, chart, enemies, enemy_x, enemy_y):
                     console.print(x=x + chart.width + 2, y=y + 45, string=to_draw_complete[y][x], fg=(255,255,255), bg=(0,0,0))
             break
         else:
-            title_to_draw = "+ ENEMY +"
+            title_to_draw = " Ω ENEMY Ω"
             health_to_draw = " Health: None"
             location_to_draw = " Map:    {0}   ".format(chart.id)
             x_to_draw = " X:      None"
@@ -159,7 +159,7 @@ def DrawEnemy(console, chart, enemies, enemy_x, enemy_y):
             break
 
 def DrawMagic(console, chart, player, destruction_spell_info, restoration_spell_info):
-    title_to_draw = "+ MAGIC +"
+    title_to_draw =  " Ω MAGIC Ω"
     destruction_spell_to_draw = " <DES>:  {0}".format(destruction_spell_info[0])
     restoration_spell_to_draw = " <RES>:  {0}".format(restoration_spell_info[0])
     to_draw_complete = (
@@ -172,7 +172,7 @@ def DrawMagic(console, chart, player, destruction_spell_info, restoration_spell_
             console.print(x=x + chart.width + 2, y=y + 50, string=to_draw_complete[y][x], fg=(255,255,255), bg=(0,0,0))
 
 def DrawCombat(console, chart, player, combat_styles):
-    title_to_draw = "+ COMBAT +"
+    title_to_draw = " Ω COMBAT Ω"
     style_to_draw = " Style: {0}".format(combat_styles[player.combat_style])
     to_draw_complete = (
     title_to_draw,

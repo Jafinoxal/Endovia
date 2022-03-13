@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Endovia (Generators)
-# Copyright (C) 2010-2020 Jeremy Aaron Flexer.
+# Copyright (C) 2010-2022 Jeremy Aaron Flexer.
 
 import random
 
@@ -13,6 +13,7 @@ def MainDungeonGenerator1(objects, characters, chart, rooms, player_character_id
         chart._carve_rectangular_room(x, y, x2, y2, 0)
     chart._carve_tunnels(objects, characters, 0, 0, chart.width, chart.height, 0)
     chart._place_veins(objects, characters, chart.width, chart.height)
+    chart._place_trees(objects, characters, chart.width, chart.height)
     player_position = chart._place_player_start(objects, characters, 2000, player_character_id)
     character_positions = chart._place_enemies_start(objects, characters, enemy_grid_id, enemy_character_ids)
     return player_position, character_positions
