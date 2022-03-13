@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Endovia (Basic)
-# Copyright (C) 2010-2020 Jeremy Aaron Flexer.
+# Copyright (C) 2010-2022 Jeremy Aaron Flexer.
 
 class Chart(object):
     def __init__(self, id, chart_width, chart_height, active):
