@@ -7,6 +7,7 @@
 ## Releases:
 #### [Endovia Alpha 1.100](https://github.com/Jafinoxal/Endovia/releases/tag/1.100 "Endovia Alpha 1.100 Release")
 #### [Endovia Alpha 1.200](https://github.com/Jafinoxal/Endovia/releases/tag/1.200 "Endovia Alpha 1.200 Release")
+#### [Endovia Alpha 1.300](https://github.com/Jafinoxal/Endovia/releases/tag/1.300 "Endovia Alpha 1.300 Release")
 ## Installation:
 ###  Windows:
 ####    INSTALL: `py -m pip install tcod`
