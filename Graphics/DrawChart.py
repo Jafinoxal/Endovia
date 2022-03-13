@@ -76,7 +76,6 @@ def DrawAllAlpha(console, objects, characters, chart, player):
                     tcod.map_set_properties(fov_map, x, y, True, True)
                 else:
                     tcod.map_set_properties(fov_map, x, y, characters[category][chart.grids[category][(x, y)][1]][8], not characters[category][chart.grids[category][(x, y)][1]][7])
-    tcod.map_compute_fov(fov_map, player.x, player.y, 5, True, 2)
     for category in range(2, 43):
         for y in range(0, chart.height):
             for x in range(0, chart.width):
@@ -84,7 +83,6 @@ def DrawAllAlpha(console, objects, characters, chart, player):
                     tcod.map_set_properties(fov_map, x, y, True, True)
                 else:
                     tcod.map_set_properties(fov_map, x, y, objects[category][chart.grids[category][(x, y)][1]][8], not objects[category][chart.grids[category][(x, y)][1]][7])
-    tcod.map_compute_fov(fov_map, player.x, player.y, 5, True, 2)
     for category in (1, 0):
         for y in range(0, chart.height):
             for x in range(0, chart.width):
@@ -106,7 +104,7 @@ def DrawAllAlpha(console, objects, characters, chart, player):
                             reference = characters[category][chart.grids[category][(x, y)][1]]
                         else:
                             continue
-                        console.print(x=x+1, y=y+1, string=reference[(x, y)][5], fg=(reference[(x, y)][6][0][0], reference[(x, y)][6][0][1], reference[(x, y)][6][0][2]), bg=(reference[(x, y)][6][1][0], reference[(x, y)][6][1][1], reference[(x, y)][6][1][2]))
+                        console.print(x=x+1, y=y+1, string=reference[5], fg=(reference[6][0][0], reference[6][0][1], reference[6][0][2]), bg=(reference[6][1][0], reference[6][1][1], reference[6][1][2]))
                     elif (x, y) in chart.seen:
                         console.print(x=x+1, y=y+1, string='?', fg=(35,35,35), bg=(0,0,0))
                     else:
