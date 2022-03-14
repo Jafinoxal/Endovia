@@ -44,6 +44,10 @@ def DrawAll(console, objects, characters, chart, player):
                             chart.seen.append((x, y))
                         character_reference = characters[category][chart.grids[category][(x, y)][1]]
                         console.print(x=x+1, y=y+1, string=character_reference[5], fg=(character_reference[6][0][0],character_reference[6][0][1], character_reference[6][0][2]), bg = (character_reference[6][1][0], character_reference[6][1][1], character_reference[6][1][2]))
+                    elif (x, y) in chart.seen:
+                        console.print(x=x+1, y=y+1, string='?', fg=(35,35,35), bg=(0,0,0))
+                    else:
+                        console.print(x=x+1, y=y+1, string=' ', fg=(0,0,0), bg=(0,0,0))
     for category in range(2, 43):
         for y in range(0, chart.height):
             for x in range(0, chart.width):
@@ -94,15 +98,17 @@ def DrawAllAlpha(console, objects, characters, chart, player):
     for category in chart.grids.keys():
         for y in  range(0, chart.height):
             for x in range(0, chart.width):
-                if (x, y) not in chart.seen:
-                    chart.seen.append((x, y))
                 if chart.grids[category][(x, y)] != None:
                     if tcod.map_is_in_fov(fov_map, x, y):
+                        if (x, y) not in chart.seen:
+                            chart.seen.append((x, y))
                         if category in range(0, 43):
                             reference = objects[category][chart.grids[category][(x, y)][1]]
                         elif category in range(2000, 2002):
                             reference = characters[category][chart.grids[category][(x, y)][1]]
                         else:
+                            continue
+                        if category == 1 and chart.grids[0][(x, y)] != None:
                             continue
                         console.print(x=x+1, y=y+1, string=reference[5], fg=(reference[6][0][0], reference[6][0][1], reference[6][0][2]), bg=(reference[6][1][0], reference[6][1][1], reference[6][1][2]))
                     elif (x, y) in chart.seen:
