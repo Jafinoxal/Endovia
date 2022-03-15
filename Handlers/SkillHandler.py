@@ -24,6 +24,7 @@ def MineVein(chart, player, direction, veins):
                 return "You need a mining level of {0} to mine the {1}.              ".format(vein_level, vein_name)
             experience_gained = vein_info[9]
             chart.grids[28][(player.x + direction[0], player.y + direction[1])] = None
+            player.inventory[1001][vein_info[1]] += 1
             player.skills["mining"] = (player.skills["mining"][0], player.skills["mining"][1] + experience_gained)
             return "You mine through the {0}! You gain {1} mining experience.            ".format(vein_name, experience_gained)
         else:
@@ -41,6 +42,7 @@ def ChopTree(chart, player, direction, trees):
                 return "You need a forestry level of {0} to chop the {1}.            ".format(tree_level, tree_name)
             experience_gained = tree_info[9]
             chart.grids[27][(player.x + direction[0], player.y + direction[1])] = None
+            player.inventory[1014][tree_info[1]] += 1
             player.skills["forestry"] = (player.skills["forestry"][0], player.skills["forestry"][1] + experience_gained)
             return "You chop down the {0}! You gain {1} forestry experience.             ".format(tree_name, experience_gained)
         else:

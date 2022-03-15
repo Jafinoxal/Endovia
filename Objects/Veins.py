@@ -23,6 +23,7 @@ def _category():
     16: 28,
     17: 28,
     18: 28,
+    19: 28,
     }
 
 def _identity():
@@ -46,6 +47,7 @@ def _identity():
     16: 16,
     17: 17,
     18: 18,
+    19: 19,
     }
 
 def _name():
@@ -70,6 +72,7 @@ def _name():
     16: "Silver Vein",
     17: "Gold Vein",
     18: "Platinum Vein",
+    19: "Coal Vein",
     }
 
 def _kind():
@@ -93,6 +96,7 @@ def _kind():
     16: "Vein",
     17: "Vein",
     18: "Vein",
+    19: "Vein",
     }
 
 def _description():
@@ -116,6 +120,7 @@ def _description():
     16: "Metal ore is in this, how precious.",
     17: "Metal ore is in this, how precious.",
     18: "Metal ore is in this, how precious.",
+    19: "Smells like a naughty christmas.",
     }
 
 def _symbol(): # 6.
@@ -139,6 +144,7 @@ def _symbol(): # 6.
     16: "♦",
     17: "♦",
     18: "♦",
+    19: "♦",
     }
 
 def _color():
@@ -162,6 +168,7 @@ def _color():
     16: ((0,144,0), (0,0,0)),
     17: ((40,255,0), (0,0,0)),
     18: ((0,255,0), (0,0,0)),
+    19: ((0,255,43), (0,0,0)),
     }
 
 def _clip():
@@ -185,6 +192,7 @@ def _clip():
     16: True,
     17: True,
     18: True,
+    19: True
     }
 
 def _transparent():
@@ -208,6 +216,7 @@ def _transparent():
     16: False,
     17: False,
     18: False,
+    19: False,
     }
 
 def _experience():
@@ -231,6 +240,7 @@ def _experience():
     16: 300,
     17: 1000,
     18: 12000,
+    19: 35,
 }
 
 def veins():
@@ -254,6 +264,7 @@ def veins():
     16: (_category()[16], _identity()[16], _name()[16], _kind()[16], _description()[16], _symbol()[16], _color()[16], _clip()[16], _transparent()[16], _experience()[16]),
     17: (_category()[17], _identity()[17], _name()[17], _kind()[17], _description()[17], _symbol()[17], _color()[17], _clip()[17], _transparent()[17], _experience()[17]),
     18: (_category()[18], _identity()[18], _name()[18], _kind()[18], _description()[18], _symbol()[18], _color()[18], _clip()[18], _transparent()[18], _experience()[18]),
+    19: (_category()[19], _identity()[19], _name()[19], _kind()[19], _description()[19], _symbol()[19], _color()[19], _clip()[19], _transparent()[19], _experience()[19]),
     }
 
 # Jafinoxal.
